@@ -1,0 +1,13 @@
+/* GLOBAL STANDARD-Definition for hole index-html */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: rgba(100, 220, 30, 0.5);
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
