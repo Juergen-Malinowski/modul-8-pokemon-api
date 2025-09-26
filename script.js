@@ -48,12 +48,12 @@ function getInfo() {
     };
 }
 
-function showPoke() {
-    document.getElementById('show_poke').innerHTML = renderPoke();
-}
+// function showPoke() {
+//     document.getElementById('show_poke').innerHTML = renderPoke();
+// }
 
-function renderPoke() {
-    return `
+// function renderPoke() {
+//     return `
     
-    `
-}
+//     `
+// }

@@ -30,7 +30,7 @@ body {
 
 main {
     width: 100vh;
-    height: 100vh;
+    height: auto;
 }
 
 .poke_grafik {
@@ -77,4 +77,20 @@ main {
     font-size: 30px;
     background-color: black;
     margin-bottom: 10px;
+}
+
+
+
+/* CLASS for footer */
+
+footer {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.copyright_jm {
+    font-size: 30px;
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0);
 }
