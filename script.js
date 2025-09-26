@@ -41,7 +41,7 @@ function getInfo() {
         return `
             <div id="one_pokemon" class="one_pokemon">
                 <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" alt="">
-                <p class="id_poke">ID Pokemon: ${allPoke[arrayID].id}<br></p>
+                <p class="id_poke">Pokemon-ID: #${allPoke[arrayID].id}<br></p>
                 <p class="id_poke">Name: ${allPoke[0].name}<br></p>
             </div>
         `
