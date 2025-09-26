@@ -1,32 +1,51 @@
+header {
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 50px;
+}
+
 h1 {
     font-size: 4em;
-    width: 100vh;
+    width: 1440px;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.poke_grafik {
-    font-size: 40px;
-    height: 100vh;
+body {
+    background-image: url(./assets/img/main-background.png);
+    background-size: cover;
+    /* height: 100vh; */
+    background-position: center;
+}
+
+.main_grafik {
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 main {
     width: 100vh;
     height: 100vh;
-    background-color: black;
 }
 
 .poke_grafik {
-    width: 100vh;
-    height: 100vh;
-    /* background-color: greenyellow; */
+    width: 1440px;
+    height: auto;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    background-color: blueviolet;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-
-    padding-left: 20px;
-    gap: 10px;
-    /* flex: 1; */
+    gap: 40px;
 }
 
 
@@ -36,10 +55,13 @@ main {
     border-style: double;
     border-color: white;
     border-width: 10px;
+    border-radius: 5px;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
 
 
 }

@@ -4,8 +4,8 @@
     box-sizing: border-box;
     margin: 0;
     scroll-behavior: smooth;
-    /* background-color: rgba(100, 220, 30, 0.5); */
-    background-color: darkgrey;
+    background-color: rgb(74, 70, 70);
+    /* background-color: black; */
     color: white;
 }
 
