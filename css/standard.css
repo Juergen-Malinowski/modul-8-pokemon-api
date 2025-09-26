@@ -4,8 +4,9 @@
     box-sizing: border-box;
     margin: 0;
     scroll-behavior: smooth;
-    background-color: rgba(100, 220, 30, 0.5);
-    color: black;
+    /* background-color: rgba(100, 220, 30, 0.5); */
+    background-color: darkgrey;
+    color: white;
 }
 
 a {

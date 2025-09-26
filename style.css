@@ -1,5 +1,7 @@
 h1 {
     font-size: 4em;
+    width: 100vh;
+    text-align: center;
 }
 
 .poke_grafik {
@@ -7,6 +9,50 @@ h1 {
     height: 100vh;
 }
 
-.show_poke_grafik {
-    
+main {
+    width: 100vh;
+    height: 100vh;
+    background-color: black;
+}
+
+.poke_grafik {
+    width: 100vh;
+    height: 100vh;
+    /* background-color: greenyellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding-left: 20px;
+    gap: 10px;
+    /* flex: 1; */
+}
+
+
+.one_pokemon {
+    width: 300px;
+    height: 300px;
+    border-style: double;
+    border-color: white;
+    border-width: 10px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.img_poke {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    margin-bottom: 30px;
+}
+
+.id_poke {
+    font-size: 30px;
+    background-color: black;
+    margin-bottom: 10px;
 }

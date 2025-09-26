@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-      <link rel="stylesheet" href="./css/fonts.css">
-        <link rel="stylesheet" href="./css/standard.css">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/standard.css">
     <link rel="stylesheet" href="./style.css">
-        <link rel="icon" href="./assets/img/favion-pokemon.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="./assets/img/favion-pokemon.png" type="image/png" sizes="16x16">
 </head>
+
 <body onload="loadPokemon()">
     <header>
         <h1>Pokedex</h1>
@@ -16,10 +18,24 @@
 
         </nav>
     </header>
-<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png" alt="Bild Pokemon">
+
+
+
     <main>
-    <div id="pokemon" class="poke_grafik"></div>
+        <div id="overview_poke" class="poke_grafik"></div>
+
+        <!-- <div id="overview_pokemon" class="overview_pokemon">
+            <p class="id_poke"></p>
+            <img src="${allPoke[0].sprites.other.home.front_default}" alt="">
+
+        </div> -->
+
+
+
     </main>
+
+
+
 
     <footer>
         <p>(C) Jürgen Malinowski, 15.09.2025</p>
@@ -31,8 +47,3 @@
 Bild von <a href="https://pixabay.com/de/users/josemiguels-2119574/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1888657">José Miguel</a> auf <a href="https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1888657">Pixabay</a> -->
 
 </html>
-
-
-<div id="show_poke" class="show_poke_grafik">
-
-</div>
