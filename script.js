@@ -106,14 +106,25 @@ closeDialog.addEventListener("click", () => {
 
 function showPreviousPoke() {
     audioClick.play();
-    arrayID = arrayID - 3;
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    if (arrayID < 3) {
+        arrayID = allPoke.length-3;
+        thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    } else {
+        arrayID = arrayID - 3;
+        thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    }
 }
 
 function showNextPoke() {
     audioClick.play();
-    arrayID = arrayID + 3;
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    if (arrayID == allPoke.length - 3) {
+        console.log("IF HAT ausgelöst ... arrayID = ", arrayID);
+        arrayID = 0;
+        thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    } else {
+        arrayID = arrayID + 3;
+        thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    }
 }
 
 

@@ -52,6 +52,6 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_details">Type 0: ${allPoke[arrayID].types[0].type.name}</div>
             </div>
         </div>
-        <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png" onclick="showPreviousPoke()"> 
+        <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png" onclick="showNextPoke()"> 
     `
 }
