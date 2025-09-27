@@ -1,10 +1,10 @@
 header {
     background-color: rgba(255, 255, 255, 0);
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 3em;
     width: 1440px;
     background-color: blueviolet;
     border-style: double;
@@ -60,7 +60,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
 
 
@@ -93,7 +93,7 @@ main {
 
 .button_pre_grafik {
     width: 200px;
-    height: 100px;
+    height: 70px;
     font-size: 40px;
     color: yellow;
     background-color: black;
@@ -105,7 +105,7 @@ main {
 
 .button_next_grafik {
     width: 200px;
-    height: 100px;
+    height: 70px;
     font-size: 40px;
     color: yellow;
     background-color: black;
