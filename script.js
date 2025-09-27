@@ -14,6 +14,17 @@ const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
 
+
+// for AUDIO
+// audioShowOnePoke.play();
+let audioShowOnePoke = new Audio('./sound/next-round.mp3');
+
+let audioWrong = new Audio('./sound/loose.mp3');
+let audioRight = new Audio('./sound/win.mp3');
+let audioResult = new Audio('./sound/result.mp3');
+let audioWinning = new Audio('./sound/win-king.mp3');
+
+
 // BASIC-Functions  "Pokemon-Slide-Show" ...
 
 async function loadPokemon() {
@@ -81,6 +92,7 @@ function showNext() {
 
 // OPEN and CLOSE the DIALOG ...
 openDialog.addEventListener("click", () => {
+    audioShowOnePoke.play();
     thisPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
 
@@ -95,7 +107,7 @@ closeDialog.addEventListener("click", () => {
 
 function renderOnePokemon(arrayID) {
     return `    
-        <button id="pre_poke" class="buttons_pre_poke">ICON kleiner-als</button>
+        <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png">    
         <div class="get_color">
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
         </div>
@@ -119,9 +131,11 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_details">Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
             </div>
         </div>
-        <button id="next_poke" class="buttons_next_poke">ICON größer-als</button>
+        <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"> 
     `
 }
+// <button id="next_poke" class="buttons_next_poke">ICON größer-als</button>
+// <button id="pre_poke" class="buttons_pre_poke">ICON kleiner-als</button>
 
 // <div>Name: ${allPoke[arrayID].name}<br></div>
 // <div>Poke-ID: ${allPoke[arrayID].id}<br></div>

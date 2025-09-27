@@ -148,6 +148,7 @@ main {
     color: white;
     /* background-color: black; */
     display: flex;
+    align-items: center;
 }
 
 .line_grafik {
@@ -189,8 +190,24 @@ main {
 .all_poke_details {
     display: flex;
     flex-direction: column;
-
 }
+
+.buttons_pre_poke {
+    width: 200px;
+    height: 100px;
+    color: black;
+    background-color: white;
+}
+
+.buttons_next_poke {
+    width: 200px;
+    height: 100px;
+    color: black;
+    background-color: white;
+    margin-left: 50px;
+}
+
+
 
 
 /* CLASS for footer */
