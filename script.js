@@ -98,18 +98,25 @@ function renderOnePokemon(arrayID) {
         <div class="get_color">
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
         </div>
-        <div class="get_color">
-            <div class="poke_personal">Name Pokemon: ${allPoke[arrayID].name}<br></div>
-            <div class="poke_personal">ID Pokemon: ${allPoke[arrayID].id}<br></div>
-            <div class="poke_personal">Spezies Pokemon: ${allPoke[arrayID].species.name}<br></div>
-        </div>
-        <div class="get_color">
-            <div class="poke_details">Größe Pokemon: ${allPoke[arrayID].height}<br></div>
-            <div class="poke_details">Gewicht Pokemon: ${allPoke[arrayID].weight}<br></div>
-        </div>
-        <div class="get_color">
-            <div class="poke_details">Type 0 Pokemon: ${allPoke[arrayID].types[0].type.name}<br></div>
-            <div class="poke_details">Type 1 Pokemon: ${allPoke[arrayID].types[1].type.name}<br></div>
+        <div class="all_poke_details">
+            <div class="get_color">
+                <div class="poke_personal">Name: ${allPoke[arrayID].name}</div>
+                <br>
+                <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div>
+                <div class="poke_personal">Spezies: ${allPoke[arrayID].species.name}</div>
+                <br>
+            </div>
+            <hr class="line_grafik">
+            <br>
+            <div class="get_color">
+                <div class="poke_details">Größe: ${allPoke[arrayID].height}<br></div>
+                <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
+                <br>
+            </div>
+            <div class="get_color">
+                <div class="poke_details">Type 0: ${allPoke[arrayID].types[0].type.name}</div>
+                <div class="poke_details">Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
+            </div>
         </div>
     `
 }
