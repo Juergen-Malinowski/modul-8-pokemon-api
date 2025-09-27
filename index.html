@@ -23,31 +23,53 @@
 
     <main class="main_grafik">
 
-        <div id="overview_poke" class="poke_grafik">
+        <div id="overview_poke" class="poke_grafik"></div>
 
-
-
-
-
-        </div>
-
-
-        <div id="button_pre_next" class="button_pre_next">
-
-        </div>
+        <div id="button_pre_next" class="button_pre_next"></div>
 
         <!-- DER BUTTON für "Dialog-Box-öffnen" MUSS auf die Bilder verlegt werden
         UND dort per ID des Bildes den Bezug zum Ladenen des Datensatzes von allPoke geben.
         DER BEZUG muss beim Rendern der Bilder per INDEX-ID zuvor abgelegt werden !!!  -->
         <button id="open_dialog" class="buttons_grafik">SHOW one POKEMON</button>
 
-
-
         <!-- DIE DIALOG-BOX -->
+
         <dialog id="show_one_pokemon" class="dialog_box">
-            <p class="diolog_fonts">HIER erfolgt die BILDAUSGABE zu dem gewählten POKEMON ...</p>
-            <button id="close_dialog" class="buttons_grafik">Schließen</button>
+            <p id="show_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu dem gewählten POKEMON ...</p>
+            <hr class="line_grafik">
+            <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">Schließen</button>
         </dialog>
+
+
+
+
+<!-- 
+        <div>
+            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_poke" alt="Bild Pokemon"><br>
+        </div>
+
+        <div>
+            <div class="poke_personal">Name Pokemon: ${allPoke[arrayID].name}<br></div>
+            <div class="poke_personal">ID Pokemon: ${allPoke[arrayID].id}<br></div>
+            <div class="poke_personal">Spezies Pokemon: ${allPoke[arrayID].species.name}<br></div>
+        </div>
+
+
+
+        <div>
+            <div class="poke_details">Größe Pokemon: ${allPoke[arrayID].height}<br></div>
+            <div class="poke_details">Gewicht Pokemon: ${allPoke[arrayID].weight}<br></div>
+        </div>
+
+        <div>
+            <div class="poke_details">Type 0 Pokemon: ${allPoke[arrayID].types[0].type.name}<br></div>
+            <div class="poke_details">Type 1 Pokemon: ${allPoke[arrayID].types[1].type.name}<br></div>
+        </div> -->
+
+
+
+
+
 
 
     </main>

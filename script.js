@@ -5,12 +5,14 @@ let allPoke = [];  // Array nimmt alle geladenen Pokemons auf
 let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor ... dann werden derzeit 12 insgesamt geladen
 let endIndex = startIndex + 23;
 let firstLoad = true;
+let arrayID = 0;
+
 
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
-const openDialog = document.getElementById("open_dialog");
 const closeDialog = document.getElementById("close_dialog");
-
+const openDialog = document.getElementById("open_dialog");
+const thisPokemon = document.getElementById('show_pokemon');
 
 // BASIC-Functions  "Pokemon-Slide-Show" ...
 
@@ -79,15 +81,47 @@ function showNext() {
 
 // OPEN and CLOSE the DIALOG ...
 openDialog.addEventListener("click", () => {
+    thisPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+
+    // RENDERN des Pokemons JETZT ...
+
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
 });
 
 closeDialog.addEventListener("click", () => {
     showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
 });
 
+function renderOnePokemon(arrayID) {
+    return `    
+        <div>
+            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
+        </div>
+        <div>
+            <div class="poke_personal">Name Pokemon: ${allPoke[arrayID].name}<br></div>
+            <div class="poke_personal">ID Pokemon: ${allPoke[arrayID].id}<br></div>
+            <div class="poke_personal">Spezies Pokemon: ${allPoke[arrayID].species.name}<br></div>
+        </div>
+        <div>
+            <div class="poke_details">Größe Pokemon: ${allPoke[arrayID].height}<br></div>
+            <div class="poke_details">Gewicht Pokemon: ${allPoke[arrayID].weight}<br></div>
+        </div>
+        <div>
+            <div class="poke_details">Type 0 Pokemon: ${allPoke[arrayID].types[0].type.name}<br></div>
+            <div class="poke_details">Type 1 Pokemon: ${allPoke[arrayID].types[1].type.name}<br></div>
+        </div>
+    `
+}
 
-
+// <div>Name: ${allPoke[arrayID].name}<br></div>
+// <div>Poke-ID: ${allPoke[arrayID].id}<br></div>
+// <div>Type 0: ${allPoke[arrayID].types[0].type.name}<br></div>
+// <div>Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
+// <div>Größe: ${allPoke[arrayID].height}<br></div>
+// <div>Gewicht: ${allPoke[arrayID].weight}<br></div>
+// <div>Spezies: ${allPoke[arrayID].species.name}<br></div>
+// <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_poke" alt="Bild Pokemon"><br>
 
 // document.getElementById('pokemon').innerHTML = `Name Pokemon: ${allPoke[0].name}<br>`;
 // document.getElementById('pokemon').innerHTML += `ID Pokemon: ${allPoke[0].id}<br>`;

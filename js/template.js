@@ -1,7 +1,7 @@
 
 
 function renderPokemon(index) {
-    let arrayID = index;
+    arrayID = index;
     // console.log("arrayID für Zugriff auf Array = ", arrayID);
     return `
             <div id="one_pokemon" class="one_pokemon">
