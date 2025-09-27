@@ -16,13 +16,9 @@ const thisPokemon = document.getElementById('show_pokemon');
 
 
 // for AUDIO
-// audioShowOnePoke.play();
-let audioShowOnePoke = new Audio('./sound/next-round.mp3');
+// to start AUDIO:   audioClick.play();
+let audioClick = new Audio('./assets/sound/click.mp3')
 
-let audioWrong = new Audio('./sound/loose.mp3');
-let audioRight = new Audio('./sound/win.mp3');
-let audioResult = new Audio('./sound/result.mp3');
-let audioWinning = new Audio('./sound/win-king.mp3');
 
 
 // BASIC-Functions  "Pokemon-Slide-Show" ...
@@ -63,6 +59,7 @@ function showPokemon() {
 }
 
 function showPrevious() {
+    audioClick.play();
     if (startIndex == 1) {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen
         startIndex = allPoke.length - 23;
@@ -76,6 +73,7 @@ function showPrevious() {
 }
 
 function showNext() {
+    audioClick.play();
     // deaktiviert BUTTON "nächste", damit kein weiterer LOAD ausgelöst werden kann, ...
     // während von API nächste Pokemons NOCH geladen werden !!!
     document.getElementById('show_next_button').disabled = true;
@@ -92,16 +90,15 @@ function showNext() {
 
 // OPEN and CLOSE the DIALOG ...
 openDialog.addEventListener("click", () => {
-    audioShowOnePoke.play();
+    audioClick.play();
     thisPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-
     // RENDERN des Pokemons JETZT ...
-
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
 });
 
 closeDialog.addEventListener("click", () => {
+    audioClick.play();
     showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
 });
 

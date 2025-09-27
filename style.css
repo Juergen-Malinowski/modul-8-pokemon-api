@@ -115,7 +115,7 @@ main {
     background-color: rgba(0, 0, 0, 0.6);
 
     /* EINSTELLUNGEN bei "buttons_grafik" ... */
-    transform: scale(1.5);
+    transform: scale(1.3);
 }
 
 
@@ -160,7 +160,7 @@ main {
     height: 150px;
     font-size: 60px;
     position: absolute;
-    bottom: 20px;
+    bottom: 50px;
     left: 44%;
 }
 
