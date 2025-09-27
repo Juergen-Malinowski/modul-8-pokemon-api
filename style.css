@@ -115,6 +115,11 @@ main {
     border-radius: 5px;
 }
 
+.Laden_grafik {
+    font-size: 40px;
+    color: yellow;
+}
+
 
 
 /* CLASS for footer */

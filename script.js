@@ -2,37 +2,48 @@
 
 let allPoke = [];  // Array nimmt alle geladenen Pokemons auf
 let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor ... dann werden derzeit 12 insgesamt geladen
-let endIndex = startIndex + 35;
+let endIndex = startIndex + 23;
+let firstLoad = true;
 
 
 // BASIC-Functions
 async function loadPokemon() {
-    for (index = startIndex; index <= endIndex; index++) {
-        let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
-        let pokeAsJson = await getAdress.json();
-        allPoke.push(pokeAsJson);
+    if (firstLoad) {
+        document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+    }
+    if (startIndex >= allPoke.length) {
+        for (index = startIndex; index <= endIndex; index++) {
+            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
+            let pokeAsJson = await getAdress.json();
+            allPoke.push(pokeAsJson);
+        }
     }
     console.log(allPoke);
     showPokemon();
-    document.getElementById('button_pre_next').innerHTML += setPreviousButtons();
-    document.getElementById('button_pre_next').innerHTML += setNextButtons();
+    if (firstLoad) {
+        document.getElementById('button_pre_next').innerHTML += setPreviousButtons();
+        document.getElementById('button_pre_next').innerHTML += setNextButtons();
+        firstLoad = false;
+    }
+    // NACHDEM neue Pokemons geladen wurden, wird BUTTON "nächste" wieder aktiviert !!!
+    document.getElementById('show_next_button').disabled=false;
 }
 
 
 function showPokemon() {
-    for (index = startIndex-1; index < endIndex; index++) {
-        console.log("index bei start nächster Durchlauf FOR ist = ", index);
-        
+    document.getElementById('overview_poke').innerHTML = "";
+    for (index = startIndex - 1; index < endIndex; index++) {
+        // console.log("index bei start nächster Durchlauf FOR ist = ", index);
+
         document.getElementById('overview_poke').innerHTML += renderPokemon(index);
         index = index + 2;      // Sprung über die 2 Entwicklungsstufen hinweg zum nächsten Pokemon
-        console.log("index nach +2 = ", index);
+        // console.log("index nach +2 = ", index);
     }
 }
 
 function renderPokemon(index) {
     let arrayID = index;
-    console.log("arrayID für Zugriff auf Array = ", arrayID);
-    
+    // console.log("arrayID für Zugriff auf Array = ", arrayID);
     return `
             <div id="one_pokemon" class="one_pokemon">
                 <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" alt="">
@@ -44,22 +55,37 @@ function renderPokemon(index) {
 
 function setPreviousButtons() {
     return `
-        <button class="button_pre_grafik" onclick="showPrevious()">zurück</button>
+        <button id="show_previous_button"  class="button_pre_grafik" onclick="showPrevious()">zurück</button>
        `
 }
 
 function setNextButtons() {
     return `
-        <button class="button_next_grafik" onclick="showNext()" >nächste</button> 
+        <button id="show_next_button" class="button_next_grafik" onclick="showNext()">nächste</button> 
        `
 }
 
 function showPrevious() {
-    if (startIndex = 1 ) {
-
+    if (startIndex == 1) {
+        startIndex = allPoke.length - 23;
+        endIndex = startIndex + 23;
     } else {
-
+        startIndex = startIndex - 24;
+        endIndex = startIndex + 23;
     }
+    showPokemon();
+}
+
+function showNext() {
+    // deaktiviert BUTTON, damit kein weiterer LOAD ausgelöst werden kann, ...
+    // während von API nächste Pokemons geladen werden !!!
+    document.getElementById('show_next_button').disabled = true;
+    // HINWEIS geben, LADE-VORGANG läuft noch !!!
+    document.getElementById('overview_poke').innerHTML = "";
+    document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+    startIndex = startIndex + 24;
+    endIndex = startIndex + 23;
+    loadPokemon();
 }
 
 
