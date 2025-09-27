@@ -13,7 +13,8 @@ const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
-
+// const showPreviousPoke = document.getElementById('pre_poke');
+// const showNextPoke = document.getElementById('next_poke');
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
@@ -103,18 +104,20 @@ closeDialog.addEventListener("click", () => {
 });
 
 
+function showPreviousPoke() {
+    audioClick.play();
+    arrayID = arrayID - 3;
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+}
 
-// openDialog.addEventListener("click", () => {
-//     audioClick.play();
-//     thisPokemon.innerHTML = "";
-//     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-//     // RENDERN des Pokemons JETZT ...
-//     thisPokemon.innerHTML = renderOnePokemon(arrayID);
-// });
+function showNextPoke() {
+    audioClick.play();
+    arrayID = arrayID + 3;
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+}
 
-// closeDialog.addEventListener("click", () => {
-//     audioClick.play();
-//     showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
-// });
+
+
+
 
 
