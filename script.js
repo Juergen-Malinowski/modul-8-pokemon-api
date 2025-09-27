@@ -9,9 +9,11 @@ let firstLoad = true;
 // BASIC-Functions
 async function loadPokemon() {
     if (firstLoad) {
+        // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
         document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
     }
     if (startIndex >= allPoke.length) {
+        // NUR neue Pokemons laden, WENN angeforderte Poke NICHT im Array "allPoke" enthalten
         for (index = startIndex; index <= endIndex; index++) {
             let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
             let pokeAsJson = await getAdress.json();
@@ -21,8 +23,10 @@ async function loadPokemon() {
     console.log(allPoke);
     showPokemon();
     if (firstLoad) {
+        // beim ONLOAD die Buttons für "nächste" und "zurück" setzen
         document.getElementById('button_pre_next').innerHTML += setPreviousButtons();
         document.getElementById('button_pre_next').innerHTML += setNextButtons();
+        // ERSTES Laden (Onload) nun deaktivieren !!!
         firstLoad = false;
     }
     // NACHDEM neue Pokemons geladen wurden, wird BUTTON "nächste" wieder aktiviert !!!
@@ -33,43 +37,20 @@ async function loadPokemon() {
 function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
-        // console.log("index bei start nächster Durchlauf FOR ist = ", index);
-
         document.getElementById('overview_poke').innerHTML += renderPokemon(index);
-        index = index + 2;      // Sprung über die 2 Entwicklungsstufen hinweg zum nächsten Pokemon
-        // console.log("index nach +2 = ", index);
+        // Sprung über die 2 Entwicklungsstufen hinweg des Poke hinweg zum nächsten Pokemon
+        index = index + 2;      
     }
 }
 
-function renderPokemon(index) {
-    let arrayID = index;
-    // console.log("arrayID für Zugriff auf Array = ", arrayID);
-    return `
-            <div id="one_pokemon" class="one_pokemon">
-                <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" alt="">
-                <p class="id_poke">Pokemon-ID: #${allPoke[arrayID].id}<br></p>
-                <p class="id_poke">Name: ${allPoke[arrayID].name}<br></p>
-            </div>
-        `
-}
-
-function setPreviousButtons() {
-    return `
-        <button id="show_previous_button"  class="button_pre_grafik" onclick="showPrevious()">zurück</button>
-       `
-}
-
-function setNextButtons() {
-    return `
-        <button id="show_next_button" class="button_next_grafik" onclick="showNext()">nächste</button> 
-       `
-}
 
 function showPrevious() {
     if (startIndex == 1) {
+        // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen
         startIndex = allPoke.length - 23;
         endIndex = startIndex + 23;
     } else {
+        // vorherigen Pokemons zeigen
         startIndex = startIndex - 24;
         endIndex = startIndex + 23;
     }
@@ -77,10 +58,10 @@ function showPrevious() {
 }
 
 function showNext() {
-    // deaktiviert BUTTON, damit kein weiterer LOAD ausgelöst werden kann, ...
-    // während von API nächste Pokemons geladen werden !!!
+    // deaktiviert BUTTON "nächste", damit kein weiterer LOAD ausgelöst werden kann, ...
+    // während von API nächste Pokemons NOCH geladen werden !!!
     document.getElementById('show_next_button').disabled = true;
-    // HINWEIS geben, LADE-VORGANG läuft noch !!!
+    // HINWEIS geben, LADE-VORGANG läuft noch !!! ...
     document.getElementById('overview_poke').innerHTML = "";
     document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
     startIndex = startIndex + 24;
