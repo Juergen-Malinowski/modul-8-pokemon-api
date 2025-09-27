@@ -59,7 +59,7 @@ main {
     border-color: white;
     border-width: 10px;
     border-radius: 5px;
-    background-color: black;
+    /* background-color: black; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,13 +70,13 @@ main {
 .img_poke {
     width: 150px;
     height: 150px;
-    background-color: black;
+    /* background-color: black; */
     margin-bottom: 30px;
 }
 
 .id_poke {
     font-size: 30px;
-    background-color: black;
+    /* background-color: black; */
     margin-bottom: 10px;
 }
 
@@ -103,7 +103,7 @@ main {
     height: 70px;
     font-size: 40px;
     color: yellow;
-    background-color: black;
+    /* background-color: black; */
     border-style: double;
     border-color: yellow;
     border-width: 10px;
@@ -136,7 +136,7 @@ main {
     position: absolute;
     top: 1%;
     left: 2%;
-    background-color: black;
+    /* background-color: black; */
     border-style: double;
     border-color: blueviolet;
     border-width: 10px;
@@ -146,7 +146,7 @@ main {
 .show_pokemon {
     font-size: 40px;
     color: white;
-    background-color: black;
+    /* background-color: black; */
     display: flex;
 }
 
@@ -163,10 +163,20 @@ main {
     left: 44%;
 }
 
+.get_color {
+    /* background-color: black; */
+}
+
 .img_pokemon {
-    width: 800px;
+    width: 900px;
     height: auto;
-    background-color: black;
+    /* background-color: black; */
+    padding-left: 50px;
+}
+
+.poke_personal poke_details {
+    color: yellow;
+    /* background-color: black; */
 }
 
 /* CLASS for footer */
