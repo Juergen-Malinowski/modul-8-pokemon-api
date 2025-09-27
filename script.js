@@ -102,55 +102,19 @@ closeDialog.addEventListener("click", () => {
     showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
 });
 
-function renderOnePokemon(arrayID) {
-    return `    
-        <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png">    
-        <div class="get_color">
-            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
-        </div>
-        <div class="all_poke_details">
-            <div class="get_color">
-                <div class="poke_personal">Name: ${allPoke[arrayID].name}</div>
-                <br>
-                <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div>
-                <div class="poke_personal">Spezies: ${allPoke[arrayID].species.name}</div>
-                <br>
-            </div>
-            <hr class="line_grafik">
-            <br>
-            <div class="get_color">
-                <div class="poke_details">Größe: ${allPoke[arrayID].height}<br></div>
-                <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
-                <br>
-            </div>
-            <div class="get_color">
-                <div class="poke_details">Type 0: ${allPoke[arrayID].types[0].type.name}</div>
-                <div class="poke_details">Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
-            </div>
-        </div>
-        <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"> 
-    `
-}
-// <button id="next_poke" class="buttons_next_poke">ICON größer-als</button>
-// <button id="pre_poke" class="buttons_pre_poke">ICON kleiner-als</button>
 
-// <div>Name: ${allPoke[arrayID].name}<br></div>
-// <div>Poke-ID: ${allPoke[arrayID].id}<br></div>
-// <div>Type 0: ${allPoke[arrayID].types[0].type.name}<br></div>
-// <div>Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
-// <div>Größe: ${allPoke[arrayID].height}<br></div>
-// <div>Gewicht: ${allPoke[arrayID].weight}<br></div>
-// <div>Spezies: ${allPoke[arrayID].species.name}<br></div>
-// <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_poke" alt="Bild Pokemon"><br>
 
-// document.getElementById('pokemon').innerHTML = `Name Pokemon: ${allPoke[0].name}<br>`;
-// document.getElementById('pokemon').innerHTML += `ID Pokemon: ${allPoke[0].id}<br>`;
-// document.getElementById('pokemon').innerHTML += `Type 0 Pokemon: ${allPoke[0].types[0].type.name}<br>`;
-// document.getElementById('pokemon').innerHTML += `Type 1 Pokemon: ${allPoke[0].types[1].type.name}<br>`;
-// document.getElementById('pokemon').innerHTML += `Größe Pokemon: ${allPoke[0].height}<br>`;
-// document.getElementById('pokemon').innerHTML += `Gewicht Pokemon: ${allPoke[0].weight}<br>`;
-// document.getElementById('pokemon').innerHTML += `Spezies Pokemon: ${allPoke[0].species.name}<br>`;
-// document.getElementById('pokemon').innerHTML += `png-URL Pokemon: ${allPoke[0].sprites.front_shiny}<br>`;
-// document.getElementById('pokemon').innerHTML += `<img src="${allPoke[0].sprites.front_shiny}" alt="Bild Pokemon"><br>`;
-// document.getElementById('pokemon').innerHTML += `Bild Pokemon: ${allPoke[0].sprites.other.home.front_default}<br>`;
-// document.getElementById('pokemon').innerHTML += `<img src="${allPoke[0].sprites.other.home.front_default}" alt="Bild Pokemon"><br>`;
+// openDialog.addEventListener("click", () => {
+//     audioClick.play();
+//     thisPokemon.innerHTML = "";
+//     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+//     // RENDERN des Pokemons JETZT ...
+//     thisPokemon.innerHTML = renderOnePokemon(arrayID);
+// });
+
+// closeDialog.addEventListener("click", () => {
+//     audioClick.play();
+//     showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
+// });
+
+
