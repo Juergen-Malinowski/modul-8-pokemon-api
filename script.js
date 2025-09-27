@@ -95,6 +95,7 @@ closeDialog.addEventListener("click", () => {
 
 function renderOnePokemon(arrayID) {
     return `    
+        <button id="pre_poke" class="buttons_pre_poke">ICON kleiner-als</button>
         <div class="get_color">
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
         </div>
@@ -118,6 +119,7 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_details">Type 1: ${allPoke[arrayID].types[1].type.name}<br></div>
             </div>
         </div>
+        <button id="next_poke" class="buttons_next_poke">ICON größer-als</button>
     `
 }
 
