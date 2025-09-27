@@ -1,12 +1,19 @@
-// DEFINITION of VARIBALES
+// DEFINITION of VARIBALES ...
 
+// GLOBAL ...
 let allPoke = [];  // Array nimmt alle geladenen Pokemons auf
 let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor ... dann werden derzeit 12 insgesamt geladen
 let endIndex = startIndex + 23;
 let firstLoad = true;
 
+// for the DIALOG "Show-One-Pokemon" ...
+const showOnePokemon = document.getElementById("show_one_pokemon");
+const openDialog = document.getElementById("open_dialog");
+const closeDialog = document.getElementById("close_dialog");
 
-// BASIC-Functions
+
+// BASIC-Functions  "Pokemon-Slide-Show" ...
+
 async function loadPokemon() {
     if (firstLoad) {
         // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
@@ -30,19 +37,17 @@ async function loadPokemon() {
         firstLoad = false;
     }
     // NACHDEM neue Pokemons geladen wurden, wird BUTTON "nächste" wieder aktiviert !!!
-    document.getElementById('show_next_button').disabled=false;
+    document.getElementById('show_next_button').disabled = false;
 }
-
 
 function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         document.getElementById('overview_poke').innerHTML += renderPokemon(index);
         // Sprung über die 2 Entwicklungsstufen hinweg des Poke hinweg zum nächsten Pokemon
-        index = index + 2;      
+        index = index + 2;
     }
 }
-
 
 function showPrevious() {
     if (startIndex == 1) {
@@ -68,6 +73,20 @@ function showNext() {
     endIndex = startIndex + 23;
     loadPokemon();
 }
+
+
+// Functions SHOW-ONE-Pokemon with DETAILS ...
+
+// OPEN and CLOSE the DIALOG ...
+openDialog.addEventListener("click", () => {
+    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+});
+
+closeDialog.addEventListener("click", () => {
+    showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
+});
+
+
 
 
 // document.getElementById('pokemon').innerHTML = `Name Pokemon: ${allPoke[0].name}<br>`;

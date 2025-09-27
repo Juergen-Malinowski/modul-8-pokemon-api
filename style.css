@@ -1,7 +1,4 @@
-header {
-    background-color: rgba(255, 255, 255, 0);
-    padding-top: 20px;
-}
+/* CLASS for BASIC */
 
 h1 {
     font-size: 3em;
@@ -14,6 +11,11 @@ h1 {
     text-align: center;
 }
 
+header {
+    background-color: rgba(255, 255, 255, 0);
+    padding-top: 20px;
+}
+
 body {
     background-image: url(./assets/img/main-background.png);
     background-size: cover;
@@ -21,6 +23,8 @@ body {
     background-position: center;
 }
 
+
+/* CLASS for MAIN-PROGRAMM */
 .main_grafik {
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -48,7 +52,6 @@ main {
     gap: 40px;
 }
 
-
 .one_pokemon {
     width: 300px;
     height: 300px;
@@ -62,8 +65,6 @@ main {
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
-
-
 }
 
 .img_poke {
@@ -91,7 +92,13 @@ main {
     justify-content: space-between;
 }
 
-.button_pre_grafik {
+.buttons_grafik {
+    /* VOREINSTELLUNGEN für "transform" beim HOVERN ! ... */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
+
     width: 200px;
     height: 70px;
     font-size: 40px;
@@ -103,21 +110,39 @@ main {
     border-radius: 5px;
 }
 
-.button_next_grafik {
-    width: 200px;
-    height: 70px;
-    font-size: 40px;
-    color: yellow;
-    background-color: black;
-    border-style: double;
-    border-color: yellow;
-    border-width: 10px;
-    border-radius: 5px;
+.buttons_grafik:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    /* EINSTELLUNGEN bei "buttons_grafik" ... */
+    transform: scale(1.5);
 }
 
 .Laden_grafik {
     font-size: 40px;
     color: yellow;
+}
+
+
+
+/* CLASS für DIALOG */
+
+.dialog_box {
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    color: white;
+}
+
+.diolog_fonts {
+    font-size: 40px;
+    color: white;
+    background-color: black;
 }
 
 

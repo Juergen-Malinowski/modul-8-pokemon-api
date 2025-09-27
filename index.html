@@ -14,26 +14,43 @@
 <body class="main_grafik" onload="loadPokemon()">
     <!-- CLASS "main_grafik" give the main-background-picture !!! -->
 
-        <header>
-            <h1>Pokedex</h1>
-            <nav>
+    <header>
+        <h1>Pokedex</h1>
+        <nav>
 
-            </nav>
-        </header>
+        </nav>
+    </header>
+
+    <main class="main_grafik">
+
+        <div id="overview_poke" class="poke_grafik">
 
 
 
-        <main class="main_grafik">
 
-            <div id="overview_poke" class="poke_grafik">
 
-            </div>
+        </div>
 
-            <div id="button_pre_next" class="button_pre_next">
 
-            </div>
+        <div id="button_pre_next" class="button_pre_next">
 
-        </main>
+        </div>
+
+        <!-- DER BUTTON für "Dialog-Box-öffnen" MUSS auf die Bilder verlegt werden
+        UND dort per ID des Bildes den Bezug zum Ladenen des Datensatzes von allPoke geben.
+        DER BEZUG muss beim Rendern der Bilder per INDEX-ID zuvor abgelegt werden !!!  -->
+        <button id="open_dialog" class="buttons_grafik">SHOW one POKEMON</button>
+
+
+
+        <!-- DIE DIALOG-BOX -->
+        <dialog id="show_one_pokemon" class="dialog_box">
+            <p class="diolog_fonts">HIER erfolgt die BILDAUSGABE zu dem gewählten POKEMON ...</p>
+            <button id="close_dialog" class="buttons_grafik">Schließen</button>
+        </dialog>
+
+
+    </main>
 
     <footer>
         <p class="copyright_jm">(C) Jürgen Malinowski, 22.09.2025</p>
