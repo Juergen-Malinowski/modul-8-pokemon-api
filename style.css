@@ -165,22 +165,35 @@ main {
     left: 44%;
 }
 
-.get_color {}
+.get_color {
+    display: flex;
+    flex-direction: column;
+}
 
 .img_pokemon {
-    width: 800px;
+    width: 600px;
     height: auto;
     padding-left: 50px;
 }
 
 .poke_personal {
-    font-size: 70px;
+    font-size: 40px;
+    color: white;
+}
+
+.poke_personal_abi {
+    font-size: 44px;
+    color: yellow;
+}
+
+.poke_personal_name {
+    font-size: 80px;
     color: yellow;
 }
 
 .poke_details {
-    font-size: 50px;
-    color: yellow;
+    font-size: 35px;
+    color: white;
 }
 
 .all_poke_details {

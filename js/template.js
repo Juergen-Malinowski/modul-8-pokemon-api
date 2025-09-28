@@ -34,21 +34,19 @@ function renderOnePokemon(arrayID) {
         </div>
         <div class="all_poke_details">
             <div class="get_color">
-                <div class="poke_personal">Name: ${allPoke[arrayID].name}</div>
+                <div class="poke_personal_name">Name: ${allPoke[arrayID].name}</div>
                 <br>
-                <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div>
-                <div class="poke_personal">Spezies: ${allPoke[arrayID].species.name}</div>
+                <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div><br>
+                <hr class="line_grafik"><br>
+                <div class="poke_personal_abi">Fähigkeiten:</div>
+                <div class="poke_personal">${allPoke[arrayID].abilities[0].ability.name}</div>
                 <br>
             </div>
             <hr class="line_grafik">
             <br>
             <div class="get_color">
-                <div class="poke_details">Größe: ${allPoke[arrayID].height}<br></div>
+                <div class="poke_details">Größe: ${allPoke[arrayID].height}</div>
                 <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
-                <br>
-            </div>
-            <div class="get_color">
-                <div class="poke_details">Type 0: ${allPoke[arrayID].types[0].type.name}</div>
             </div>
         </div>
         <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png" onclick="showNextPoke()"> 
