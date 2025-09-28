@@ -1,11 +1,19 @@
 // DEFINITION of VARIBALES ...
 
 // GLOBAL ...
-let allPoke = [];  // Array nimmt alle geladenen Pokemons auf
-let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor ... dann werden derzeit 12 insgesamt geladen
-let endIndex = startIndex + 23;
-let firstLoad = true;
-let arrayID = 0;
+let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
+
+let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor !
+let endIndex = startIndex + 23;  // Entscheidet, wieviele POKEMONs geladen werden ...
+// (jedes Poke hat 3 aufeinanderfolgende Datensätze, mit den Entwicklungsstufen. Also ...
+// alle 4 Datensätze ein NEUES Pokemon!!! ). Derzeit werden 24 Datensätze am Stück geladen,
+// für 8 zu zeigende Pokemons.
+
+let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen !
+
+let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
+let pokemonID = 0;  // Zwischenspeicher für ARRAY-ID, falls diese durch benötige Manipulation 
+// KURZFRISTIG geändert wurde UND von hier zurückgefürt werden kann
 
 
 // for the DIALOG "Show-One-Pokemon" ...
@@ -13,8 +21,7 @@ const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
-// const showPreviousPoke = document.getElementById('pre_poke');
-// const showNextPoke = document.getElementById('next_poke');
+
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
@@ -53,7 +60,9 @@ async function loadPokemon() {
 function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
-        document.getElementById('overview_poke').innerHTML += renderPokemon(index);
+        arrayID = index;
+
+        document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);
         // Sprung über die 2 Entwicklungsstufen hinweg des Poke hinweg zum nächsten Pokemon
         index = index + 2;
     }
@@ -87,6 +96,7 @@ function showNext() {
 }
 
 
+
 // Functions SHOW-ONE-Pokemon with DETAILS ...
 
 // OPEN and CLOSE the DIALOG ...
@@ -107,7 +117,7 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     audioClick.play();
     if (arrayID < 3) {
-        arrayID = allPoke.length-3;
+        arrayID = allPoke.length - 3;
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID - 3;
@@ -123,10 +133,26 @@ function showNextPoke() {
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID + 3;
+        console.log("ELSE HAT ausgelöst ... arrayID = ", arrayID);
+        console.log("ELSE HAT ausgelöst ... pokemonID, hat ausgelöst Vorgang! = ", pokemonID);
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     }
 }
 
+function showThisPokemon(getIDcode) {
+    audioClick.play();
+    // ALLE Zeichen entfernen, um ArrayID freizulegen ...
+    getIDcode = String(getIDcode);   // wandelt in STRING um 
+    pokemonID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen
+    arrayID = Number(pokemonID);
+    thisPokemon.innerHTML = "";
+    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+    // RENDERN des Pokemons JETZT ...
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+
+    console.log("Übergabe-ID mit Buchstaben = ", getIDcode);
+    console.log("pokemonID = ", pokemonID);
+}
 
 
 

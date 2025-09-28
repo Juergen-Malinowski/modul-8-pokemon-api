@@ -1,11 +1,10 @@
 
 
-function renderPokemon(index) {
+function renderPokemon(arrayID) {
     // RENDER ONE Pokemon in the SLIDE-Show
-    arrayID = index;
     return `
-            <div id="one_pokemon" class="one_pokemon">
-                <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" id="pic_${arrayID}" 
+            <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
+                <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
                    alt="picture of Pokemon">
                 <p class="id_poke">Pokemon-ID: #${allPoke[arrayID].id}<br></p>
                 <p class="id_poke">Name: ${allPoke[arrayID].name}<br></p>
@@ -16,13 +15,13 @@ function renderPokemon(index) {
 
 function setPreviousButtons() {
     return `
-        <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()">zurück</button>
+        <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
        `
 }
 
 function setNextButtons() {
     return `
-        <button id="show_next_button" class="buttons_grafik" onclick="showNext()">nächste</button> 
+        <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button> 
        `
 }
 
