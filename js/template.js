@@ -39,7 +39,9 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div><br>
                 <hr class="line_grafik"><br>
                 <div class="poke_personal_abi">Fähigkeiten:</div>
-                <div class="poke_personal">${allPoke[arrayID].abilities[0].ability.name}</div>
+                <div class="poke_personal">${abilityOne}</div>
+                <div class="poke_personal">${abilityTwo}</div>
+                <div class="poke_personal">${abilityThree}</div>
                 <br>
             </div>
             <hr class="line_grafik">

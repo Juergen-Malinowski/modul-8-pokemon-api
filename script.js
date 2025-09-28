@@ -94,7 +94,16 @@ function showNext() {
 }
 
 
+console.log()
+
 // FUNCTIONs for DIALOG "Show-One-Pokemon"
+
+
+let abilityOne = "";
+let abilityTwo = "";
+let abilityThree = "";
+
+
 
 function showThisPokemon(getIDcode) {
     // ONCLICK auf ein Pokemon-Bild ...
@@ -103,9 +112,35 @@ function showThisPokemon(getIDcode) {
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
+
+    whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
+
     thisPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
+}
+
+function whatAbilities() {
+    // VORGABE: -KEINE- Fähigkeiten vorhanden ...
+    abilityOne = "";
+    abilityTwo = "";
+    abilityThree = "";
+    // EINLESEN vorhandener Fähigkeiten ...
+    if (allPoke[arrayID].abilities[0].ability.name) {
+        // Fähigkeit 1 für Ausgabe aus Array holen
+        abilityOne = allPoke[arrayID].abilities[0].ability.name;
+        console.log("Fähigkeit 1 = ", abilityOne);
+    }
+    if (allPoke[arrayID].abilities[1].ability.name) {
+        // Fähigkeit 2 für Ausgabe aus Array holen
+        abilityTwo = allPoke[arrayID].abilities[1].ability.name;
+        console.log("Fähigkeit 2 = ", abilityTwo);
+    }
+    if (allPoke[arrayID].abilities[2].ability.name) {
+        // Fähigkeit 2 für Ausgabe aus Array holen
+        abilityThree = allPoke[arrayID].abilities[2].ability.name;
+        console.log("Fähigkeit 3 = ", abilityThree);
+    }
 }
 
 closeDialog.addEventListener("click", () => {
