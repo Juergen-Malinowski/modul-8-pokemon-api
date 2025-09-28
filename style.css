@@ -38,11 +38,6 @@ main {
 }
 
 .poke_grafik {
-    /* VOREINSTELLUNGEN für "transform" beim HOVERN ! ... */
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 400ms;
     width: 1440px;
     height: auto;
     border-style: double;
@@ -64,7 +59,6 @@ main {
     border-color: white;
     border-width: 10px;
     border-radius: 5px;
-    /* background-color: black; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,20 +69,21 @@ main {
 .one_pokemon:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
-    /* EINSTELLUNGEN über transition in übergeordneter BOX "poke_grafik ... */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
     transform: scale(1.3);
 }
 
 .img_poke {
     width: 150px;
     height: 150px;
-    /* background-color: black; */
     margin-bottom: 30px;
 }
 
 .id_poke {
     font-size: 30px;
-    /* background-color: black; */
     margin-bottom: 10px;
 }
 
@@ -105,12 +100,6 @@ main {
 }
 
 .buttons_grafik {
-    /* VOREINSTELLUNGEN für "transform" beim HOVERN ! ... */
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
-
     width: 200px;
     height: 70px;
     font-size: 40px;
@@ -125,11 +114,12 @@ main {
 .buttons_grafik:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
-
-    /* EINSTELLUNGEN bei "buttons_grafik" ... */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
     transform: scale(1.3);
 }
-
 
 .Laden_grafik {
     font-size: 40px;
@@ -148,7 +138,6 @@ main {
     position: absolute;
     top: 1%;
     left: 2%;
-    /* background-color: black; */
     border-style: double;
     border-color: blueviolet;
     border-width: 10px;
@@ -156,15 +145,8 @@ main {
 }
 
 .show_pokemon {
-    /* VOREINSTELLUNGEN für "transform" beim HOVERN ! ... */
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
-
     font-size: 40px;
     color: white;
-    /* background-color: black; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,27 +165,22 @@ main {
     left: 44%;
 }
 
-.get_color {
-    /* background-color: black; */
-}
+.get_color {}
 
 .img_pokemon {
     width: 800px;
     height: auto;
-    /* background-color: black; */
     padding-left: 50px;
 }
 
 .poke_personal {
     font-size: 70px;
     color: yellow;
-    /* background-color: black; */
 }
 
 .poke_details {
     font-size: 50px;
     color: yellow;
-    /* background-color: black; */
 }
 
 .all_poke_details {
@@ -220,8 +197,10 @@ main {
 
 .buttons_pre_poke:hover {
     cursor: pointer;
-
-    /* EINSTELLUNGEN bei "buttons_grafik" ... */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
     transform: scale(1.3);
 }
 
@@ -235,12 +214,12 @@ main {
 
 .buttons_next_poke:hover {
     cursor: pointer;
-
-    /* EINSTELLUNGEN bei "buttons_grafik" ... */
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
     transform: scale(1.3);
 }
-
-
 
 
 /* CLASS for footer */
