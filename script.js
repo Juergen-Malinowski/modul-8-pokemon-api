@@ -100,13 +100,13 @@ function showNext() {
 // Functions SHOW-ONE-Pokemon with DETAILS ...
 
 // OPEN and CLOSE the DIALOG ...
-openDialog.addEventListener("click", () => {
-    audioClick.play();
-    thisPokemon.innerHTML = "";
-    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-    // RENDERN des Pokemons JETZT ...
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);
-});
+// openDialog.addEventListener("click", () => {
+//     audioClick.play();
+//     thisPokemon.innerHTML = "";
+//     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+//     // RENDERN des Pokemons JETZT ...
+//     thisPokemon.innerHTML = renderOnePokemon(arrayID);
+// });
 
 closeDialog.addEventListener("click", () => {
     audioClick.play();
