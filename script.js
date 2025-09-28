@@ -13,18 +13,18 @@ let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
 
-
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
-
+let abilityOne = "";
+let abilityTwo = "";
+let abilityThree = "";
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
 let audioClick = new Audio('./assets/sound/click.mp3')
-
 
 
 // BASIC-Functions  "Pokemon-Slide-Show" ...
@@ -94,20 +94,14 @@ function showNext() {
 }
 
 
-console.log()
 
 // FUNCTIONs for DIALOG "Show-One-Pokemon"
 
 
-let abilityOne = "";
-let abilityTwo = "";
-let abilityThree = "";
-
-
-
 function showThisPokemon(getIDcode) {
-    // ONCLICK auf ein Pokemon-Bild ...
+    // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
     audioClick.play();
+
     // ALLE Zeichen entfernen, um ArrayID freizulegen ...
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
@@ -125,22 +119,27 @@ function whatAbilities() {
     abilityOne = "";
     abilityTwo = "";
     abilityThree = "";
-    // EINLESEN vorhandener Fähigkeiten ...
-    if (allPoke[arrayID].abilities[0].ability.name) {
-        // Fähigkeit 1 für Ausgabe aus Array holen
-        abilityOne = allPoke[arrayID].abilities[0].ability.name;
-        console.log("Fähigkeit 1 = ", abilityOne);
+    // Fähigkeiten auslesen ...
+    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+        console.log("ability-array-ID ist = ", index, "gefunden!");
+
+        if (index == 0) {
+            // Fähigkeit 1 für Ausgabe aus Array holen
+            abilityOne = allPoke[arrayID].abilities[index].ability.name;
+            console.log("Fähigkeit 1 = ", abilityOne);
+        }
+        if (index == 1) {
+            // Fähigkeit 2 für Ausgabe aus Array holen
+            abilityTwo = allPoke[arrayID].abilities[index].ability.name;
+            console.log("Fähigkeit 2 = ", abilityTwo);
+        }
+        if (index == 2) {
+            // Fähigkeit 2 für Ausgabe aus Array holen
+            abilityThree = allPoke[arrayID].abilities[index].ability.name;
+            console.log("Fähigkeit 3 = ", abilityThree);
+        }
     }
-    if (allPoke[arrayID].abilities[1].ability.name) {
-        // Fähigkeit 2 für Ausgabe aus Array holen
-        abilityTwo = allPoke[arrayID].abilities[1].ability.name;
-        console.log("Fähigkeit 2 = ", abilityTwo);
-    }
-    if (allPoke[arrayID].abilities[2].ability.name) {
-        // Fähigkeit 2 für Ausgabe aus Array holen
-        abilityThree = allPoke[arrayID].abilities[2].ability.name;
-        console.log("Fähigkeit 3 = ", abilityThree);
-    }
+
 }
 
 closeDialog.addEventListener("click", () => {
@@ -153,11 +152,14 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
+
     if (arrayID < 3) {
         arrayID = allPoke.length - 3;
+        whatAbilities();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID - 3;
+        whatAbilities();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     }
 }
@@ -171,9 +173,11 @@ function showNextPoke() {
         // bei Poke mit ArrayID=0 fortgefahren!
         console.log("IF HAT ausgelöst ... arrayID = ", arrayID);
         arrayID = 0;
+        whatAbilities();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID + 3;
+        whatAbilities();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     }
 }
