@@ -12,8 +12,6 @@ let endIndex = startIndex + 23;  // Entscheidet, wieviele POKEMONs geladen werde
 let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen !
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
-let pokemonID = 0;  // Zwischenspeicher für ARRAY-ID, falls diese durch benötige Manipulation 
-// KURZFRISTIG geändert wurde UND von hier zurückgefürt werden kann
 
 
 // for the DIALOG "Show-One-Pokemon" ...
@@ -58,6 +56,7 @@ async function loadPokemon() {
 }
 
 function showPokemon() {
+    // RENDERN der auszugebenen Pokemons vorbereiten ...
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
@@ -98,10 +97,11 @@ closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
     showOnePokemon.close();
+    showPokemon();
 });
 
-
 function showPreviousPoke() {
+    // ONCLICK ... die vorherigen Pokemons zeigen
     audioClick.play();
     if (arrayID < 3) {
         arrayID = allPoke.length - 3;
@@ -113,32 +113,33 @@ function showPreviousPoke() {
 }
 
 function showNextPoke() {
+    // ONCLICK ... nächsten Pokemon zeigen
     audioClick.play();
-    if (arrayID == allPoke.length - 3) {
+    if (arrayID == allPoke.length - 3) {  // wenn der nächste Array-Zugriff über array-ENDE hinausgeht ...
+        // arrayID wird durch "ELSE" solange durch ONCLICK erhöht, 
+        // bis arrayID die Bedingung erfüllt. Dann wird wieder ...
+        // bei Poke mit ArrayID=0 fortgefahren!
         console.log("IF HAT ausgelöst ... arrayID = ", arrayID);
         arrayID = 0;
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID + 3;
-        console.log("ELSE HAT ausgelöst ... arrayID = ", arrayID);
-        console.log("ELSE HAT ausgelöst ... pokemonID, hat ausgelöst Vorgang! = ", pokemonID);
+        // console.log("ELSE HAT ausgelöst ... arrayID = ", arrayID);
+        // console.log("ELSE HAT ausgelöst ... pokemonID, hat ausgelöst Vorgang! = ", pokemonID);
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     }
 }
 
 function showThisPokemon(getIDcode) {
+    // ONCLICK auf ein Pokemon-Bild ...
     audioClick.play();
     // ALLE Zeichen entfernen, um ArrayID freizulegen ...
-    getIDcode = String(getIDcode);   // wandelt in STRING um 
-    pokemonID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen
-    arrayID = Number(pokemonID);
+    getIDcode = String(getIDcode);            // wandelt in STRING um 
+    arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
+    arrayID = Number(arrayID);                // wandelt in eine Zahl um
     thisPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-    // RENDERN des Pokemons JETZT ...
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
-
-    console.log("Übergabe-ID mit Buchstaben = ", getIDcode);
-    console.log("pokemonID = ", pokemonID);
 }
 
 
