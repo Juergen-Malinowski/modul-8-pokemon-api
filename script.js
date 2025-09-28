@@ -47,10 +47,10 @@ async function loadPokemon() {
     console.log(allPoke);
     showPokemon();
     if (firstLoad) {
-        // beim ONLOAD die Buttons für "nächste" und "zurück" setzen
+        // beim ONLOAD die Buttons für "<<<<<<" und ">>>>>" setzen
         document.getElementById('button_pre_next').innerHTML += setPreviousButtons();
         document.getElementById('button_pre_next').innerHTML += setNextButtons();
-        // ERSTES Laden (Onload) nun deaktivieren !!!
+        // ERSTES Laden (ONLOAD) nun deaktivieren !!!
         firstLoad = false;
     }
     // NACHDEM neue Pokemons geladen wurden, wird BUTTON "nächste" wieder aktiviert !!!
@@ -61,9 +61,8 @@ function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
-
         document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);
-        // Sprung über die 2 Entwicklungsstufen hinweg des Poke hinweg zum nächsten Pokemon
+        // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
         index = index + 2;
     }
 }
@@ -95,22 +94,10 @@ function showNext() {
     loadPokemon();
 }
 
-
-
-// Functions SHOW-ONE-Pokemon with DETAILS ...
-
-// OPEN and CLOSE the DIALOG ...
-// openDialog.addEventListener("click", () => {
-//     audioClick.play();
-//     thisPokemon.innerHTML = "";
-//     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-//     // RENDERN des Pokemons JETZT ...
-//     thisPokemon.innerHTML = renderOnePokemon(arrayID);
-// });
-
 closeDialog.addEventListener("click", () => {
+    // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
-    showOnePokemon.close(); // CLOSE DIALOG "Show-One-Pokemon"
+    showOnePokemon.close();
 });
 
 
