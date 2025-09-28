@@ -93,6 +93,21 @@ function showNext() {
     loadPokemon();
 }
 
+
+// FUNCTIONs for DIALOG "Show-One-Pokemon"
+
+function showThisPokemon(getIDcode) {
+    // ONCLICK auf ein Pokemon-Bild ...
+    audioClick.play();
+    // ALLE Zeichen entfernen, um ArrayID freizulegen ...
+    getIDcode = String(getIDcode);            // wandelt in STRING um 
+    arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
+    arrayID = Number(arrayID);                // wandelt in eine Zahl um
+    thisPokemon.innerHTML = "";
+    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+}
+
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
@@ -101,7 +116,7 @@ closeDialog.addEventListener("click", () => {
 });
 
 function showPreviousPoke() {
-    // ONCLICK ... die vorherigen Pokemons zeigen
+    // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
     if (arrayID < 3) {
         arrayID = allPoke.length - 3;
@@ -124,23 +139,10 @@ function showNextPoke() {
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     } else {
         arrayID = arrayID + 3;
-        // console.log("ELSE HAT ausgelöst ... arrayID = ", arrayID);
-        // console.log("ELSE HAT ausgelöst ... pokemonID, hat ausgelöst Vorgang! = ", pokemonID);
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
     }
 }
 
-function showThisPokemon(getIDcode) {
-    // ONCLICK auf ein Pokemon-Bild ...
-    audioClick.play();
-    // ALLE Zeichen entfernen, um ArrayID freizulegen ...
-    getIDcode = String(getIDcode);            // wandelt in STRING um 
-    arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
-    arrayID = Number(arrayID);                // wandelt in eine Zahl um
-    thisPokemon.innerHTML = "";
-    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);
-}
 
 
 
