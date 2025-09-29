@@ -29,7 +29,8 @@ function renderOnePokemon(arrayID) {
     // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
     return `    
         <div>
-            <div class="poke_personal_name">Name: ${allPoke[arrayID].name}</div>
+            <div class="poke_personal_name">Name: </div>
+            <div class="poke_personal_name_color">${allPoke[arrayID].name}</div>
             <br>
             <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div><br>            
         </div>    
