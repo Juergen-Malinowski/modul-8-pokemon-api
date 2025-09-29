@@ -31,7 +31,7 @@ let evoTwoOfPokeID = "";
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
-let audioClick = new Audio('./assets/sound/click.mp3')
+const audioClick = new Audio('./assets/sound/click.mp3')
 
 
 // BASIC-Functions  "Pokemon-Slide-Show" ...
@@ -63,17 +63,18 @@ async function loadPokemon() {
 }
 
 function showPokemon() {
-    // RENDERN der auszugebenen Pokemons vorbereiten ...
+    // RENDERN der auszugebenen Pokemons VORBEREITEN ...
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
-        document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);
+        document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
         // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
         index = index + 2;
     }
 }
 
 function showPrevious() {
+    // ZEIGE die vorherigen Pokemons ...
     audioClick.play();
     if (startIndex == 1) {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen
@@ -88,6 +89,7 @@ function showPrevious() {
 }
 
 function showNext() {
+    // ZEIGE die nächste Pokemons ... falls mehr als in ARRAY "allPoke", dann über API-Nachladen ...
     audioClick.play();
     // deaktiviert BUTTON "nächste", damit kein weiterer LOAD ausgelöst werden kann, ...
     // während von API nächste Pokemons NOCH geladen werden !!!
@@ -107,20 +109,17 @@ function showNext() {
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
     audioClick.play();
-
     // ALLE Zeichen entfernen, um ArrayID freizulegen ...
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
-
     whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
     getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
-
     thisPokemon.innerHTML = "";
     evoPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);
-    evoPokemon.innerHTML =  renderPokeEvolution();
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
+    evoPokemon.innerHTML =  renderPokeEvolution();  // EVOLUTIONS-Stufe rendern ...
 }
 
 function whatAbilities() {
@@ -130,8 +129,6 @@ function whatAbilities() {
     abilityThree = "";
     // Fähigkeiten auslesen ...
     for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        // console.log("ability-array-ID ist = ", index, "gefunden!");
-
         if (index == 0) {
             // Fähigkeit 1 für Ausgabe aus Array holen
             abilityOne = allPoke[arrayID].abilities[index].ability.name;
@@ -148,9 +145,7 @@ function whatAbilities() {
             // console.log("Fähigkeit 3 = ", abilityThree);
         }
     }
-
 }
-
 
 function getNextEvolutionsFromPoke() {
     // Einlesen der beiden Entwicklungsstufen des Pokemon (name und Poke-ID) ...
@@ -160,16 +155,7 @@ function getNextEvolutionsFromPoke() {
     evoTwoOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
     evoTwoOfPokeName = allPoke[arrayID+2].name;
     evoTwoOfPokeID = allPoke[arrayID+2].id;
-    console.log("POKE aktuell ... Name : ", allPoke[arrayID].name);
-    console.log("array-ID POKE aktuell : ", arrayID);
-    console.log("POKE Evo-Stufe 1 ... Name : ", evoOneOfPokeName);
-    console.log("array-ID Evo-Stufe 1 : ", evoOneOfPokeID );
-    console.log("POKE Evo-Stufe 2 ... Name : ", evoTwoOfPokeName);
-    console.log("array-ID Evo-Stufe 2 : ", evoTwoOfPokeID );
-    
-    
 }
-
 
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
@@ -181,7 +167,6 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
-
     if (arrayID < 3) {
         arrayID = allPoke.length - 3;
         whatAbilities();
