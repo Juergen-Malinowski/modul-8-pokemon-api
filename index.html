@@ -31,7 +31,13 @@
         <dialog id="show_one_pokemon" class="dialog_box">
             <p id="show_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
             <hr class="line_grafik">
-            <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+            <div class="control_grafik">
+                <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
+                    onclick="showPreviousPoke()">
+                <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+                <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"
+                    onclick="showNextPoke()">
+            </div>
         </dialog>
 
 

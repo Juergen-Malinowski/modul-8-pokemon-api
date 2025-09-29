@@ -28,7 +28,6 @@ function setNextButtons() {
 function renderOnePokemon(arrayID) {
     // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
     return `    
-        <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png" onclick="showPreviousPoke()">    
         <div class="get_color">
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
         </div>
@@ -51,6 +50,5 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
             </div>
         </div>
-        <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png" onclick="showNextPoke()"> 
     `
 }
