@@ -18,9 +18,16 @@ const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
+const evoPokemon = document.getElementById('poke_evolution');
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
+let evoOneOfPokePic = "";
+let evoOneOfPokeName = "";
+let evoOneOfPokeID = "";
+let evoTwoOfPokePic = "";
+let evoTwoOfPokeName = "";
+let evoTwoOfPokeID = "";
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
@@ -97,7 +104,6 @@ function showNext() {
 
 // FUNCTIONs for DIALOG "Show-One-Pokemon"
 
-
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
     audioClick.play();
@@ -108,10 +114,13 @@ function showThisPokemon(getIDcode) {
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
 
     whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
+    getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
 
     thisPokemon.innerHTML = "";
+    evoPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    evoPokemon.innerHTML =  renderPokeEvolution();
 }
 
 function whatAbilities() {
@@ -121,26 +130,46 @@ function whatAbilities() {
     abilityThree = "";
     // Fähigkeiten auslesen ...
     for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        console.log("ability-array-ID ist = ", index, "gefunden!");
+        // console.log("ability-array-ID ist = ", index, "gefunden!");
 
         if (index == 0) {
             // Fähigkeit 1 für Ausgabe aus Array holen
             abilityOne = allPoke[arrayID].abilities[index].ability.name;
-            console.log("Fähigkeit 1 = ", abilityOne);
+            // console.log("Fähigkeit 1 = ", abilityOne);
         }
         if (index == 1) {
             // Fähigkeit 2 für Ausgabe aus Array holen
             abilityTwo = allPoke[arrayID].abilities[index].ability.name;
-            console.log("Fähigkeit 2 = ", abilityTwo);
+            // console.log("Fähigkeit 2 = ", abilityTwo);
         }
         if (index == 2) {
             // Fähigkeit 2 für Ausgabe aus Array holen
             abilityThree = allPoke[arrayID].abilities[index].ability.name;
-            console.log("Fähigkeit 3 = ", abilityThree);
+            // console.log("Fähigkeit 3 = ", abilityThree);
         }
     }
 
 }
+
+
+function getNextEvolutionsFromPoke() {
+    // Einlesen der beiden Entwicklungsstufen des Pokemon (name und Poke-ID) ...
+    evoOneOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
+    evoOneOfPokeName = allPoke[arrayID+1].name;
+    evoOneOfPokeID = allPoke[arrayID+1].id;
+    evoTwoOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
+    evoTwoOfPokeName = allPoke[arrayID+2].name;
+    evoTwoOfPokeID = allPoke[arrayID+2].id;
+    console.log("POKE aktuell ... Name : ", allPoke[arrayID].name);
+    console.log("array-ID POKE aktuell : ", arrayID);
+    console.log("POKE Evo-Stufe 1 ... Name : ", evoOneOfPokeName);
+    console.log("array-ID Evo-Stufe 1 : ", evoOneOfPokeID );
+    console.log("POKE Evo-Stufe 2 ... Name : ", evoTwoOfPokeName);
+    console.log("array-ID Evo-Stufe 2 : ", evoTwoOfPokeID );
+    
+    
+}
+
 
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
@@ -156,11 +185,15 @@ function showPreviousPoke() {
     if (arrayID < 3) {
         arrayID = allPoke.length - 3;
         whatAbilities();
+        getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
+        evoPokemon.innerHTML =  renderPokeEvolution();
     } else {
         arrayID = arrayID - 3;
         whatAbilities();
+        getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
+        evoPokemon.innerHTML =  renderPokeEvolution();
     }
 }
 
@@ -171,14 +204,17 @@ function showNextPoke() {
         // arrayID wird durch "ELSE" solange durch ONCLICK erhöht, 
         // bis arrayID die Bedingung erfüllt. Dann wird wieder ...
         // bei Poke mit ArrayID=0 fortgefahren!
-        console.log("IF HAT ausgelöst ... arrayID = ", arrayID);
         arrayID = 0;
         whatAbilities();
+        getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
+        evoPokemon.innerHTML =  renderPokeEvolution();
     } else {
         arrayID = arrayID + 3;
         whatAbilities();
+        getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
+        evoPokemon.innerHTML =  renderPokeEvolution();
     }
 }
 
