@@ -62,96 +62,51 @@ function renderOnePokemon(arrayID) {
     `
 }
 
-// function renderPokeStatsTitle() {
-//     return`
-
-//     `
-// }
-
 function renderPokeStats() {
     return`
-
         <hr class="line_grafik_evolution">
-            <table border="20">
-                <thead>
-                    <tr>
-                        <th class="table_title">Eigenschaft</th>
-                        <th class="table_title">Wert</th>
-                        <th class="table_title">Diagramm ... </th>
-                    </tr>
-                </thead>
-                    <tbody>
-                    <tr class="table_contens_hp">
-                        <td class="table_contens_hp">${pokeStats[0].name}:</td>
-                        <td>${pokeStats[0].value}</td>
-                        <td>XXXXXXXXXXXXXX</td>
-                    </tr>
-                    <tr class="table_contens_attack">
-                        <td>${pokeStats[1].name}:</td>
-                        <td>${pokeStats[1].value}</td>
-                        <td>XXXXXXXXXXXXXXXX</td>
-                    </tr>
-                    <tr class="table_contens_defense">
-                        <td>${pokeStats[2].name}:</td>
-                        <td>${pokeStats[2].value}</td>
-                        <td>XXXXXXXXXXXXXXXX</td>
-                    </tr>
-                    <tr class="table_contens_spatk">
-                        <td>${pokeStats[3].name}:</td>
-                        <td>${pokeStats[3].value}</td>
-                        <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
-                    </tr>
-                    <tr class="table_contens_spdef">
-                        <td>${pokeStats[4].name}:</td>
-                        <td>${pokeStats[4].value}</td>
-                        <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
-                    </tr>
-                    <tr class="table_contens_speed">
-                        <td>${pokeStats[5].name}:</td>
-                        <td>${pokeStats[5].value}</td>
-                        <td>XXXXXXXXXXXXXX</td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr class="line_grafik_evolution">
+        <table border="20">
+            <thead>
+                <tr>
+                    <th class="table_title">Eigenschaft</th>
+                    <th class="table_title">Wert</th>
+                    <th class="table_title">Diagramm ... </th>
+                </tr>
+            </thead>
+                <tbody>
+                <tr class="table_contens_hp">
+                    <td>${pokeStats[0].name}:</td>
+                    <td>${pokeStats[0].value}</td>
+                    <td>XXXXXXXXXXXXXX</td>
+                </tr>
+                <tr class="table_contens_attack">
+                    <td>${pokeStats[1].name}:</td>
+                    <td>${pokeStats[1].value}</td>
+                    <td>XXXXXXXXXXXXXXXX</td>
+                </tr>
+                <tr class="table_contens_defense">
+                    <td>${pokeStats[2].name}:</td>
+                    <td>${pokeStats[2].value}</td>
+                    <td>XXXXXXXXXXXXXXXX</td>
+                </tr>
+                <tr class="table_contens_spatk">
+                    <td>${pokeStats[3].name}:</td>
+                    <td>${pokeStats[3].value}</td>
+                    <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                </tr>
+                <tr class="table_contens_spdef">
+                    <td>${pokeStats[4].name}:</td>
+                    <td>${pokeStats[4].value}</td>
+                    <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                </tr>
+                <tr class="table_contens_speed">
+                    <td>${pokeStats[5].name}:</td>
+                    <td>${pokeStats[5].value}</td>
+                    <td>XXXXXXXXXXXXXX</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr class="line_grafik_evolution">
     `
 };
 
-// function renderPokeStatsLine() {
-//     return`
-
-//     `
-// }
-
-// function renderRow () {
-
-// }
-
-// function renderPokeEvolution() {
-//     return `
-//         <div class="poke_evo_grafik">
-//             <hr class="line_grafik_evolution"><br>
-//             <p class="poke_personal_evo">EIGENSCHAFTEN :</p>
-//             <br>
-//         </div>
-//         <div class="show_evo_pokemons">
-//             <div class="evo_poke">
-//                 <img src="${evoOneOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo1>
-//                 <div class="evo_poke_sort">
-//                     <div class="poke_personal">Name: ${evoOneOfPokeName}</div>
-//                     <div class="poke_personal">Poke-ID: ${evoOneOfPokeID}</div>
-//                 </div>
-//             </div>
-//             <div class="evo_poke">
-//                 <img src="${evoTwoOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo2>
-//                 <div class="evo_poke_sort">
-//                     <div class="poke_personal">Name: ${evoTwoOfPokeName}</div>
-//                     <div class="poke_personal">Poke-ID${evoTwoOfPokeID}</div>
-//                 </div>
-//             </div>
-//         </div>
-//         <div>
-//             <hr class="line_grafik_evolution">
-//         </div>
-//     `
-// }

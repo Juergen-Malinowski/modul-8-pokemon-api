@@ -284,8 +284,8 @@ main {
 
 .poke_evolution {
     padding-bottom: 10px;
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    justify-content: center;
 }
 
 .line_grafik_evolution {
