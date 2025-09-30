@@ -123,10 +123,10 @@ main {
     width: 170px;
     height: 50px;
     font-size: 30px;
-    color: yellow;
+    color: white;
     /* background-color: black; */
     border-style: double;
-    border-color: yellow;
+    border-color: blueviolet;
     border-width: 10px;
     border-radius: 5px;
 }

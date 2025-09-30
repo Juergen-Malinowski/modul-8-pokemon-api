@@ -1,5 +1,5 @@
-// Funktionen zur Manipulation Inhalt globaler Variablen,
-// die sich dem POKEMON entsprechend anpassen müssen !
+// Funktionen zur Manipulation des Inhalts globaler Variablen,
+// die sich dem POKEMON entsprechend anpassen müssen ...
 
 function getTheColorCode() {
     switch (backgroundColor) {

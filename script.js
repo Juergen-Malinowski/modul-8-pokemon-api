@@ -16,30 +16,6 @@ let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bilda
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3')
 
-// ZUORDNUNGEN zu TYPES ... passende Hintergrundfarbe und TYPE-ICONs ...
-let normal = "#ffffff";
-let fire = "#f22121";
-let water = "#1e9cd2";
-let electric = "#ebee44";
-let grass = "#14d411";
-let ice = "#66e0f0";
-let fighting = "#f55d42";
-let poison = "#349864";
-let ground = "#9a6042";
-let flying = "#1fe0dd";
-let psychic = "#bc209f";
-let bug = "#6aa81f";
-let rock = "#5b241a";
-let ghost = "#cba4d5";
-let dragon = "#c70505";
-let dark = "#5b5552";
-let steel = "#918b88";
-let fairy = "#7923e1";
-let stellar = "#e1c823";
-let backgroundColor = "";
-let pokeTypeIcon1 = "";
-let pokeTypeIcon2 = "";
-let pokeTypeSearch = "";
 
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
@@ -50,12 +26,12 @@ const statsPokemon = document.getElementById('poke_stats');
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
-let evoOneOfPokePic = "";
-let evoOneOfPokeName = "";
-let evoOneOfPokeID = "";
-let evoTwoOfPokePic = "";
-let evoTwoOfPokeName = "";
-let evoTwoOfPokeID = "";
+// let evoOneOfPokePic = "";
+// let evoOneOfPokeName = "";
+// let evoOneOfPokeID = "";
+// let evoTwoOfPokePic = "";
+// let evoTwoOfPokeName = "";
+// let evoTwoOfPokeID = "";
 
 // leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
 let pokeStats = [{ name: "", value: "", }];
@@ -111,7 +87,6 @@ function findBackgroundColor() {
     }
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
-
 }
 
 function findTypeIcons() {
