@@ -62,7 +62,7 @@ function renderOnePokemon(arrayID) {
     `
 }
 
-function renderPokeEvolution() {
+function renderPokeStats() {
     return `
         <div class="poke_evo_grafik">
             <hr class="line_grafik_evolution"><br>

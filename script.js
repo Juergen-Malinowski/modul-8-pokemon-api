@@ -64,6 +64,9 @@ let evoTwoOfPokePic = "";
 let evoTwoOfPokeName = "";
 let evoTwoOfPokeID = "";
 
+// leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
+let pokeStats = [{ name: "", value: "", }];
+
 
 // BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
 
@@ -109,7 +112,7 @@ function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
     backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
-    getTheColorCode();  // in data.JS !
+    getTheColorCode();  // FUNKTION in data.JS !
 }
 
 function findTypeIcons() {
@@ -178,14 +181,14 @@ function showThisPokemon(getIDcode) {
 
     // getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
 
-    // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
-    findBackgroundColor();
-    findTypeIcons();
+    findBackgroundColor();    // ERMITTELN: Background-Color für das POKEMON
+    findTypeIcons();          // ERMITTELN: ICONS für die POKE-Types
+    getAllStats();            // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value 
     thisPokemon.innerHTML = "";
     evoPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
-    evoPokemon.innerHTML = renderPokeEvolution();  // EVOLUTIONS-Stufe rendern ...
+    evoPokemon.innerHTML = renderPokeStats();  // EVOLUTIONS-Stufe rendern ...
 }
 
 function whatAbilities() {
@@ -211,6 +214,26 @@ function whatAbilities() {
             // console.log("Fähigkeit 3 = ", abilityThree);
         }
     }
+}
+
+function getAllStats() {
+    pokeStats = [];
+    // leere "Array-Variable" zur Aufnahme des GESAMTEN Datensatz zum AKTUELLEN Pokemon...
+    let thisPokeAllData = {};
+    thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
+
+    // console.log("Die von thisPokeAllData erhaltenen Daten : ", thisPokeAllData);
+    // console.log("NAME der Eigenschaft = ", thisPokeAllData[0].stat.name);  // Name
+    // console.log("WERT der Eigenschaft = ", thisPokeAllData[0].base_stat);  // Wert
+
+    // ALLE Eigenschaften des POKEMONs aus dem Datensatz des aktuellen Pokemons auslesen ...
+    for (let index = 0; index < thisPokeAllData.length; index++) {
+        let allStats = thisPokeAllData[index];  // speichern aller Eigenschaften aus allPoke
+        let statName = allStats.stat.name;            // entnehme Eigenschaft-NANE in eine Variable
+        let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
+        pokeStats.push({ name: statName, value: statValue, });  // Werte in Array für Eigenschaften schieben
+    }
+    console.log("Datensätze von pokeStats : ", pokeStats);
 }
 
 // function getNextEvolutionsFromPoke() {
@@ -241,7 +264,7 @@ function showPreviousPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID - 1;
         whatAbilities();
@@ -250,7 +273,7 @@ function showPreviousPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeStats();
     }
 }
 
@@ -268,7 +291,7 @@ function showNextPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID + 1;
         whatAbilities();
@@ -277,10 +300,9 @@ function showNextPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeStats();
     }
 }
-
 
 
 
