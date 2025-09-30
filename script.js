@@ -16,7 +16,6 @@ let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bilda
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3')
 
-
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
@@ -26,12 +25,6 @@ const statsPokemon = document.getElementById('poke_stats');
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
-// let evoOneOfPokePic = "";
-// let evoOneOfPokeName = "";
-// let evoOneOfPokeID = "";
-// let evoTwoOfPokePic = "";
-// let evoTwoOfPokeName = "";
-// let evoTwoOfPokeID = "";
 
 // leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
 let pokeStats = [{ name: "", value: "", }];
@@ -39,7 +32,7 @@ let pokeStats = [{ name: "", value: "", }];
 
 // BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
 
-async function loadPokemon() {
+async function loadPokemon() {  // LADEN und AUSGABE ...
     if (firstLoad) {
         // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
         document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
@@ -52,7 +45,7 @@ async function loadPokemon() {
             allPoke.push(pokeAsJson);
         }
     }
-    console.log(allPoke);
+    console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
     showPokemon();
     if (firstLoad) {
         // beim ONLOAD die Buttons für "<<<<<<" und ">>>>>" setzen
