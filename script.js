@@ -102,21 +102,18 @@ function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
-        // ermittle passende Background-Color für das POKE ...
+        // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
         findBackgroundColor();
         findTypeIcons();
         document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
-        // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
-        // index = index + 2;
     }
 }
 
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
-    backgroundColor = allPoke[arrayID].types[0].type.name;
-    // console.log("zugeordneter TYPE für Farbcode : ", backgroundColor);
+    backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
-    getTheColorCode();
+    getTheColorCode();  // in TEMPLATE.JS !
 }
 
 function findTypeIcons() {
@@ -125,14 +122,12 @@ function findTypeIcons() {
     pokeTypeSearch = "";
     // ERMITTELN der Pokemon-Typen (max 2 vorhanden) und Zuordnung der Icons ...
     for (let index = 0; index < allPoke[arrayID].types.length; index++) {
-        // console.log("index ist gleich = ", index);
-
         if (index == 1) {
             // TYPE 1 holen ...
             pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
-            pokeTypeSearch = pokeTypeIcon2;
-            getTheTypeIcons();
-            pokeTypeIcon2 = pokeTypeSearch;
+            pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
+            getTheTypeIcons();  // in TEMPLATE.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+            pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
         } else {
             // TYPE 0 holen ...
             pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
@@ -245,7 +240,7 @@ function showPreviousPoke() {
     if (arrayID < 0) {
         arrayID = allPoke.length - 1;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE ...
+        // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types  ...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()
@@ -254,7 +249,7 @@ function showPreviousPoke() {
     } else {
         arrayID = arrayID - 1;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE ...
+        // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()
