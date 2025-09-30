@@ -111,8 +111,14 @@ function showPokemon() {
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
     backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
+    // dann prüfen ob Basis-Typ normal, ABER ein zweiter NICHT "normaler" Typ ist vorhanden ...
+    if (backgroundColor == "normal" && allPoke[arrayID].types.length > 1) {
+        // Übernahme background-Color vom 2.Typ, da 1.Typ normal war ...
+        backgroundColor = allPoke[arrayID].types[1].type.name;       
+    }
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
+
 }
 
 function findTypeIcons() {
@@ -242,7 +248,7 @@ function getAllStats() {
     for (let index = 0; index < thisPokeAllData.length; index++) {
         let allStats = thisPokeAllData[index];  // speichern aller Eigenschaften aus allPoke
         let statName = allStats.stat.name;            // entnehme Eigenschaft-NANE in eine Variable
-        statName = statName.toUpperCase();  
+        statName = statName.toUpperCase();
         let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
         pokeStats.push({ name: statName, value: statValue, });  // Werte in Array für Eigenschaften schieben
     }
