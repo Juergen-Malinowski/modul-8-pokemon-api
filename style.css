@@ -3,6 +3,7 @@
 h1 {
     font-size: 3em;
     width: 1440px;
+    color: white;
     background-color: blueviolet;
     border-style: double;
     border-color: black;
@@ -252,6 +253,7 @@ main {
     height: 100px;
     color: black;
     background-color: white;
+    margin-left: 50px;
 }
 
 .buttons_pre_poke:hover {
@@ -268,7 +270,7 @@ main {
     height: 100px;
     color: black;
     background-color: white;
-    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .buttons_next_poke:hover {
@@ -289,6 +291,7 @@ main {
 .line_grafik_evolution {
     border-color: blueviolet;
     margin-top: 20px;
+    margin-bottom: 20px;
     /* position: absolute;
     top: 10px; */
 }
@@ -328,9 +331,42 @@ main {
 
 .table_title {
     font-size: 50px;
-    color: yellow;
+    color: rgb(202, 202, 16);
 }
 
+.table_contens_hp {
+    font-size: 36px;
+    color: white;
+}
+
+.table_contens_attack {
+    font-size: 36px;
+    color: red;
+    background-color: white;
+}
+
+.table_contens_defense {
+    font-size: 36px;
+    color: green;
+}
+
+.table_contens_spatk {
+    font-size: 36px;
+    font-style: italic;
+    color: rgb(240, 72, 11);
+}
+
+.table_contens_spdef {
+    font-size: 36px;
+    font-style: italic;
+    color: greenyellow;
+}
+
+.table_contens_speed {
+    font-size: 36px;
+    font-style: italic;
+    color: rgb(19, 151, 227);
+}
 
 /* CLASS for footer */
 

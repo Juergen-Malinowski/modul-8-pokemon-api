@@ -191,6 +191,22 @@ function showThisPokemon(getIDcode) {
     statsPokemon.innerHTML = renderPokeStats();  // EVOLUTIONS-Stufe rendern ...
 }
 
+// function renderPokeStats() {
+//     renderPokeStatsTitle();
+//     renderPokeStatsTable();
+//     renderPokeStatsLine();
+// }
+
+// toUpperCase();
+// toLowerCase();
+
+// function renderPokeStatsTable () {
+//     for (let index = 0; index < pokeStats.length; index++) {
+//         renderRow(index);
+
+//     }
+// }
+
 function whatAbilities() {
     // VORGABE: -KEINE- Fähigkeiten vorhanden ...
     abilityOne = "";
@@ -222,29 +238,16 @@ function getAllStats() {
     let thisPokeAllData = {};
     thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
 
-    // console.log("Die von thisPokeAllData erhaltenen Daten : ", thisPokeAllData);
-    // console.log("NAME der Eigenschaft = ", thisPokeAllData[0].stat.name);  // Name
-    // console.log("WERT der Eigenschaft = ", thisPokeAllData[0].base_stat);  // Wert
-
     // ALLE Eigenschaften des POKEMONs aus dem Datensatz des aktuellen Pokemons auslesen ...
     for (let index = 0; index < thisPokeAllData.length; index++) {
         let allStats = thisPokeAllData[index];  // speichern aller Eigenschaften aus allPoke
         let statName = allStats.stat.name;            // entnehme Eigenschaft-NANE in eine Variable
+        statName = statName.toUpperCase();  
         let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
         pokeStats.push({ name: statName, value: statValue, });  // Werte in Array für Eigenschaften schieben
     }
-    console.log("Datensätze von pokeStats : ", pokeStats);
 }
 
-// function getNextEvolutionsFromPoke() {
-//     // Einlesen der beiden Entwicklungsstufen des Pokemon (name und Poke-ID) ...
-//     evoOneOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
-//     evoOneOfPokeName = allPoke[arrayID+1].name;
-//     evoOneOfPokeID = allPoke[arrayID+1].id;
-//     evoTwoOfPokePic = allPoke[arrayID+2].sprites.other.home.front_default;
-//     evoTwoOfPokeName = allPoke[arrayID+2].name;
-//     evoTwoOfPokeID = allPoke[arrayID+2].id;
-// }
 
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
@@ -262,7 +265,7 @@ function showPreviousPoke() {
         // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types  ...
         findBackgroundColor();
         findTypeIcons();
-        // getNextEvolutionsFromPoke()
+        getAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
@@ -271,7 +274,7 @@ function showPreviousPoke() {
         // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
         findBackgroundColor();
         findTypeIcons();
-        // getNextEvolutionsFromPoke()
+        getAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }
@@ -289,7 +292,7 @@ function showNextPoke() {
         // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs...
         findBackgroundColor();
         findTypeIcons();
-        // getNextEvolutionsFromPoke()
+        getAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
@@ -298,7 +301,7 @@ function showNextPoke() {
         // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs ...
         findBackgroundColor();
         findTypeIcons();
-        // getNextEvolutionsFromPoke()
+        getAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }
