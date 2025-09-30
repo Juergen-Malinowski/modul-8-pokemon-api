@@ -25,7 +25,7 @@ let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bilda
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3')
 
-// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe und TYPE-ICONs ...
+// ZUORDNUNGEN zu TYPES ... passende Hintergrundfarbe und TYPE-ICONs ...
 let normal = "#ffffff";
 let fire = "#f22121";
 let water = "#1e9cd2";

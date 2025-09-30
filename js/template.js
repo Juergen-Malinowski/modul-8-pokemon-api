@@ -44,7 +44,6 @@ function renderOnePokemon(arrayID) {
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon"
                 style="background-color: ${backgroundColor};" alt="Bild Pokemon"><br>
         </div>
-
         <div class="all_poke_details">
             <div class="get_position">
                 <div class="poke_personal_abi">Fähigkeiten:</div>
@@ -55,7 +54,6 @@ function renderOnePokemon(arrayID) {
             </div>
             <hr class="line_grafik">
             <br>
-
             <div >
                 <div class="poke_details">Größe: ${allPoke[arrayID].height}</div>
                 <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
