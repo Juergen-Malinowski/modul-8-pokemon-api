@@ -25,10 +25,10 @@ let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bilda
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3')
 
-// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe ...
-let normal =  "#ffffff";
+// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe und TYPE-ICONs ...
+let normal = "#ffffff";
 let fire = "#f22121";
-let water =  "#1e9cd2";
+let water = "#1e9cd2";
 let electric = "#ebee44";
 let grass = "#14d411";
 let ice = "#66e0f0";
@@ -39,13 +39,16 @@ let flying = "#1fe0dd";
 let psychic = "#bc209f";
 let bug = "#6aa81f";
 let rock = "#5b241a";
-let ghost =  "#cba4d5";
+let ghost = "#cba4d5";
 let dragon = "#c70505";
-let dark =  "#5b5552";
+let dark = "#5b5552";
 let steel = "#918b88";
-let fairy =  "#7923e1";
+let fairy = "#7923e1";
 let stellar = "#e1c823";
 let backgroundColor = "";
+let pokeTypeIcon1 = "";
+let pokeTypeIcon2 = "";
+let pokeTypeSearch = "";
 
 
 // for the DIALOG "Show-One-Pokemon" ...
@@ -99,23 +102,45 @@ function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
-
         // ermittle passende Background-Color für das POKE ...
-        findBackgroundColor ();
-         
+        findBackgroundColor();
+        findTypeIcons();
         document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
         // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
         // index = index + 2;
     }
 }
 
-function findBackgroundColor () {
+function findBackgroundColor() {
+    // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
     backgroundColor = allPoke[arrayID].types[0].type.name;
-    // let typeForBgColor = allPoke[arrayID].types[0].type.name;
-    // console.log("Haupt-Typ des Poke : ", allPoke[arrayID].types[0].type.name);
-    // backgroundColor = typeForBgColor;
-    console.log("zugeordneter Farbcode : ", backgroundColor);
-    getTheColorCode ();
+    // console.log("zugeordneter TYPE für Farbcode : ", backgroundColor);
+    // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
+    getTheColorCode();
+}
+
+function findTypeIcons() {
+    pokeTypeIcon1 = "";
+    pokeTypeIcon2 = "normal.jpg";
+    pokeTypeSearch = "";
+    // ERMITTELN der Pokemon-Typen (max 2 vorhanden) und Zuordnung der Icons ...
+    for (let index = 0; index < allPoke[arrayID].types.length; index++) {
+        // console.log("index ist gleich = ", index);
+
+        if (index == 1) {
+            // TYPE 1 holen ...
+            pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon2;
+            getTheTypeIcons();
+            pokeTypeIcon2 = pokeTypeSearch;
+        } else {
+            // TYPE 0 holen ...
+            pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon1;
+            getTheTypeIcons();
+            pokeTypeIcon1 = pokeTypeSearch;
+        }
+    }
 }
 
 function showPrevious() {
@@ -159,12 +184,17 @@ function showThisPokemon(getIDcode) {
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
     whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
+
     // getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
+
+    // ermittle passende Background-Color für das POKE ...
+    findBackgroundColor();
+    findTypeIcons();
     thisPokemon.innerHTML = "";
     evoPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
-    evoPokemon.innerHTML =  renderPokeEvolution();  // EVOLUTIONS-Stufe rendern ...
+    evoPokemon.innerHTML = renderPokeEvolution();  // EVOLUTIONS-Stufe rendern ...
 }
 
 function whatAbilities() {
@@ -215,15 +245,21 @@ function showPreviousPoke() {
     if (arrayID < 0) {
         arrayID = allPoke.length - 1;
         whatAbilities();
+        // ermittle passende Background-Color für das POKE ...
+        findBackgroundColor();
+        findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML =  renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeEvolution();
     } else {
         arrayID = arrayID - 1;
         whatAbilities();
+        // ermittle passende Background-Color für das POKE ...
+        findBackgroundColor();
+        findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML =  renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeEvolution();
     }
 }
 
@@ -236,15 +272,21 @@ function showNextPoke() {
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
         whatAbilities();
+        // ermittle passende Background-Color für das POKE UND TYPE-ICONs...
+        findBackgroundColor();
+        findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML =  renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeEvolution();
     } else {
         arrayID = arrayID + 1;
         whatAbilities();
+        // ermittle passende Background-Color für das POKE UND TYPE-ICONs ...
+        findBackgroundColor();
+        findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML =  renderPokeEvolution();
+        evoPokemon.innerHTML = renderPokeEvolution();
     }
 }
 

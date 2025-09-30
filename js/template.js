@@ -4,11 +4,15 @@ function renderPokemon(arrayID) {
     // RENDER ONE Pokemon in the SLIDE-Show
     return `
             <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
+                <span class="name_poke">${allPoke[arrayID].name} ( ID: #${allPoke[arrayID].id}  )</span>
+                <span class="id_poke"></span>
                 <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
-                   alt="picture of Pokemon">
-                <p class="id_poke">Poke-ID: #${allPoke[arrayID].id}<br></p>
-                <p class="id_poke">Name: ${allPoke[arrayID].name}<br></p>
-            </div>
+                   style="background-color: ${backgroundColor};" alt="picture of Pokemon">
+                <div class="type_icon_position">   
+                    <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon_overview" alt="ICON vom Type1">
+                    <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon_overview" alt="ICON vom Type1">                   
+                </div> 
+            </style=>
         `
 }
 
@@ -31,10 +35,14 @@ function renderOnePokemon(arrayID) {
             <div class="poke_personal_name">Name: </div>
             <div class="poke_personal_name_color">${allPoke[arrayID].name}</div>
             <br>
-            <div class="poke_personal">Poke-ID: ${allPoke[arrayID].id}</div><br>            
+            <div class="poke_personal">Poke-ID: #${allPoke[arrayID].id}</div><br>   
+
+            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1"><br>
+            <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon" alt="ICON vom Type1">               
         </div>    
         <div class="get_color">
-            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon" alt="Bild Pokemon"><br>
+            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon"
+                style="background-color: ${backgroundColor};" alt="Bild Pokemon"><br>
         </div>
 
         <div class="all_poke_details">
@@ -48,7 +56,7 @@ function renderOnePokemon(arrayID) {
             <hr class="line_grafik">
             <br>
 
-            <div class="get_color">
+            <div >
                 <div class="poke_details">Größe: ${allPoke[arrayID].height}</div>
                 <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
             </div>
@@ -108,4 +116,32 @@ function getTheColorCode() {
         case "stellar": backgroundColor = "#e1c823"; break;
         default: break;
     }
+    // console.log("zugeordneter Farbcode : ", backgroundColor);
+}
+
+function getTheTypeIcons() {
+    console.log("übergebener TYPE für CASE : ", pokeTypeSearch);
+    switch (pokeTypeSearch) {    
+        case "normal": pokeTypeSearch = "normal.jpg"; break;
+        case "fire": pokeTypeSearch = "fire.jpg"; break;
+        case "water": pokeTypeSearch = "water.jpg"; break;
+        case "electric": pokeTypeSearch = "electric.jpg"; break;
+        case "grass": pokeTypeSearch = "grass.jpg"; break;
+        case "ice": pokeTypeSearch = "ice.jpg"; break;
+        case "fighting": pokeTypeSearch = "fighting.jpg"; break;
+        case "poison": pokeTypeSearch = "poison.jpg"; break;
+        case "ground": pokeTypeSearch = "ground.jpg"; break;
+        case "flying": pokeTypeSearch = "flying.jpg"; break;
+        case "psychic": pokeTypeSearch = "psychic.jpg"; break;
+        case "bug": pokeTypeSearch = "bug.jpg"; break;
+        case "rock": pokeTypeSearch = "rock.jpg"; break;
+        case "ghost": pokeTypeSearch = "ghost.jpg"; break;
+        case "dragon": pokeTypeSearch = "dragon.jpg"; break;
+        case "dark": pokeTypeSearch = "dark.jpg"; break;
+        case "steel": pokeTypeSearch = "steel.jpg"; break;
+        case "fairy": pokeTypeSearch = "fairy.jpg"; break;
+        case "stellar": pokeTypeSearch = "normal.jpg"; break;
+        default: break;
+    }
+    console.log("zugeordnetes JPG-Bild zum TYPE in CASE : ", pokeTypeSearch);
 }

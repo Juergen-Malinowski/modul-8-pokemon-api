@@ -80,12 +80,31 @@ main {
     width: 150px;
     height: 150px;
     margin-bottom: 30px;
+    margin-top: 4px;
 }
 
+.name_poke {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: yellow;
+}
+
+.type_icon_position {
+    display: flex;
+    gap: 10px;
+}
+
+.type_icon_overview {
+    width: 80px;
+    height: auto;
+}
+
+/* 
 .id_poke {
     font-size: 30px;
     margin-bottom: 10px;
-}
+    color: white;
+} */
 
 .button_pre_next {
     width: 1440px;
@@ -138,6 +157,12 @@ main {
 
 
 /* CLASS für DIALOG */
+/* .get_color {
+        width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+} */
 
 .dialog_box {
     font-size: 40px;
@@ -293,6 +318,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.type_icon {
+    width: 150px;
+    height: auto;
 }
 
 
