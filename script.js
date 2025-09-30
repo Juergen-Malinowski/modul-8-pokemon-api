@@ -4,7 +4,7 @@
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
 
 let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor !
-let endIndex = startIndex + 23;  // Entscheidet, wieviele POKEMONs geladen werden ...
+let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden ...
 // (jedes Poke hat 3 aufeinanderfolgende Datensätze, mit den Entwicklungsstufen. Also ...
 // alle 4 Datensätze ein NEUES Pokemon!!! ). Derzeit werden 24 Datensätze am Stück geladen,
 // für 8 zu zeigende Pokemons.
@@ -69,7 +69,7 @@ function showPokemon() {
         arrayID = index;
         document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
         // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
-        index = index + 2;
+        // index = index + 2;
     }
 }
 
@@ -78,12 +78,12 @@ function showPrevious() {
     audioClick.play();
     if (startIndex == 1) {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen
-        startIndex = allPoke.length - 23;
-        endIndex = startIndex + 23;
+        startIndex = allPoke.length - 7;
+        endIndex = startIndex + 7;
     } else {
         // vorherigen Pokemons zeigen
-        startIndex = startIndex - 24;
-        endIndex = startIndex + 23;
+        startIndex = startIndex - 8;
+        endIndex = startIndex + 7;
     }
     showPokemon();
 }
@@ -97,8 +97,8 @@ function showNext() {
     // HINWEIS geben, LADE-VORGANG läuft noch !!! ...
     document.getElementById('overview_poke').innerHTML = "";
     document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
-    startIndex = startIndex + 24;
-    endIndex = startIndex + 23;
+    startIndex = startIndex + 8;
+    endIndex = startIndex + 7;
     loadPokemon();
 }
 
@@ -114,7 +114,7 @@ function showThisPokemon(getIDcode) {
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
     whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
-    getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
+    // getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
     thisPokemon.innerHTML = "";
     evoPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
@@ -147,15 +147,15 @@ function whatAbilities() {
     }
 }
 
-function getNextEvolutionsFromPoke() {
-    // Einlesen der beiden Entwicklungsstufen des Pokemon (name und Poke-ID) ...
-    evoOneOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
-    evoOneOfPokeName = allPoke[arrayID+1].name;
-    evoOneOfPokeID = allPoke[arrayID+1].id;
-    evoTwoOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
-    evoTwoOfPokeName = allPoke[arrayID+2].name;
-    evoTwoOfPokeID = allPoke[arrayID+2].id;
-}
+// function getNextEvolutionsFromPoke() {
+//     // Einlesen der beiden Entwicklungsstufen des Pokemon (name und Poke-ID) ...
+//     evoOneOfPokePic = allPoke[arrayID+1].sprites.other.home.front_default;
+//     evoOneOfPokeName = allPoke[arrayID+1].name;
+//     evoOneOfPokeID = allPoke[arrayID+1].id;
+//     evoTwoOfPokePic = allPoke[arrayID+2].sprites.other.home.front_default;
+//     evoTwoOfPokeName = allPoke[arrayID+2].name;
+//     evoTwoOfPokeID = allPoke[arrayID+2].id;
+// }
 
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
@@ -167,16 +167,16 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
-    if (arrayID < 3) {
-        arrayID = allPoke.length - 3;
+    if (arrayID < 0) {
+        arrayID = allPoke.length - 1;
         whatAbilities();
-        getNextEvolutionsFromPoke()
+        // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         evoPokemon.innerHTML =  renderPokeEvolution();
     } else {
-        arrayID = arrayID - 3;
+        arrayID = arrayID - 1;
         whatAbilities();
-        getNextEvolutionsFromPoke()
+        // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         evoPokemon.innerHTML =  renderPokeEvolution();
     }
@@ -185,19 +185,19 @@ function showPreviousPoke() {
 function showNextPoke() {
     // ONCLICK ... nächsten Pokemon zeigen
     audioClick.play();
-    if (arrayID == allPoke.length - 3) {  // wenn der nächste Array-Zugriff über array-ENDE hinausgeht ...
+    if (arrayID == allPoke.length - 1) {  // wenn der nächste Array-Zugriff über array-ENDE hinausgeht ...
         // arrayID wird durch "ELSE" solange durch ONCLICK erhöht, 
         // bis arrayID die Bedingung erfüllt. Dann wird wieder ...
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
         whatAbilities();
-        getNextEvolutionsFromPoke()
+        // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         evoPokemon.innerHTML =  renderPokeEvolution();
     } else {
-        arrayID = arrayID + 3;
+        arrayID = arrayID + 1;
         whatAbilities();
-        getNextEvolutionsFromPoke()
+        // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         evoPokemon.innerHTML =  renderPokeEvolution();
     }

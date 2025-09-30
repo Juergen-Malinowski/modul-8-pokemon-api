@@ -53,7 +53,6 @@ function renderOnePokemon(arrayID) {
                 <div class="poke_details">Größe: ${allPoke[arrayID].height}</div>
                 <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
             </div>
-
         </div>
     `
 }
