@@ -12,7 +12,6 @@ function renderPokemon(arrayID) {
         `
 }
 
-
 function setPreviousButtons() {
     return `
         <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
@@ -84,4 +83,29 @@ function renderPokeEvolution() {
             <hr class="line_grafik_evolution">
         </div>
     `
+}
+
+function getTheColorCode() {
+    switch (backgroundColor) {
+        case "normal": backgroundColor = "#ffffff"; break;
+        case "fire": backgroundColor = "#f22121"; break;
+        case "water": backgroundColor = "#1e9cd2"; break;
+        case "electric": backgroundColor = "#ebee44"; break;
+        case "grass": backgroundColor = "#14d411"; break;
+        case "ice": backgroundColor = "#66e0f0"; break;
+        case "fighting": backgroundColor = "#f55d42"; break;
+        case "poison": backgroundColor = "#349864"; break;
+        case "ground": backgroundColor = "#9a6042"; break;
+        case "flying": backgroundColor = "#1fe0dd"; break;
+        case "psychic": backgroundColor = "#bc209f"; break;
+        case "bug": backgroundColor = "#6aa81f"; break;
+        case "rock": backgroundColor = "#5b241a"; break;
+        case "ghost": backgroundColor = "#cba4d5"; break;
+        case "dragon": backgroundColor = "#c70505"; break;
+        case "dark": backgroundColor = "#5b5552"; break;
+        case "steel": backgroundColor = "#918b88"; break;
+        case "fairy": backgroundColor = "#7923e1"; break;
+        case "stellar": backgroundColor = "#e1c823"; break;
+        default: break;
+    }
 }

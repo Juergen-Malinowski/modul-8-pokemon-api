@@ -21,7 +21,11 @@ let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
 
-// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe und ICONs ...
+// for AUDIO
+// to start AUDIO:   audioClick.play();
+const audioClick = new Audio('./assets/sound/click.mp3')
+
+// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe ...
 let normal =  "#ffffff";
 let fire = "#f22121";
 let water =  "#1e9cd2";
@@ -41,6 +45,7 @@ let dark =  "#5b5552";
 let steel = "#918b88";
 let fairy =  "#7923e1";
 let stellar = "#e1c823";
+let backgroundColor = "";
 
 
 // for the DIALOG "Show-One-Pokemon" ...
@@ -59,9 +64,6 @@ let evoTwoOfPokePic = "";
 let evoTwoOfPokeName = "";
 let evoTwoOfPokeID = "";
 
-// for AUDIO
-// to start AUDIO:   audioClick.play();
-const audioClick = new Audio('./assets/sound/click.mp3')
 
 
 // BASIC-Functions  "Pokemon-Slide-Show" ...
@@ -97,10 +99,23 @@ function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
     for (index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
+
+        // ermittle passende Background-Color für das POKE ...
+        findBackgroundColor ();
+         
         document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
         // Sprung über die 2 Entwicklungsstufen des Poke hinweg zum nächsten NEUEN Pokemon
         // index = index + 2;
     }
+}
+
+function findBackgroundColor () {
+    backgroundColor = allPoke[arrayID].types[0].type.name;
+    // let typeForBgColor = allPoke[arrayID].types[0].type.name;
+    // console.log("Haupt-Typ des Poke : ", allPoke[arrayID].types[0].type.name);
+    // backgroundColor = typeForBgColor;
+    console.log("zugeordneter Farbcode : ", backgroundColor);
+    getTheColorCode ();
 }
 
 function showPrevious() {
