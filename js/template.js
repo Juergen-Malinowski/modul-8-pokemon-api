@@ -1,18 +1,16 @@
 
-
-function renderPokemon(arrayID) {
+function renderPokemon() {
     // RENDER ONE Pokemon in the SLIDE-Show
     return `
         <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
-            <span class="id_poke"></span>
             <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
                style="background-color: ${backgroundColor};" alt="picture of Pokemon">
             <div class="type_icon_position">   
                 <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon_overview" alt="ICON vom Type1">
-                <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon_overview" alt="ICON vom Type1">                   
+                <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon_overview" alt="ICON vom Type2">                   
             </div> 
-        </style=>
+        </div>
     `
 }
 
@@ -63,6 +61,7 @@ function renderOnePokemon(arrayID) {
 }
 
 function renderPokeStats() {
+    // RENDERN aller Eigenschaften vom aktuellen POKE ...
     return`
         <hr class="line_grafik_evolution">
         <table border="20" class="holeTable">

@@ -190,6 +190,7 @@ main {
 
 .line_grafik {
     border-color: blueviolet;
+    margin-bottom: 10px;
 }
 
 .buttons_dialog_grafik {
@@ -226,6 +227,7 @@ main {
 .poke_personal_abi {
     font-size: 44px;
     color: yellow;
+    margin-bottom: 20px;
 }
 
 .poke_personal_name {

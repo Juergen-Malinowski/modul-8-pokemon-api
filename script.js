@@ -2,13 +2,6 @@
 
 // GLOBAL ...
 
-// ALLE existierenden POKE-Typen ...
-// types = [
-//     "Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting",
-//     "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock",
-//     "Ghost", "Dragon", "Dark", "Steel", "Fairy", "Stellar"
-// ];
-
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
 
 let startIndex = 1;   // startIndex gibt die NUMMER des ersten zu ladenen POKEMONs vor !
@@ -104,7 +97,7 @@ function showPokemon() {
         // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
         findBackgroundColor();
         findTypeIcons();
-        document.getElementById('overview_poke').innerHTML += renderPokemon(arrayID);  // jetzt RENDERN ...
+        document.getElementById('overview_poke').innerHTML += renderPokemon();  // jetzt RENDERN ...
     }
 }
 
@@ -114,7 +107,7 @@ function findBackgroundColor() {
     // dann prüfen ob Basis-Typ normal, ABER ein zweiter NICHT "normaler" Typ ist vorhanden ...
     if (backgroundColor == "normal" && allPoke[arrayID].types.length > 1) {
         // Übernahme background-Color vom 2.Typ, da 1.Typ normal war ...
-        backgroundColor = allPoke[arrayID].types[1].type.name;       
+        backgroundColor = allPoke[arrayID].types[1].type.name;
     }
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
@@ -147,11 +140,11 @@ function showPrevious() {
     // ZEIGE die vorherigen Pokemons ...
     audioClick.play();
     if (startIndex == 1) {
-        // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen
+        // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen ...
         startIndex = allPoke.length - 7;
         endIndex = startIndex + 7;
     } else {
-        // vorherigen Pokemons zeigen
+        // vorherigen Pokemons zeigen ...
         startIndex = startIndex - 8;
         endIndex = startIndex + 7;
     }
@@ -169,7 +162,7 @@ function showNext() {
     document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
-    loadPokemon();
+    loadPokemon();  // laden UND showPokemon()
 }
 
 
@@ -178,40 +171,22 @@ function showNext() {
 
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
+    // WIRD die in "getIDcode" (id vom Ausgabe-div) gespeicherte arrayID zum Bild rausgefiltert ...
     audioClick.play();
     // ALLE Zeichen entfernen, um ArrayID freizulegen ...
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
     whatAbilities();  // ERMITTELN der besonderen Fähigkeiten
-
-    // getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
-
     findBackgroundColor();    // ERMITTELN: Background-Color für das POKEMON
     findTypeIcons();          // ERMITTELN: ICONS für die POKE-Types
     getAllStats();            // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value 
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
-    showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
+    showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
-    statsPokemon.innerHTML = renderPokeStats();  // EVOLUTIONS-Stufe rendern ...
+    statsPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...
 }
-
-// function renderPokeStats() {
-//     renderPokeStatsTitle();
-//     renderPokeStatsTable();
-//     renderPokeStatsLine();
-// }
-
-// toUpperCase();
-// toLowerCase();
-
-// function renderPokeStatsTable () {
-//     for (let index = 0; index < pokeStats.length; index++) {
-//         renderRow(index);
-
-//     }
-// }
 
 function whatAbilities() {
     // VORGABE: -KEINE- Fähigkeiten vorhanden ...
@@ -220,26 +195,18 @@ function whatAbilities() {
     abilityThree = "";
     // Fähigkeiten auslesen ...
     for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        if (index == 0) {
-            // Fähigkeit 1 für Ausgabe aus Array holen
-            abilityOne = allPoke[arrayID].abilities[index].ability.name;
-            // console.log("Fähigkeit 1 = ", abilityOne);
-        }
-        if (index == 1) {
-            // Fähigkeit 2 für Ausgabe aus Array holen
-            abilityTwo = allPoke[arrayID].abilities[index].ability.name;
-            // console.log("Fähigkeit 2 = ", abilityTwo);
-        }
-        if (index == 2) {
-            // Fähigkeit 2 für Ausgabe aus Array holen
-            abilityThree = allPoke[arrayID].abilities[index].ability.name;
-            // console.log("Fähigkeit 3 = ", abilityThree);
+        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
+            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
+            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
+            default: break;
         }
     }
 }
 
 function getAllStats() {
-    pokeStats = [];
+    // globaler ARRAY "pokeStats" nimmt 6 Datensätze auf = je EIGENSCHAFT + WERT ...
+    pokeStats = [];    
     // leere "Array-Variable" zur Aufnahme des GESAMTEN Datensatz zum AKTUELLEN Pokemon...
     let thisPokeAllData = {};
     thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
@@ -248,18 +215,17 @@ function getAllStats() {
     for (let index = 0; index < thisPokeAllData.length; index++) {
         let allStats = thisPokeAllData[index];  // speichern aller Eigenschaften aus allPoke
         let statName = allStats.stat.name;            // entnehme Eigenschaft-NANE in eine Variable
-        statName = statName.toUpperCase();
+        statName = statName.toUpperCase();            // für spätere Ausgabe alles in GROSSSCHRIFT !
         let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
         pokeStats.push({ name: statName, value: statValue, });  // Werte in Array für Eigenschaften schieben
     }
 }
 
-
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
-    showOnePokemon.close();
-    showPokemon();
+    showOnePokemon.close();  // Dialog schließen
+    showPokemon();           // POKE-Overview zeigen
 });
 
 function showPreviousPoke() {
@@ -295,7 +261,6 @@ function showNextPoke() {
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
         whatAbilities();
-        // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs...
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
@@ -304,7 +269,6 @@ function showNextPoke() {
     } else {
         arrayID = arrayID + 1;
         whatAbilities();
-        // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs ...
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
