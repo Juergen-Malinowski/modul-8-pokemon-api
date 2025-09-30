@@ -113,7 +113,7 @@ function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
     backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
-    getTheColorCode();  // in TEMPLATE.JS !
+    getTheColorCode();  // in data.JS !
 }
 
 function findTypeIcons() {
@@ -126,7 +126,7 @@ function findTypeIcons() {
             // TYPE 1 holen ...
             pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
             pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
-            getTheTypeIcons();  // in TEMPLATE.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+            getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
             pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
         } else {
             // TYPE 0 holen ...
