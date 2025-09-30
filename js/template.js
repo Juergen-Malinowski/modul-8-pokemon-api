@@ -63,30 +63,36 @@ function renderOnePokemon(arrayID) {
 }
 
 function renderPokeStats() {
-    return `
-        <div class="poke_evo_grafik">
-            <hr class="line_grafik_evolution"><br>
-            <p class="poke_personal_evo">Evolutions-Stufen des Pokemons ...</p>
-            <br>
-        </div>
-        <div class="show_evo_pokemons">
-            <div class="evo_poke">
-                <img src="${evoOneOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo1>
-                <div class="evo_poke_sort">
-                    <div class="poke_personal">Name: ${evoOneOfPokeName}</div>
-                    <div class="poke_personal">Poke-ID: ${evoOneOfPokeID}</div>
-                </div>
-            </div>
-            <div class="evo_poke">
-                <img src="${evoTwoOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo2>
-                <div class="evo_poke_sort">
-                    <div class="poke_personal">Name: ${evoTwoOfPokeName}</div>
-                    <div class="poke_personal">Poke-ID${evoTwoOfPokeID}</div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <hr class="line_grafik_evolution">
-        </div>
+    return`
+        <hr class="line_grafik_evolution">
     `
-}
+};
+
+// function renderPokeStats() {
+//     return `
+//         <div class="poke_evo_grafik">
+//             <hr class="line_grafik_evolution"><br>
+//             <p class="poke_personal_evo">EIGENSCHAFTEN :</p>
+//             <br>
+//         </div>
+//         <div class="show_evo_pokemons">
+//             <div class="evo_poke">
+//                 <img src="${evoOneOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo1>
+//                 <div class="evo_poke_sort">
+//                     <div class="poke_personal">Name: ${evoOneOfPokeName}</div>
+//                     <div class="poke_personal">Poke-ID: ${evoOneOfPokeID}</div>
+//                 </div>
+//             </div>
+//             <div class="evo_poke">
+//                 <img src="${evoTwoOfPokePic}" class="img_pokemon_evo" alt"Bild Pokemon Evo2>
+//                 <div class="evo_poke_sort">
+//                     <div class="poke_personal">Name: ${evoTwoOfPokeName}</div>
+//                     <div class="poke_personal">Poke-ID${evoTwoOfPokeID}</div>
+//                 </div>
+//             </div>
+//         </div>
+//         <div>
+//             <hr class="line_grafik_evolution">
+//         </div>
+//     `
+// }

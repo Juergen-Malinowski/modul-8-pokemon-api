@@ -30,7 +30,52 @@
         <!-- DIE DIALOG-BOX -->
         <dialog id="show_one_pokemon" class="dialog_box">
             <p id="show_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
-            <div id="poke_evolution" class="poke_evolution">HIER erfolgt Ausgabe Evolutions-Stufen von ONE POKEMON</div>
+            <div id="poke_stats" class="poke_evolution">HIER erfolgt Ausgabe Evolutions-Stufen von ONE POKEMON</div>
+
+            <table border="20">
+                <thead>
+                    <tr>
+                        <th class="table_title">Eigenschaft: </th>
+                        <th class="table_title">Wert: </th>
+                        <th class="table_title">Diagramm ... </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HP</td>
+                        <td>45</td>
+                        <td>XXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>Attack</td>
+                        <td>49</td>
+                        <td>XXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>Defense</td>
+                        <td>49</td>
+                        <td>XXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>Sp. Atk</td>
+                        <td>65</td>
+                        <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>Sp. Def</td>
+                        <td>65</td>
+                        <td>XXXXXXXXXXXXXXXXXXXXXXXXX</td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td>45</td>
+                        <td>XXXXXXXXXXXXXX</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr class="line_grafik_evolution">
+
+
             <div class="control_grafik">
                 <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
                     onclick="showPreviousPoke()">

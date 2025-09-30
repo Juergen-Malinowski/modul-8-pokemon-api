@@ -53,7 +53,7 @@ const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
 const thisPokemon = document.getElementById('show_pokemon');
-const evoPokemon = document.getElementById('poke_evolution');
+const statsPokemon = document.getElementById('poke_stats');
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
@@ -185,10 +185,10 @@ function showThisPokemon(getIDcode) {
     findTypeIcons();          // ERMITTELN: ICONS für die POKE-Types
     getAllStats();            // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value 
     thisPokemon.innerHTML = "";
-    evoPokemon.innerHTML = "";
+    statsPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL = only Dialog-BOX is working !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
-    evoPokemon.innerHTML = renderPokeStats();  // EVOLUTIONS-Stufe rendern ...
+    statsPokemon.innerHTML = renderPokeStats();  // EVOLUTIONS-Stufe rendern ...
 }
 
 function whatAbilities() {
@@ -264,7 +264,7 @@ function showPreviousPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeStats();
+        statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID - 1;
         whatAbilities();
@@ -273,7 +273,7 @@ function showPreviousPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeStats();
+        statsPokemon.innerHTML = renderPokeStats();
     }
 }
 
@@ -291,7 +291,7 @@ function showNextPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeStats();
+        statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID + 1;
         whatAbilities();
@@ -300,7 +300,7 @@ function showNextPoke() {
         findTypeIcons();
         // getNextEvolutionsFromPoke()
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        evoPokemon.innerHTML = renderPokeStats();
+        statsPokemon.innerHTML = renderPokeStats();
     }
 }
 
