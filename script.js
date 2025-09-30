@@ -11,13 +11,11 @@
 
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
 
-let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor !
-let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden ...
-// (jedes Poke hat 3 aufeinanderfolgende Datensätze, mit den Entwicklungsstufen. Also ...
-// alle 4 Datensätze ein NEUES Pokemon!!! ). Derzeit werden 24 Datensätze am Stück geladen,
-// für 8 zu zeigende Pokemons.
+let startIndex = 1;   // startIndex gibt die NUMMER des ersten zu ladenen POKEMONs vor !
+let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden ... derzeit 8 Pokemons
 
-let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen !
+let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen ! 
+// loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
 
@@ -50,7 +48,6 @@ let pokeTypeIcon1 = "";
 let pokeTypeIcon2 = "";
 let pokeTypeSearch = "";
 
-
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
@@ -68,8 +65,7 @@ let evoTwoOfPokeName = "";
 let evoTwoOfPokeID = "";
 
 
-
-// BASIC-Functions  "Pokemon-Slide-Show" ...
+// BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
 
 async function loadPokemon() {
     if (firstLoad) {
@@ -169,7 +165,7 @@ function showNext() {
 
 
 
-// FUNCTIONs for DIALOG "Show-One-Pokemon"
+// FUNCTIONs for DIALOG "Show-ONE-Pokemon"
 
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
@@ -182,7 +178,7 @@ function showThisPokemon(getIDcode) {
 
     // getNextEvolutionsFromPoke();  // Evolutions-Stufen des Pokemons laden
 
-    // ermittle passende Background-Color für das POKE ...
+    // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
     findBackgroundColor();
     findTypeIcons();
     thisPokemon.innerHTML = "";
@@ -240,7 +236,7 @@ function showPreviousPoke() {
     if (arrayID < 0) {
         arrayID = allPoke.length - 1;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types  ...
+        // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types  ...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()
@@ -249,7 +245,7 @@ function showPreviousPoke() {
     } else {
         arrayID = arrayID - 1;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
+        // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()
@@ -267,7 +263,7 @@ function showNextPoke() {
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE UND TYPE-ICONs...
+        // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()
@@ -276,7 +272,7 @@ function showNextPoke() {
     } else {
         arrayID = arrayID + 1;
         whatAbilities();
-        // ermittle passende Background-Color für das POKE UND TYPE-ICONs ...
+        // ERMITTELN: passende Background-Color für das POKE UND TYPE-ICONs ...
         findBackgroundColor();
         findTypeIcons();
         // getNextEvolutionsFromPoke()

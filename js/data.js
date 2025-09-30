@@ -24,11 +24,9 @@ function getTheColorCode() {
         case "stellar": backgroundColor = "#e1c823"; break;
         default: break;
     }
-    // console.log("zugeordneter Farbcode : ", backgroundColor);
 }
 
 function getTheTypeIcons() {
-    console.log("übergebener TYPE für CASE : ", pokeTypeSearch);
     switch (pokeTypeSearch) {    
         case "normal": pokeTypeSearch = "normal.jpg"; break;
         case "fire": pokeTypeSearch = "fire.jpg"; break;
@@ -51,5 +49,4 @@ function getTheTypeIcons() {
         case "stellar": pokeTypeSearch = "normal.jpg"; break;
         default: break;
     }
-    console.log("zugeordnetes JPG-Bild zum TYPE in CASE : ", pokeTypeSearch);
 }
