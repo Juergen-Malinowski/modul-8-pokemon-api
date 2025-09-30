@@ -1,6 +1,14 @@
 // DEFINITION of VARIBALES ...
 
 // GLOBAL ...
+
+// ALLE existierenden POKE-Typen ...
+// types = [
+//     "Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting",
+//     "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock",
+//     "Ghost", "Dragon", "Dark", "Steel", "Fairy", "Stellar"
+// ];
+
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
 
 let startIndex = 1;   // startIndex gibt die Nr. des ersten zu ladenen Pokemons vor !
@@ -12,6 +20,28 @@ let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden
 let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen !
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
+
+// ZUORDNUNGEN zu Types ... passende Hintergrundfarbe und ICONs ...
+let normal =  #ffffff;
+let fire = #f22121;
+let water = #6E2AD5;
+let electric = #ebee44;
+let grass = #14d411;
+let ice = #66e0f0;
+let fighting = #f55d42;
+let poison = #349864;
+let ground = #9a6042;
+let flying = #1fe0dd;
+let psychic = #bc209f;
+let bug = #6aa81f;
+let rock = #5b241a;
+let ghost =  #cba4d5;
+let dragon = #c70505;
+let dark =  #5b5552;
+let steel = #918b88;
+let fairy =  #7923e1;
+let stellar = #e1c823;
+
 
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");

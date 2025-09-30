@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CSS Farbpicker → Hex</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 20px; max-width:720px; margin:0 auto; }
+    h1 { font-size:1.3rem; margin-bottom:0.2rem; }
+    p { margin-top:0; color:#444; }
+    .controls { display:flex; gap:12px; align-items:center; margin:14px 0; flex-wrap:wrap; }
+    .sample { width:90px; height:90px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.08); border:1px solid rgba(0,0,0,.06); }
+    input[type="text"] { padding:8px 10px; border-radius:6px; border:1px solid #ddd; min-width:140px; }
+    button { padding:8px 10px; border-radius:6px; border:1px solid #ccc; background:#f7f7f7; cursor:pointer; }
+    .row { display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+    .note { font-size:0.85rem; color:#666; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <h1>Farb-Picker → Hex (CSS)</h1>
+  <p>Wähle eine Farbe, nimm eine vom Bildschirm (EyeDropper), und kopiere den Hex-Wert.</p>
+
+  <div class="controls">
+    <!-- Browser color input -->
+    <input id="colorInput" type="color" value="#3b82f6" title="Wähle Farbe" />
+
+    <!-- Textfeld zum manuellen Hex eingeben -->
+    <input id="hexInput" type="text" value="#3b82f6" maxlength="9" />
+
+    <!-- EyeDropper -->
+    <button id="eyeBtn" title="Farbe vom Bildschirm aufnehmen (falls unterstützt)">📷 EyeDropper</button>
+
+    <!-- Copy -->
+    <button id="copyBtn" title="Hex in Zwischenablage kopieren">📋 Kopieren</button>
+
+    <!-- Sample -->
+    <div id="sample" class="sample" aria-hidden="true"></div>
+  </div>
+
+  <div class="row">
+    <div>RGB: <input id="rgb" type="text" readonly></div>
+    <div>HSL: <input id="hsl" type="text" readonly></div>
+    <div>CSS (var): <input id="cssVar" type="text" readonly></div>
+  </div>
+
+  <p class="note">Tipp: Im CSS kannst du den Wert direkt so verwenden: <code>--meine-farbe: <span id="exampleInline">#3b82f6</span>;</code></p>
+
+<script>
+/* Hilfsfunktionen */
+function hexToRgb(hex) {
+  const h = hex.replace('#','').trim();
+  const full = h.length === 3 ? h.split('').map(c => c+c).join('') : h;
+  const bigint = parseInt(full, 16);
+  return {
+    r: (bigint >> 16) & 255,
+    g: (bigint >> 8) & 255,
+    b: bigint & 255
+  };
+}
+function rgbToHsl({r,g,b}) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r,g,b), min = Math.min(r,g,b);
+  let h, s, l = (max + min) / 2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch(max){
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  return {
+    h: Math.round(h*360),
+    s: Math.round(s*100),
+    l: Math.round(l*100)
+  };
+}
+function ensureHex(s) {
+  if (!s) return '#000000';
+  s = s.trim();
+  if (s[0] !== '#') s = '#' + s;
+  // if short form like #abc, expand to #aabbcc
+  if (/^#[0-9a-fA-F]{3}$/.test(s)) {
+    s = '#' + s[1]+s[1]+s[2]+s[2]+s[3]+s[3];
+  }
+  if (!/^#[0-9a-fA-F]{6}$/.test(s)) return null;
+  return s.toLowerCase();
+}
+
+/* DOM */
+const colorInput = document.getElementById('colorInput');
+const hexInput = document.getElementById('hexInput');
+const sample = document.getElementById('sample');
+const rgbField = document.getElementById('rgb');
+const hslField = document.getElementById('hsl');
+const cssVarField = document.getElementById('cssVar');
+const exampleInline = document.getElementById('exampleInline');
+const copyBtn = document.getElementById('copyBtn');
+const eyeBtn = document.getElementById('eyeBtn');
+
+/* Update UI */
+function updateFromHex(raw) {
+  const hex = ensureHex(raw);
+  if (!hex) {
+    hexInput.style.borderColor = 'crimson';
+    return;
+  }
+  hexInput.style.borderColor = '';
+  colorInput.value = hex;
+  sample.style.background = hex;
+  const rgb = hexToRgb(hex);
+  rgbField.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+  const hsl = rgbToHsl(rgb);
+  hslField.value = `hsl(${hsl.h} ${hsl.s}% ${hsl.l}%)`;
+  cssVarField.value = `--meine-farbe: ${hex};`;
+  exampleInline.textContent = hex;
+}
+
+/* Events */
+colorInput.addEventListener('input', (e) => {
+  updateFromHex(e.target.value);
+});
+hexInput.addEventListener('change', (e) => {
+  updateFromHex(e.target.value);
+});
+hexInput.addEventListener('input', (e) => {
+  // live try to update if valid
+  const ok = ensureHex(e.target.value);
+  if (ok) updateFromHex(ok);
+});
+
+copyBtn.addEventListener('click', async () => {
+  const hex = ensureHex(hexInput.value);
+  if (!hex) { alert('Bitte gültigen Hex-Wert eingeben (z.B. #ff8800)'); return; }
+  try {
+    await navigator.clipboard.writeText(hex);
+    copyBtn.textContent = '✅ Kopiert';
+    setTimeout(()=> copyBtn.textContent = '📋 Kopieren', 1200);
+  } catch (err) {
+    alert('Konnte nicht in die Zwischenablage kopieren: ' + err);
+  }
+});
+
+/* EyeDropper (Screen color picker) */
+eyeBtn.addEventListener('click', async () => {
+  if (!window.EyeDropper) {
+    alert('Dein Browser unterstützt die EyeDropper API nicht. Verwende stattdessen das Farbfeld.');
+    return;
+  }
+  try {
+    const eye = new EyeDropper();
+    const result = await eye.open();
+    if (result && result.sRGBHex) updateFromHex(result.sRGBHex);
+  } catch (err) {
+    console.log('EyeDropper abgebrochen oder fehlgeschlagen', err);
+  }
+});
+
+/* initial update */
+updateFromHex(colorInput.value);
+</script>
+</body>
+</html>

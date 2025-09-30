@@ -6,7 +6,7 @@ function renderPokemon(arrayID) {
             <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
                 <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
                    alt="picture of Pokemon">
-                <p class="id_poke">Pokemon-ID: #${allPoke[arrayID].id}<br></p>
+                <p class="id_poke">Poke-ID: #${allPoke[arrayID].id}<br></p>
                 <p class="id_poke">Name: ${allPoke[arrayID].name}<br></p>
             </div>
         `
