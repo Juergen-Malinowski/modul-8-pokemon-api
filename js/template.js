@@ -66,7 +66,9 @@ function renderPokeStats() {
                 <tr class="table_th_grafik">
                     <th class="table_title">Eigenschaft</th>
                     <th class="table_title">Wert</th>
-                    <th class="table_title">Diagramm ... </th>
+                    <th class="table_title">Diagramm 
+                        <span style="font-size: 30px; color: white;">(bester Wert = Maximum)</span>
+                    </th>
                 </tr>
             </thead>
                 <tbody>

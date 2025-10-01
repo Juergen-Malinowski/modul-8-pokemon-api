@@ -6,26 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="./css/fonts.css">
-    <!-- Einbindung von bootstrap ... -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-        crossorigin="anonymous"></script>
-         -->
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./css/standard.css">
     <link rel="icon" href="./assets/img/favion-pokemon.png" type="image/png" sizes="16x16">
 </head>
 
 <body class="main_grafik" onload="loadPokemon()">
-    <!-- CLASS "main_grafik" give the main-background-picture !!! -->
+    <!-- CLASS "main_grafik" gives the main-background-picture !!! -->
 
     <header>
         <h1>Pokedex</h1>
-        <nav>
-<p>${loadedPokemons} " von " ${loadedPokemons}</p>
-        </nav>
+        <nav></nav>
+        <div>
+          <!-- <input type="text"> -->
+        </div>
     </header>
 
     <main class="main_grafik">
@@ -34,7 +28,9 @@
 
         <div id="button_pre_next" class="button_pre_next"></div>
 
+        <!-- ############## -->
         <!-- DIE DIALOG-BOX -->
+        <!-- ############## -->
         <dialog id="show_one_pokemon" class="dialog_box">
             <p id="show_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
             <div id="poke_stats" class="poke_evolution">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON</div>
