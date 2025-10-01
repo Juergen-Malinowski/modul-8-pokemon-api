@@ -9,9 +9,10 @@ let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden
 let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen ! ...
 // ... loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
-let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
-let apiLength = 0;  // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
+let arrayID = 0;          // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
+let apiLength = 0;        // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
 let loadedPokemons = 0;   // ANZAHL derzeit geladener Pokemons
+let capitalized = "";     // Manipulation POKE-NAME mit ersten Buchstaben in GROSS-Schrift
 const buttonPreNext = document.getElementById('button_pre_next');
 
 // for AUDIO
@@ -49,11 +50,7 @@ async function howMuchPokeExist() {
 
 async function loadPokemon() {  // LADEN und AUSGABE ...
     if (firstLoad) {
-        loadedPokemons = 0;
-        howMuchPokeExist();
-        // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
-        document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
-        firstLoad = false;  // ERSTES Laden (ONLOAD) nun deaktivieren !!!
+        goFristLoad();
     }
     if (startIndex >= allPoke.length) {
         // NUR neue Pokemons laden, WENN angeforderte Poke NICHT im Array "allPoke" enthalten
@@ -61,18 +58,41 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
             let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
             let pokeAsJson = await getAdress.json();
             allPoke.push(pokeAsJson);
+            capitalized = allPoke[index - 1].name;
+            capitalizedString();                     // wirkt auf Variable "capitalized" (erstes Zeichen wir GROSS)
+            allPoke[index - 1].name = capitalized;     // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
         }
         loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);   // HOCHZÄHLEN geladener POKEMONs
     }
     console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
     showPokemon();
+    renderControlPanel();
+}
+
+function goFristLoad() {
+    // NUR beim ERSTEN LADEN von Pokedex auszuführen ...
+    loadedPokemons = 0;             // Zähler
+    howMuchPokeExist();             // Anzahl ALLER Pokemons ermitteln
+    // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
+    document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+    // ERSTES Laden (ONLOAD) nun deaktivieren ...
+    firstLoad = false;  
+}
+
+function capitalizedString() {
+    // nimmt den STRING aus "capitalized" und gibt ihn mit ersten Buchstaben GROSS zurück in "capitalized" ...
+    // charAt holt erstes Zeichen, toUpperCase macht das Zeichen GROSS und slice entfernt das alte, kleine Zeichen ...
+    capitalized = capitalized.charAt(0).toUpperCase() + capitalized.slice(1);
+}
+
+function renderControlPanel() {
     // STEUERUNGS-Buttons für "<<<<<<" und ">>>>>" und COUNTER setzen ...
     buttonPreNext.innerHTML = "";
     buttonPreNext.innerHTML = setButtonsAndCounter();
     // BUTTON show "NEXT Pokemons" now SET WORKING again ...
     document.getElementById('show_next_button').disabled = false;
-
 }
+
 
 function showPokemon() {
     // RENDERN der auszugebenen Pokemons VORBEREITEN ...
@@ -125,13 +145,13 @@ function showPrevious() {
     audioClick.play();
     if (startIndex === 1) {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen ...
-        startIndex = allPoke.length - 7;  
-        endIndex = startIndex + 7;  
-        showPokemon();      
+        startIndex = allPoke.length - 7;
+        endIndex = startIndex + 7;
+        showPokemon();
     } else {
         // vorherigen Pokemons zeigen ...
-        startIndex = startIndex - 8;          
-        endIndex = startIndex + 7;   
+        startIndex = startIndex - 8;
+        endIndex = startIndex + 7;
         showPokemon();
     }
 }
