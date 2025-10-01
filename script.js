@@ -103,22 +103,12 @@ function showPreviousPoke() {
     audioClick.play();
     if (arrayID < 0) {
         arrayID = allPoke.length - 1;
-        whatAbilities();
-        // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types  ...
-        findBackgroundColor();
-        findTypeIcons();
-        getAllStats();
-        getMaxValueFromAllStats();
+        getInfoOnePokemon();         // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID - 1;
-        whatAbilities();
-        // ERMITTELN: passende Background-Color für das POKE UND die ICONS für die POKE-Types ...
-        findBackgroundColor();
-        findTypeIcons();
-        getAllStats();
-        getMaxValueFromAllStats();
+        getInfoOnePokemon();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }
@@ -132,20 +122,12 @@ function showNextPoke() {
         // bis arrayID die Bedingung erfüllt. Dann wird wieder ...
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
-        whatAbilities();
-        findBackgroundColor();
-        findTypeIcons();
-        getAllStats();
-        getMaxValueFromAllStats();
+        getInfoOnePokemon();          // beschafft alles, was für das RENDERN erforderlich ist ! /  in shorts.js
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID + 1;
-        whatAbilities();
-        findBackgroundColor();
-        findTypeIcons();
-        getAllStats();
-        getMaxValueFromAllStats();
+        getInfoOnePokemon();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }

@@ -126,3 +126,17 @@ function getMaxValueFromAllStats() {
     getValueFromAllStatsForProcessBar();  // Einzelwerte der stats für PROCESS-BAR ermitteln / in data.js
 }
 
+// ##############################
+// SHORTS zu SHOW-ONE-Pokemon ...
+// ##############################
+
+function getInfoOnePokemon() {
+    // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
+    whatAbilities();             // ERMITTELN: zugehörigen Fähigkeiten
+    findBackgroundColor();       // ERMITTELN: passende Background-Color
+    findTypeIcons();             // ERMITTELN: Icons zu den Typen
+    getAllStats();               // ERMITTELN: alle Eigenschaften und deren Werte
+    getMaxValueFromAllStats();   // ERMITTELN: Daten AllStats verarbeiten für PROCESS-BAR
+}
+
+
