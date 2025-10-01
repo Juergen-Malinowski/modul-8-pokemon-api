@@ -121,16 +121,17 @@ function findTypeIcons() {
 function showPrevious() {
     // ZEIGE die vorherigen Pokemons ...
     audioClick.play();
-    if (startIndex == 1) {
+    if (startIndex === 1) {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen ...
-        startIndex = allPoke.length - 7;
-        endIndex = startIndex + 7;
+        startIndex = allPoke.length - 7;  
+        endIndex = startIndex + 7;  
+        showPokemon();      
     } else {
         // vorherigen Pokemons zeigen ...
-        startIndex = startIndex - 8;
-        endIndex = startIndex + 7;
+        startIndex = startIndex - 8;          
+        endIndex = startIndex + 7;   
+        showPokemon();
     }
-    showPokemon();
 }
 
 function showNext() {
