@@ -60,64 +60,108 @@ function renderOnePokemon(arrayID) {
     `
 }
 
+
 function renderPokeStats() {
     // RENDERN aller Eigenschaften vom aktuellen POKE ...
     return`
         <hr class="line_grafik_evolution">
         <table border="20" class="holeTable">
             <thead>
-                <tr>
+                <tr class="table_th_grafik">
                     <th class="table_title">Eigenschaft</th>
                     <th class="table_title">Wert</th>
-                    <th class="table_title">Diagramm ... </th>
                 </tr>
             </thead>
                 <tbody>
                 <tr class="table_contens_hp">
-                    <td>${pokeStats[0].name}:</td>
+                    <td>${pokeStats[0].name}</td>
                     <td>${pokeStats[0].value}</td>
-                    <td class="progress" style="height: 40px;" role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[0].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-secondary" style="width: ${(pokeStats[0].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[0].value}</div>
-                    </td>
                 </tr>
                 <tr class="table_contens_attack">
-                    <td>${pokeStats[1].name}:</td>
-                    <td>${pokeStats[1].value}</td>
-                    <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[1].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-danger" style="width: ${(pokeStats[1].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[1].value}</div>
-                    </td>                    
+                    <td>${pokeStats[1].name}</td>
+                    <td>${pokeStats[1].value}</td>                 
                 </tr>
                 <tr class="table_contens_defense">
-                    <td>${pokeStats[2].name}:</td>
+                    <td>${pokeStats[2].name}</td>
                     <td>${pokeStats[2].value}</td>
-                    <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[2].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-success" style="width: ${(pokeStats[2].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[2].value}</div>
-                    </td>
                 </tr>
                 <tr class="table_contens_spatk">
-                    <td>${pokeStats[3].name}:</td>
+                    <td>${pokeStats[3].name}</td>
                     <td>${pokeStats[3].value}</td>
-                    <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[3].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-primary" style="width: ${(pokeStats[3].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[3].value}</div>
-                    </td>
                 </tr>
                 <tr class="table_contens_spdef">
-                    <td>${pokeStats[4].name}:</td>
+                    <td>${pokeStats[4].name}</td>
                     <td>${pokeStats[4].value}</td>
-                    <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[4].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-warning" style="width: ${(pokeStats[4].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[4].value}</div>
-                    </td>
                 </tr>
                 <tr class="table_contens_speed">
-                    <td>${pokeStats[5].name}:</td>
+                    <td>${pokeStats[5].name}</td>
                     <td>${pokeStats[5].value}</td>
-                    <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[5].value / maxValue) * 100}%" aria-valuemin="0" aria-valuemax="${maxValue}">
-                        <div class="progress-bar text-bg-info" style="width: ${(pokeStats[5].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[5].value}</div>
-                    </td>
                 </tr>
             </tbody>
         </table>
         <hr class="line_grafik_evolution">
     `
 };
+
+// SHOW one POKEMON ... stats mit bootstrap PROCESS-BAR ... zerstört jedoch die schöne stats-TABELLE !!!
+// function renderPokeStats() {
+//     // RENDERN aller Eigenschaften vom aktuellen POKE ...
+//     return`
+//         <hr class="line_grafik_evolution">
+//         <table border="20" class="holeTable">
+//             <thead>
+//                 <tr>
+//                     <th class="table_title">Eigenschaft</th>
+//                     <th class="table_title">Wert</th>
+//                     <th class="table_title">Diagramm ... </th>
+//                 </tr>
+//             </thead>
+//                 <tbody>
+//                 <tr class="table_contens_hp">
+//                     <td>${pokeStats[0].name}:</td>
+//                     <td>${pokeStats[0].value}</td>
+//                     <td class="progress" style="height: 40px;" role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[0].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-secondary" style="width: ${(pokeStats[0].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[0].value}</div>
+//                     </td>
+//                 </tr>
+//                 <tr class="table_contens_attack">
+//                     <td>${pokeStats[1].name}:</td>
+//                     <td>${pokeStats[1].value}</td>
+//                     <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[1].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-danger" style="width: ${(pokeStats[1].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[1].value}</div>
+//                     </td>                    
+//                 </tr>
+//                 <tr class="table_contens_defense">
+//                     <td>${pokeStats[2].name}:</td>
+//                     <td>${pokeStats[2].value}</td>
+//                     <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[2].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-success" style="width: ${(pokeStats[2].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[2].value}</div>
+//                     </td>
+//                 </tr>
+//                 <tr class="table_contens_spatk">
+//                     <td>${pokeStats[3].name}:</td>
+//                     <td>${pokeStats[3].value}</td>
+//                     <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[3].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-primary" style="width: ${(pokeStats[3].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[3].value}</div>
+//                     </td>
+//                 </tr>
+//                 <tr class="table_contens_spdef">
+//                     <td>${pokeStats[4].name}:</td>
+//                     <td>${pokeStats[4].value}</td>
+//                     <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[4].value / maxValue) * 100}" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-warning" style="width: ${(pokeStats[4].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[4].value}</div>
+//                     </td>
+//                 </tr>
+//                 <tr class="table_contens_speed">
+//                     <td>${pokeStats[5].name}:</td>
+//                     <td>${pokeStats[5].value}</td>
+//                     <td class="progress" style="height: 40px;"  role="progressbar" aria-label="Success example" aria-valuenow="${(pokeStats[5].value / maxValue) * 100}%" aria-valuemin="0" aria-valuemax="${maxValue}">
+//                         <div class="progress-bar text-bg-info" style="width: ${(pokeStats[5].value / maxValue) * 100}%; font-size: 30px;">${pokeStats[5].value}</div>
+//                     </td>
+//                 </tr>
+//             </tbody>
+//         </table>
+//         <hr class="line_grafik_evolution">
+//     `
+// };
 

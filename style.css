@@ -333,13 +333,18 @@ main {
 }
 
 .holeTable {
-    width: 1400px;
+    /* width: 1400px; */
     margin-left: 30px;
 }
+
+/* .table_th_grafik {
+    gap: 30px;
+} */
 
 .table_title {
     font-size: 50px;
     color: rgb(202, 202, 16);
+    padding-right: 100px;
 }
 
 .table_contens_hp {
