@@ -78,3 +78,15 @@
   font-weight: 900;
   src: url('./fonts/raleway-v36-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+
+/* Fonts:  CS Freya Demo Fonts */
+
+@font-face {
+    font-family: "CS Freya Demo";
+    src: url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.eot");
+    src: url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/b0e7049c1d35e2b5a48647df76aafe92.svg#CS Freya Demo")format("svg");
+}
