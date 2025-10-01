@@ -1,4 +1,6 @@
+// ###########################
 // DEFINITION of VARIBALES ...
+// ###########################
 
 // GLOBAL ...
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
