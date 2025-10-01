@@ -44,6 +44,17 @@ main {
     height: auto;
 }
 
+.loding_grafik {
+    display: flex;
+    flex-direction: column;
+}
+
+.lodPic_grafik {
+    display: flex;
+    flex-direction: row;
+
+}
+
 .poke_grafik {
     width: 1440px;
     height: auto;
@@ -159,9 +170,10 @@ main {
 
 }
 
-.Laden_grafik {
-    font-size: 40px;
+.load_grafik {
+    font-size: 60px;
     color: yellow;
+    text-align: center;
 }
 
 

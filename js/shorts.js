@@ -20,7 +20,8 @@ function goFristLoad() {
     loadedPokemons = 0;             // Zähler
     howMuchPokeExist();             // Anzahl ALLER Pokemons ermitteln
     // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
-    document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+    document.getElementById('overview_poke').innerHTML = "";
+    document.getElementById('overview_poke').innerHTML = renderLodingPicture();
     // ERSTES Laden (ONLOAD) nun deaktivieren ...
     firstLoad = false;
 }
@@ -42,21 +43,6 @@ function getAllInfoForRendern() {
     getMaxValueFromAllStats();
 }
 
-function whatAbilities() {
-    // VORGABE: -KEINE- Fähigkeiten vorhanden ...
-    abilityOne = "";
-    abilityTwo = "";
-    abilityThree = "";
-    // Fähigkeiten auslesen ...
-    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
-            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
-            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
-            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
-            default: break;
-        }
-    }
-}
 
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
@@ -89,6 +75,22 @@ function findTypeIcons() {
             pokeTypeSearch = pokeTypeIcon1;
             getTheTypeIcons();
             pokeTypeIcon1 = pokeTypeSearch;
+        }
+    }
+}
+
+function whatAbilities() {
+    // VORGABE: -KEINE- Fähigkeiten vorhanden ...
+    abilityOne = "";
+    abilityTwo = "";
+    abilityThree = "";
+    // Fähigkeiten auslesen ...
+    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
+            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
+            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
+            default: break;
         }
     }
 }

@@ -22,6 +22,18 @@ function setButtonsAndCounter() {
     `
 }
 
+function renderLodingPicture() {
+    return `
+        <div class="loding_grafik">
+            <p class="load_grafik">Pokemons werden geladen ...</p>
+            <div class="lodPic_grafik">
+                <img class="loding_picture" src="./assets/img/betty-boop.png" alt="picture from Betty Boop">
+                <img class="loding_picture" src="./assets/img/cartoon-bear.png" alt="picture from cartoon-bear"></img>
+            </div>
+        </div>
+    `
+}
+
 function renderOnePokemon(arrayID) {
     // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
     return `    

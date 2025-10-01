@@ -1,4 +1,3 @@
-
 // ############################################
 // BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
 // ############################################
@@ -64,7 +63,12 @@ function showNext() {
     document.getElementById('show_next_button').disabled = true;
     // HINWEIS geben, LADE-VORGANG läuft noch !!! ...
     document.getElementById('overview_poke').innerHTML = "";
-    document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+
+    // RENDERN "Warte-Bildschirm", bis API-LADEN abgeschlossen ist ...
+    document.getElementById('overview_poke').innerHTML = renderLodingPicture();
+
+    // document.getElementById('overview_poke').innerHTML = `<p class="load_grafik">Pokemons werden geladen ...</p>`;
+
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
     loadPokemon();  // laden UND showPokemon()
