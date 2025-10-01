@@ -26,6 +26,9 @@ let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
 let maxValue = 0;
+// VARIBALEN für die PROCESSBAR-Werte zur Anzeige in Show-One-Poke ...
+let stat0 = "█"; let stat1 = "█"; let stat2 = "█"; let stat3 = "█"; let stat4 = "█"; let stat5 = "█";
+let statsProportionateValue = 0;    // nimmt den anteiligen Diagramm-Wert eines STATS auf 
 
 // leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
 let pokeStats = [{ name: "", value: "", }];
@@ -150,7 +153,7 @@ function showThisPokemon(getIDcode) {
     findBackgroundColor();    // ERMITTELN: Background-Color für das POKEMON
     findTypeIcons();          // ERMITTELN: ICONS für die POKE-Types
     getAllStats();            // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value 
-    getMaxValueFromAllStats();// ERMITTELN: höchster Stats-Wert als Referenz Processbar für 100%
+    getMaxValueFromAllStats();// ERMITTELN: WERTE zur Darstellung PROCESS-BAR
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
@@ -176,7 +179,7 @@ function whatAbilities() {
 
 function getAllStats() {
     // globaler ARRAY "pokeStats" nimmt 6 Datensätze auf = je EIGENSCHAFT + WERT ...
-    pokeStats = [];    
+    pokeStats = [];
     // leere "Array-Variable" zur Aufnahme des GESAMTEN Datensatz zum AKTUELLEN Pokemon...
     let thisPokeAllData = {};
     thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
@@ -198,10 +201,12 @@ function getMaxValueFromAllStats() {
     maxValue = 0;                      // Startwert 0
     for (let index = 0; index < pokeStats.length; index++) {
         let stat = pokeStats[index];       // aktuelles Objekt
-        if (stat.value > maxValue) {   // vergleichen
-            maxValue = stat.value;     // neuen max-Wert merken
+        if (stat.value > maxValue) {       // vergleichen
+            maxValue = stat.value;         // neuen max-Wert merken
         }
     }
+    stat0 = "█"; stat1 = "█"; stat2 = "█"; stat3 = "█"; stat4 = "█"; stat5 = "█";
+    getValueFromAllStatsForProcessBar();  // Einzelwerte der stats für PROCESS-BAR ermitteln / in data.js
 }
 
 closeDialog.addEventListener("click", () => {
@@ -221,6 +226,7 @@ function showPreviousPoke() {
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
+        getMaxValueFromAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
@@ -230,6 +236,7 @@ function showPreviousPoke() {
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
+        getMaxValueFromAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }
@@ -247,6 +254,7 @@ function showNextPoke() {
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
+        getMaxValueFromAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
@@ -255,6 +263,7 @@ function showNextPoke() {
         findBackgroundColor();
         findTypeIcons();
         getAllStats();
+        getMaxValueFromAllStats();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }

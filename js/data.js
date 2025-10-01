@@ -50,3 +50,40 @@ function getTheTypeIcons() {
         default: break;
     }
 }
+
+
+function getValueFromAllStatsForProcessBar() {
+    for (let index = 0; index < pokeStats.length; index++) {
+        statsProportionateValue = 0;
+        statsProportionateValue = Math.round(43 * pokeStats[index].value / maxValue);
+        for (let i = 0; i < statsProportionateValue; i++) {
+            switch (index) {
+                case 0: stat0 = stat0 + "█"; break;
+                case 1: stat1 = stat1 + "█"; break;
+                case 2: stat2 = stat2 + "█"; break;
+                case 3: stat3 = stat3 + "█"; break;
+                case 4: stat4 = stat4 + "█"; break;
+                case 5: stat5 = stat5 + "█"; break;
+                default: break;
+            }
+        }
+    }
+}
+
+
+// function getValueFromAllStatsForProcessBar() {
+//     switch (true) {
+//         case true: stat0 = Math.round(maxValue / pokeStats[0].value);
+//         case pokeStats[1]: stat1 = Math.round(maxValue / pokeStats[1].value);
+//         case pokeStats[2]: stat2 = Math.round(maxValue / pokeStats[2].value);
+//         case pokeStats[3]: stat3 = Math.round(maxValue / pokeStats[3].value);
+//         case pokeStats[4]: stat4 = Math.round(maxValue / pokeStats[4].value);
+//         case pokeStats[5]: stat5 = Math.round(maxValue / pokeStats[5].value);
+//         default: break;
+//     }
+//     for (let index = 0; index < pokeStats.length; index++) {
+//         console.log("Eigenschaftswerte von Nr. 0 bis 5 ...", stat1, " ", stat2, " ", stat3, " ", stat4, " ", stat5);
+        
+        
+//     }
+// }
