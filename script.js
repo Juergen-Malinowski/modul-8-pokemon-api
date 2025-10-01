@@ -1,14 +1,11 @@
 // DEFINITION of VARIBALES ...
 
 // GLOBAL ...
-
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
-
 let startIndex = 1;   // startIndex gibt die NUMMER des ersten zu ladenen POKEMONs vor !
 let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden ... derzeit 8 Pokemons
-
-let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen ! 
-// loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
+let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start ablaufen ! ...
+// ... loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
 let apiLength = 0;  // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
@@ -32,12 +29,14 @@ let maxValue = 0;
 // VARIBALEN für die PROCESSBAR-Werte zur Anzeige in Show-One-Poke ...
 let stat0 = "█"; let stat1 = "█"; let stat2 = "█"; let stat3 = "█"; let stat4 = "█"; let stat5 = "█";
 let statsProportionateValue = 0;    // nimmt den anteiligen Diagramm-Wert eines STATS auf 
-
 // leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
 let pokeStats = [{ name: "", value: "", }];
 
 
+// ############################################
 // BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
+// ############################################
+
 
 async function howMuchPokeExist() {
     apiLength = 0;
@@ -151,7 +150,10 @@ function showNext() {
 }
 
 
+// #######################################
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"
+// #######################################
+
 
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
@@ -280,8 +282,4 @@ function showNextPoke() {
         statsPokemon.innerHTML = renderPokeStats();
     }
 }
-
-
-
-
 
