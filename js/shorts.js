@@ -22,15 +22,40 @@ function goFristLoad() {
     // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
     document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
     // ERSTES Laden (ONLOAD) nun deaktivieren ...
-    firstLoad = false;  
+    firstLoad = false;
 }
 
 function renderControlPanel() {
     // STEUERUNGS-Buttons für "<<<<<<" und ">>>>>" und COUNTER setzen ...
     buttonPreNext.innerHTML = "";
-    buttonPreNext.innerHTML = setButtonsAndCounter();
+    buttonPreNext.innerHTML = setButtonsAndCounter();   // in template.js
     // BUTTON show "NEXT Pokemons" now SET WORKING again ...
     document.getElementById('show_next_button').disabled = false;
+}
+
+function getAllInfoForRendern() {
+    // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN ...
+    whatAbilities();            // ERMITTELN der besonderen Fähigkeiten
+    findBackgroundColor();      // ERMITTELN: Background-Color für das POKEMON
+    findTypeIcons();            // ERMITTELN: ICONS für die POKE-Types
+    // ERMITTELN: WERTE zur Darstellung PROCESS-BAR und alle EINGENSCHAFTEN mit WERTEN ...
+    getMaxValueFromAllStats();
+}
+
+function whatAbilities() {
+    // VORGABE: -KEINE- Fähigkeiten vorhanden ...
+    abilityOne = "";
+    abilityTwo = "";
+    abilityThree = "";
+    // Fähigkeiten auslesen ...
+    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
+            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
+            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
+            default: break;
+        }
+    }
 }
 
 function findBackgroundColor() {
@@ -44,6 +69,7 @@ function findBackgroundColor() {
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
 }
+
 
 function findTypeIcons() {
     pokeTypeIcon1 = "";
@@ -67,22 +93,6 @@ function findTypeIcons() {
     }
 }
 
-function whatAbilities() {
-    // VORGABE: -KEINE- Fähigkeiten vorhanden ...
-    abilityOne = "";
-    abilityTwo = "";
-    abilityThree = "";
-    // Fähigkeiten auslesen ...
-    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
-            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
-            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
-            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
-            default: break;
-        }
-    }
-}
-
 function getAllStats() {
     // globaler ARRAY "pokeStats" nimmt 6 Datensätze auf = je EIGENSCHAFT + WERT ...
     pokeStats = [];
@@ -101,10 +111,11 @@ function getAllStats() {
 }
 
 function getMaxValueFromAllStats() {
+    getAllStats();       // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value
     // FINDE den größten Stats-Wert ... wird für Balkendiagramm "Processbar" als 100 % Wert verwendet.
     // globale Variable maxValue speichert den höchsten stats-WERT
     // RECHNET für alle Processbalken den width-WERT aus für spätere Verwendung
-    maxValue = 0;                      // Startwert 0
+    maxValue = 0;                          // Startwert 0
     for (let index = 0; index < pokeStats.length; index++) {
         let stat = pokeStats[index];       // aktuelles Objekt
         if (stat.value > maxValue) {       // vergleichen

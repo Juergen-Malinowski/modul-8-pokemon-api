@@ -12,7 +12,7 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
         for (index = startIndex; index <= endIndex; index++) {
             // API-Datensatz aus URL hochladen und in getAdress ablegen ...
             // und "await" pausiert den CODE bis "fetch" abgeschlossen ist ...
-            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);  
+            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
             // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
             // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
             let pokeAsJson = await getAdress.json();
@@ -75,20 +75,15 @@ function showNext() {
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"
 // #######################################
 
-
 function showThisPokemon(getIDcode) {
     // ausgelöst durch ONCLICK auf einem Pokemon-Bild ...
-    // WIRD die in "getIDcode" (id vom Ausgabe-div) gespeicherte arrayID zum Bild rausgefiltert ...
+    // WIRD die in "getIDcode" (id vom Ausgabe-div) gespeicherte arrayID (z.B."pic_9") zum Bild rausgefiltert ...
     audioClick.play();
     // ALLE Zeichen entfernen, um ArrayID freizulegen ...
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
-    whatAbilities();            // ERMITTELN der besonderen Fähigkeiten  /  in short.js
-    findBackgroundColor();      // ERMITTELN: Background-Color für das POKEMON
-    findTypeIcons();            // ERMITTELN: ICONS für die POKE-Types
-    getAllStats();              // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value /  in shorts.js
-    getMaxValueFromAllStats();  // ERMITTELN: WERTE zur Darstellung PROCESS-BAR  /  in shorts.js
+    getAllInfoForRendern();                   // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
