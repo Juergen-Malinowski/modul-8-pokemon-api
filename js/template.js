@@ -20,6 +20,12 @@ function setPreviousButtons() {
        `
 }
 
+function setPokeCounter() {
+    return `
+        <p class="counter_grafik"> ${loadedPokemons} von ${apiLength} Pokemons </p>
+    `
+}
+
 function setNextButtons() {
     return `
         <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button> 

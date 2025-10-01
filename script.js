@@ -11,10 +11,13 @@ let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start
 // loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
 let arrayID = 0;    // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
+let apiLength = 0;  // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
+let loadedPokemons = 0;   // ANZAHL derzeit geladener Pokemons
+const buttonPreNext = document.getElementById('button_pre_next');
 
 // for AUDIO
 // to start AUDIO:   audioClick.play();
-const audioClick = new Audio('./assets/sound/click.mp3')
+const audioClick = new Audio('./assets/sound/click.mp3');
 
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
@@ -36,10 +39,20 @@ let pokeStats = [{ name: "", value: "", }];
 
 // BASIC-Functions  "Pokemon-OVERVIEW-Show" ...
 
+async function howMuchPokeExist() {
+    apiLength = 0;
+    let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon");
+    let data = await getAdress.json();
+    apiLength = data.count;
+}
+
 async function loadPokemon() {  // LADEN und AUSGABE ...
     if (firstLoad) {
+        loadedPokemons = 0;
+        howMuchPokeExist();
         // HINWEIS auf LADE-VORGANG beim ersten Programm-Start mit ONLOAD ...
         document.getElementById('overview_poke').innerHTML = `<p class="Laden_grafik">Pokemons werden geladen ...</p>`;
+        firstLoad = false;  // ERSTES Laden (ONLOAD) nun deaktivieren !!!
     }
     if (startIndex >= allPoke.length) {
         // NUR neue Pokemons laden, WENN angeforderte Poke NICHT im Array "allPoke" enthalten
@@ -48,18 +61,18 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
             let pokeAsJson = await getAdress.json();
             allPoke.push(pokeAsJson);
         }
+        loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);   // HOCHZÄHLEN geladener POKEMONs
     }
     console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
     showPokemon();
-    if (firstLoad) {
-        // beim ONLOAD die Buttons für "<<<<<<" und ">>>>>" setzen
-        document.getElementById('button_pre_next').innerHTML += setPreviousButtons();
-        document.getElementById('button_pre_next').innerHTML += setNextButtons();
-        // ERSTES Laden (ONLOAD) nun deaktivieren !!!
-        firstLoad = false;
-    }
-    // NACHDEM neue Pokemons geladen wurden, wird BUTTON "nächste" wieder aktiviert !!!
+    // STEUERUNGS-Buttons für "<<<<<<" und ">>>>>" und COUNTER setzen ...
+    buttonPreNext.innerHTML = "";
+    buttonPreNext.innerHTML += setPreviousButtons();
+    buttonPreNext.innerHTML += setPokeCounter();
+    buttonPreNext.innerHTML += setNextButtons();
+    // BUTTON show "NEXT Pokemons" now SET WORKING again ...
     document.getElementById('show_next_button').disabled = false;
+
 }
 
 function showPokemon() {
@@ -136,7 +149,6 @@ function showNext() {
     endIndex = startIndex + 7;
     loadPokemon();  // laden UND showPokemon()
 }
-
 
 
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"

@@ -129,7 +129,19 @@ main {
     border-style: double;
     border-color: blueviolet;
     border-width: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
+}
+
+.counter_grafik {
+    width: 350px;
+    height: 50px;
+    font-size: 30px;
+    color: white;
+    border-style: double;
+    border-color: blueviolet;
+    border-width: 10px;
+    border-radius: 15px;
+    text-align: center;
 }
 
 .buttons_grafik:hover {

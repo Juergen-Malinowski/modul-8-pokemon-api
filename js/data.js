@@ -2,6 +2,7 @@
 // die sich dem POKEMON entsprechend anpassen müssen ...
 
 function getTheColorCode() {
+    // WEISE backgroundColor den passenden HEX-Farbcode zum TYPE zu ...
     switch (backgroundColor) {
         case "normal": backgroundColor = "#ffffff"; break;
         case "fire": backgroundColor = "#f22121"; break;
@@ -27,6 +28,7 @@ function getTheColorCode() {
 }
 
 function getTheTypeIcons() {
+    // WEISE pokeTypeSearch das passende Bild vom TYPE zu ...
     switch (pokeTypeSearch) {    
         case "normal": pokeTypeSearch = "normal.jpg"; break;
         case "fire": pokeTypeSearch = "fire.jpg"; break;
@@ -51,8 +53,8 @@ function getTheTypeIcons() {
     }
 }
 
-
 function getValueFromAllStatsForProcessBar() {
+    // ERMITTLE die Länge jedes Diagramm-Balkens zu jeder EIGENSCHAFT ...
     for (let index = 0; index < pokeStats.length; index++) {
         statsProportionateValue = 0;
         statsProportionateValue = Math.round(43 * pokeStats[index].value / maxValue);
@@ -69,21 +71,3 @@ function getValueFromAllStatsForProcessBar() {
         }
     }
 }
-
-
-// function getValueFromAllStatsForProcessBar() {
-//     switch (true) {
-//         case true: stat0 = Math.round(maxValue / pokeStats[0].value);
-//         case pokeStats[1]: stat1 = Math.round(maxValue / pokeStats[1].value);
-//         case pokeStats[2]: stat2 = Math.round(maxValue / pokeStats[2].value);
-//         case pokeStats[3]: stat3 = Math.round(maxValue / pokeStats[3].value);
-//         case pokeStats[4]: stat4 = Math.round(maxValue / pokeStats[4].value);
-//         case pokeStats[5]: stat5 = Math.round(maxValue / pokeStats[5].value);
-//         default: break;
-//     }
-//     for (let index = 0; index < pokeStats.length; index++) {
-//         console.log("Eigenschaftswerte von Nr. 0 bis 5 ...", stat1, " ", stat2, " ", stat3, " ", stat4, " ", stat5);
-        
-        
-//     }
-// }
