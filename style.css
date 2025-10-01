@@ -333,6 +333,7 @@ main {
 }
 
 .holeTable {
+    width: 1400px;
     margin-left: 30px;
 }
 
@@ -343,36 +344,36 @@ main {
 
 .table_contens_hp {
     font-size: 36px;
-    color: white;
+    color: #6c757d;
+    background-color: black;
 }
 
 .table_contens_attack {
     font-size: 36px;
-    color: red;
-    background-color: white;
+    color: #dc3545;
 }
 
 .table_contens_defense {
     font-size: 36px;
-    color: green;
+    color: #198754;
 }
 
 .table_contens_spatk {
     font-size: 36px;
     font-style: italic;
-    color: rgb(240, 72, 11);
+    color: #0d6efd;
 }
 
 .table_contens_spdef {
     font-size: 36px;
     font-style: italic;
-    color: greenyellow;
+    color: #ffc107;
 }
 
 .table_contens_speed {
     font-size: 36px;
     font-style: italic;
-    color: rgb(19, 151, 227);
+    color: #0dcaf0;
 }
 
 /* CLASS for footer */

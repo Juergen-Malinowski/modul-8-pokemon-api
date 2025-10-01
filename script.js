@@ -25,6 +25,7 @@ const statsPokemon = document.getElementById('poke_stats');
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";
+let maxValue = 0;
 
 // leerer Array zur Aufnahme ALLER EIGENSCHAFTEN des AKTUELLEN Pokemons ...
 let pokeStats = [{ name: "", value: "", }];
@@ -149,6 +150,7 @@ function showThisPokemon(getIDcode) {
     findBackgroundColor();    // ERMITTELN: Background-Color für das POKEMON
     findTypeIcons();          // ERMITTELN: ICONS für die POKE-Types
     getAllStats();            // ERMITTELN: alle EIGENSCHAFTEN und zugehörigen Value 
+    getMaxValueFromAllStats();// ERMITTELN: höchster Stats-Wert als Referenz Processbar für 100%
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
@@ -186,6 +188,19 @@ function getAllStats() {
         statName = statName.toUpperCase();            // für spätere Ausgabe alles in GROSSSCHRIFT !
         let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
         pokeStats.push({ name: statName, value: statValue, });  // Werte in Array für Eigenschaften schieben
+    }
+}
+
+function getMaxValueFromAllStats() {
+    // FINDE den größten Stats-Wert ... wird für Balkendiagramm "Processbar" als 100 % Wert verwendet.
+    // globale Variable maxValue speichert den höchsten stats-WERT
+    // RECHNET für alle Processbalken den width-WERT aus für spätere Verwendung
+    maxValue = 0;                      // Startwert 0
+    for (let index = 0; index < pokeStats.length; index++) {
+        let stat = pokeStats[index];       // aktuelles Objekt
+        if (stat.value > maxValue) {   // vergleichen
+            maxValue = stat.value;     // neuen max-Wert merken
+        }
     }
 }
 
