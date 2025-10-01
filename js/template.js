@@ -14,22 +14,12 @@ function renderPokemon() {
     `
 }
 
-function setPreviousButtons() {
+function setButtonsAndCounter() {
     return `
         <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
-       `
-}
-
-function setPokeCounter() {
-    return `
         <p class="counter_grafik"> ${loadedPokemons} von ${apiLength} Pokemons </p>
+        <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button>         
     `
-}
-
-function setNextButtons() {
-    return `
-        <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button> 
-       `
 }
 
 function renderOnePokemon(arrayID) {
@@ -69,7 +59,7 @@ function renderOnePokemon(arrayID) {
 
 function renderPokeStats() {
     // RENDERN aller Eigenschaften vom aktuellen POKE ...
-    return`
+    return `
         <hr class="line_grafik_evolution">
         <table border="20" class="holeTable">
             <thead>

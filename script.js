@@ -66,9 +66,7 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
     showPokemon();
     // STEUERUNGS-Buttons für "<<<<<<" und ">>>>>" und COUNTER setzen ...
     buttonPreNext.innerHTML = "";
-    buttonPreNext.innerHTML += setPreviousButtons();
-    buttonPreNext.innerHTML += setPokeCounter();
-    buttonPreNext.innerHTML += setNextButtons();
+    buttonPreNext.innerHTML = setButtonsAndCounter();
     // BUTTON show "NEXT Pokemons" now SET WORKING again ...
     document.getElementById('show_next_button').disabled = false;
 
