@@ -116,7 +116,7 @@ async function searchAndShowOnePoke() {
 
             // über ID das Poke suchen + anzeigen
             let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);
-            let pokeAsJson = await getAPI.json();
+            pokeAsJson = await getAPI.json();
             console.log("geladener Pokemon-ARRAY ", pokeAsJson);
             rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
             arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
@@ -139,7 +139,8 @@ function showSearchPoke() {
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
     showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
-    thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
+
+    thisPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon rendern ...
     statsPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
 }
 
@@ -174,16 +175,14 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
-    console.log("aktueller WERT arrayID VOR IF-Anweisung = ", arrayID);
-    if (arrayID == 0) {
-        console.log("IF arrayID = 0 hat AUSGELÖST ... ", arrayID);        
+    if (arrayID == 0) {     
         arrayID = allPoke.length - 1;
-        getInfoOnePokemon();         // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
+        getAllInfoForRendern();         // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID - 1;
-        getInfoOnePokemon();
+        getAllInfoForRendern();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }
@@ -197,12 +196,12 @@ function showNextPoke() {
         // bis arrayID die Bedingung erfüllt. Dann wird wieder ...
         // bei Poke mit ArrayID=0 fortgefahren!
         arrayID = 0;
-        getInfoOnePokemon();          // beschafft alles, was für das RENDERN erforderlich ist ! /  in shorts.js
+        getAllInfoForRendern();          // beschafft alles, was für das RENDERN erforderlich ist ! /  in shorts.js
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID + 1;
-        getInfoOnePokemon();
+        getAllInfoForRendern();
         thisPokemon.innerHTML = renderOnePokemon(arrayID);
         statsPokemon.innerHTML = renderPokeStats();
     }

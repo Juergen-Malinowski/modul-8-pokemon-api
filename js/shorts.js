@@ -58,15 +58,36 @@ function getPokeIdNumber() {
 
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
-    backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
-    // dann prüfen ob Basis-Typ normal, ABER ein zweiter NICHT "normaler" Typ ist vorhanden ...
-    if (backgroundColor == "normal" && allPoke[arrayID].types.length > 1) {
-        // Übernahme background-Color vom 2.Typ, da 1.Typ normal war ...
-        backgroundColor = allPoke[arrayID].types[1].type.name;
+    if (searchOnePoke) {
+        // Background-Color ermitteln für "SEARCH-One-Pokemon" ...
+        backgroundColor = pokeAsJson.types[0].type.name;  // BASIS-Typ ermitteln!
+        // dann prüfen ob Basis-Typ normal, ABER ein zweiter NICHT "normaler" Typ ist vorhanden ...
+        if (backgroundColor == "normal" && pokeAsJson.types.length > 1) {
+            // Übernahme background-Color vom 2.Typ, da 1.Typ normal war ...
+            backgroundColor = pokeAsJson.types[1].type.name;
+        }
+    } else {
+        // Background-Color ermitteln für "Show-ONE-Pokemon" ...
+        backgroundColor = allPoke[arrayID].types[0].type.name;  // BASIS-Typ ermitteln!
+        // dann prüfen ob Basis-Typ normal, ABER ein zweiter NICHT "normaler" Typ ist vorhanden ...
+        if (backgroundColor == "normal" && allPoke[arrayID].types.length > 1) {
+            // Übernahme background-Color vom 2.Typ, da 1.Typ normal war ...
+            backgroundColor = allPoke[arrayID].types[1].type.name;
+        }
     }
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
 }
+
+
+// #######################################
+// all   SHORTs   for  SEARCH Pokemon  ...
+// #######################################
+
+
+
+
+
 
 
 // #######################################
@@ -82,29 +103,48 @@ function getAllInfoForRendern() {
     getMaxValueFromAllStats();
 }
 
-
-
-
 function findTypeIcons() {
+    // ERMITTELN der Pokemon-Typen (max 2 vorhanden) und Zuordnung der Icons ...
     pokeTypeIcon1 = "";
     pokeTypeIcon2 = "normal.jpg";
     pokeTypeSearch = "";
-    // ERMITTELN der Pokemon-Typen (max 2 vorhanden) und Zuordnung der Icons ...
-    for (let index = 0; index < allPoke[arrayID].types.length; index++) {
-        if (index == 1) {
-            // TYPE 1 holen ...
-            pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
-            pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
-            getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
-            pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
-        } else {
-            // TYPE 0 holen ...
-            pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
-            pokeTypeSearch = pokeTypeIcon1;
-            getTheTypeIcons();
-            pokeTypeIcon1 = pokeTypeSearch;
+    if (searchOnePoke) {
+        // TypeIcons ermitteln für "SEARCH-One-Pokemon" ...
+        for (let index = 0; index < pokeAsJson.types.length; index++) {
+            if (index == 1) {
+                // TYPE 1 holen ...
+                pokeTypeIcon2 = pokeAsJson.types[index].type.name;
+                pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
+                getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+                pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
+            } else {
+                // TYPE 0 holen ...
+                pokeTypeIcon1 = pokeAsJson.types[index].type.name;
+                pokeTypeSearch = pokeTypeIcon1;
+                getTheTypeIcons();
+                pokeTypeIcon1 = pokeTypeSearch;
+            }
+        }
+    } else {
+        // TypeIcons ermitteln für "Show-ONE-Pokemon" ...
+        for (let index = 0; index < allPoke[arrayID].types.length; index++) {
+            if (index == 1) {
+                // TYPE 1 holen ...
+                pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
+                pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
+                getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+                pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
+            } else {
+                // TYPE 0 holen ...
+                pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
+                pokeTypeSearch = pokeTypeIcon1;
+                getTheTypeIcons();
+                pokeTypeIcon1 = pokeTypeSearch;
+            }
         }
     }
+
+
 }
 
 function whatAbilities() {
@@ -112,22 +152,26 @@ function whatAbilities() {
     abilityOne = "";
     abilityTwo = "";
     abilityThree = "";
-    // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
-    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
-            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
-            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
-            // case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
-            default: break;
+    // Fähigkeiten AUSLESEN für das RENDERN ...
+    if (searchOnePoke) {
+        // Fähigkeiten auslesen für "SEARCH-One-Pokemon" ...
+        for (let index = 0; index < pokeAsJson.abilities.length; index++) {
+            switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+                case 0: abilityOne = pokeAsJson.abilities[index].ability.name; break;
+                case 1: abilityTwo = pokeAsJson.abilities[index].ability.name; break;
+                case 2: abilityThree = pokeAsJson.abilities[index].ability.name; break;
+                default: break;
+            }
         }
-    }
-    // Fähigkeiten auslesen für "SEARCH-One-Pokemon" ...
-    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
-            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
-            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
-            case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
-            default: break;
+    } else {
+        // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
+        for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+            switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+                case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
+                case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
+                case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
+                default: break;
+            }
         }
     }
 }
@@ -137,11 +181,16 @@ function getAllStats() {
     pokeStats = [];
     // leere "Array-Variable" zur Aufnahme des GESAMTEN Datensatz zum AKTUELLEN Pokemon...
     let thisPokeAllData = {};
-    thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
-
-    // ALLE Eigenschaften des POKEMONs aus dem Datensatz des aktuellen Pokemons auslesen ...
+    if (searchOnePoke) {
+        // Datensatz für "SEARCH-One-Pokemon" übernehmen ...
+        thisPokeAllData = pokeAsJson.stats;  // übernimmt NUR alle Eigenschaften in das Objekt
+    } else {
+        // Datensatz für "Show-ONE-Pokemon" übernehmen ...
+        thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
+    }
+    // ALLE Eigenschaften des POKEMONs aus dem Datensatz des Pokemons auslesen ...
     for (let index = 0; index < thisPokeAllData.length; index++) {
-        let allStats = thisPokeAllData[index];  // speichern aller Eigenschaften aus allPoke
+        let allStats = thisPokeAllData[index];        // speichern aller Eigenschaften aus allPoke
         let statName = allStats.stat.name;            // entnehme Eigenschaft-NANE in eine Variable
         statName = statName.toUpperCase();            // für spätere Ausgabe alles in GROSSSCHRIFT !
         let statValue = allStats.base_stat;           // entnehme Eigenschaft-WERT in eine Variable
@@ -165,17 +214,6 @@ function getMaxValueFromAllStats() {
     getValueFromAllStatsForProcessBar();  // Einzelwerte der stats für PROCESS-BAR ermitteln / in data.js
 }
 
-// ##############################
-// SHORTS zu SHOW-ONE-Pokemon ...
-// ##############################
 
-function getInfoOnePokemon() {
-    // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
-    whatAbilities();             // ERMITTELN: zugehörigen Fähigkeiten
-    findBackgroundColor();       // ERMITTELN: passende Background-Color
-    findTypeIcons();             // ERMITTELN: Icons zu den Typen
-    getAllStats();               // ERMITTELN: alle Eigenschaften und deren Werte
-    getMaxValueFromAllStats();   // ERMITTELN: Daten AllStats verarbeiten für PROCESS-BAR
-}
 
 

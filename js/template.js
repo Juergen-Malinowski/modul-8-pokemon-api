@@ -81,6 +81,40 @@ function renderOnePokemon(arrayID) {
 }
 
 
+function renderSearchPokemon() {
+    // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
+    return `    
+        <div>
+            <div class="poke_personal_name">Name: </div>
+            <div class="poke_personal_name_color">${pokeAsJson.name}</div>
+            <br>
+            <div class="poke_personal">Poke-ID: #${pokeAsJson.id}</div><br>   
+
+            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1"><br>
+            <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon" alt="ICON vom Type1">               
+        </div>    
+        <div class="get_color">
+            <img src="${pokeAsJson.sprites.other.home.front_default}" class="img_pokemon"
+                style="background-color: ${backgroundColor};" alt="Bild Pokemon"><br>
+        </div>
+        <div class="all_poke_details">
+            <div class="get_position">
+                <div class="poke_personal_abi">Fähigkeiten:</div>
+                <div class="poke_personal">${abilityOne}</div>
+                <div class="poke_personal">${abilityTwo}</div>
+                <div class="poke_personal">${abilityThree}</div>
+                <br>
+            </div>
+            <hr class="line_grafik">
+            <br>
+            <div >
+                <div class="poke_details">Größe: ${pokeAsJson.height}</div>
+                <div class="poke_details">Gewicht: ${pokeAsJson.weight}</div>
+            </div>
+        </div>
+    `
+}
+
 function renderPokeStats() {
     // RENDERN aller Eigenschaften vom aktuellen POKE ...
     return `
