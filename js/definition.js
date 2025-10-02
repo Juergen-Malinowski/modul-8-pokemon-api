@@ -20,6 +20,9 @@ const buttonPreNext = document.getElementById('button_pre_next');
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3');
 
+// for the SEARCH of ONE Pokemon ...
+let inputUser = document.getElementById('input_user');  // Übernahme INPUT des Users
+let searchThisPoke = "";   // speichert den INPUT des Users für die Pokemon-Suche
 
 // for the DIALOG "Show-One-Pokemon" ...
 const showOnePokemon = document.getElementById("show_one_pokemon");

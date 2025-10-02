@@ -1,3 +1,14 @@
+function renderSearchBox() {
+    // SUCH-MAKE rendern ...
+    return `       
+        <input class="input_user" id="input_user" type="text" placeholder="Pokemon-Name OR his ID ..." required>
+        <button class="button_grafik" onclick="searchAndShowOnePoke()" 
+            type="submit">Suche starten ...</button>
+        <!-- Position für Ausgabe EINGABE-FEHLER ... -->
+        <p class="input_incorrect" id="input_incorrect"></p>
+
+    `
+}
 
 function renderPokemon() {
     // RENDER ONE Pokemon in the SLIDE-Show
@@ -122,14 +133,4 @@ function renderPokeStats() {
     `
 };
 
-function renderSearchBox() {
-        return `
-        <input class="input_user" id="input_user" type="text" placeholder="Pokemon-Name OR his ID ..." required>
-        <button class="button_grafik" onclick="searchAndShowOnePoke()" 
-            type="submit">Suche starten ...</button>
-        <!-- Position für Ausgabe EINGABE-FEHLER ... -->
-        <p class="input_incorrect" id="input_incorrect"></p>
-
-    `
-}
 

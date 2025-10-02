@@ -46,7 +46,7 @@ main {
 
 .search_Mask {
     /* Anordnung der SUCH-Box-ELEMENTE und Gestaltung... */
-    font-size: 40px;
+    font-size: 30px;
     color: yellow;
     display: flex;
     justify-content: center;
@@ -55,22 +55,26 @@ main {
 
 .input_user {
     /* INPUT-Feld gestalten ... */
-    font-size: 40px;
+    font-size: 30px;
     color: black;
     background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .input_incorrect {
-    font-size: 40px;
+    font-size: 30px;
     color: red;
     /* HINWEIS "falsche Eingabe" HIER gestalten ... */
 }
 
 .button_grafik {
     /* Gestaltung des BUTTONS "Suche absenden" ... */
-    font-size: 40px;
+    font-size: 30px;
     color: black;
-    background-color: rgb(202, 202, 16);;
+    background-color: rgb(202, 202, 16);
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .loding_grafik {

@@ -72,6 +72,38 @@ function showNext() {
 }
 
 
+// ##########################################
+// FUNCTIONs for SEARCH and SHOW this Pokemon
+// ##########################################
+
+function searchAndShowOnePoke() {
+    // Pokemon SUCHEN über Name oder ID und dann SHOW this Poke ...
+    searchThisPoke = "";
+    inputUser = document.getElementById('input_user').innerHTML;
+    searchThisPoke = inputUser.value;
+    console.log(document.getElementById('input_user').innerHTML);
+    
+    console.log("INPUT-Inhalt nach Übergabe an searchTHisPoke", searchThisPoke);
+
+    // inputUser
+    // let inputUser = "";
+    // let inputComment = "";
+    // userContent = document.getElementById(`user_input${index}`);
+    // commentContent = document.getElementById(`comment_input${index}`);
+    // if (userContent.value != "" && commentContent.value != "") {
+    //     // NUR, WENN ... in BEIDEN Feldern ein neuer Wert vorliegt ...
+    //     inputUser = userContent.value;
+    //     inputComment = commentContent.value;    
+    // }
+
+    // "number" ist eine Eingabe vom USER / Number(value) wandelt "value" in eine number um ...
+    // ".isInteger" gibt TRUE zurück, wenn eine ganze Zahl OHNE Dezimalpunkt vorliegt ...
+    // Number.isInteger(Number(value));
+
+
+}
+
+
 // #######################################
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"
 // #######################################
@@ -135,20 +167,6 @@ function showNextPoke() {
 }
 
 
-// ##########################################
-// FUNCTIONs for SEARCH and SHOW this Pokemon
-// ##########################################
-
-function searchAndShowOnePoke() {
-    // create Input-fields for Name oder ID from research Poke ...
-
-
-    // "number" ist eine Eingabe vom USER / Number(value) wandelt "value" in eine number um ...
-    // ".isInteger" gibt TRUE zurück, wenn eine ganze Zahl OHNE Dezimalpunkt vorliegt ...
-    Number.isInteger(Number(value));
-
-
-}
 
 
 
