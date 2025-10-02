@@ -175,6 +175,7 @@ main {
     border-color: blueviolet;
     border-width: 10px;
     border-radius: 15px;
+    margin-top: 5px;
 }
 
 .counter_grafik {

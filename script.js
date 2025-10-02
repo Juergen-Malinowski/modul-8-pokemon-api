@@ -14,7 +14,7 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
             let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
             // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
             // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
-            let pokeAsJson = await getAdress.json();
+            pokeAsJson = await getAdress.json();
             allPoke.push(pokeAsJson);
             capitalized = allPoke[index - 1].name;
             capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
@@ -76,31 +76,71 @@ function showNext() {
 // FUNCTIONs for SEARCH and SHOW this Pokemon
 // ##########################################
 
-function searchAndShowOnePoke() {
+async function searchAndShowOnePoke() {
     // Pokemon SUCHEN über Name oder ID und dann SHOW this Poke ...
-    searchThisPoke = "";
-    inputUser = document.getElementById('input_user').innerHTML;
-    searchThisPoke = inputUser.value;
-    console.log(document.getElementById('input_user').innerHTML);
-    
-    console.log("INPUT-Inhalt nach Übergabe an searchTHisPoke", searchThisPoke);
+    audioClick.play();
+    searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der AUSGABE-Funktionen
+    getInputForSearch();    // Daten INPUT einlesen / in shorts.js
+    getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / in shorts.js
+    console.log("pokeIdNumber NACH Funktion getPokeIdNumber() : ", pokeIdNumber);
 
-    // inputUser
-    // let inputUser = "";
-    // let inputComment = "";
-    // userContent = document.getElementById(`user_input${index}`);
-    // commentContent = document.getElementById(`comment_input${index}`);
-    // if (userContent.value != "" && commentContent.value != "") {
-    //     // NUR, WENN ... in BEIDEN Feldern ein neuer Wert vorliegt ...
-    //     inputUser = userContent.value;
-    //     inputComment = commentContent.value;    
-    // }
+    if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Vorgabe ?
+        // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
+        if (pokeIdNumber == 0) {
+            // SUCHE über NAME ...  (Wert NULL ergibt getPokeIdNumber(), wenn ein STRING vorliegt !)
+            console.log("IF hat festgestellt, pokeIdNumber ist NULL = ein STRING liegt vor : ", pokeIdNumber);
+            console.log("Der STRING ist : ", searchThisPoke);
 
-    // "number" ist eine Eingabe vom USER / Number(value) wandelt "value" in eine number um ...
-    // ".isInteger" gibt TRUE zurück, wenn eine ganze Zahl OHNE Dezimalpunkt vorliegt ...
-    // Number.isInteger(Number(value));
+            // MIT searchThisPoke über NAMEN des pokemon SUCHEN ...
+            // ACHTUNG .... den NAMEN komplett in KLEIN-Buchstaben umwandeln für SUCHE !!!
+
+            // var ergebnis = textEingabe.toLowerCase();
 
 
+            // API-Datensatz aus URL hochladen und in getAdress ablegen ...
+            // und "await" pausiert den CODE bis "fetch" abgeschlossen ist ...
+            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
+            // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
+            // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
+            pokeAsJson = await getAdress.json();
+            allPoke.push(pokeAsJson);
+            capitalized = allPoke[index - 1].name;
+            capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
+            allPoke[index - 1].name = capitalized;     // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
+
+
+
+        } else {
+            // SUCHE über ID ... (getPokeIdNumber() enthält Zahl UNGLEICH Null !)
+            console.log("IF hat festgestellt, pokeIdNumber ist eine NUMBER (NICHT NULL) : ", pokeIdNumber);
+
+            // über ID das Poke suchen + anzeigen
+            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);
+            let pokeAsJson = await getAPI.json();
+            console.log("geladener Pokemon-ARRAY ", pokeAsJson);
+            rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
+            arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
+            showSearchPoke();
+
+
+
+            arrayID = rememberArrayID;  // gibt NACH der SUCHE den ALTEN Stand von arrayID zurück
+        }
+    }
+    else {
+        // ERROR-Meldung UND zur EINGABE auffordern, da KEINE Eingabe vorliegt ! ...
+    }
+    searchOnePoke = false;
+}
+
+function showSearchPoke() {
+    // ausgelöst durch searchAndShowOnePoke() nach INPUT USER ...
+    getAllInfoForRendern();       // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
+    thisPokemon.innerHTML = "";
+    statsPokemon.innerHTML = "";
+    showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
+    statsPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
 }
 
 
@@ -134,7 +174,9 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
-    if (arrayID < 0) {
+    console.log("aktueller WERT arrayID VOR IF-Anweisung = ", arrayID);
+    if (arrayID == 0) {
+        console.log("IF arrayID = 0 hat AUSGELÖST ... ", arrayID);        
         arrayID = allPoke.length - 1;
         getInfoOnePokemon();         // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
         thisPokemon.innerHTML = renderOnePokemon(arrayID);

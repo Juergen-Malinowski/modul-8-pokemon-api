@@ -1,6 +1,11 @@
 // ###########################
-// all   SHORT   Function  ...
+// all   SHORTs   Function  ...
 // ###########################
+
+
+// ###############################
+// all   SHORTs   for MAIN-Page ...
+// ###############################
 
 async function howMuchPokeExist() {
     apiLength = 0;
@@ -34,15 +39,22 @@ function renderControlPanel() {
     document.getElementById('show_next_button').disabled = false;
 }
 
-function getAllInfoForRendern() {
-    // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN ...
-    whatAbilities();            // ERMITTELN der besonderen Fähigkeiten
-    findBackgroundColor();      // ERMITTELN: Background-Color für das POKEMON
-    findTypeIcons();            // ERMITTELN: ICONS für die POKE-Types
-    // ERMITTELN: WERTE zur Darstellung PROCESS-BAR und alle EINGENSCHAFTEN mit WERTEN ...
-    getMaxValueFromAllStats();
+function getInputForSearch() {
+    // INPUT-Daten einlesen ...
+    inputUser = document.getElementById('input_user');
+    console.log("INHALT von inputUser aus innerHTML = ", inputUser);
+    searchThisPoke = "";
+    searchThisPoke = inputUser.value;
+    console.log("INPUT-Inhalt nach Übergabe an searchTHisPoke = ", searchThisPoke);
 }
 
+function getPokeIdNumber() {
+    // USER-Eingabe für den Fall einer ID bearbeiten und Ergebnis am Ende in pokeIdNumber speichern ...
+    pokeIdNumber = searchThisPoke;                     // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
+    pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
+    pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
+    pokeIdNumber = Number(pokeIdNumber);              // wandelt in eine Zahl um
+}
 
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
@@ -55,6 +67,22 @@ function findBackgroundColor() {
     // ZUORDNUNG BG-Color entsprechend des POKE-Haupt-TYPES ...
     getTheColorCode();  // FUNKTION in data.JS !
 }
+
+
+// #######################################
+// all   SHORTs   for SHOW-One-Pokemon ...
+// #######################################
+
+function getAllInfoForRendern() {
+    // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN ...
+    whatAbilities();            // ERMITTELN der besonderen Fähigkeiten
+    findBackgroundColor();      // ERMITTELN: Background-Color für das POKEMON
+    findTypeIcons();            // ERMITTELN: ICONS für die POKE-Types
+    // ERMITTELN: WERTE zur Darstellung PROCESS-BAR und alle EINGENSCHAFTEN mit WERTEN ...
+    getMaxValueFromAllStats();
+}
+
+
 
 
 function findTypeIcons() {
@@ -84,7 +112,16 @@ function whatAbilities() {
     abilityOne = "";
     abilityTwo = "";
     abilityThree = "";
-    // Fähigkeiten auslesen ...
+    // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
+    for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+        switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
+            case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
+            case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
+            // case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
+            default: break;
+        }
+    }
+    // Fähigkeiten auslesen für "SEARCH-One-Pokemon" ...
     for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
         switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
             case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;

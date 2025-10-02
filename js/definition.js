@@ -2,7 +2,8 @@
 // DEFINITION of VARIBALES ...
 // ###########################
 
-// GLOBAL ...
+
+// #####  GLOBAL  ##### ...
 let allPoke = [];     // Array nimmt alle geladenen Pokemons auf
 let startIndex = 1;   // startIndex gibt die NUMMER des ersten zu ladenen POKEMONs vor !
 let endIndex = startIndex + 7;  // Entscheidet, wieviele POKEMONs geladen werden ... derzeit 8 Pokemons
@@ -10,21 +11,27 @@ let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start
 // ... loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
 let arrayID = 0;          // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
+let rememberArrayID = 0;  // speichert kurzfristig die arrayID, um sie später wieder zurückzugeben
+let pokeAsJson = "";      // speichert einen geladenen API-Datensatz im JSON-Format zur weiteren Verarbeitung
 let apiLength = 0;        // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
 let loadedPokemons = 0;   // ANZAHL derzeit geladener Pokemons
 let capitalized = "";     // Manipulation POKE-NAME mit ersten Buchstaben in GROSS-Schrift
 const buttonPreNext = document.getElementById('button_pre_next');
 
 
-// for AUDIO
+// #####  for AUDIO  ##### ...
 // to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3');
 
-// for the SEARCH of ONE Pokemon ...
+
+// #####  for the SEARCH of ONE Pokemon  ##### ...
 let inputUser = document.getElementById('input_user');  // Übernahme INPUT des Users
 let searchThisPoke = "";   // speichert den INPUT des Users für die Pokemon-Suche
+let pokeIdNumber = "";      // speichert ID des Pokemons für SUCHE
+let searchOnePoke = false;
 
-// for the DIALOG "Show-One-Pokemon" ...
+
+// ######  for the DIALOG "Show-One-Pokemon"  ##### ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
