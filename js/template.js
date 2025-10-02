@@ -15,6 +15,7 @@ function renderPokemon() {
 }
 
 function setButtonsAndCounter() {
+    // CONTROL-Center for Main-Page ...
     return `
         <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
         <p class="counter_grafik"> ${loadedPokemons} von ${apiLength} Pokemons </p>
@@ -23,6 +24,7 @@ function setButtonsAndCounter() {
 }
 
 function renderLodingPicture() {
+    // THIS is to SEE, while loading NEW Poke from API ...
     return `
         <div class="loding_grafik">
             <p class="load_grafik">Pokemons werden geladen ...</p>
@@ -119,3 +121,15 @@ function renderPokeStats() {
         <hr class="line_grafik_evolution">
     `
 };
+
+function renderSearchBox() {
+        return `
+        <input class="input_user" id="input_user" type="text" placeholder="Pokemon-Name OR his ID ..." required>
+        <button class="button_grafik" onclick="searchAndShowOnePoke()" 
+            type="submit">Suche starten ...</button>
+        <!-- Position für Ausgabe EINGABE-FEHLER ... -->
+        <p class="input_incorrect" id="input_incorrect"></p>
+
+    `
+}
+

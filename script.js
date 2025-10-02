@@ -17,12 +17,13 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
             let pokeAsJson = await getAdress.json();
             allPoke.push(pokeAsJson);
             capitalized = allPoke[index - 1].name;
-            capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wir GROSS) / in shorts.js
+            capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
             allPoke[index - 1].name = capitalized;     // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
         }
         loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);   // HOCHZÄHLEN geladener POKEMONs
     }
     console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
+    document.getElementById('search_Mask').innerHTML = renderSearchBox();
     showPokemon();
     renderControlPanel();  // in shorts.js
 }
@@ -63,12 +64,8 @@ function showNext() {
     document.getElementById('show_next_button').disabled = true;
     // HINWEIS geben, LADE-VORGANG läuft noch !!! ...
     document.getElementById('overview_poke').innerHTML = "";
-
     // RENDERN "Warte-Bildschirm", bis API-LADEN abgeschlossen ist ...
     document.getElementById('overview_poke').innerHTML = renderLodingPicture();
-
-    // document.getElementById('overview_poke').innerHTML = `<p class="load_grafik">Pokemons werden geladen ...</p>`;
-
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
     loadPokemon();  // laden UND showPokemon()
@@ -136,4 +133,25 @@ function showNextPoke() {
         statsPokemon.innerHTML = renderPokeStats();
     }
 }
+
+
+// ##########################################
+// FUNCTIONs for SEARCH and SHOW this Pokemon
+// ##########################################
+
+function searchAndShowOnePoke() {
+    // create Input-fields for Name oder ID from research Poke ...
+
+
+    // "number" ist eine Eingabe vom USER / Number(value) wandelt "value" in eine number um ...
+    // ".isInteger" gibt TRUE zurück, wenn eine ganze Zahl OHNE Dezimalpunkt vorliegt ...
+    Number.isInteger(Number(value));
+
+
+}
+
+
+
+
+
 

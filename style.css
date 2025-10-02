@@ -44,6 +44,35 @@ main {
     height: auto;
 }
 
+.search_Mask {
+    /* Anordnung der SUCH-Box-ELEMENTE und Gestaltung... */
+    font-size: 40px;
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.input_user {
+    /* INPUT-Feld gestalten ... */
+    font-size: 40px;
+    color: black;
+    background-color: white;
+}
+
+.input_incorrect {
+    font-size: 40px;
+    color: red;
+    /* HINWEIS "falsche Eingabe" HIER gestalten ... */
+}
+
+.button_grafik {
+    /* Gestaltung des BUTTONS "Suche absenden" ... */
+    font-size: 40px;
+    color: black;
+    background-color: rgb(202, 202, 16);;
+}
+
 .loding_grafik {
     display: flex;
     flex-direction: column;
@@ -52,7 +81,11 @@ main {
 .lodPic_grafik {
     display: flex;
     flex-direction: row;
+    flex: 1;
+}
 
+.loding_picture {
+    height: 800px;
 }
 
 .poke_grafik {
