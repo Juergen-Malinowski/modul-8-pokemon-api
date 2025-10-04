@@ -96,6 +96,9 @@ async function loadWithNameOrIdAndShow() {
             // SUCHE über NAME ... ( getPokeIdNumber() ergab Wert NULL, wenn ein STRING vorliegt !)
             let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
             pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
+            capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
+            capitalizedString();            // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
+            pokeAsJson.name = capitalized;  // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
             showSearchPoke();
         } else {
             // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
