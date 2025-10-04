@@ -14,11 +14,17 @@
 <body class="main_grafik" onload="loadPokemon()">
     <!-- CLASS "main_grafik" gives the main-background-picture !!! -->
 
-    <header class="header_grafik">
+    <header>
         <!-- Tilezeile / SUCH-Make Poke (name or ID) / NAV-Menü -->
         <h1>Pokedex</h1>
-        <div id="search_Mask" class="search_Mask">HIER SUCH-Make setzen</div>
-        <nav></nav>
+        <div class="header_grafik">
+            <div id="search_Mask" class="search_Mask">HIER SUCH-Make setzen</div>
+            <nav class="nav_grafik">
+                <a href="./index.html" class="start_grafik">Start</a>
+                <a href="./html/info.html" class="info_grafik">Info</a>
+            </nav>
+        </div>
+
     </header>
 
     <main class="main_grafik">
@@ -46,7 +52,8 @@
 
         <dialog id="show_search_one_pokemon" class="dialog_box">
             <p id="show_search_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
-            <div id="poke_search_stats" class="poke_evolution">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON</div>
+            <div id="poke_search_stats" class="poke_evolution">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON
+            </div>
 
             <div class="control_grafik_search">
                 <!-- CONTROL-Panel SHOW-Search-POKE -->

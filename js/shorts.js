@@ -105,9 +105,6 @@ async function loadWithNameOrIdAndShow() {
             showSearchPoke();           // Ausgabe gesuchtes Pokemon bearbeiten
         }
     }
-    else {
-        // ERROR-Meldung UND zur EINGABE auffordern, da KEINE Eingabe vorliegt ! ...
-    }
 }
 
 
