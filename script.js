@@ -76,9 +76,22 @@ function showNext() {
 // FUNCTIONs for SEARCH and SHOW this Pokemon
 // ##########################################
 
+
+function getButtonCloseOnePokemon(){
+    document.getElementById('')
+    renderButtons()
+}
+
+
 async function searchAndShowOnePoke() {
     // Pokemon SUCHEN über Name oder ID und dann SHOW this Poke ...
     audioClick.play();
+
+    // BUTTONs vorheriger und nächster Pokemon deaktivieren (falls gesuchter POKE nicht in allPoke enthalten)
+    document.getElementById('pre_poke').onclick = null;
+    document.getElementById('next_poke').onclick = null;
+
+    // document.getElementById('pre_poke').classList.hidden;
     searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der AUSGABE-Funktionen
     getInputForSearch();    // Daten INPUT einlesen / in shorts.js
     getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / in shorts.js
@@ -130,6 +143,7 @@ async function searchAndShowOnePoke() {
     else {
         // ERROR-Meldung UND zur EINGABE auffordern, da KEINE Eingabe vorliegt ! ...
     }
+
     searchOnePoke = false;
 }
 
@@ -168,6 +182,8 @@ function showThisPokemon(getIDcode) {
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
+    document.getElementById('pre_poke').onclick = showPreviousPoke();
+    document.getElementById('next_poke').onclick = showNextPoke()
     showOnePokemon.close();  // Dialog schließen
     showPokemon();           // POKE-Overview zeigen
 });
@@ -175,7 +191,7 @@ closeDialog.addEventListener("click", () => {
 function showPreviousPoke() {
     // ONCLICK ... den vorherigen Pokemon zeigen
     audioClick.play();
-    if (arrayID == 0) {     
+    if (arrayID == 0) {
         arrayID = allPoke.length - 1;
         getAllInfoForRendern();         // beschafft alles, was für das RENDERN ONE-Pokemon erforderlich ist ...
         thisPokemon.innerHTML = renderOnePokemon(arrayID);

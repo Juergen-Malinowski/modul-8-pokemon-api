@@ -166,6 +166,8 @@ function whatAbilities() {
     } else {
         // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
         for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
+            console.log("Länge der abilities in allPoke bei index = ", index, " ist = ", allPoke[arrayID].abilities.length);
+            
             switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
                 case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
                 case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;

@@ -1,3 +1,16 @@
+function renderButtonsOnePoke() {
+    return`
+        <div class="control_grafik">
+        <!-- CONTROL-Panel -->
+            <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
+                onclick="showPreviousPoke()">
+            <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+            <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"
+                onclick="showNextPoke()">
+        </div>
+    `
+}
+
 function renderSearchBox() {
     // SUCH-MAKE rendern ...
     return `       
@@ -47,7 +60,7 @@ function renderLodingPicture() {
 }
 
 function renderOnePokemon(arrayID) {
-    // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
+    // RENDER in the DIALOG "Show-One-Pokemon"; contense without stats(Eigenschaften)
     return `    
         <div>
             <div class="poke_personal_name">Name: </div>

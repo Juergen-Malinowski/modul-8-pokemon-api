@@ -68,6 +68,10 @@ main {
     /* HINWEIS "falsche Eingabe" HIER gestalten ... */
 }
 
+.hiddenButton {
+    display: none;
+}
+
 .button_grafik {
     /* Gestaltung des BUTTONS "Suche absenden" ... */
     font-size: 30px;
