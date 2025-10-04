@@ -98,12 +98,20 @@ function showSearchPoke() {
 }
 
 closeDialogSearch.addEventListener("click", () => {
-    // CLOSE DIALOG "Show-One-Pokemon"
+    // CLOSE DIALOG "SEARCH-One-Pokemon" bei Mausklick ...
     audioClick.play();
     showSearchPokemon.close();  // Dialog schließen
     showPokemon();           // POKE-Overview zeigen
 });
 
+closeDialogSearch.addEventListener("keydown", (event) => {
+    // CLOSE DIALOG "SEARCH-One-Pokemon" bei Betätigen von ENTER ...
+    audioClick.play();
+    if (event.key === "Enter") {
+        showSearchPokemon.close();  // Dialog schließen
+        showPokemon();              // POKE-Overview zeigen
+    }
+});
 
 // #######################################
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"
@@ -117,7 +125,6 @@ function showThisPokemon(getIDcode) {
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
-    console.log("showThisPokemon erhielt durch das Bild die array-ID = ", arrayID);
     getAllInfoForRendern();                   // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
@@ -127,10 +134,19 @@ function showThisPokemon(getIDcode) {
 }
 
 closeDialog.addEventListener("click", () => {
-    // CLOSE DIALOG "Show-One-Pokemon"
+    // CLOSE DIALOG "Show-One-Pokemon" bei Mausklick ...
     audioClick.play();
     showOnePokemon.close();  // Dialog schließen
     showPokemon();           // POKE-Overview zeigen
+});
+
+closeDialog.addEventListener("keydown", (event) => {
+    // CLOSE DIALOG "Show-One-Pokemon" bei Betätigen von ENTER ...
+    audioClick.play();
+    if (event.key === "Enter") {
+        showOnePokemon.close();   // Dialog schließen
+        showPokemon();            // POKE-Overview zeigen
+    }
 });
 
 function showPreviousPoke() {

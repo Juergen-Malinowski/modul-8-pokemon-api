@@ -131,41 +131,50 @@ function findTypeIcons() {
     pokeTypeIcon2 = "normal.jpg";
     pokeTypeSearch = "";
     if (searchOnePoke) {
-        // TypeIcons ermitteln für "SEARCH-One-Pokemon" ...
-        for (let index = 0; index < pokeAsJson.types.length; index++) {
-            if (index == 1) {
-                // TYPE 1 holen ...
-                pokeTypeIcon2 = pokeAsJson.types[index].type.name;
-                pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
-                getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
-                pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
-            } else {
-                // TYPE 0 holen ...
-                pokeTypeIcon1 = pokeAsJson.types[index].type.name;
-                pokeTypeSearch = pokeTypeIcon1;
-                getTheTypeIcons();
-                pokeTypeIcon1 = pokeTypeSearch;
-            }
-        }
+        getIconsSearchPoke();  // TypeIcons ermitteln für "SEARCH-One-Pokemon" ...
     } else {
-        // TypeIcons ermitteln für "Show-ONE-Pokemon" ...
-        for (let index = 0; index < allPoke[arrayID].types.length; index++) {
-            if (index == 1) {
-                // TYPE 1 holen ...
-                pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
-                pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
-                getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
-                pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
-            } else {
-                // TYPE 0 holen ...
-                pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
-                pokeTypeSearch = pokeTypeIcon1;
-                getTheTypeIcons();
-                pokeTypeIcon1 = pokeTypeSearch;
-            }
+        getIconsOnePoke();     // TypeIcons ermitteln für "Show-ONE-Pokemon" ...
+    }
+}
+
+function getIconsSearchPoke() {
+    // TypeIcons ermitteln für "SEARCH-One-Pokemon" ...
+    for (let index = 0; index < pokeAsJson.types.length; index++) {
+        if (index == 1) {
+            // TYPE 1 holen ...
+            pokeTypeIcon2 = pokeAsJson.types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
+            getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+            pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
+        } else {
+            // TYPE 0 holen ...
+            pokeTypeIcon1 = pokeAsJson.types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon1;
+            getTheTypeIcons();
+            pokeTypeIcon1 = pokeTypeSearch;
         }
     }
 }
+
+function getIconsOnePoke() {
+    // TypeIcons ermitteln für "Show-ONE-Pokemon" ...
+    for (let index = 0; index < allPoke[arrayID].types.length; index++) {
+        if (index == 1) {
+            // TYPE 1 holen ...
+            pokeTypeIcon2 = allPoke[arrayID].types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon2;  // Wert für Suche bei ZUORDNUNG übergeben
+            getTheTypeIcons();  // in data.JS ! (über VAR "PokeTypeSearch" erfolgt ZUORDNUNG)
+            pokeTypeIcon2 = pokeTypeSearch;  // "Dateinamen.JPG" nun zuweisen für das Rendern
+        } else {
+            // TYPE 0 holen ...
+            pokeTypeIcon1 = allPoke[arrayID].types[index].type.name;
+            pokeTypeSearch = pokeTypeIcon1;
+            getTheTypeIcons();
+            pokeTypeIcon1 = pokeTypeSearch;
+        }
+    }
+}
+
 
 function whatAbilities() {
     // VORGABE: -KEINE- Fähigkeiten vorhanden ...
@@ -186,8 +195,6 @@ function whatAbilities() {
     } else {
         // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
         for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-            console.log("Länge der abilities in allPoke bei index = ", index, " ist = ", allPoke[arrayID].abilities.length);
-
             switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
                 case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
                 case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;

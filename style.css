@@ -208,8 +208,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 50px;
-
+    padding-top: 10px;
 }
 
 .load_grafik {
@@ -222,6 +221,13 @@ main {
 /* ################ */
 /* CLASS für DIALOG */
 /* ################ */
+
+.control_grafik_search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+}
 
 .dialog_box {
     font-size: 40px;

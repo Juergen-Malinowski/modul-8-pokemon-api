@@ -14,9 +14,9 @@ function renderButtonsOnePoke() {
 function renderSearchBox() {
     // SUCH-MAKE rendern ...
     return `       
-        <input class="input_user" id="input_user" type="text" placeholder="Pokemon-Name OR his ID ..." required>
-        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" 
-            type="submit">Suche</button>
+        <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
+            placeholder="Pokemon-Name OR his ID ..." required>
+        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit">Suche</button>
         <!-- Position für Ausgabe EINGABE-FEHLER ... -->
         <p class="input_incorrect" id="input_incorrect"></p>
     `
