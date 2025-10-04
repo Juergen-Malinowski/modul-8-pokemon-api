@@ -1,4 +1,9 @@
+// ###########################
+//  HTML-Templates  "RENDERN"
+// ###########################
+
 function renderButtonsOnePoke() {
+    // Buttons für Pokemon-OVERVIEW RENDERN ...
     return`
         <div class="control_grafik">
         <!-- CONTROL-Panel -->
@@ -12,7 +17,7 @@ function renderButtonsOnePoke() {
 }
 
 function renderSearchBox() {
-    // SUCH-MAKE rendern ...
+    // SUCH-MAKE RENDERN ...
     return `       
         <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
             placeholder="Pokemon-Name OR his ID ..." required>
@@ -23,7 +28,7 @@ function renderSearchBox() {
 }
 
 function renderPokemon() {
-    // RENDER ONE Pokemon in the SLIDE-Show
+    // ONE Pokemon in der SLIDE-Show RENDERN ...
     return `
         <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
@@ -38,7 +43,7 @@ function renderPokemon() {
 }
 
 function setButtonsAndCounter() {
-    // CONTROL-Center for Main-Page ...
+    // CONTROL-Center for Main-Page RENDERN ...
     return `
         <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
         <p class="counter_grafik"> ${loadedPokemons} von ${apiLength} Pokemons </p>
@@ -47,7 +52,7 @@ function setButtonsAndCounter() {
 }
 
 function renderLodingPicture() {
-    // THIS is to SEE, while loading NEW Poke from API ...
+    // LADE-BILDSCHIRM für die Wartezeit während API-Zugriff erfolgt RENDERN  ...
     return `
         <div class="loding_grafik">
             <p class="load_grafik">Pokemons werden geladen ...</p>
@@ -60,7 +65,7 @@ function renderLodingPicture() {
 }
 
 function renderOnePokemon(arrayID) {
-    // RENDER in the DIALOG "Show-One-Pokemon"; contense without stats(Eigenschaften)
+    // DIALOG "Show-One-Pokemon" RENDERN ... (ohne Eigenschaften, da eigene Funktion)
     return `    
         <div>
             <div class="poke_personal_name">Name: </div>
@@ -95,7 +100,7 @@ function renderOnePokemon(arrayID) {
 
 
 function renderSearchPokemon() {
-    // RENDER in the DIALOG "Show-One-Pokemon" ALL contense
+    // DIALOG "Show-SEARCH-Pokemon" RENDERN ... (ohne Eigenschaften, da eigene Funktion)
     return `    
         <div>
             <div class="poke_personal_name">Name: </div>
@@ -129,7 +134,7 @@ function renderSearchPokemon() {
 }
 
 function renderPokeStats() {
-    // RENDERN aller Eigenschaften vom aktuellen POKE ...
+    // DIALOG "Show-Pokemon ... ONE und SEARCH" alle EIGENSCHAFTEN RENDERN ...
     return `
         <hr class="line_grafik_evolution">
         <table border="20" class="holeTable">

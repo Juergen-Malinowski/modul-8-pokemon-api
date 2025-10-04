@@ -1,11 +1,11 @@
-// ###########################
-// all   SHORTs   Function  ...
-// ###########################
+// #############################################################################################
+// all   SHORTs   Function / ausgegliederte "Kurz-Funktionen" als Teil einer Haupt-Funktion  ...
+// #############################################################################################
 
 
-// ###############################
-// all   SHORTs   for MAIN-Page ...
-// ###############################
+// ##########################
+// SHORTs   for MAIN-Page ...
+// ##########################
 
 async function howMuchPokeExist() {
     apiLength = 0;
@@ -63,9 +63,9 @@ function findBackgroundColor() {
 }
 
 
-// #######################################
-// all   SHORTs   for  SEARCH Pokemon  ...
-// #######################################
+// #################################
+// SHORTs   for  SEARCH Pokemon  ...
+// #################################
 
 function getInputForSearch() {
     // INPUT-Daten mit ID einlesen ...
@@ -88,33 +88,10 @@ function getPokeWithName() {
     pokeName = pokeName.toLowerCase();
 }
 
-async function loadWithNameOrIdAndShow() {
-    // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE Search-Pokemon ...
-    if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Vorgabe ?
-        // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
-        if (pokeIdNumber == 0) {
-            // SUCHE über NAME ... ( getPokeIdNumber() ergab Wert NULL, wenn ein STRING vorliegt !)
-            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
-            pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
-            capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
-            capitalizedString();            // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
-            pokeAsJson.name = capitalized;  // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
-            showSearchPoke();
-        } else {
-            // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
-            // über ID das Poke suchen + anzeigen ...
-            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);  // API für Zugriff vorbereiten
-            pokeAsJson = await getAPI.json();                                               // Auslesen Datensatz in pokeASJson
-            showSearchPoke();           // Ausgabe gesuchtes Pokemon bearbeiten
-        }
-    }
-}
 
-
-
-// #######################################
-// all   SHORTs   for SHOW-One-Pokemon ...
-// #######################################
+// #################################
+// SHORTs   for SHOW-One-Pokemon ...
+// #################################
 
 function getAllInfoForRendern() {
     // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN ...

@@ -1,5 +1,7 @@
+// ###########################################################
 // Funktionen zur Manipulation des Inhalts globaler Variablen,
 // die sich dem POKEMON entsprechend anpassen müssen ...
+// ###########################################################
 
 function getTheColorCode() {
     // WEISE backgroundColor den passenden HEX-Farbcode zum TYPE zu ...

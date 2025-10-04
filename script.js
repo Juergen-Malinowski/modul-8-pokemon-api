@@ -9,13 +9,10 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
     if (startIndex >= allPoke.length) {
         // NUR neue Pokemons laden, WENN angeforderte Poke NICHT im Array "allPoke" enthalten
         for (index = startIndex; index <= endIndex; index++) {
-            // API-Datensatz aus URL hochladen und in getAdress ablegen ...
-            // und "await" pausiert den CODE bis "fetch" abgeschlossen ist ...
-            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
-            // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
-            // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
-            pokeAsJson = await getAdress.json();
-            allPoke.push(pokeAsJson);
+            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);  // mit API-Server verbinden zu dem Pokemon
+            // ... "await" pausiert Programmlauf, BIS "fetch" abgeschlossen ist !!!
+            pokeAsJson = await getAdress.json();   // Datensatz von API abholen und in json-Format umwandeln; speichern in pokeAsJson
+            allPoke.push(pokeAsJson);              // neun Datensatz in allPoke speichern
             capitalized = allPoke[index - 1].name;
             capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
             allPoke[index - 1].name = capitalized;     // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
@@ -23,8 +20,8 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
         loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);   // HOCHZÄHLEN geladener POKEMONs
     }
     console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
-    document.getElementById('search_Mask').innerHTML = renderSearchBox();
-    showPokemon();
+    document.getElementById('search_Mask').innerHTML = renderSearchBox();   // Pokemon-SUCHEN-Eingabe-Maske RENDERN
+    showPokemon();   // START Abwicklung RENDERN des Pokemon-OVERVIEWs
     renderControlPanel();  // in shorts.js
 }
 
@@ -47,25 +44,23 @@ function showPrevious() {
         // Sprung über den ERSTEN Pokemon bedeutet ==> ans "ENDE" des Array springen ...
         startIndex = allPoke.length - 7;
         endIndex = startIndex + 7;
-        showPokemon();
+        showPokemon();   // START Abwicklung RENDERN des Pokemon-OVERVIEWs
     } else {
-        // vorherigen Pokemons zeigen ...
+        // vorherige Pokemons zeigen ...
         startIndex = startIndex - 8;
         endIndex = startIndex + 7;
-        showPokemon();
+        showPokemon();   // START Abwicklung RENDERN des Pokemon-OVERVIEWs
     }
 }
 
 function showNext() {
-    // ZEIGE die nächste Pokemons ... falls mehr als in ARRAY "allPoke", dann über API-Nachladen ...
+    // ZEIGE die nächsten Pokemons ... falls mehr als im ARRAY "allPoke", dann über API-Nachladen ...
     audioClick.play();
-    // deaktiviert BUTTON "nächste", damit kein weiterer LOAD ausgelöst werden kann, ...
-    // während von API nächste Pokemons NOCH geladen werden !!!
+    // BUTTON "nächste" DEAKTIVIEREN, damit kein weiterer LOAD ausgelöst werden kann, ...
+    // während von API nächste Pokemons NOCH geladen werden ...
     document.getElementById('show_next_button').disabled = true;
-    // HINWEIS geben, LADE-VORGANG läuft noch !!! ...
-    document.getElementById('overview_poke').innerHTML = "";
-    // RENDERN "Warte-Bildschirm", bis API-LADEN abgeschlossen ist ...
-    document.getElementById('overview_poke').innerHTML = renderLodingPicture();
+    document.getElementById('overview_poke').innerHTML = "";    
+    document.getElementById('overview_poke').innerHTML = renderLodingPicture();   // RENDERN "Warte-Bildschirm", bis API-LADEN abgeschlossen ist ...
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
     loadPokemon();  // laden UND showPokemon()
@@ -83,35 +78,59 @@ function searchAndShowOnePoke() {
     getInputForSearch();    // Daten INPUT einlesen / in shorts.js
     getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / SCHALTER für IF, ob ID oder Name relevant / in shorts.js
     getPokeWithName();      // INPUT-Name auf Kleinschreibung setzen, denn so muss die SUCHE im API erfolgen ... speichern in pokeName / in shors.js
-    loadWithNameOrIdAndShow();   // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE Search-Pokemon ... / in shorts.js
+    loadWithNameOrIdAndShow();   // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE des gesuchten Pokemon
     searchOnePoke = false;       // searchOnePoke wieder auf NORMAL-Zustand "false" stellen
     inputUser.value = "";        // INPUT-Feld wieder zurücksetzen (LEEREN)
 }
 
+async function loadWithNameOrIdAndShow() {
+    // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE des gesuchten Pokemons ...
+    if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Eingabe des Users ?
+        // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
+        if (pokeIdNumber == 0) {
+            // SUCHE über NAME ... ( getPokeIdNumber() ergibt für "pokeIdNumber" den Wert NULL, wenn ein STRING vorliegt !)
+            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
+            pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
+            capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
+            capitalizedString();             // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
+            pokeAsJson.name = capitalized;   // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
+            showSearchPoke();                // RENDERN einleiten
+        } else {
+            // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
+            // über ID das Poke suchen + anzeigen ...
+            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);  // API für Zugriff vorbereiten
+            pokeAsJson = await getAPI.json();                                               // Auslesen Datensatz in pokeASJson
+            showSearchPoke();                // RENDERN einleiten
+        }
+    }
+}
+
 function showSearchPoke() {
+    // RENDERN des gesuchten Pokemons einleiten ...
     getAllInfoForRendern();       // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisSearchPokemon.innerHTML = "";
     statsSearchPokemon.innerHTML = "";
-    showSearchPokemon.showModal(); // OPEN DIALOG für SEARCH-POKE mit MODAL => nur Dialog-BOX ist aktiv !
-    thisSearchPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon rendern ...
-    statsSearchPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
+    showSearchPokemon.showModal(); // OPEN DIALOG für SHOW-SEARCH-POKE mit MODAL => nur Dialog-BOX ist aktiv !
+    thisSearchPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon RENDERN ...
+    statsSearchPokemon.innerHTML = renderPokeStats();      // EIGENSCHAFTEN und WERTE RENDERN ...    
 }
 
 closeDialogSearch.addEventListener("click", () => {
-    // CLOSE DIALOG "SEARCH-One-Pokemon" bei Mausklick ...
+    // CLOSE DIALOG "SEARCH-One-Pokemon" mit Mausklick ...
     audioClick.play();
     showSearchPokemon.close();  // Dialog schließen
-    showPokemon();           // POKE-Overview zeigen
+    showPokemon();              // POKE-Overview zeigen
 });
 
 closeDialogSearch.addEventListener("keydown", (event) => {
-    // CLOSE DIALOG "SEARCH-One-Pokemon" bei Betätigen von ENTER ...
+    // CLOSE DIALOG "SEARCH-One-Pokemon" mit Betätigen von ENTER ...
     audioClick.play();
     if (event.key === "Enter") {
         showSearchPokemon.close();  // Dialog schließen
         showPokemon();              // POKE-Overview zeigen
     }
 });
+
 
 // #######################################
 // FUNCTIONs for DIALOG "Show-ONE-Pokemon"
@@ -134,14 +153,14 @@ function showThisPokemon(getIDcode) {
 }
 
 closeDialog.addEventListener("click", () => {
-    // CLOSE DIALOG "Show-One-Pokemon" bei Mausklick ...
+    // CLOSE DIALOG "Show-One-Pokemon" mit Mausklick ...
     audioClick.play();
     showOnePokemon.close();  // Dialog schließen
     showPokemon();           // POKE-Overview zeigen
 });
 
 closeDialog.addEventListener("keydown", (event) => {
-    // CLOSE DIALOG "Show-One-Pokemon" bei Betätigen von ENTER ...
+    // CLOSE DIALOG "Show-One-Pokemon" mit Betätigen von ENTER ...
     audioClick.play();
     if (event.key === "Enter") {
         showOnePokemon.close();   // Dialog schließen
@@ -183,11 +202,4 @@ function showNextPoke() {
         statsPokemon.innerHTML = renderPokeStats();
     }
 }
-
-
-
-
-
-
-
 
