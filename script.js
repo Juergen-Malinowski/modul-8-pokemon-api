@@ -88,8 +88,8 @@ async function searchAndShowOnePoke() {
     audioClick.play();
 
     // BUTTONs vorheriger und nächster Pokemon deaktivieren (falls gesuchter POKE nicht in allPoke enthalten)
-    document.getElementById('pre_poke').onclick = null;
-    document.getElementById('next_poke').onclick = null;
+    // document.getElementById('pre_poke').onclick = null;
+    // document.getElementById('next_poke').onclick = null;
 
     // document.getElementById('pre_poke').classList.hidden;
     searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der AUSGABE-Funktionen
