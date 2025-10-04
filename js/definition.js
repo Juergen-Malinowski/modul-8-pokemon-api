@@ -29,14 +29,19 @@ let inputUser = document.getElementById('input_user');  // Übernahme INPUT des 
 let searchThisPoke = "";   // speichert den INPUT des Users für die Pokemon-Suche
 let pokeIdNumber = "";      // speichert ID des Pokemons für SUCHE
 let searchOnePoke = false;
+const showSearchPokemon = document.getElementById("show_search_one_pokemon");
+const closeDialogSearch = document.getElementById("close_dialog_search");
+const openDialogSearch = document.getElementById("open_dialog_search");
+const thisSearchPokemon = document.getElementById('show_search_pokemon');   // Ausgabe-ID SEARCH-One-Pokemon
+const statsSearchPokemon = document.getElementById('poke_search_stats');    // Ausgabe-ID Eigenschaften SEARCH-One-Pokemon
 
 
 // ######  for the DIALOG "Show-One-Pokemon"  ##### ...
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
 const openDialog = document.getElementById("open_dialog");
-const thisPokemon = document.getElementById('show_pokemon');
-const statsPokemon = document.getElementById('poke_stats');
+const thisPokemon = document.getElementById('show_pokemon');   // Ausgabe-ID Daten ONE Pokemon
+const statsPokemon = document.getElementById('poke_stats');    // Ausgabe-ID Eigenschaften(stats) ONE Pokemon
 let abilityOne = "";
 let abilityTwo = "";
 let abilityThree = "";

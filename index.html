@@ -20,7 +20,7 @@
         <div id="search_Mask" class="search_Mask">HIER SUCH-Make setzen</div>
         <nav></nav>
         <div>
-          <!-- <input type="text"> -->
+            <!-- <input type="text"> -->
         </div>
     </header>
 
@@ -38,7 +38,7 @@
             <div id="poke_stats" class="poke_evolution">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON</div>
 
             <div class="control_grafik">
-                <!-- CONTROL-Panel  -->
+                <!-- CONTROL-Panel SHOW-One-POKE -->
                 <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
                     onclick="showPreviousPoke()">
                 <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
@@ -46,7 +46,19 @@
                     onclick="showNextPoke()">
             </div>
         </dialog>
-        
+
+        <dialog id="show_search_one_pokemon" class="dialog_box">
+            <p id="show_search_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
+            <div id="poke_search_stats" class="poke_evolution">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON</div>
+
+            <div class="control_grafik">
+                <!-- CONTROL-Panel SHOW-Search-POKE -->
+                <button id="close_dialog_search" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+            </div>
+        </dialog>
+
+
+
     </main>
 
     <footer>

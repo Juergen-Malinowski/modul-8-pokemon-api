@@ -50,7 +50,7 @@ function getInputForSearch() {
 
 function getPokeIdNumber() {
     // USER-Eingabe für den Fall einer ID bearbeiten und Ergebnis am Ende in pokeIdNumber speichern ...
-    pokeIdNumber = searchThisPoke;                     // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
+    pokeIdNumber = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
     pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
     pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     pokeIdNumber = Number(pokeIdNumber);              // wandelt in eine Zahl um

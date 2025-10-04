@@ -77,10 +77,10 @@ function showNext() {
 // ##########################################
 
 
-function getButtonCloseOnePokemon(){
-    document.getElementById('')
-    renderButtons()
-}
+// function getButtonCloseOnePokemon(){
+//     document.getElementById('')
+//     renderButtons()
+// }
 
 
 async function searchAndShowOnePoke() {
@@ -95,6 +95,13 @@ async function searchAndShowOnePoke() {
     searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der AUSGABE-Funktionen
     getInputForSearch();    // Daten INPUT einlesen / in shorts.js
     getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / in shorts.js
+
+    //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // FUNCTION zur Bearbeitung Poke-Name einfügen (name in Kleinbuchstaben umwandeln, ...
+    // ... falls USER Großschrift verwendet hat) ...
+    // var ergebnis = textEingabe.toLowerCase();
+    //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     console.log("pokeIdNumber NACH Funktion getPokeIdNumber() : ", pokeIdNumber);
 
     if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Vorgabe ?
@@ -107,14 +114,21 @@ async function searchAndShowOnePoke() {
             // MIT searchThisPoke über NAMEN des pokemon SUCHEN ...
             // ACHTUNG .... den NAMEN komplett in KLEIN-Buchstaben umwandeln für SUCHE !!!
 
-            // var ergebnis = textEingabe.toLowerCase();
-
 
             // API-Datensatz aus URL hochladen und in getAdress ablegen ...
             // und "await" pausiert den CODE bis "fetch" abgeschlossen ist ...
             let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
             // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
             // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
+
+            // ZUGRIFF URL auf NAME POKEMON muss ermittelt und in FETCH angepasst werden!!!
+            // let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + POKE-NAME-IST-ZUGRIFF-ABER-WIE-???);
+            // pokeAsJson = await getAPI.json();
+            console.log("geladener Pokemon-ARRAY ", pokeAsJson);
+            rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
+            arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
+            showSearchPoke();
+
             pokeAsJson = await getAdress.json();
             allPoke.push(pokeAsJson);
             capitalized = allPoke[index - 1].name;
@@ -131,12 +145,12 @@ async function searchAndShowOnePoke() {
             let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);
             pokeAsJson = await getAPI.json();
             console.log("geladener Pokemon-ARRAY ", pokeAsJson);
+            console.log("ARRAY-ID vor dem speichern in remeberArrayID = ", arrayID);
+
             rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
             arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
             showSearchPoke();
-
-
-
+            renderPokeStats();
             arrayID = rememberArrayID;  // gibt NACH der SUCHE den ALTEN Stand von arrayID zurück
         }
     }
@@ -145,18 +159,26 @@ async function searchAndShowOnePoke() {
     }
 
     searchOnePoke = false;
+    console.log("searchOnePoke // BOOLEAN // wird auf FALSE gestellt ... Wert jetzt = ", searchOnePoke);
+    console.log("ARRAY-ID Ende Funktion searchAndShowOnePoke() ist =  ", arrayID);
 }
 
 function showSearchPoke() {
     // ausgelöst durch searchAndShowOnePoke() nach INPUT USER ...
     getAllInfoForRendern();       // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
-    thisPokemon.innerHTML = "";
-    statsPokemon.innerHTML = "";
-    showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
-
-    thisPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon rendern ...
-    statsPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
+    thisSearchPokemon.innerHTML = "";
+    statsSearchPokemon.innerHTML = "";
+    showSearchPokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
+    thisSearchPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon rendern ...
+    statsSearchPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
 }
+
+closeDialogSearch.addEventListener("click", () => {
+    // CLOSE DIALOG "Show-One-Pokemon"
+    audioClick.play();
+    showSearchPokemon.close();  // Dialog schließen
+    showPokemon();           // POKE-Overview zeigen
+});
 
 
 // #######################################
@@ -171,6 +193,7 @@ function showThisPokemon(getIDcode) {
     getIDcode = String(getIDcode);            // wandelt in STRING um 
     arrayID = getIDcode.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     arrayID = Number(arrayID);                // wandelt in eine Zahl um
+    console.log("showThisPokemon erhielt durch das Bild die array-ID = ", arrayID);
     getAllInfoForRendern();                   // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
@@ -182,8 +205,6 @@ function showThisPokemon(getIDcode) {
 closeDialog.addEventListener("click", () => {
     // CLOSE DIALOG "Show-One-Pokemon"
     audioClick.play();
-    document.getElementById('pre_poke').onclick = showPreviousPoke();
-    document.getElementById('next_poke').onclick = showNextPoke()
     showOnePokemon.close();  // Dialog schließen
     showPokemon();           // POKE-Overview zeigen
 });
