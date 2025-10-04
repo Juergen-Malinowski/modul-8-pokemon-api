@@ -39,23 +39,6 @@ function renderControlPanel() {
     document.getElementById('show_next_button').disabled = false;
 }
 
-function getInputForSearch() {
-    // INPUT-Daten einlesen ...
-    inputUser = document.getElementById('input_user');
-    console.log("INHALT von inputUser aus innerHTML = ", inputUser);
-    searchThisPoke = "";
-    searchThisPoke = inputUser.value;
-    console.log("INPUT-Inhalt nach Übergabe an searchTHisPoke = ", searchThisPoke);
-}
-
-function getPokeIdNumber() {
-    // USER-Eingabe für den Fall einer ID bearbeiten und Ergebnis am Ende in pokeIdNumber speichern ...
-    pokeIdNumber = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
-    pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
-    pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
-    pokeIdNumber = Number(pokeIdNumber);              // wandelt in eine Zahl um
-}
-
 function findBackgroundColor() {
     // POKEMON erhält eine zum Haupt-TYP passende BG-Color ...
     if (searchOnePoke) {
@@ -84,9 +67,48 @@ function findBackgroundColor() {
 // all   SHORTs   for  SEARCH Pokemon  ...
 // #######################################
 
+function getInputForSearch() {
+    // INPUT-Daten mit ID einlesen ...
+    inputUser = document.getElementById('input_user');
+    searchThisPoke = "";
+    searchThisPoke = inputUser.value;
+}
 
+function getPokeIdNumber() {
+    // USER-Eingabe für den Fall einer ID bearbeiten und Ergebnis am Ende in pokeIdNumber speichern ...
+    pokeIdNumber = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
+    pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
+    pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
+    pokeIdNumber = Number(pokeIdNumber);              // wandelt in eine Zahl um (in Zahl Null, wenn PokeIdNumber LEER ist, da keine Zahl vorhanden)
+}
 
+function getPokeWithName() {
+    // USER-Eingabe NAME ... Eingabe plausibel machen ... 
+    pokeName = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeName zur Bearbeitung
+    pokeName = pokeName.toLowerCase();
+}
 
+async function loadWithNameOrIdAndShow() {
+    // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE Search-Pokemon ...
+    if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Vorgabe ?
+        // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
+        if (pokeIdNumber == 0) {
+            // SUCHE über NAME ... ( getPokeIdNumber() ergab Wert NULL, wenn ein STRING vorliegt !)
+            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
+            pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
+            showSearchPoke();
+        } else {
+            // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
+            // über ID das Poke suchen + anzeigen ...
+            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);  // API für Zugriff vorbereiten
+            pokeAsJson = await getAPI.json();                                               // Auslesen Datensatz in pokeASJson
+            showSearchPoke();           // Ausgabe gesuchtes Pokemon bearbeiten
+        }
+    }
+    else {
+        // ERROR-Meldung UND zur EINGABE auffordern, da KEINE Eingabe vorliegt ! ...
+    }
+}
 
 
 
@@ -143,8 +165,6 @@ function findTypeIcons() {
             }
         }
     }
-
-
 }
 
 function whatAbilities() {
@@ -167,7 +187,7 @@ function whatAbilities() {
         // Fähigkeiten auslesen für "Show-ONE-Pokemon" ...
         for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
             console.log("Länge der abilities in allPoke bei index = ", index, " ist = ", allPoke[arrayID].abilities.length);
-            
+
             switch (index) {  // Fähigkeit 1-3 werden ausgelesen und zugeordnet + gespeichert ...
                 case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
                 case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;

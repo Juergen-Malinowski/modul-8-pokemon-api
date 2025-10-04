@@ -11,7 +11,7 @@ let firstLoad = true;  // überwacht, dass bestimmte BEFEHLE nur beim ERST-Start
 // ... loadPokemon() kann dadurch grundsätzlich aufgerufen werden !
 
 let arrayID = 0;          // enthält immer die ARRAY-ID des Start-Pokemons beim Bildaufbau
-let rememberArrayID = 0;  // speichert kurzfristig die arrayID, um sie später wieder zurückzugeben
+// let rememberArrayID = 0;  // speichert kurzfristig die arrayID, um sie später wieder zurückzugeben
 let pokeAsJson = "";      // speichert einen geladenen API-Datensatz im JSON-Format zur weiteren Verarbeitung
 let apiLength = 0;        // Anzahl ALLER vorhandenen Pokemons werden hier später abgelegt
 let loadedPokemons = 0;   // ANZAHL derzeit geladener Pokemons
@@ -27,7 +27,8 @@ const audioClick = new Audio('./assets/sound/click.mp3');
 // #####  for the SEARCH of ONE Pokemon  ##### ...
 let inputUser = document.getElementById('input_user');  // Übernahme INPUT des Users
 let searchThisPoke = "";   // speichert den INPUT des Users für die Pokemon-Suche
-let pokeIdNumber = "";      // speichert ID des Pokemons für SUCHE
+let pokeIdNumber = "";     // speichert ID des Pokemons für SUCHE
+let pokeName = "";         // speicher NAME des Pokemons für SUCHE
 let searchOnePoke = false;
 const showSearchPokemon = document.getElementById("show_search_one_pokemon");
 const closeDialogSearch = document.getElementById("close_dialog_search");

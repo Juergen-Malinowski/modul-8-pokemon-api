@@ -76,99 +76,23 @@ function showNext() {
 // FUNCTIONs for SEARCH and SHOW this Pokemon
 // ##########################################
 
-
-// function getButtonCloseOnePokemon(){
-//     document.getElementById('')
-//     renderButtons()
-// }
-
-
-async function searchAndShowOnePoke() {
+function searchAndShowOnePoke() {
     // Pokemon SUCHEN über Name oder ID und dann SHOW this Poke ...
     audioClick.play();
-
-    // BUTTONs vorheriger und nächster Pokemon deaktivieren (falls gesuchter POKE nicht in allPoke enthalten)
-    // document.getElementById('pre_poke').onclick = null;
-    // document.getElementById('next_poke').onclick = null;
-
-    // document.getElementById('pre_poke').classList.hidden;
-    searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der AUSGABE-Funktionen
+    searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der Funktionen unter getAllInfoForRendern() !!!
     getInputForSearch();    // Daten INPUT einlesen / in shorts.js
-    getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / in shorts.js
-
-    //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // FUNCTION zur Bearbeitung Poke-Name einfügen (name in Kleinbuchstaben umwandeln, ...
-    // ... falls USER Großschrift verwendet hat) ...
-    // var ergebnis = textEingabe.toLowerCase();
-    //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    console.log("pokeIdNumber NACH Funktion getPokeIdNumber() : ", pokeIdNumber);
-
-    if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Vorgabe ?
-        // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
-        if (pokeIdNumber == 0) {
-            // SUCHE über NAME ...  (Wert NULL ergibt getPokeIdNumber(), wenn ein STRING vorliegt !)
-            console.log("IF hat festgestellt, pokeIdNumber ist NULL = ein STRING liegt vor : ", pokeIdNumber);
-            console.log("Der STRING ist : ", searchThisPoke);
-
-            // MIT searchThisPoke über NAMEN des pokemon SUCHEN ...
-            // ACHTUNG .... den NAMEN komplett in KLEIN-Buchstaben umwandeln für SUCHE !!!
-
-
-            // API-Datensatz aus URL hochladen und in getAdress ablegen ...
-            // und "await" pausiert den CODE bis "fetch" abgeschlossen ist ...
-            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
-            // mit ".json()" wird der API-Datensatz in das json-Format umgewandelt ...
-            // und "await" lässt CODE erst weiterlaufen, wenn dies abgeschlossen ist ...
-
-            // ZUGRIFF URL auf NAME POKEMON muss ermittelt und in FETCH angepasst werden!!!
-            // let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + POKE-NAME-IST-ZUGRIFF-ABER-WIE-???);
-            // pokeAsJson = await getAPI.json();
-            console.log("geladener Pokemon-ARRAY ", pokeAsJson);
-            rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
-            arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
-            showSearchPoke();
-
-            pokeAsJson = await getAdress.json();
-            allPoke.push(pokeAsJson);
-            capitalized = allPoke[index - 1].name;
-            capitalizedString();        // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
-            allPoke[index - 1].name = capitalized;     // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
-
-
-
-        } else {
-            // SUCHE über ID ... (getPokeIdNumber() enthält Zahl UNGLEICH Null !)
-            console.log("IF hat festgestellt, pokeIdNumber ist eine NUMBER (NICHT NULL) : ", pokeIdNumber);
-
-            // über ID das Poke suchen + anzeigen
-            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);
-            pokeAsJson = await getAPI.json();
-            console.log("geladener Pokemon-ARRAY ", pokeAsJson);
-            console.log("ARRAY-ID vor dem speichern in remeberArrayID = ", arrayID);
-
-            rememberArrayID = arrayID;  // speichert vorübergehend den STAND von arrayID
-            arrayID = pokeIdNumber - 1; // arrayID für Datenzugriff aktualisieren
-            showSearchPoke();
-            renderPokeStats();
-            arrayID = rememberArrayID;  // gibt NACH der SUCHE den ALTEN Stand von arrayID zurück
-        }
-    }
-    else {
-        // ERROR-Meldung UND zur EINGABE auffordern, da KEINE Eingabe vorliegt ! ...
-    }
-
-    searchOnePoke = false;
-    console.log("searchOnePoke // BOOLEAN // wird auf FALSE gestellt ... Wert jetzt = ", searchOnePoke);
-    console.log("ARRAY-ID Ende Funktion searchAndShowOnePoke() ist =  ", arrayID);
+    getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / SCHALTER für IF, ob ID oder Name relevant / in shorts.js
+    getPokeWithName();      // INPUT-Name auf Kleinschreibung setzen, denn so muss die SUCHE im API erfolgen ... speichern in pokeName / in shors.js
+    loadWithNameOrIdAndShow();   // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE Search-Pokemon ... / in shorts.js
+    searchOnePoke = false;       // searchOnePoke wieder auf NORMAL-Zustand "false" stellen
+    inputUser.value = "";        // INPUT-Feld wieder zurücksetzen (LEEREN)
 }
 
 function showSearchPoke() {
-    // ausgelöst durch searchAndShowOnePoke() nach INPUT USER ...
     getAllInfoForRendern();       // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisSearchPokemon.innerHTML = "";
     statsSearchPokemon.innerHTML = "";
-    showSearchPokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
+    showSearchPokemon.showModal(); // OPEN DIALOG für SEARCH-POKE mit MODAL => nur Dialog-BOX ist aktiv !
     thisSearchPokemon.innerHTML = renderSearchPokemon();   // DETAILS vom Pokemon rendern ...
     statsSearchPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...    
 }
@@ -197,7 +121,7 @@ function showThisPokemon(getIDcode) {
     getAllInfoForRendern();                   // ALLE Voreinstellungen und Datenbeschaffungen VORM RENDERN !!! / in shorts.js
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
-    showOnePokemon.showModal(); // OPEN DIALOG with MODAL => only Dialog-BOX is working !
+    showOnePokemon.showModal(); // OPEN DIALOG für SHOW-One-Poke mit MODAL => nur Dialog-BOX ist aktiv !
     thisPokemon.innerHTML = renderOnePokemon(arrayID);   // DETAILS vom Pokemon rendern ...
     statsPokemon.innerHTML = renderPokeStats();  // EIGENSCHAFTEN und WERTE rendern ...
 }
