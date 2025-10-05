@@ -67,13 +67,12 @@ function renderLodingPicture() {
 function renderOnePokemon(arrayID) {
     // DIALOG "Show-One-Pokemon" RENDERN ... (ohne Eigenschaften, da eigene Funktion)
     return `    
-        <div>
+        <div class="poke_personal_position">
             <div class="poke_personal_name">Name: </div>
             <div class="poke_personal_name_color">${allPoke[arrayID].name}</div>
             <br>
-            <div class="poke_personal">Poke-ID: #${allPoke[arrayID].id}</div><br>   
-
-            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1"><br>
+            <div class="poke_personal">Poke-ID: #${allPoke[arrayID].id}</div>
+            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1">
             <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon" alt="ICON vom Type1">               
         </div>    
         <div class="get_color">
@@ -149,8 +148,8 @@ function renderPokeStats() {
             </thead>
                 <tbody>
                 <tr class="table_contens_hp">
-                    <td class="hp_name">${pokeStats[0].name} </td>
-                    <td class="hp_value">${pokeStats[0].value} </td>
+                    <td>${pokeStats[0].name} </td>
+                    <td>${pokeStats[0].value} </td>
                     <td>${stat0}</td>                         
                 </tr>
                 <tr class="table_contens_attack">

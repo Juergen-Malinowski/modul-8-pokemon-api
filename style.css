@@ -5,8 +5,8 @@
 h1 {
     font-size: 3em;
     font-style: italic;
-    /* width: 1440px; */
-    width: 100vh;
+    width: 1300px;
+    /* width: 100vh; */
     color: white;
     background-color: blueviolet;
     border-style: double;
@@ -111,11 +111,6 @@ main {
     margin-bottom: 10px;
 }
 
-/* .input_incorrect {
-    font-size: 30px;
-    color: red;
-} */
-
 .hiddenButton {
     display: none;
 }
@@ -144,15 +139,15 @@ main {
 }
 
 .loding_picture {
-    height: 800px;
+    height: 600px;
 }
 
 
 /* POKEMON OVERVIEW gestalten */
 .poke_grafik {
-    width: 100vh;
+    width: 1300px;
+    /* width: 100vh; */
     height: 100vh;
-    /* width: 1440px; */
     height: auto;
     border-style: double;
     border-color: black;
@@ -163,13 +158,8 @@ main {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 20px;
 }
-
-
-
-
-
 
 .one_pokemon {
     width: 275px;
@@ -219,8 +209,8 @@ main {
 }
 
 .button_pre_next {
-    width: 100vh;
-    /* width: 1440px; */
+    width: 1300px;
+    /* width: 100vh; */
     height: auto;
     border-style: double;
     border-color: black;
@@ -287,14 +277,13 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 
 .dialog_box {
     font-size: 40px;
     color: white;
     width: 100%;
-    height: auto;
     position: absolute;
     top: 1%;
     left: 2%;
@@ -315,13 +304,12 @@ main {
 
 .line_grafik {
     border-color: blueviolet;
-    margin-bottom: 10px;
 }
 
 .buttons_dialog_grafik {
     width: 300px;
-    height: 120px;
-    font-size: 40px;
+    height: 60px;
+    font-size: 36px;
 }
 
 .get_position {
@@ -330,7 +318,7 @@ main {
 }
 
 .img_pokemon {
-    width: 500px;
+    width: 400px;
     height: auto;
     padding-left: 50px;
 }
@@ -341,29 +329,36 @@ main {
 }
 
 .poke_personal {
-    font-size: 40px;
+    font-size: 30px;
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .poke_personal_abi {
-    font-size: 44px;
+    font-size: 42px;
     color: yellow;
     margin-bottom: 20px;
 }
 
+.poke_personal_position {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:flex-start;
+}
+
 .poke_personal_name {
-    font-size: 80px;
+    font-size: 60px;
     color: yellow;
 }
 
 .poke_personal_name_color {
-    font-size: 70px;
+    font-size: 45px;
     color: white;
 }
 
 .poke_details {
-    font-size: 40px;
+    font-size: 30px;
     color: white;
 }
 
@@ -374,7 +369,7 @@ main {
 
 .buttons_pre_poke {
     width: 200px;
-    height: 100px;
+    height: 80px;
     color: black;
     background-color: white;
     margin-left: 50px;
@@ -391,7 +386,7 @@ main {
 
 .buttons_next_poke {
     width: 200px;
-    height: 100px;
+    height: 80px;
     color: black;
     background-color: white;
     margin-right: 50px;
@@ -412,8 +407,8 @@ main {
 
 .line_grafik_evolution {
     border-color: blueviolet;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .poke_personal_evo {
@@ -446,7 +441,7 @@ main {
 
 .type_icon {
     width: 150px;
-    height: auto;
+    height: 55px;
 }
 
 
@@ -458,58 +453,44 @@ main {
 .holeTable {
     margin-left: 10px;
     margin-right: 10px;
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .table_title {
-    font-size: 50px;
+    font-size: 40px;
     color: rgb(202, 202, 16);
     padding-right: 100px;
 }
 
 .table_contens_hp {
-    font-size: 36px;
+    font-size: 30px;
     color: #6c757d;
     background-color: black;
-    /* display: flex;
-    flex-direction: row;
-    justify-content: flex-end; */
-    /* padding-right: 50px; */
 }
-/* 
-.hp_name {
-    padding-right: 200px;
-}
-
-.hp_value {
-    padding-right: 120px;
-} */
 
 .table_contens_attack {
-    font-size: 36px;
+    font-size: 30px;
     color: #dc3545;
 }
 
 .table_contens_defense {
-    font-size: 36px;
+    font-size: 30px;
     color: #198754;
 }
 
 .table_contens_spatk {
-    font-size: 32px;
+    font-size: 30px;
     font-style: italic;
     color: #0d6efd;
 }
 
 .table_contens_spdef {
-    font-size: 32px;
+    font-size: 30px;
     font-style: italic;
     color: #ffc107;
 }
 
 .table_contens_speed {
-    font-size: 36px;
+    font-size: 30px;
     font-style: italic;
     color: #0dcaf0;
 }
