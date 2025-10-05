@@ -59,7 +59,9 @@ function getValueFromAllStatsForProcessBar() {
     // ERMITTLE die Länge jedes Diagramm-Balkens zu jeder EIGENSCHAFT ...
     for (let index = 0; index < pokeStats.length; index++) {
         statsProportionateValue = 0;
-        statsProportionateValue = Math.round(26 * pokeStats[index].value / maxValue);
+        // WERT 26 für PC ab 1440px ideal
+        // WERT 24 für TABLET runter bis 768 px bis 1300 px
+        statsProportionateValue = Math.round(24 * pokeStats[index].value / maxValue);
         for (let i = 0; i < statsProportionateValue; i++) {
             switch (index) {
                 case 0: stat0 = stat0 + "█"; break;

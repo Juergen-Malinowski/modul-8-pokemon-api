@@ -24,7 +24,7 @@ header {
 body {
     background-image: url(./assets/img/main-background.png);
     background-size: cover;
-    height: 100vh;
+    height: auto;
     background-position: center;
 }
 
@@ -47,9 +47,32 @@ main {
 }
 
 .header_grafik {
+    border-style:solid;
+    border-color: blueviolet;
+    border-width: 5px;
+    border-radius: 10px;        
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+
+/* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
+.search_Mask {
+    font-size: 30px;
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-left: 50px;
+}
+
+.input_user {
+    font-size: 30px;
+    color: black;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 
@@ -90,25 +113,6 @@ main {
     /* NAV ... für Info */
     color: yellow;
     text-decoration: underline;
-}
-
-
-/* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
-.search_Mask {
-    font-size: 30px;
-    color: yellow;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 50px;
-}
-
-.input_user {
-    font-size: 30px;
-    color: black;
-    background-color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 
@@ -278,6 +282,11 @@ main {
 /* ################ */
 
 /* DIALOG-BOX Show-ONE-Pokemon */
+dialog::backdrop {
+    background-color: blueviolet;
+    margin: 0;
+}
+
 .dialog_box {
     font-size: 40px;
     color: white;
@@ -302,6 +311,13 @@ main {
 
 
 /* NAME, ID, Types zeigen */
+.poke_personal_position {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:flex-start;
+}
+
 .poke_personal_name {
     font-size: 60px;
     color: yellow;
@@ -343,12 +359,7 @@ main {
     color: white;
     margin-bottom: 5px;
 }
-.poke_personal_position {
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:flex-start;
-}
+
 
 .line_grafik {
     border-color: blueviolet;

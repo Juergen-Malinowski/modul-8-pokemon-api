@@ -28,7 +28,7 @@ function renderSearchBox() {
 }
 
 function renderPokemon() {
-    // ONE Pokemon in der SLIDE-Show RENDERN ...
+    // ONE Pokemon im Pokemon-OVERVIEW RENDERN ...
     return `
         <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
@@ -142,7 +142,7 @@ function renderPokeStats() {
                     <th class="table_title">Eigenschaft</th>
                     <th class="table_title">Wert</th>
                     <th class="table_title">Diagramm 
-                        <span style="font-size: 30px; color: white;">(bester Wert = Maximum)</span>
+                        <span style="font-size: 20px; color: white;">(bester Wert = Maximum)</span>
                     </th>
                 </tr>
             </thead>

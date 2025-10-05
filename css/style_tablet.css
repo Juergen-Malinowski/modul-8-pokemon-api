@@ -1,13 +1,162 @@
-/* ############### */
-/* CLASS for Media Tablet ... 768px up to 1100px*/
-/* ############### */
+/* ############################################### */
+/* CLASS for MEDIA >Tablet< ... 768px up to 1300px */
+/* ############################################### */
 
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
+
+    /* ############### */
+    /* CLASS for BASIC */
+    /* ############### */
+    h1 {
+        font-size: 2em;
+        width: 740px;
+        padding-top: 5px;
+    }
 
 
+    /* ################### */
+    /* CLASS for MAIN-Page */
+    /* ################### */
+
+    /* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
+    .search_Mask {
+        font-size: 20px;
+        gap: 10px;
+        margin-left: 20px;
+    }
+
+    .input_user {
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* NAV-Bar Gestaltung */
+    .nav_grafik {
+        margin-right: 40px;
+        gap: 30px;
+    }
+
+    .start_grafik {
+        font-size: 28px;
+        margin-left: 15px;
+    }
+
+    .info_grafik {
+        font-size: 28px;
+        margin-right: 15px;
+    }
+
+    .buttons_grafik {
+        width: 150px;
+        height: 42px;
+        font-size: 26px;
+        border-width: 8px;
+        margin-top: 3px;
+    }
+
+    /* LOADING-Picture gestalten */
+    .loding_picture {
+        width: 350px;
+        height: auto;
+    }
+
+    /* POKEMON OVERVIEW gestalten */
+    .poke_grafik {
+        width: 740px;
+        height: auto;
+        gap: 50px;
+    }
+
+    .one_pokemon {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    /* CONTROL-Panel OVERVIEV Pokemon */
+    .button_pre_next {
+        width: 740px;
+    }
 
 
+    /* ################ */
+    /* CLASS für DIALOG */
+    /* ################ */
 
+    /* DIALOG-BOX Show-ONE-Pokemon */
+    .dialog_box {
+        font-size: 10px;
+        left: 1%;
+    }
 
+    .show_pokemon {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* TABELLE Eigenschaften gestalten ... */
+    table {
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        border-left-width: 10px;
+        border-right-width: 10px;
+    }
+
+    .table_title {
+        font-size: 30px;
+        padding-right: 0;
+    }
+
+    .table_contens_hp {
+        font-size: 24px;
+    }
+
+    .table_contens_attack {
+        font-size: 24px;
+    }
+
+    .table_contens_defense {
+        font-size: 24px;
+    }
+
+    .table_contens_spatk {
+        font-size: 24px;
+    }
+
+    .table_contens_spdef {
+        font-size: 24px;
+    }
+
+    .table_contens_speed {
+        font-size: 24px;
+    }
+
+    /* CONTROL-Center für Show-One-Pokemon */
+    .buttons_pre_poke {
+        width: 150px;
+        height: 60px;
+        margin-left: 25px;
+    }
+
+    .buttons_pre_poke:hover {
+        transform: scale(1.2);
+    }
+
+    .buttons_dialog_grafik {
+        font-size: 28px;
+        width: 200px;
+        height: 50px;
+        padding-top: 3px;
+    }
+
+    .buttons_next_poke {
+        width: 150px;
+        height: 60px;
+        margin-right: 30px;
+    }
+
+    .buttons_next_poke:hover {
+        transform: scale(1.2);
+    }
 }

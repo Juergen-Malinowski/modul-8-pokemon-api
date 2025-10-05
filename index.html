@@ -15,16 +15,17 @@
 </head>
 
 <body class="main_grafik" onload="loadPokemon()">
-    <!-- CLASS "main_grafik" gives the main-background-picture !!! -->
+    <!-- CLASS "body" gives the main-background-picture !!! -->
 
     <header>
         <!-- #####  Titelzeile / SUCH-Maske Pokemon (Name oder ID) / NAV-Menü  ##### -->
         <h1>P O K E D E X</h1>
         <div class="header_grafik">
-            <div id="search_Mask" class="search_Mask">HIER SUCH-Make setzen</div>
+            <!-- SUCH-Make -->
+            <div id="search_Mask" class="search_Mask"></div>
             <nav class="nav_grafik">
                 <a href="./index.html" class="start_grafik">Start</a>
-                <a href="./html/info.html" class="info_grafik" target=”_blank”>Info / Impressum</a>
+                <a href="./html/info.html" class="info_grafik" target=”_blank”>Info</a>
             </nav>
         </div>
     </header>
@@ -39,7 +40,7 @@
 
         <dialog id="show_one_pokemon" class="dialog_box">
             <!-- #####  DIALOG-BOX ... ZEIGE einen Pokemon  ##### -->
-            <p id="show_pokemon" class="show_pokemon">HIER erfolgt die BILDAUSGABE zu ONE POKEMON ...</p>
+            <p id="show_pokemon" class="show_pokemon">HIER erfolgt Ausgabe Name, Bild, etc. zu ONE POKEMON ...</p>
             <div id="poke_stats" class="poke_abilities">HIER erfolgt Ausgabe ALLER Eigenschaften von ONE POKEMON</div>
 
             <div class="control_grafik">
@@ -70,7 +71,7 @@
     </footer>
 </body>
 
-<script src="./js/definition.js"></script>
+<script src="./js/definition.js"></script>  
 <script src="./js/template.js"></script>
 <script src="./js/shorts.js"></script>
 <script src="./js/data.js"></script>
