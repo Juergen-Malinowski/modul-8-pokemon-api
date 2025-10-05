@@ -5,6 +5,141 @@
 
 @media (max-width: 767px) {
 
+    /* ############### */
+    /* CLASS for BASIC */
+    /* ############### */
+    h1 {
+        font-size: 1em;
+        width: 330px;
+        padding-top: 1px;
+    }
 
+
+    /* ################### */
+    /* CLASS for MAIN-Page */
+    /* ################### */
+
+    /* BASIC-Body gestalten */
+    .header_grafik {
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    /* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
+    .search_Mask {
+        height: 50px;
+        font-size: 14px;
+        gap: 10px;
+        margin-left: 20px;
+    }
+
+    .input_user {
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .buttons_grafik {
+        width: 100px;
+        height: 70px;
+        font-size: 24px;
+        border-width: 6px;
+        margin-top: 14px;
+    }
+
+    /* NAV-Bar Gestaltung */
+    .nav_grafik {
+        height: 100px;
+        justify-content: flex-end;
+        /* align-items: center; */
+        margin-right: 10px;
+        gap: 30px;
+    }
+
+    .start_grafik {
+        font-size: 30px;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+
+    .info_grafik {
+        font-size: 24px;
+        margin-top: 5px;
+        margin-right: 10px;
+    }
+
+    /* LOADING-Picture gestalten */
+    .loding_picture {
+        width: 160px;
+    }
+
+    .load_grafik {
+        font-size: 24px;
+    }
+
+    /* POKEMON OVERVIEW gestalten */
+    .poke_grafik {
+        width: 330px;
+        height: auto;
+        gap: 50px;
+    }
+
+    .one_pokemon {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    /* CONTROL-Panel OVERVIEV Pokemon */
+    .button_pre_next {
+        width: 330px;
+    }
+
+    .counter_grafik {
+        width: 100px;
+        height: 100px;
+        font-size: 20px;
+        padding-top: 7px;
+    }
+
+
+
+
+
+
+/* ################ */
+/* CLASS for footer */
+/* ################ */
+.copyright_jm {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* ############################## */
+    /* MEDIA < ??????????? PX */
+    /* ############################## */
+
+
+    /* ERFORDERLICH ?????????????????????????? */
+
+    /* @media (max-width: 440px) {
+        .copyright_jm_impressum {
+            font-size: 19px;
+            color: yellow;
+        }
+    } */
 
 }

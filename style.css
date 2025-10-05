@@ -41,10 +41,10 @@ body {
     align-items: center;
 }
 
-main {
+/* main {
     width: 100vh;
     height: auto;
-}
+} */
 
 .header_grafik {
     border-style:solid;

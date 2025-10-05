@@ -32,6 +32,14 @@
         margin-bottom: 5px;
     }
 
+    .buttons_grafik {
+        width: 150px;
+        height: 42px;
+        font-size: 26px;
+        border-width: 8px;
+        margin-top: 3px;
+    }
+    
     /* NAV-Bar Gestaltung */
     .nav_grafik {
         margin-right: 40px;
@@ -48,13 +56,6 @@
         margin-right: 15px;
     }
 
-    .buttons_grafik {
-        width: 150px;
-        height: 42px;
-        font-size: 26px;
-        border-width: 8px;
-        margin-top: 3px;
-    }
 
     /* LOADING-Picture gestalten */
     .loding_picture {
