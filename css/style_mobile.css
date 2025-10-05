@@ -102,17 +102,60 @@
     }
 
 
+    /* ################ */
+    /* CLASS für DIALOG */
+    /* ################ */
+
+    /* BILD des ONE-Pokemon */
+    .img_pokemon {
+        width: 240px;
+        padding-left: 0px;
+    }
+
+    /* TABELLE Eigenschaften gestalten ... */
+    .disable_this {
+        display: none;
+    }
 
 
+    /* CONTROL-Center für Show-One-Pokemon */
+    .buttons_pre_poke {
+        width: 60px;
+        height: 35px;
+        margin-left: 10px;
+    }
+
+    .buttons_pre_poke:hover {
+        transform: scale(1.2);
+    }
+
+    .buttons_dialog_grafik {
+        font-size: 18px;
+        width: 60px;
+        height: 40px;
+        padding-top: 0px;
+        margin-top: 0px;
+    }
+
+    .buttons_next_poke {
+        width: 60px;
+        height: 35px;
+        margin-right: 10px;
+    }
+
+    .buttons_next_poke:hover {
+        transform: scale(1.2);
+    }
 
 
-/* ################ */
-/* CLASS for footer */
-/* ################ */
-.copyright_jm {
-    font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* ################ */
+    /* CLASS for footer */
+    /* ################ */
+    .copyright_jm {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -128,18 +171,16 @@
 
 
 
-    /* ############################## */
-    /* MEDIA < ??????????? PX */
-    /* ############################## */
+/* ############################## */
+/* MEDIA < ??????????? PX */
+/* ############################## */
 
 
-    /* ERFORDERLICH ?????????????????????????? */
+/* ERFORDERLICH ?????????????????????????? */
 
-    /* @media (max-width: 440px) {
-        .copyright_jm_impressum {
-            font-size: 19px;
-            color: yellow;
-        }
-    } */
-
+@media (max-width: 440px) {
+    .copyright_jm_impressum {
+        font-size: 19px;
+        color: yellow;
+    }
 }

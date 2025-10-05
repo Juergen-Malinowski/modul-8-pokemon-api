@@ -41,11 +41,6 @@ body {
     align-items: center;
 }
 
-/* main {
-    width: 100vh;
-    height: auto;
-} */
-
 .header_grafik {
     border-style:solid;
     border-color: blueviolet;
@@ -283,6 +278,7 @@ body {
 
 /* DIALOG-BOX Show-ONE-Pokemon */
 dialog::backdrop {
+    height: 100vh;
     background-color: blueviolet;
     margin: 0;
 }
@@ -396,6 +392,10 @@ dialog::backdrop {
     font-size: 40px;
     color: rgb(202, 202, 16);
     padding-right: 100px;
+}
+
+.disable_this {
+    display: block;
 }
 
 .table_contens_hp {

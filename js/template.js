@@ -137,45 +137,47 @@ function renderPokeStats() {
     return `
         <hr class="line_grafik_evolution">
         <table border="20" class="holeTable">
+
             <thead>
                 <tr class="table_th_grafik">
                     <th class="table_title">Eigenschaft</th>
                     <th class="table_title">Wert</th>
-                    <th class="table_title">Diagramm 
+                    <th class="table_title disable_this">Diagramm 
                         <span style="font-size: 20px; color: white;">(bester Wert = Maximum)</span>
                     </th>
                 </tr>
             </thead>
-                <tbody>
+
+            <tbody>
                 <tr class="table_contens_hp">
                     <td>${pokeStats[0].name} </td>
                     <td>${pokeStats[0].value} </td>
-                    <td>${stat0}</td>                         
+                    <td class="disable_this">${stat0}</td>                         
                 </tr>
                 <tr class="table_contens_attack">
                     <td>${pokeStats[1].name}</td>
                     <td>${pokeStats[1].value}</td>  
-                    <td>${stat1}</td>               
+                    <td class="disable_this">${stat1}</td>               
                 </tr>
                 <tr class="table_contens_defense">
                     <td>${pokeStats[2].name}</td>
                     <td>${pokeStats[2].value}</td>
-                    <td>${stat2}</td>                         
+                    <td class="disable_this">${stat2}</td>                         
                 </tr>
                 <tr class="table_contens_spatk">
                     <td>${pokeStats[3].name} </td>
                     <td>${pokeStats[3].value}</td>
-                    <td>${stat3}</td>                         
+                    <td class="disable_this">${stat3}</td>                         
                 </tr>
                 <tr class="table_contens_spdef">
                     <td>${pokeStats[4].name} </td>
                     <td>${pokeStats[4].value}</td>
-                    <td>${stat4}</td>     
+                    <td class="disable_this">${stat4}</td>     
                 </tr>
                 <tr class="table_contens_speed">
                     <td>${pokeStats[5].name}</td>
                     <td>${pokeStats[5].value}</td>
-                    <td>${stat5}</td>                         
+                    <td class="disable_this">${stat5}</td>                         
                 </tr>
             </tbody>
         </table>
