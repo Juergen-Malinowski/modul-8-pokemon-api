@@ -149,8 +149,8 @@ function renderPokeStats() {
             </thead>
                 <tbody>
                 <tr class="table_contens_hp">
-                    <td>${pokeStats[0].name}</td>
-                    <td>${pokeStats[0].value}</td>
+                    <td class="hp_name">${pokeStats[0].name} </td>
+                    <td class="hp_value">${pokeStats[0].value} </td>
                     <td>${stat0}</td>                         
                 </tr>
                 <tr class="table_contens_attack">
@@ -164,12 +164,12 @@ function renderPokeStats() {
                     <td>${stat2}</td>                         
                 </tr>
                 <tr class="table_contens_spatk">
-                    <td>${pokeStats[3].name}</td>
+                    <td>${pokeStats[3].name} </td>
                     <td>${pokeStats[3].value}</td>
                     <td>${stat3}</td>                         
                 </tr>
                 <tr class="table_contens_spdef">
-                    <td>${pokeStats[4].name}</td>
+                    <td>${pokeStats[4].name} </td>
                     <td>${pokeStats[4].value}</td>
                     <td>${stat4}</td>     
                 </tr>

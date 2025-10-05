@@ -5,7 +5,8 @@
 h1 {
     font-size: 3em;
     font-style: italic;
-    width: 1440px;
+    /* width: 1440px; */
+    width: 100vh;
     color: white;
     background-color: blueviolet;
     border-style: double;
@@ -23,7 +24,7 @@ header {
 body {
     background-image: url(./assets/img/main-background.png);
     background-size: cover;
-    height: 120vh;
+    height: 100vh;
     background-position: center;
 }
 
@@ -32,6 +33,7 @@ body {
 /* CLASS for MAIN-PROGRAMM */
 /* ####################### */
 
+/* BASIC-Body gestalten */
 .main_grafik {
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -44,15 +46,14 @@ main {
     height: auto;
 }
 
-
-
-
 .header_grafik {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+
+/* NAV-Bar Gestaltung */
 .nav_grafik {
     margin-right: 50px;
     background-color: blueviolet;
@@ -92,12 +93,8 @@ main {
 }
 
 
-
-
-
-
+/* Anordnung der SUCH-Box-ELEMENTE und Gestaltung... */
 .search_Mask {
-    /* Anordnung der SUCH-Box-ELEMENTE und Gestaltung... */
     font-size: 30px;
     color: yellow;
     display: flex;
@@ -107,7 +104,6 @@ main {
 }
 
 .input_user {
-    /* INPUT-Feld gestalten ... */
     font-size: 30px;
     color: black;
     background-color: white;
@@ -115,18 +111,18 @@ main {
     margin-bottom: 10px;
 }
 
-.input_incorrect {
+/* .input_incorrect {
     font-size: 30px;
     color: red;
-    /* HINWEIS "falsche Eingabe" HIER gestalten ... */
-}
+} */
 
 .hiddenButton {
     display: none;
 }
 
+
+/* Gestaltung des BUTTONS "Suche absenden" ... */
 .button_grafik {
-    /* Gestaltung des BUTTONS "Suche absenden" ... */
     font-size: 30px;
     color: black;
     background-color: rgb(202, 202, 16);
@@ -134,6 +130,8 @@ main {
     margin-bottom: 10px;
 }
 
+
+/* LOADING-Picture gestalten */
 .loding_grafik {
     display: flex;
     flex-direction: column;
@@ -149,8 +147,12 @@ main {
     height: 800px;
 }
 
+
+/* POKEMON OVERVIEW gestalten */
 .poke_grafik {
-    width: 1440px;
+    width: 100vh;
+    height: 100vh;
+    /* width: 1440px; */
     height: auto;
     border-style: double;
     border-color: black;
@@ -164,9 +166,14 @@ main {
     gap: 40px;
 }
 
+
+
+
+
+
 .one_pokemon {
-    width: 300px;
-    height: 300px;
+    width: 275px;
+    height: 275px;
     border-style: double;
     border-color: white;
     border-width: 10px;
@@ -189,8 +196,8 @@ main {
 }
 
 .img_poke {
-    width: 150px;
-    height: 150px;
+    width: 135px;
+    height: 135px;
     margin-bottom: 30px;
     margin-top: 4px;
 }
@@ -212,7 +219,8 @@ main {
 }
 
 .button_pre_next {
-    width: 1440px;
+    width: 100vh;
+    /* width: 1440px; */
     height: auto;
     border-style: double;
     border-color: black;
@@ -441,8 +449,17 @@ main {
     height: auto;
 }
 
+
+
+
+
+
+/* TABELLE Eigenschaften gestalten ... */
 .holeTable {
-    margin-left: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .table_title {
@@ -455,7 +472,19 @@ main {
     font-size: 36px;
     color: #6c757d;
     background-color: black;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-end; */
+    /* padding-right: 50px; */
 }
+/* 
+.hp_name {
+    padding-right: 200px;
+}
+
+.hp_value {
+    padding-right: 120px;
+} */
 
 .table_contens_attack {
     font-size: 36px;
@@ -468,13 +497,13 @@ main {
 }
 
 .table_contens_spatk {
-    font-size: 36px;
+    font-size: 32px;
     font-style: italic;
     color: #0d6efd;
 }
 
 .table_contens_spdef {
-    font-size: 36px;
+    font-size: 32px;
     font-style: italic;
     color: #ffc107;
 }
