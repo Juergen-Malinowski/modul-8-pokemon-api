@@ -35,8 +35,9 @@ function renderControlPanel() {
     // STEUERUNGS-Buttons für "<<<<<<" und ">>>>>" und COUNTER setzen ...
     buttonPreNext.innerHTML = "";
     buttonPreNext.innerHTML = setButtonsAndCounter();   // in template.js
-    // BUTTON show "NEXT Pokemons" now SET WORKING again ...
+    // BUTTONs show "Nächste und Vorherige Pokemons" now SET WORKING again ...
     document.getElementById('show_next_button').disabled = false;
+    document.getElementById('show_previous_button').disabled = false;
 }
 
 function findBackgroundColor() {
