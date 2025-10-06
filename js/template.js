@@ -20,7 +20,7 @@ function renderSearchBox() {
     // SUCH-MAKE RENDERN ...
     return `       
         <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
-            placeholder="Please name or ID ..." required>
+            placeholder="Please full name or ID ..." required>
         <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit">Search</button>
         <!-- Position für Ausgabe EINGABE-FEHLER ... -->
         <p class="input_incorrect" id="input_incorrect"></p>
