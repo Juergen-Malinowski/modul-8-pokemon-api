@@ -20,8 +20,8 @@ function renderSearchBox() {
     // SUCH-MAKE RENDERN ...
     return `       
         <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
-            placeholder="Pokemon-Name OR his ID ..." required>
-        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit">Suche</button>
+            placeholder="Please name or ID ..." required>
+        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit">Search</button>
         <!-- Position für Ausgabe EINGABE-FEHLER ... -->
         <p class="input_incorrect" id="input_incorrect"></p>
     `
@@ -46,7 +46,7 @@ function setButtonsAndCounter() {
     // CONTROL-Center for Main-Page RENDERN ...
     return `
         <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
-        <p class="counter_grafik"> ${loadedPokemons} von ${apiLength} Pokemons </p>
+        <p class="counter_grafik"> ${loadedPokemons} from ${apiLength} Pokemons </p>
         <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button>         
     `
 }
@@ -55,7 +55,7 @@ function renderLodingPicture() {
     // LADE-BILDSCHIRM für die Wartezeit während API-Zugriff erfolgt RENDERN  ...
     return `
         <div class="loding_grafik">
-            <p class="load_grafik">Pokemons werden geladen ...</p>
+            <p class="load_grafik">Pokemons L O A D I N G ...</p>
             <div class="lodPic_grafik">
                 <img class="loding_picture" src="./assets/img/betty-boop.png" alt="picture from Betty Boop">
                 <img class="loding_picture" src="./assets/img/cartoon-bear.png" alt="picture from cartoon-bear"></img>
@@ -77,11 +77,11 @@ function renderOnePokemon(arrayID) {
         </div>    
         <div class="get_color">
             <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon"
-                style="background-color: ${backgroundColor};" alt="Bild Pokemon"><br>
+                style="background-color: ${backgroundColor};" alt="Picture Pokemon"><br>
         </div>
         <div class="all_poke_details">
             <div class="get_position">
-                <div class="poke_personal_abi">Fähigkeiten:</div>
+                <div class="poke_personal_abi">Abilities:</div>
                 <div class="poke_personal">${abilityOne}</div>
                 <div class="poke_personal">${abilityTwo}</div>
                 <div class="poke_personal">${abilityThree}</div>
@@ -90,8 +90,8 @@ function renderOnePokemon(arrayID) {
             <hr class="line_grafik">
             <br>
             <div >
-                <div class="poke_details">Größe: ${allPoke[arrayID].height}</div>
-                <div class="poke_details">Gewicht: ${allPoke[arrayID].weight}</div>
+                <div class="poke_details">Size: ${allPoke[arrayID].height} feet</div>
+                <div class="poke_details">Weight: ${allPoke[arrayID].weight} lbs</div>
             </div>
         </div>
     `
@@ -116,7 +116,7 @@ function renderSearchPokemon() {
         </div>
         <div class="all_poke_details">
             <div class="get_position">
-                <div class="poke_personal_abi">Fähigkeiten:</div>
+                <div class="poke_personal_abi">Abilities:</div>
                 <div class="poke_personal">${abilityOne}</div>
                 <div class="poke_personal">${abilityTwo}</div>
                 <div class="poke_personal">${abilityThree}</div>
@@ -125,8 +125,8 @@ function renderSearchPokemon() {
             <hr class="line_grafik">
             <br>
             <div >
-                <div class="poke_details">Größe: ${pokeAsJson.height}</div>
-                <div class="poke_details">Gewicht: ${pokeAsJson.weight}</div>
+                <div class="poke_details">Size: ${pokeAsJson.height} feet</div>
+                <div class="poke_details">Weight: ${pokeAsJson.weight} lbs</div>
             </div>
         </div>
     `
@@ -140,10 +140,10 @@ function renderPokeStats() {
 
             <thead>
                 <tr class="table_th_grafik">
-                    <th class="table_title">Eigenschaft</th>
-                    <th class="table_title">Wert</th>
-                    <th class="table_title disable_this">Diagramm 
-                        <span style="font-size: 20px; color: white;">(bester Wert = Maximum)</span>
+                    <th class="table_title">Properties</th>
+                    <th class="table_title">Value</th>
+                    <th class="table_title disable_this">Diagram 
+                        <span style="font-size: 20px; color: white;">(highest Value = Maximum)</span>
                     </th>
                 </tr>
             </thead>

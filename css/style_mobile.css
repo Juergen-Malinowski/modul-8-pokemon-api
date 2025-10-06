@@ -27,7 +27,7 @@
 
     /* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
     .search_Mask {
-        height: 50px;
+        height: 100px;
         font-size: 14px;
         gap: 10px;
         margin-left: 20px;
