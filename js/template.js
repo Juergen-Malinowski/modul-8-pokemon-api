@@ -8,10 +8,10 @@ function renderButtonsOnePoke() {
         <div class="control_grafik">
         <!-- CONTROL-Panel -->
             <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
-                onclick="showPreviousPoke()">
-            <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+                onclick="showPreviousPoke()" tabindex="0">
+            <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik" tabindex="0">CLOSE</button>
             <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"
-                onclick="showNextPoke()">
+                onclick="showNextPoke()" tabindex="0">
         </div>
     `
 }
@@ -20,8 +20,8 @@ function renderSearchBox() {
     // SUCH-MAKE RENDERN ...
     return `       
         <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
-            placeholder="Please full name or ID ..." required>
-        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit">Search</button>
+            placeholder="Please full name or ID ..." required tabindex="0">
+        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit" tabindex="0">Search</button>
         <!-- Position für Ausgabe EINGABE-FEHLER ... -->
         <p class="input_incorrect" id="input_incorrect"></p>
     `
@@ -30,7 +30,7 @@ function renderSearchBox() {
 function renderPokemon() {
     // ONE Pokemon im Pokemon-OVERVIEW RENDERN ...
     return `
-        <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})"> 
+        <div id="pic_${arrayID}" class="one_pokemon"  onclick="showThisPokemon('pic_' + ${arrayID})" tabindex="0"> 
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
             <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
                style="background-color: ${backgroundColor};" alt="picture of Pokemon">
@@ -45,9 +45,9 @@ function renderPokemon() {
 function setButtonsAndCounter() {
     // CONTROL-Center for Main-Page RENDERN ...
     return `
-        <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious()"> <<<<<< </button>
+        <button id="show_previous_button"  class="buttons_grafik" onclick="showPrevious() "tabindex="0"> <<<<<< </button>
         <p class="counter_grafik"> ${loadedPokemons} from ${apiLength} Pokemons </p>
-        <button id="show_next_button" class="buttons_grafik" onclick="showNext()"> >>>>>> </button>         
+        <button id="show_next_button" class="buttons_grafik" onclick="showNext()" tabindex="0"> >>>>>> </button>         
     `
 }
 

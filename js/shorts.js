@@ -76,7 +76,7 @@ function getInputForSearch() {
 }
 
 function getPokeIdNumber() {
-    // USER-Eingabe für den Fall einer ID bearbeiten und Ergebnis am Ende in pokeIdNumber speichern ...
+    // USER-Eingabe ... ID extrahieren und Ergebnis am Ende in pokeIdNumber speichern ...
     pokeIdNumber = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeIdNumber zur Bearbeitung
     pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
     pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
@@ -84,7 +84,7 @@ function getPokeIdNumber() {
 }
 
 function getPokeWithName() {
-    // USER-Eingabe NAME ... Eingabe plausibel machen ... 
+    // USER-Eingabe ... NAME ... Eingabe für SUCHE kpl. in Kleinbuchstaben ... 
     pokeName = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeName zur Bearbeitung
     pokeName = pokeName.toLowerCase();
 }
@@ -190,10 +190,10 @@ function getAllStats() {
     let thisPokeAllData = {};
     if (searchOnePoke) {
         // Datensatz für "SEARCH-One-Pokemon" übernehmen ...
-        thisPokeAllData = pokeAsJson.stats;  // übernimmt NUR alle Eigenschaften in das Objekt
+        thisPokeAllData = pokeAsJson.stats;  // übernimmt alle Eigenschaften in das Objekt
     } else {
         // Datensatz für "Show-ONE-Pokemon" übernehmen ...
-        thisPokeAllData = allPoke[arrayID].stats;  // übernimmt NUR alle Eigenschaften in das Objekt
+        thisPokeAllData = allPoke[arrayID].stats;  // übernimmt alle Eigenschaften in das Objekt
     }
     // ALLE Eigenschaften des POKEMONs aus dem Datensatz des Pokemons auslesen ...
     for (let index = 0; index < thisPokeAllData.length; index++) {

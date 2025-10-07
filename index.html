@@ -24,8 +24,8 @@
             <!-- SUCH-Make -->
             <div id="search_Mask" class="search_Mask"></div>
             <nav class="nav_grafik">
-                <a href="./index.html" class="start_grafik">HOME</a>
-                <a href="./html/info.html" class="info_grafik" target=”_blank”>INFO</a>
+                <a href="./index.html" class="start_grafik" tabindex="0">HOME</a>
+                <a href="./html/info.html" class="info_grafik" target=”_blank” tabindex="0">INFO</a>
             </nav>
         </div>
     </header>
@@ -46,10 +46,10 @@
             <div class="control_grafik">
                 <!-- CONTROL-Panel SHOW-One-POKE -->
                 <img id="pre_poke" class="buttons_pre_poke" src="./assets/img/hand-left.png"
-                    onclick="showPreviousPoke()">
-                <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+                    onclick="showPreviousPoke()" tabindex="0">
+                <button id="close_dialog" class="buttons_grafik buttons_dialog_grafik" tabindex="0">CLOSE</button>
                 <img id="next_poke" class="buttons_next_poke" src="./assets/img/hand-right.png"
-                    onclick="showNextPoke()">
+                    onclick="showNextPoke()"  tabindex="0">
             </div>
         </dialog>
 
@@ -61,7 +61,7 @@
 
             <div class="control_grafik_search">
                 <!-- CONTROL-Panel SHOW-Search-POKE -->
-                <button id="close_dialog_search" class="buttons_grafik buttons_dialog_grafik">CLOSE</button>
+                <button id="close_dialog_search" class="buttons_grafik buttons_dialog_grafik" tabindex="0"  >CLOSE</button>
             </div>
         </dialog>
     </main>
