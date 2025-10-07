@@ -16,6 +16,17 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-size: 3em;
+    color: white;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
 header {
     background-color: rgba(255, 255, 255, 0);
     padding-top: 20px;
@@ -42,10 +53,10 @@ body {
 }
 
 .header_grafik {
-    border-style:solid;
+    border-style: solid;
     border-color: blueviolet;
     border-width: 5px;
-    border-radius: 10px;        
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -312,8 +323,8 @@ dialog::backdrop {
 .poke_personal_position {
     display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content:flex-start;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .poke_personal_name {
@@ -491,4 +502,23 @@ footer {
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0);
+}
+
+
+/* ################ */
+/* CLASS for NAV-INFO */
+/* ################ */
+
+.info_content {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.info_content h2 {
+    margin-top: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
 }
