@@ -10,7 +10,7 @@
     /* ############### */
     h1 {
         font-size: 1em;
-        width: 330px;
+        width: 310px;
         padding-top: 1px;
     }
 
@@ -27,15 +27,19 @@
 
     /* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
     .search_Mask {
-        height: 100px;
+        height: 400px;
         font-size: 14px;
         gap: 10px;
         margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .input_user {
-        font-size: 14px;
-        margin-top: 5px;
+        font-size: 24px;
+        margin-right: 20px;
+        margin-top: 10px;
         margin-bottom: 5px;
     }
 
@@ -79,7 +83,7 @@
 
     /* POKEMON OVERVIEW gestalten */
     .poke_grafik {
-        width: 330px;
+        width: 310px;
         height: auto;
         gap: 50px;
     }
@@ -91,7 +95,7 @@
 
     /* CONTROL-Panel OVERVIEV Pokemon */
     .button_pre_next {
-        width: 330px;
+        width: 310px;
     }
 
     .counter_grafik {
@@ -168,4 +172,37 @@
         font-size: 19px;
         color: yellow;
     }
+}
+
+
+/* ########################## */
+/* CLASS für INFO / IMPRESSUM */
+/* ########################## */
+
+.nav_grafik_info {
+    width: 310px;
+}
+
+h3 {
+    width: 300px;
+}
+
+.info_content {
+    width: 310px;
+}
+
+.info_content_boxes {
+    width: 300px;
+}
+
+.info_box_size {
+    width: 300px;
+}
+
+.text_grafik {
+    width: 300px;
+}
+
+.href_grafik {
+    font-size: 18px;
 }

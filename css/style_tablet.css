@@ -39,7 +39,7 @@
         border-width: 8px;
         margin-top: 3px;
     }
-    
+
     /* NAV-Bar Gestaltung */
     .nav_grafik {
         margin-right: 40px;
@@ -160,4 +160,35 @@
     .buttons_next_poke:hover {
         transform: scale(1.2);
     }
+}
+
+/* ########################## */
+/* CLASS für INFO / IMPRESSUM */
+/* ########################## */
+
+.nav_grafik_info {
+    width: 740px;
+}
+
+h3 {
+    width: 640px;
+}
+
+.info_content {
+    width: 740px;
+}
+
+.info_content_boxes {
+    width: 640px;
+}
+
+.text_grafik {
+    font-size: 18px;
+    width: 640px;
+    text-align: start;
+    padding-left: 2px;
+}
+
+.info_box_size {
+    width: 640px;
 }
