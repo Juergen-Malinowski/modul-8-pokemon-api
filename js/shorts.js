@@ -102,23 +102,38 @@ function getPokeIdNumber() {
     pokeIdNumber = String(pokeIdNumber);              // wandelt in STRING um 
     pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');  // entfernt alle Zeichen, Zahlen bleiben
     pokeIdNumber = Number(pokeIdNumber);              // wandelt in eine Zahl um (in Zahl Null, wenn PokeIdNumber LEER ist, da keine Zahl vorhanden)
+    if (pokeIdNumber != 0) {
+        pokeAsJson.id = pokeIdNumber;
+    }
+
+    if (pokeIdNumber == 0) {
+        pokeIdNumber = 2000;
+        console.log("IF hat festgestellt, pokeIdNumber = 0, deshalb auf 2000 gesetzt. pokeIdNumber = ", pokeIdNumber);
+
+
+    } else { console.log("LEIDER ins ELSE. pokeIdNumber ? ... ", pokeIdNumber) };
 }
 
 function getPokeWithName() {
     // USER-Eingabe ... NAME ... Eingabe für SUCHE kpl. in Kleinbuchstaben ... 
     pokeName = searchThisPoke;                    // Übergabe SUCH-Inhalt an pokeName zur Bearbeitung
     pokeName = pokeName.toLowerCase();            // Name in Kleinbuchstaben umwandeln
-    console.log("pokeName nach toLowerCase, direkt nach START getPokeWithName ... = ", pokeName);
+    console.log("pokeName ganz am Anfang, nach erster Bearbeitung kleinschreiben ... = ", pokeName);
     console.log("pokeIdNumber = ", pokeIdNumber);
 
-    pokeNotInAllPoke = true;
-    if (pokeIdNumber == 0) {                      // NULL liegt vor, wenn KEINE ID vorgegeben wurde (getPokeIdNumber) !!!
+    pokeNotInAllPoke = true;         // ANNAHME, Pokemon muss geladen werden, da nicht in Array allPoke
+    if (pokeIdNumber == 2000) {      // NULL liegt vor, wenn KEINE ID vorgegeben wurde (getPokeIdNumber) !!!
         for (let index = 0; index < allPoke.length; index++) {
             let checkPokeName = allPoke[index].name.toLowerCase();
             if (pokeName == checkPokeName) {
-                pokeNotInAllPoke = false;          // POKE-NAME ist in allPoke enthalten ... jetzt RENDERN !!!
-                console.log("TREFFER Poke-NAME in allPoke enthalten !!! pokeNotInAllPoke = ", pokeNotInAllPoke);
+                pokeNotInAllPoke = false;             // POKE-NAME ist in allPoke enthalten ... jetzt RENDERN !!!
+                console.log("TREFFER Poke-NAME in allPoke enthalten !!! pokeNotInAllPoke ist FALSE = ", pokeNotInAllPoke);
                 console.log("POKE-NAME für Ausgabe", pokeName);
+                capitalized = pokeName;               // capitalized nimmt Namen auf
+                capitalizedString();                  // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
+                pokeAsJson.name = capitalized;        // NAME Pokemon an Ausgabe-Array pokeAsJson übergeben
+                pokeAsJson.id = allPoke[index].id;    // ID Pokemon an Ausgabe-Array pokeAsJson übergeben
+                showSearchPoke();
             }
         }
         if (pokeNotInAllPoke) {
@@ -153,7 +168,7 @@ function searchStringInName() {
     // ########################################
     if (result.status === "multiple") {
         // MEHR als EIN TREFFER ... USER muss Auswahl treffen ...
-        console.log("In IF MUTIPLE Namen gefunden reingegangen !!!!");
+        console.log("In IF MUTIPLE Namen gefunden ... reingegangen !!!!");
         renderSuggestionList(result.suggestions); return;                 // AUSWAHL rendern !
     }
     // ########################################
@@ -165,12 +180,12 @@ function searchStringInName() {
 function findPokemonNameUnique() {
     // userInput = searchThisPoke;
     if (inputUser === undefined || inputUser === null) {   // FEHLER ... KEINE Eingabe ist erfolgt !
-        return { status: "error", message: "Keine Eingabe vorhanden." };
+        return { status: "error", message: "Please write something ..." };
     }
     let searchText = pokeName;     // Übernahme des Pokemon-Namens (kleingeschrieben OHNE Leerstellen)
     console.log("SUCH-Test-Name ist = ", searchText);
     if (searchText.length < 3) {                           // FEHLER ... zu wenige Zeichen vorgegeben !
-        return { status: "too_short", message: "Bitte mindestens 3 Zeichen eingeben." };
+        return { status: "too_short", message: "Please enter at least 3 letters ..." };
     }
 
     let matches = [];             // Array "matches" sammelt Treffer mit dem Suchbegriff bei den Pokemon-Namen
@@ -179,10 +194,10 @@ function findPokemonNameUnique() {
         let loadPokemon = allPokeName[index];
         let thisName = loadPokemon.name;
 
-        if (thisName.includes(searchText)) {   
+        if (thisName.includes(searchText)) {
             matches.push(loadPokemon);                          // Treffer in "matches" schieben
             console.log("TREFFER in beim SUCHEN in allPokeName mit NAMEN =", thisName);
-        }  
+        }
 
     }
     if (matches.length === 0) { return { status: "none", message: "Diesen Pokemon gibt es nicht." }; }
@@ -191,25 +206,22 @@ function findPokemonNameUnique() {
         for (let i = 0; i < matches.length; i++) {
             names.push(matches[i].name);
         }
+        pokeNotInAllPoke = false;                           // KEINE Bildausgabe - erst auf ONCLICK in Auswahlliste
         // ########################################
         // ########################################
         return { status: "multiple", suggestions: names };  // MEHRERE Treffer (status) ... AUSWAHL aus names (suggestions)
         // ########################################
         // ########################################
     }
-
-    // Variable uniquePokemon wird noch weiter benutzt ???  Ich brauche Poke-Name in "pokeName" für Ausgabe
     let uniquePokemon = matches[0];     // wenn nur EIN Poke-NAME passt, kann AUSGABE erfolgen !
     return { status: "one", name: uniquePokemon.name, id: uniquePokemon.id };
 }
-
-
 
 function renderSuggestionList(nameList) {
     let output = document.getElementById("input_incorrect");
     console.log("in renderSuggestionList REINGEGANGEN !!!");
 
-    let html = "<p>Mehrere Treffer – bitte auswählen:</p>";
+    let html = "<p>Multiple HITS – please, select:</p>";
     html += "<ul class='suggestion_list'>";
 
     for (let i = 0; i < nameList.length; i++) {
@@ -222,16 +234,13 @@ function renderSuggestionList(nameList) {
 
 function chooseThisPokemon(namePoke) {
     pokeName = namePoke;         // ÜBERNAHME Name des POKEMONs aus der AUSWAHL-Liste
-    searchOnePoke = false;       // searchOnePoke wieder auf NORMAL-Zustand "false" stellen
-    inputUser.value = "";        // INPUT-Feld wieder zurücksetzen    
-    pokeIdNumber = 0;
+    pokeIdNumber = 2000;         // SCHALTER für fetch aktivieren
+    pokeNotInAllPoke = true;     // SCHALTER für fetch aktivieren
+    inputUser.value = pokeName;
     console.log("chooseThisPokemon() wurde bearbeitet. pokeName ist = ", pokeName);
-    console.log("inputUser.value wurde auf LEER gesetzt. Zwischen den X darf nichts stehen ... X", inputUser.value, "X");
+    console.log("inputUser = ", inputUser.value);
     loadWithNameOrIdAndShow();   // AUSGABE des Pokemons veranlassen
 }
-
-
-
 
 function findPokemonName(userInput) {
     // 1. Prüfen, ob eine Eingabe vorhanden ist

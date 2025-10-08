@@ -60,7 +60,7 @@ function showNext() {
     // während von API nächste Pokemons NOCH geladen werden ...
     document.getElementById('show_next_button').disabled = true;
     document.getElementById('show_previous_button').disabled = true;
-    document.getElementById('overview_poke').innerHTML = "";    
+    document.getElementById('overview_poke').innerHTML = "";
     document.getElementById('overview_poke').innerHTML = renderLodingPicture();   // RENDERN "Warte-Bildschirm", bis API-LADEN abgeschlossen ist ...
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
@@ -87,23 +87,30 @@ function searchAndShowOnePoke() {
 async function loadWithNameOrIdAndShow() {
     // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE des gesuchten Pokemons ...
     if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Eingabe des Users ?
-        console.log("inputUser.value wurde auf LEER gesetzt ... TROTZDEM ging er in die IF-Anweisung !");
-        
         // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
-        if (pokeIdNumber == 0 && pokeNotInAllPoke) {
-            // SUCHE über NAME ... ( getPokeIdNumber() ergibt für "pokeIdNumber" den Wert NULL, wenn ein STRING vorliegt !) 
-            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
+        if (pokeIdNumber == 2000 && pokeNotInAllPoke) {    // NICHT in allPoke (TRUE) = Laden über pokeName
+            // SUCHE über NAME ... getPokeIdNumber() ergibt für "pokeIdNumber" den Wert 2000, wenn ein STRING vorliegt! 
+            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten   
+
+            console.log("pokeName = ", pokeName, " bei fetch-Zugriff !!!");
+
             pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
             capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
             capitalizedString();             // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
             pokeAsJson.name = capitalized;   // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
             showSearchPoke();                // RENDERN einleiten
         } else {
-            // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
-            // über ID das Poke suchen + anzeigen ...
-            let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);  // API für Zugriff vorbereiten
-            pokeAsJson = await getAPI.json();                                               // Auslesen Datensatz in pokeASJson
-            showSearchPoke();                // RENDERN einleiten
+            if (pokeIdNumber != 2000 && pokeNotInAllPoke) {    // NICHT in allPoke (TRUE) = Laden über pokeName
+
+                // SUCHE über ID ... (getPokeIdNumber() gibt zurück eine Zahl UNGLEICH Null !)
+                // über ID das Poke suchen + anzeigen ...
+                let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);  // API für Zugriff vorbereiten
+                pokeAsJson = await getAPI.json();                                               // Auslesen Datensatz in pokeASJson
+                capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
+                capitalizedString();             // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js
+                pokeAsJson.name = capitalized;   // POKE-Name mit ersten Zeichen GROSS im Array abgelegt
+                showSearchPoke();                // RENDERN einleiten
+            }
         }
     }
 }
