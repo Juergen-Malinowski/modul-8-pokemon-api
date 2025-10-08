@@ -78,7 +78,7 @@ function searchAndShowOnePoke() {
     searchOnePoke = true;   // TRUE sorgt für andere Arbeitsweise der Funktionen unter getAllInfoForRendern() !!!
     getInputForSearch();    // Daten INPUT einlesen / in shorts.js
     getPokeIdNumber();      // INPUT auf ID-Number prüfen und verarbeiten / SCHALTER für IF, ob ID oder Name relevant / in shorts.js
-    getPokeWithName();      // INPUT-Name auf Kleinschreibung setzen, denn so muss die SUCHE im API erfolgen ... speichern in pokeName / in shors.js
+    getPokeWithName();      // INPUT-Name auf Kleinschreibung setzen, POKEMON-Namen-SUCHEN ... speichern in pokeName / in shors.js
     loadWithNameOrIdAndShow();   // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE des gesuchten Pokemon
     searchOnePoke = false;       // searchOnePoke wieder auf NORMAL-Zustand "false" stellen
     inputUser.value = "";        // INPUT-Feld wieder zurücksetzen (LEEREN)
@@ -89,7 +89,7 @@ async function loadWithNameOrIdAndShow() {
     if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Eingabe des Users ?
         // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
         if (pokeIdNumber == 0) {
-            // SUCHE über NAME ... ( getPokeIdNumber() ergibt für "pokeIdNumber" den Wert NULL, wenn ein STRING vorliegt !)
+            // SUCHE über NAME ... ( getPokeIdNumber() ergibt für "pokeIdNumber" den Wert NULL, wenn ein STRING vorliegt !) 
             let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
             pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
             capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf

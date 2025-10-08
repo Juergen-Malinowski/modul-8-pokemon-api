@@ -160,6 +160,12 @@ body {
     justify-content: center;
 }
 
+.input_incorrect {
+    font-size: 40px;
+    color: yellow;
+    background-color: blueviolet;
+}
+
 
 /* LOADING-Picture gestalten */
 .loding_grafik {

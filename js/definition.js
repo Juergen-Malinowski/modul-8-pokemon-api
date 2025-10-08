@@ -29,6 +29,7 @@ let searchThisPoke = "";    // speichert den INPUT des Users für die Pokemon-Su
 let pokeIdNumber = "";      // speichert ID des Pokemons für SUCHE
 let pokeName = "";          // speicher NAME des Pokemons für SUCHE
 let searchOnePoke = false;  // SCHALTER "searchOnePoke" wirt auf die Funktionen unter getAllInfoForRendern() und ändert die Info-Beschafffung
+let allPokeName = [];
 const showSearchPokemon = document.getElementById("show_search_one_pokemon");   // ID der DIALOG-BOX  "Show-One-Pokemon"
 const closeDialogSearch = document.getElementById("close_dialog_search");       // ID vom CLOSE-Button / Überwachung EventListener
 const thisSearchPokemon = document.getElementById('show_search_pokemon');       // Ausgabe-ID für SEARCH-One-Pokemon
