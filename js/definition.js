@@ -18,7 +18,6 @@ let capitalized = "";     // Manipulation POKE-NAME mit ersten Buchstaben in GRO
 const buttonPreNext = document.getElementById('button_pre_next');
 
 // #####  for AUDIO  ##### ...
-// to start AUDIO:   audioClick.play();
 const audioClick = new Audio('./assets/sound/click.mp3');
 
 
@@ -28,6 +27,7 @@ let inputUser = document.getElementById('input_user');  // Übernahme INPUT des 
 let searchThisPoke = "";    // speichert den INPUT des Users für die Pokemon-Suche
 let pokeIdNumber = "";      // speichert ID des Pokemons für SUCHE
 let pokeName = "";          // speicher NAME des Pokemons für SUCHE
+let pokeNotInAllPoke = true;  // speichert Prüfung, ob gesuchter POKE-NAME in allPoke enthalten ist UND direkt ausgegeben werden kann
 let searchOnePoke = false;  // SCHALTER "searchOnePoke" wirt auf die Funktionen unter getAllInfoForRendern() und ändert die Info-Beschafffung
 let allPokeName = [];
 const showSearchPokemon = document.getElementById("show_search_one_pokemon");   // ID der DIALOG-BOX  "Show-One-Pokemon"

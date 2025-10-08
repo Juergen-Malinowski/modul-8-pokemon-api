@@ -87,8 +87,10 @@ function searchAndShowOnePoke() {
 async function loadWithNameOrIdAndShow() {
     // Funktion klärt, LADEN mit NAMEN oder ID ... danach AUSGABE des gesuchten Pokemons ...
     if (inputUser.value != "") {  // gab es überhaupt eine INPUT-Eingabe des Users ?
+        console.log("inputUser.value wurde auf LEER gesetzt ... TROTZDEM ging er in die IF-Anweisung !");
+        
         // NUR, WENN eine VORGABE des User vor Button-Click erfolgte  ...
-        if (pokeIdNumber == 0) {
+        if (pokeIdNumber == 0 && pokeNotInAllPoke) {
             // SUCHE über NAME ... ( getPokeIdNumber() ergibt für "pokeIdNumber" den Wert NULL, wenn ein STRING vorliegt !) 
             let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten        
             pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson

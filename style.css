@@ -102,6 +102,11 @@ body {
     margin-bottom: 10px;
 }
 
+.suggestion_button {
+    font-size: 26px;
+    color: white;
+}
+
 
 /* NAV-Bar Gestaltung */
 .nav_grafik {
@@ -161,9 +166,11 @@ body {
 }
 
 .input_incorrect {
-    font-size: 40px;
+    font-size: 26px;
     color: yellow;
     background-color: blueviolet;
+    margin-top: 9px;
+    margin-bottom: 9px;
 }
 
 
