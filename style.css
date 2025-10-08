@@ -46,6 +46,7 @@ h4 {
     color: white;
     background-color: blueviolet;
     padding-top: 20px;
+    text-align: center;
 }
 
 header {
@@ -616,6 +617,11 @@ footer {
     font-size: 24px;
     color: white;
     background-color: blueviolet;
+    text-align: center;
+}
+
+ul.text_grafik {
+    list-style-type: none;  
 }
 
 .href_grafik {
@@ -630,3 +636,4 @@ footer {
     text-decoration: underline;
   
 }
+
