@@ -17,14 +17,35 @@ h1 {
 }
 
 h2 {
-    font-size: 3em;
-    color: white;
+    font-size: 2em;
+    color: yellow;
     background-color: blueviolet;
     border-style: double;
     border-color: black;
     border-width: 10px;
     border-radius: 10px;
     text-align: center;
+}
+
+h3 {
+    font-size: 2em;
+    width: 1100px;
+    color: yellow;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 26px;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+    background-color: blueviolet;
+    padding-top: 20px;
 }
 
 header {
@@ -262,6 +283,16 @@ body {
     margin-top: 5px;
 }
 
+.buttons_grafik:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
+    transform: scale(1.2);
+}
+
 .counter_grafik {
     width: 350px;
     height: 50px;
@@ -272,16 +303,6 @@ body {
     border-width: 10px;
     border-radius: 15px;
     text-align: center;
-}
-
-.buttons_grafik:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
-    transform: scale(1.2);
 }
 
 
@@ -510,15 +531,89 @@ footer {
 /* ################ */
 
 .info_content {
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 12px;
+    width: 1300px;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    gap: 30px;
 }
 
-.info_content h2 {
-    margin-top: 30px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
+.info_content_boxes {
+    width: 1200px;
+    color: yellow;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+
+.nav_grafik_info {
+    font-size: 2em;
+    color: white;
+    width: 1300px;
+    height: 80px;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start_grafik_info {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    background-color: blueviolet;
+    border-style: double;
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    padding-top: 5px;
+}
+
+.start_grafik_info:hover {
+    cursor: pointer;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+    transition-property: transform;
+    transition-delay: 200ms;
+    /* transform: scale(1.3); */
+    transform: scale(1.15);
+}
+
+.info_box_size {
+    width: 900px;
+    color: white;
+    background-color: blueviolet;
+}
+
+.text_grafik {
+    font-size: 24px;
+    color: white;
+    background-color: blueviolet;
+}
+
+.href_grafik {
+    font-size: 24px;
+    color: yellow;
+    background-color: blueviolet;
+}
+
+.href_grafik:hover {
+    cursor: pointer;
+    font-size: 28px;
+    text-decoration: underline;
+  
 }
