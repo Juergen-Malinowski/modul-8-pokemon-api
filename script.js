@@ -90,9 +90,6 @@ async function loadWithNameOrIdAndShow() {
         if (pokeIdNumber == 2000 && pokeNotInAllPoke) {    // NICHT in allPoke (TRUE) = Laden über pokeName
             // SUCHE über NAME ... getPokeIdNumber() ergibt für "pokeIdNumber" den Wert 2000, wenn ein STRING vorliegt! 
             let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);  // API für Zugriff vorbereiten   
-
-            console.log("pokeName = ", pokeName, " bei fetch-Zugriff !!!");
-
             pokeAsJson = await getAdress.json();                                            // Auslesen Datensatz in pokeAsJson
             capitalized = pokeAsJson.name;   // capitalized nimmt Namen auf
             capitalizedString();             // wirkt auf Variable "capitalized" (erstes Zeichen wird GROSS) / in shorts.js

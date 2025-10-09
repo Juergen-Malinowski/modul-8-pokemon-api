@@ -126,7 +126,6 @@ function getPokeWithName() {
             }
         }
         if (pokeNotInAllPoke) {
-            console.log("in IF pokeNotInAllPoke REINGEGANGEN was nur bei TRUE erlaubt wäre", pokeNotInAllPoke);
             searchStringInName();                 // aus Such-Teilstring einen passenden Poke-Namen SUCHEN starten ...            
         }
     }
@@ -159,7 +158,6 @@ function findPokemonNameUnique() {
         return { status: "error", message: "Please write something ..." };
     }
     let searchText = pokeName;     // Übernahme des Pokemon-Namens (kleingeschrieben OHNE Leerstellen)
-    console.log("SUCH-Test-Name ist = ", searchText);
     if (searchText.length < 3) {                           // FEHLER ... zu wenige Zeichen vorgegeben !
         return { status: "too_short", message: "Please enter at least 3 letters ..." };
     }
@@ -203,8 +201,6 @@ function chooseThisPokemon(namePoke) {
     pokeIdNumber = 2000;         // SCHALTER für fetch aktivieren
     pokeNotInAllPoke = true;     // SCHALTER für fetch aktivieren
     inputUser.value = pokeName;
-    console.log("chooseThisPokemon() wurde bearbeitet. pokeName ist = ", pokeName);
-    console.log("inputUser = ", inputUser.value);
     loadWithNameOrIdAndShow();   // AUSGABE des Pokemons veranlassen
 }
 
