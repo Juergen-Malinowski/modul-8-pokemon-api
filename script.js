@@ -19,7 +19,6 @@ async function loadPokemon() {  // LADEN und AUSGABE ...
         }
         loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);   // HOCHZÄHLEN geladener POKEMONs
     }
-    console.log(allPoke);  // während ENTWICKLUNG ... ARRAY-Aufbau immer "griffbereit"
     document.getElementById('search_Mask').innerHTML = renderSearchBox();   // Pokemon-SUCHEN-Eingabe-Maske RENDERN
     showPokemon();   // START Abwicklung RENDERN des Pokemon-OVERVIEWs
     renderControlPanel();  // in shorts.js

@@ -48,8 +48,6 @@ async function loadAllPokemonNames() {
         let pokeData = { name: pokeName, id: pokeID };   // name und id abspeichern
         allPokeName.push(pokeData);                      // Array "allPokeName" erhält den Datensatz
     }
-    console.log("Anzahl geladener Pokemons:", allPokeName.length);
-    console.log(allPokeName);
 }
 
 function renderControlPanel() {
