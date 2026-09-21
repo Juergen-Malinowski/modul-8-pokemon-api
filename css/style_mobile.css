@@ -1,31 +1,14 @@
-/* ############################################### */
-/* CLASS for MEDIA >Mobile< ... 340px up to 767px */
-/* ############################################### */
-
-
 @media (max-width: 767px) {
-
-    /* ############### */
-    /* CLASS for BASIC */
-    /* ############### */
     h1 {
         font-size: 1em;
         width: 310px;
         padding-top: 1px;
     }
 
-
-    /* ################### */
-    /* CLASS for MAIN-Page */
-    /* ################### */
-
-    /* BASIC-Body gestalten */
     .header_grafik {
         flex-direction: column;
-        /* justify-content: space-between; */
     }
 
-    /* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
     .search_Mask {
         height: 400px;
         font-size: 14px;
@@ -51,11 +34,9 @@
         margin-top: 14px;
     }
 
-    /* NAV-Bar Gestaltung */
     .nav_grafik {
         height: 100px;
         justify-content: flex-end;
-        /* align-items: center; */
         margin-right: 10px;
         gap: 30px;
     }
@@ -72,7 +53,6 @@
         margin-right: 10px;
     }
 
-    /* LOADING-Picture gestalten */
     .loding_picture {
         width: 160px;
     }
@@ -81,7 +61,6 @@
         font-size: 24px;
     }
 
-    /* POKEMON OVERVIEW gestalten */
     .poke_grafik {
         width: 310px;
         height: auto;
@@ -93,7 +72,6 @@
         margin-bottom: 25px;
     }
 
-    /* CONTROL-Panel OVERVIEV Pokemon */
     .button_pre_next {
         width: 310px;
     }
@@ -105,24 +83,15 @@
         padding-top: 7px;
     }
 
-
-    /* ################ */
-    /* CLASS für DIALOG */
-    /* ################ */
-
-    /* BILD des ONE-Pokemon */
     .img_pokemon {
         width: 240px;
         padding-left: 0px;
     }
 
-    /* TABELLE Eigenschaften gestalten ... */
     .disable_this {
         display: none;
     }
 
-
-    /* CONTROL-Center für Show-One-Pokemon */
     .buttons_pre_poke {
         width: 60px;
         height: 35px;
@@ -151,10 +120,6 @@
         transform: scale(1.2);
     }
 
-
-    /* ################ */
-    /* CLASS for footer */
-    /* ################ */
     .copyright_jm {
         font-size: 20px;
         margin-top: 10px;
@@ -162,22 +127,12 @@
     }
 }
 
-
-/* ############################## */
-/* MEDIA 320px bis 339px */
-/* ############################## */
-
 @media (max-width: 339px) {
     .copyright_jm_impressum {
         font-size: 19px;
         color: yellow;
     }
 }
-
-
-/* ########################## */
-/* CLASS für INFO / IMPRESSUM */
-/* ########################## */
 
 .nav_grafik_info {
     width: 310px;

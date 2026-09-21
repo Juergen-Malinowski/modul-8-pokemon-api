@@ -1,12 +1,7 @@
-/* ############### */
-/* CLASS for BASIC */
-/* ############### */
-
 h1 {
     font-size: 3em;
     font-style: italic;
     width: 1300px;
-    /* width: 100vh; */
     color: white;
     background-color: blueviolet;
     border-style: double;
@@ -61,12 +56,6 @@ body {
     background-position: center;
 }
 
-
-/* ####################### */
-/* CLASS for MAIN-PROGRAMM */
-/* ####################### */
-
-/* BASIC-Body gestalten */
 .main_grafik {
     background-color: rgba(255, 255, 255, 0);
     display: flex;
@@ -84,8 +73,6 @@ body {
     justify-content: space-between;
 }
 
-
-/* SUCH-Box-ELEMENTE bzw. "SEARCH-Maske" ... Gestaltung... */
 .search_Mask {
     font-size: 30px;
     color: yellow;
@@ -108,8 +95,6 @@ body {
     color: white;
 }
 
-
-/* NAV-Bar Gestaltung */
 .nav_grafik {
     margin-right: 50px;
     background-color: blueviolet;
@@ -145,13 +130,10 @@ body {
 }
 
 .info_grafik:hover {
-    /* NAV ... für Info */
     color: yellow;
     text-decoration: underline;
 }
 
-
-/* Gestaltung des BUTTONS "Suche absenden" ... */
 .button_grafik {
     font-size: 30px;
     color: black;
@@ -174,8 +156,6 @@ body {
     margin-bottom: 9px;
 }
 
-
-/* LOADING-Picture gestalten */
 .loding_grafik {
     display: flex;
     flex-direction: column;
@@ -197,11 +177,8 @@ body {
     height: 600px;
 }
 
-
-/* POKEMON OVERVIEW gestalten */
 .poke_grafik {
     width: 1300px;
-    /* width: 100vh; */
     height: 100vh;
     height: auto;
     border-style: double;
@@ -263,8 +240,6 @@ body {
     height: auto;
 }
 
-
-/* CONTROL-Panel OVERVIEV Pokemon */
 .control_grafik {
     display: flex;
     flex-direction: row;
@@ -274,7 +249,6 @@ body {
 
 .button_pre_next {
     width: 1300px;
-    /* width: 100vh; */
     height: auto;
     border-style: double;
     border-color: black;
@@ -319,12 +293,6 @@ body {
     text-align: center;
 }
 
-
-/* ################ */
-/* CLASS für DIALOG */
-/* ################ */
-
-/* DIALOG-BOX Show-ONE-Pokemon */
 dialog::backdrop {
     height: 100vh;
     background-color: blueviolet;
@@ -353,8 +321,6 @@ dialog::backdrop {
     justify-content: space-around;
 }
 
-
-/* NAME, ID, Types zeigen */
 .poke_personal_position {
     display: flex;
     flex-direction: column;
@@ -377,16 +343,12 @@ dialog::backdrop {
     height: 55px;
 }
 
-
-/* BILD des ONE-Pokemon */
 .img_pokemon {
     width: 400px;
     height: auto;
     padding-left: 50px;
 }
 
-
-/* ABILITIES bzw. Fähigkeiten des Pokemon */
 .get_position {
     display: flex;
     flex-direction: column;
@@ -403,7 +365,6 @@ dialog::backdrop {
     color: white;
     margin-bottom: 5px;
 }
-
 
 .line_grafik {
     border-color: blueviolet;
@@ -425,8 +386,6 @@ dialog::backdrop {
     margin-bottom: 5px;
 }
 
-
-/* TABELLE Eigenschaften gestalten ... */
 .poke_abilities {
     padding-bottom: 10px;
 }
@@ -480,8 +439,6 @@ dialog::backdrop {
     color: #0dcaf0;
 }
 
-
-/* CONTROL-Center für Show-One-Pokemon */
 .buttons_pre_poke {
     width: 200px;
     height: 80px;
@@ -522,11 +479,6 @@ dialog::backdrop {
     font-size: 36px;
 }
 
-
-/* ################ */
-/* CLASS for footer */
-/* ################ */
-
 footer {
     background-color: rgba(255, 255, 255, 0);
 }
@@ -538,11 +490,6 @@ footer {
     margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0);
 }
-
-
-/* ################ */
-/* CLASS for NAV-INFO */
-/* ################ */
 
 .info_content {
     width: 1300px;
@@ -567,7 +514,6 @@ footer {
     align-items: center;
     padding-bottom: 15px;
 }
-
 
 .nav_grafik_info {
     font-size: 2em;
@@ -603,7 +549,6 @@ footer {
     transition-duration: 500ms;
     transition-property: transform;
     transition-delay: 200ms;
-    /* transform: scale(1.3); */
     transform: scale(1.15);
 }
 
@@ -621,7 +566,7 @@ footer {
 }
 
 ul.text_grafik {
-    list-style-type: none;  
+    list-style-type: none;
 }
 
 .href_grafik {
@@ -634,6 +579,4 @@ ul.text_grafik {
     cursor: pointer;
     font-size: 28px;
     text-decoration: underline;
-  
 }
-

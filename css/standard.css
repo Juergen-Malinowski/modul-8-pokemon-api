@@ -1,17 +1,11 @@
-/* GLOBAL STANDARD-Definition for hole index-html */
-
 * {
     font-family: "CS Freya Demo";
     box-sizing: border-box;
     margin: 0;
     scroll-behavior: smooth;
     background-color: black;
-    /* background-color: black; */
-    /* color: white; */
 }
 
 a {
     text-decoration: none;
 }
-
-

@@ -1,10 +1,4 @@
-// ###########################################################
-// Funktionen zur Manipulation des Inhalts globaler Variablen,
-// die sich dem POKEMON entsprechend anpassen müssen ...
-// ###########################################################
-
 function getTheColorCode() {
-    // WEISE backgroundColor den passenden HEX-Farbcode zum TYPE zu ...
     switch (backgroundColor) {
         case "normal": backgroundColor = "#ffffff"; break;
         case "fire": backgroundColor = "#f22121"; break;
@@ -30,8 +24,7 @@ function getTheColorCode() {
 }
 
 function getTheTypeIcons() {
-    // WEISE pokeTypeSearch das passende Bild vom TYPE zu ...
-    switch (pokeTypeSearch) {    
+    switch (pokeTypeSearch) {
         case "normal": pokeTypeSearch = "normal.jpg"; break;
         case "fire": pokeTypeSearch = "fire.jpg"; break;
         case "water": pokeTypeSearch = "water.jpg"; break;
@@ -56,11 +49,8 @@ function getTheTypeIcons() {
 }
 
 function getValueFromAllStatsForProcessBar() {
-    // ERMITTLE die Länge jedes Diagramm-Balkens zu jeder EIGENSCHAFT ...
     for (let index = 0; index < pokeStats.length; index++) {
         statsProportionateValue = 0;
-        // WERT 26 für PC ab 1440px ideal
-        // WERT 24 für TABLET runter bis 768 px bis 1300 px
         statsProportionateValue = Math.round(24 * pokeStats[index].value / maxValue);
         for (let i = 0; i < statsProportionateValue; i++) {
             switch (index) {
