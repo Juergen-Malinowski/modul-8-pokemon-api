@@ -1,26 +1,36 @@
 async function loadPokemon() {
-    if (firstLoad) {
-        goFristLoad();
-    }
-    if (startIndex >= allPoke.length) {
-        for (index = startIndex; index <= endIndex; index++) {
-            let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon/" + index);
-            pokeAsJson = await getAdress.json();
-            allPoke.push(pokeAsJson);
-            capitalized = allPoke[index - 1].name;
-            capitalizedString();
-            allPoke[index - 1].name = capitalized;
+    try {
+        if (firstLoad) {
+            await goFristLoad();
         }
-        loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);
+
+        if (startIndex >= allPoke.length) {
+            for (let index = startIndex; index <= endIndex; index++) {
+                const pokemon = await fetchJson(`${POKE_API_BASE_URL}/${index}`);
+                capitalized = pokemon.name;
+                capitalizedString();
+                pokemon.name = capitalized;
+                allPoke.push(pokemon);
+            }
+            loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);
+        }
+
+        document.getElementById('search_Mask').innerHTML = renderSearchBox();
+        showPokemon();
+        renderControlPanel();
+        return true;
+    } catch (error) {
+        document.getElementById('overview_poke').textContent = "Pokémon data could not be loaded. Please try again.";
+        if (allPoke.length > 0) {
+            renderControlPanel();
+        }
+        return false;
     }
-    document.getElementById('search_Mask').innerHTML = renderSearchBox();
-    showPokemon();
-    renderControlPanel();
 }
 
 function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
-    for (index = startIndex - 1; index < endIndex; index++) {
+    for (let index = startIndex - 1; index < endIndex; index++) {
         arrayID = index;
         findBackgroundColor();
         findTypeIcons();
@@ -33,56 +43,66 @@ function showPrevious() {
     if (startIndex === 1) {
         startIndex = allPoke.length - 7;
         endIndex = startIndex + 7;
-        showPokemon();
     } else {
         startIndex = startIndex - 8;
         endIndex = startIndex + 7;
-        showPokemon();
     }
+    showPokemon();
 }
 
-function showNext() {
+async function showNext() {
     audioClick.play();
     document.getElementById('show_next_button').disabled = true;
     document.getElementById('show_previous_button').disabled = true;
-    document.getElementById('overview_poke').innerHTML = "";
     document.getElementById('overview_poke').innerHTML = renderLodingPicture();
+
+    const previousStartIndex = startIndex;
+    const previousEndIndex = endIndex;
     startIndex = startIndex + 8;
     endIndex = startIndex + 7;
-    loadPokemon();
+
+    const loaded = await loadPokemon();
+    if (!loaded) {
+        startIndex = previousStartIndex;
+        endIndex = previousEndIndex;
+    }
 }
 
-function searchAndShowOnePoke() {
+async function searchAndShowOnePoke() {
     audioClick.play();
     searchOnePoke = true;
     getInputForSearch();
+
+    if (!searchThisPoke) {
+        showSearchError("Please enter a Pokémon name or ID.");
+        searchOnePoke = false;
+        return;
+    }
+
     getPokeIdNumber();
     getPokeWithName();
-    loadWithNameOrIdAndShow();
-    searchOnePoke = false;
-    inputUser.value = "";
+
+    try {
+        await loadWithNameOrIdAndShow();
+    } catch (error) {
+        showSearchError("The Pokémon could not be loaded.");
+    } finally {
+        searchOnePoke = false;
+        inputUser.value = "";
+    }
 }
 
 async function loadWithNameOrIdAndShow() {
-    if (inputUser.value != "") {
-        if (pokeIdNumber == 2000 && pokeNotInAllPoke) {
-            let getAdress = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`);
-            pokeAsJson = await getAdress.json();
-            capitalized = pokeAsJson.name;
-            capitalizedString();
-            pokeAsJson.name = capitalized;
-            showSearchPoke();
-        } else {
-            if (pokeIdNumber != 2000 && pokeNotInAllPoke) {
-                let getAPI = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeIdNumber);
-                pokeAsJson = await getAPI.json();
-                capitalized = pokeAsJson.name;
-                capitalizedString();
-                pokeAsJson.name = capitalized;
-                showSearchPoke();
-            }
-        }
+    if (!pokeNotInAllPoke || !inputUser || !inputUser.value.trim()) {
+        return;
     }
+
+    const identifier = pokeIdNumber !== null ? pokeIdNumber : pokeName;
+    pokeAsJson = await fetchJson(`${POKE_API_BASE_URL}/${identifier}`);
+    capitalized = pokeAsJson.name;
+    capitalizedString();
+    pokeAsJson.name = capitalized;
+    showSearchPoke();
 }
 
 function showSearchPoke() {
@@ -111,8 +131,7 @@ closeDialogSearch.addEventListener("keydown", (event) => {
 function showThisPokemon(getIDcode) {
     audioClick.play();
     getIDcode = String(getIDcode);
-    arrayID = getIDcode.replace(/\D+/g, '');
-    arrayID = Number(arrayID);
+    arrayID = Number(getIDcode.replace(/\D+/g, ''));
     getAllInfoForRendern();
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
@@ -139,28 +158,22 @@ function showPreviousPoke() {
     audioClick.play();
     if (arrayID == 0) {
         arrayID = allPoke.length - 1;
-        getAllInfoForRendern();
-        thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID - 1;
-        getAllInfoForRendern();
-        thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        statsPokemon.innerHTML = renderPokeStats();
     }
+    getAllInfoForRendern();
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    statsPokemon.innerHTML = renderPokeStats();
 }
 
 function showNextPoke() {
     audioClick.play();
     if (arrayID == allPoke.length - 1) {
         arrayID = 0;
-        getAllInfoForRendern();
-        thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        statsPokemon.innerHTML = renderPokeStats();
     } else {
         arrayID = arrayID + 1;
-        getAllInfoForRendern();
-        thisPokemon.innerHTML = renderOnePokemon(arrayID);
-        statsPokemon.innerHTML = renderPokeStats();
     }
+    getAllInfoForRendern();
+    thisPokemon.innerHTML = renderOnePokemon(arrayID);
+    statsPokemon.innerHTML = renderPokeStats();
 }

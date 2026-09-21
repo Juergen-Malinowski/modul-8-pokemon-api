@@ -1,20 +1,26 @@
+const POKE_API_BASE_URL = "https://pokeapi.co/api/v2/pokemon";
+
 let allPoke = [];
 let startIndex = 1;
 let endIndex = startIndex + 7;
 let firstLoad = true;
 
 let arrayID = 0;
-let pokeAsJson = "";
+let pokeAsJson = null;
 let apiLength = 0;
 let loadedPokemons = 0;
 let capitalized = "";
+let backgroundColor = "";
+let pokeTypeIcon1 = "";
+let pokeTypeIcon2 = "";
+let pokeTypeSearch = "";
 const buttonPreNext = document.getElementById('button_pre_next');
 
 const audioClick = new Audio('./assets/sound/click.mp3');
 
-let inputUser = document.getElementById('input_user');
+let inputUser = null;
 let searchThisPoke = "";
-let pokeIdNumber = "";
+let pokeIdNumber = null;
 let pokeName = "";
 let pokeNotInAllPoke = true;
 let searchOnePoke = false;

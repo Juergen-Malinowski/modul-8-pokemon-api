@@ -1,7 +1,13 @@
+async function fetchJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+    }
+    return response.json();
+}
+
 async function howMuchPokeExist() {
-    apiLength = 0;
-    let getAdress = await fetch("https://pokeapi.co/api/v2/pokemon");
-    let data = await getAdress.json();
+    const data = await fetchJson(POKE_API_BASE_URL);
     apiLength = data.count;
 }
 
@@ -9,32 +15,26 @@ function capitalizedString() {
     capitalized = capitalized.charAt(0).toUpperCase() + capitalized.slice(1);
 }
 
-function goFristLoad() {
+async function goFristLoad() {
     loadedPokemons = 0;
-    howMuchPokeExist();
-    loadAllPokemonNames();
-    document.getElementById('overview_poke').innerHTML = "";
     document.getElementById('overview_poke').innerHTML = renderLodingPicture();
+    await howMuchPokeExist();
+    await loadAllPokemonNames();
     firstLoad = false;
 }
 
 async function loadAllPokemonNames() {
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1302");
-    let data = await response.json();
-    let results = data.results;
-    for (let index = 0; index < results.length; index++) {
-        let thisPokemon = results[index];
-        let pokeName = thisPokemon.name;
-        let pokeURL = thisPokemon.url;
-        let parts = pokeURL.split("/");
-        let pokeID = parts[parts.length - 2];
-        let pokeData = { name: pokeName, id: pokeID };
-        allPokeName.push(pokeData);
-    }
+    const data = await fetchJson(`${POKE_API_BASE_URL}?limit=${apiLength}`);
+    allPokeName = data.results.map((pokemon) => {
+        const parts = pokemon.url.split("/");
+        return {
+            name: pokemon.name,
+            id: parts[parts.length - 2]
+        };
+    });
 }
 
 function renderControlPanel() {
-    buttonPreNext.innerHTML = "";
     buttonPreNext.innerHTML = setButtonsAndCounter();
     document.getElementById('show_next_button').disabled = false;
     document.getElementById('show_previous_button').disabled = false;
@@ -57,117 +57,124 @@ function findBackgroundColor() {
 
 function getInputForSearch() {
     inputUser = document.getElementById('input_user');
-    searchThisPoke = "";
     searchThisPoke = inputUser.value.trim();
 }
 
 function getPokeIdNumber() {
-    pokeIdNumber = searchThisPoke;
-    pokeIdNumber = String(pokeIdNumber);
-    pokeIdNumber = pokeIdNumber.replace(/\D+/g, '');
-    pokeIdNumber = Number(pokeIdNumber);
-    if (pokeIdNumber != 0) {
-        pokeAsJson.id = pokeIdNumber;
-    }
-    if (pokeIdNumber == 0) {
-        pokeIdNumber = 2000;
-    }
+    pokeIdNumber = /^\d+$/.test(searchThisPoke) ? Number(searchThisPoke) : null;
 }
 
 function getPokeWithName() {
-    pokeName = searchThisPoke;
-    pokeName = pokeName.toLowerCase();
-    pokeNotInAllPoke = true;
-    if (pokeIdNumber == 2000) {
-        for (let index = 0; index < allPoke.length; index++) {
-            let checkPokeName = allPoke[index].name.toLowerCase();
-            if (pokeName == checkPokeName) {
-                pokeNotInAllPoke = false;
-                capitalized = pokeName;
-                capitalizedString();
-                pokeAsJson.name = capitalized;
-                pokeAsJson.id = allPoke[index].id;
-                showSearchPoke();
-            }
-        }
-        if (pokeNotInAllPoke) {
-            searchStringInName();
-        }
+    if (pokeIdNumber !== null) {
+        return;
     }
+
+    pokeName = searchThisPoke.toLowerCase();
+    pokeNotInAllPoke = true;
+
+    const loadedPokemon = allPoke.find((pokemon) => pokemon.name.toLowerCase() === pokeName);
+    if (loadedPokemon) {
+        pokeNotInAllPoke = false;
+        pokeAsJson = loadedPokemon;
+        showSearchPoke();
+        return;
+    }
+
+    searchStringInName();
 }
 
 function searchStringInName() {
-    let result = findPokemonNameUnique();
-    let output = document.getElementById("input_incorrect");
+    const result = findPokemonNameUnique();
+    const output = document.getElementById("input_incorrect");
     output.innerHTML = "";
+
     if (result.status === "none") {
-        output.innerHTML = "❌ This pokemon do not exist !";
+        output.innerHTML = "❌ This Pokémon does not exist.";
         inputUser.value = "";
+        pokeNotInAllPoke = false;
         return;
     }
+
     if (result.status === "too_short") {
-        output.innerHTML = "⚠️ Please enter at least 3 letters ...";
+        output.innerHTML = "⚠️ Please enter at least 3 letters.";
         inputUser.value = "";
+        pokeNotInAllPoke = false;
         return;
     }
+
     if (result.status === "multiple") {
+        pokeNotInAllPoke = false;
         renderSuggestionList(result.suggestions);
         return;
     }
-    if (result.status === "one") {
-        pokeName = result.name;
-    }
+
+    pokeName = result.name;
 }
 
 function findPokemonNameUnique() {
-    if (inputUser === undefined || inputUser === null) {
-        return { status: "error", message: "Please write something ..." };
+    if (!inputUser) {
+        return { status: "none" };
     }
-    let searchText = pokeName;
+
+    const searchText = pokeName;
     if (searchText.length < 3) {
-        return { status: "too_short", message: "Please enter at least 3 letters ..." };
+        return { status: "too_short" };
     }
-    let matches = [];
-    for (let index = 0; index < allPokeName.length; index++) {
-        let loadPokemon = allPokeName[index];
-        let thisName = loadPokemon.name;
-        if (thisName.includes(searchText)) {
-            matches.push(loadPokemon);
-        }
-    }
+
+    const matches = allPokeName.filter((pokemon) => pokemon.name.includes(searchText));
+
     if (matches.length === 0) {
-        return { status: "none", message: "This pokemon do not exist !" };
+        return { status: "none" };
     }
+
     if (matches.length > 1) {
-        let names = [];
-        for (let i = 0; i < matches.length; i++) {
-            names.push(matches[i].name);
-        }
-        pokeNotInAllPoke = false;
-        return { status: "multiple", suggestions: names };
+        return {
+            status: "multiple",
+            suggestions: matches.map((pokemon) => pokemon.name)
+        };
     }
-    let uniquePokemon = matches[0];
-    return { status: "one", name: uniquePokemon.name, id: uniquePokemon.id };
+
+    return {
+        status: "one",
+        name: matches[0].name,
+        id: matches[0].id
+    };
 }
 
 function renderSuggestionList(nameList) {
-    let output = document.getElementById("input_incorrect");
-    let html = "<p>Multiple HITS – please, select:</p>";
+    const output = document.getElementById("input_incorrect");
+    let html = "<p>Multiple hits – please select:</p>";
     html += "<ul class='suggestion_list'>";
     for (let i = 0; i < nameList.length; i++) {
-        html += `<li><button class="suggestion_button" 
+        html += `<li><button class="suggestion_button"
             onclick="chooseThisPokemon('${nameList[i]}')">${nameList[i]}</button></li>`;
     }
     html += "</ul>";
     output.innerHTML = html;
 }
 
-function chooseThisPokemon(namePoke) {
+async function chooseThisPokemon(namePoke) {
+    searchOnePoke = true;
     pokeName = namePoke;
-    pokeIdNumber = 2000;
+    pokeIdNumber = null;
     pokeNotInAllPoke = true;
     inputUser.value = pokeName;
-    loadWithNameOrIdAndShow();
+
+    try {
+        await loadWithNameOrIdAndShow();
+    } catch (error) {
+        showSearchError("The selected Pokémon could not be loaded.");
+    } finally {
+        searchOnePoke = false;
+        inputUser.value = "";
+    }
+}
+
+function showSearchError(message) {
+    const output = document.getElementById("input_incorrect");
+    if (output) {
+        output.textContent = message;
+    }
 }
 
 function getAllInfoForRendern() {
@@ -224,41 +231,28 @@ function whatAbilities() {
     abilityOne = "";
     abilityTwo = "";
     abilityThree = "";
-    if (searchOnePoke) {
-        for (let index = 0; index < pokeAsJson.abilities.length; index++) {
-            switch (index) {
-                case 0: abilityOne = pokeAsJson.abilities[index].ability.name; break;
-                case 1: abilityTwo = pokeAsJson.abilities[index].ability.name; break;
-                case 2: abilityThree = pokeAsJson.abilities[index].ability.name; break;
-                default: break;
-            }
-        }
-    } else {
-        for (let index = 0; index < allPoke[arrayID].abilities.length; index++) {
-            switch (index) {
-                case 0: abilityOne = allPoke[arrayID].abilities[index].ability.name; break;
-                case 1: abilityTwo = allPoke[arrayID].abilities[index].ability.name; break;
-                case 2: abilityThree = allPoke[arrayID].abilities[index].ability.name; break;
-                default: break;
-            }
+    const abilities = searchOnePoke ? pokeAsJson.abilities : allPoke[arrayID].abilities;
+
+    for (let index = 0; index < abilities.length; index++) {
+        switch (index) {
+            case 0: abilityOne = abilities[index].ability.name; break;
+            case 1: abilityTwo = abilities[index].ability.name; break;
+            case 2: abilityThree = abilities[index].ability.name; break;
+            default: break;
         }
     }
 }
 
 function getAllStats() {
     pokeStats = [];
-    let thisPokeAllData = {};
-    if (searchOnePoke) {
-        thisPokeAllData = pokeAsJson.stats;
-    } else {
-        thisPokeAllData = allPoke[arrayID].stats;
-    }
-    for (let index = 0; index < thisPokeAllData.length; index++) {
-        let allStats = thisPokeAllData[index];
-        let statName = allStats.stat.name;
-        statName = statName.toUpperCase();
-        let statValue = allStats.base_stat;
-        pokeStats.push({ name: statName, value: statValue });
+    const stats = searchOnePoke ? pokeAsJson.stats : allPoke[arrayID].stats;
+
+    for (let index = 0; index < stats.length; index++) {
+        const stat = stats[index];
+        pokeStats.push({
+            name: stat.stat.name.toUpperCase(),
+            value: stat.base_stat
+        });
     }
 }
 
@@ -266,9 +260,8 @@ function getMaxValueFromAllStats() {
     getAllStats();
     maxValue = 0;
     for (let index = 0; index < pokeStats.length; index++) {
-        let stat = pokeStats[index];
-        if (stat.value > maxValue) {
-            maxValue = stat.value;
+        if (pokeStats[index].value > maxValue) {
+            maxValue = pokeStats[index].value;
         }
     }
     stat0 = "█";
