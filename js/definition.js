@@ -14,6 +14,7 @@ let backgroundColor = "";
 let pokeTypeIcon1 = "";
 let pokeTypeIcon2 = "";
 let pokeTypeSearch = "";
+let lastFocusedElement = null;
 const buttonPreNext = document.getElementById('button_pre_next');
 
 const audioClick = new Audio('./assets/sound/click.mp3');
@@ -32,6 +33,8 @@ const statsSearchPokemon = document.getElementById('poke_search_stats');
 
 const showOnePokemon = document.getElementById("show_one_pokemon");
 const closeDialog = document.getElementById("close_dialog");
+const previousPokeButton = document.getElementById("pre_poke");
+const nextPokeButton = document.getElementById("next_poke");
 const thisPokemon = document.getElementById('show_pokemon');
 const statsPokemon = document.getElementById('poke_stats');
 let abilityOne = "";

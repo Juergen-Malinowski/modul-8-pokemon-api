@@ -1,3 +1,51 @@
+document.addEventListener("DOMContentLoaded", loadPokemon);
+
+document.addEventListener("submit", (event) => {
+    if (event.target.id === "pokemon_search_form") {
+        event.preventDefault();
+        searchAndShowOnePoke();
+    }
+});
+
+document.addEventListener("click", (event) => {
+    const pokemonCard = event.target.closest("[data-pokemon-index]");
+    if (pokemonCard) {
+        showThisPokemon(Number(pokemonCard.dataset.pokemonIndex));
+        return;
+    }
+
+    const suggestionButton = event.target.closest("[data-pokemon-name]");
+    if (suggestionButton) {
+        chooseThisPokemon(suggestionButton.dataset.pokemonName);
+        return;
+    }
+
+    if (event.target.closest("#show_previous_button")) {
+        showPrevious();
+        return;
+    }
+
+    if (event.target.closest("#show_next_button")) {
+        showNext();
+    }
+});
+
+previousPokeButton.addEventListener("click", showPreviousPoke);
+nextPokeButton.addEventListener("click", showNextPoke);
+
+closeDialog.addEventListener("click", () => {
+    audioClick.play();
+    showOnePokemon.close();
+});
+
+closeDialogSearch.addEventListener("click", () => {
+    audioClick.play();
+    showSearchPokemon.close();
+});
+
+showOnePokemon.addEventListener("close", restoreLastFocus);
+showSearchPokemon.addEventListener("close", restoreLastFocus);
+
 async function loadPokemon() {
     try {
         if (firstLoad) {
@@ -106,53 +154,26 @@ async function loadWithNameOrIdAndShow() {
 }
 
 function showSearchPoke() {
+    lastFocusedElement = document.activeElement;
     getAllInfoForRendern();
     thisSearchPokemon.innerHTML = "";
     statsSearchPokemon.innerHTML = "";
-    showSearchPokemon.showModal();
     thisSearchPokemon.innerHTML = renderSearchPokemon();
     statsSearchPokemon.innerHTML = renderPokeStats();
+    showSearchPokemon.showModal();
 }
 
-closeDialogSearch.addEventListener("click", () => {
+function showThisPokemon(pokemonIndex) {
     audioClick.play();
-    showSearchPokemon.close();
-    showPokemon();
-});
-
-closeDialogSearch.addEventListener("keydown", (event) => {
-    audioClick.play();
-    if (event.key === "Enter") {
-        showSearchPokemon.close();
-        showPokemon();
-    }
-});
-
-function showThisPokemon(getIDcode) {
-    audioClick.play();
-    getIDcode = String(getIDcode);
-    arrayID = Number(getIDcode.replace(/\D+/g, ''));
+    lastFocusedElement = document.activeElement;
+    arrayID = pokemonIndex;
     getAllInfoForRendern();
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
-    showOnePokemon.showModal();
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
     statsPokemon.innerHTML = renderPokeStats();
+    showOnePokemon.showModal();
 }
-
-closeDialog.addEventListener("click", () => {
-    audioClick.play();
-    showOnePokemon.close();
-    showPokemon();
-});
-
-closeDialog.addEventListener("keydown", (event) => {
-    audioClick.play();
-    if (event.key === "Enter") {
-        showOnePokemon.close();
-        showPokemon();
-    }
-});
 
 function showPreviousPoke() {
     audioClick.play();
@@ -176,4 +197,11 @@ function showNextPoke() {
     getAllInfoForRendern();
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
     statsPokemon.innerHTML = renderPokeStats();
+}
+
+function restoreLastFocus() {
+    if (lastFocusedElement && document.contains(lastFocusedElement)) {
+        lastFocusedElement.focus();
+    }
+    lastFocusedElement = null;
 }

@@ -146,8 +146,8 @@ function renderSuggestionList(nameList) {
     let html = "<p>Multiple hits – please select:</p>";
     html += "<ul class='suggestion_list'>";
     for (let i = 0; i < nameList.length; i++) {
-        html += `<li><button class="suggestion_button"
-            onclick="chooseThisPokemon('${nameList[i]}')">${nameList[i]}</button></li>`;
+        html += `<li><button class="suggestion_button" type="button"
+            data-pokemon-name="${nameList[i]}">${nameList[i]}</button></li>`;
     }
     html += "</ul>";
     output.innerHTML = html;

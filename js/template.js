@@ -1,9 +1,11 @@
 function renderSearchBox() {
-    return `       
-        <input class="input_user" id="input_user" type="text" onkeydown="if(event.key==='Enter'){searchAndShowOnePoke()}"
-            placeholder="Please full name or ID ..." required tabindex="0">
-        <button class="buttons_grafik" onclick="searchAndShowOnePoke()" type="submit" tabindex="0">Search</button>
-        <p class="input_incorrect" id="input_incorrect"></p>
+    return `
+        <form id="pokemon_search_form" class="search_form">
+            <input class="input_user" id="input_user" type="text"
+                placeholder="Please enter a full name or ID" aria-label="Pokémon name or ID" required>
+            <button class="buttons_grafik" type="submit">Search</button>
+            <p class="input_incorrect" id="input_incorrect" aria-live="polite"></p>
+        </form>
     `;
 }
 
@@ -16,30 +18,31 @@ function renderTypeIcon(iconFile, className, altText) {
 
 function renderPokemon() {
     return `
-        <div id="pic_${arrayID}" class="one_pokemon" onclick="showThisPokemon('pic_' + ${arrayID})" tabindex="0"> 
+        <button id="pic_${arrayID}" class="one_pokemon" type="button"
+            data-pokemon-index="${arrayID}" aria-label="Open details for ${allPoke[arrayID].name}">
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
-            <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
+            <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}"
                style="background-color: ${backgroundColor};" alt="${allPoke[arrayID].name}">
-            <div class="type_icon_position">
+            <span class="type_icon_position">
                 ${renderTypeIcon(pokeTypeIcon1, "type_icon_overview", "Primary Pokémon type")}
                 ${renderTypeIcon(pokeTypeIcon2, "type_icon_overview", "Secondary Pokémon type")}
-            </div> 
-        </div>
+            </span>
+        </button>
     `;
 }
 
 function setButtonsAndCounter() {
     return `
-        <button id="show_previous_button" class="buttons_grafik" onclick="showPrevious()" tabindex="0"> <<<<<< </button>
-        <p class="counter_grafik"> ${loadedPokemons} from ${apiLength} Pokemons </p>
-        <button id="show_next_button" class="buttons_grafik" onclick="showNext()" tabindex="0"> >>>>>> </button>         
+        <button id="show_previous_button" class="buttons_grafik" type="button" aria-label="Show previous Pokémon"> &lt;&lt;&lt;&lt;&lt;&lt; </button>
+        <p class="counter_grafik">${loadedPokemons} from ${apiLength} Pokémon</p>
+        <button id="show_next_button" class="buttons_grafik" type="button" aria-label="Show next Pokémon"> &gt;&gt;&gt;&gt;&gt;&gt; </button>
     `;
 }
 
 function renderLodingPicture() {
     return `
-        <div class="loding_grafik">
-            <p class="load_grafik">Pokemons L O A D I N G ...</p>
+        <div class="loding_grafik" role="status" aria-live="polite">
+            <p class="load_grafik">Pokémon L O A D I N G ...</p>
             <div class="lodPic_grafik">
                 <img class="loding_picture" src="./assets/img/betty-boop.png" alt="Betty Boop illustration">
                 <img class="loding_picture" src="./assets/img/cartoon-bear.png" alt="Cartoon bear illustration">
@@ -52,18 +55,17 @@ function renderPokemonDetails(pokemon) {
     const heightInMeters = (pokemon.height / 10).toFixed(1);
     const weightInKilograms = (pokemon.weight / 10).toFixed(1);
 
-    return `    
+    return `
         <div class="poke_personal_position">
-            <div class="poke_personal_name">Name: </div>
+            <div class="poke_personal_name">Name:</div>
             <div class="poke_personal_name_color">${pokemon.name}</div>
-            <br>
             <div class="poke_personal">Poke-ID: #${pokemon.id}</div>
             ${renderTypeIcon(pokeTypeIcon1, "type_icon", "Primary Pokémon type")}
             ${renderTypeIcon(pokeTypeIcon2, "type_icon", "Secondary Pokémon type")}
-        </div>    
+        </div>
         <div class="get_color">
             <img src="${pokemon.sprites.other.home.front_default}" class="img_pokemon"
-                style="background-color: ${backgroundColor};" alt="${pokemon.name}"><br>
+                style="background-color: ${backgroundColor};" alt="${pokemon.name}">
         </div>
         <div class="all_poke_details">
             <div class="get_position">
@@ -71,10 +73,8 @@ function renderPokemonDetails(pokemon) {
                 <div class="poke_personal">${abilityOne}</div>
                 <div class="poke_personal">${abilityTwo}</div>
                 <div class="poke_personal">${abilityThree}</div>
-                <br>
             </div>
             <hr class="line_grafik">
-            <br>
             <div>
                 <div class="poke_details">Height: ${heightInMeters} m</div>
                 <div class="poke_details">Weight: ${weightInKilograms} kg</div>
@@ -99,41 +99,41 @@ function renderPokeStats() {
                 <tr class="table_th_grafik">
                     <th class="table_title">Properties</th>
                     <th class="table_title">Value</th>
-                    <th class="table_title disable_this">Diagram 
-                        <span style="font-size: 20px; color: white;">(highest Value = Maximum)</span>
+                    <th class="table_title disable_this">Diagram
+                        <span style="font-size: 20px; color: white;">(highest value = maximum)</span>
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="table_contens_hp">
-                    <td>${pokeStats[0].name} </td>
-                    <td>${pokeStats[0].value} </td>
-                    <td class="disable_this">${stat0}</td>                         
+                    <td>${pokeStats[0].name}</td>
+                    <td>${pokeStats[0].value}</td>
+                    <td class="disable_this">${stat0}</td>
                 </tr>
                 <tr class="table_contens_attack">
                     <td>${pokeStats[1].name}</td>
-                    <td>${pokeStats[1].value}</td>  
-                    <td class="disable_this">${stat1}</td>               
+                    <td>${pokeStats[1].value}</td>
+                    <td class="disable_this">${stat1}</td>
                 </tr>
                 <tr class="table_contens_defense">
                     <td>${pokeStats[2].name}</td>
                     <td>${pokeStats[2].value}</td>
-                    <td class="disable_this">${stat2}</td>                         
+                    <td class="disable_this">${stat2}</td>
                 </tr>
                 <tr class="table_contens_spatk">
-                    <td>${pokeStats[3].name} </td>
+                    <td>${pokeStats[3].name}</td>
                     <td>${pokeStats[3].value}</td>
-                    <td class="disable_this">${stat3}</td>                         
+                    <td class="disable_this">${stat3}</td>
                 </tr>
                 <tr class="table_contens_spdef">
-                    <td>${pokeStats[4].name} </td>
+                    <td>${pokeStats[4].name}</td>
                     <td>${pokeStats[4].value}</td>
-                    <td class="disable_this">${stat4}</td>     
+                    <td class="disable_this">${stat4}</td>
                 </tr>
                 <tr class="table_contens_speed">
                     <td>${pokeStats[5].name}</td>
                     <td>${pokeStats[5].value}</td>
-                    <td class="disable_this">${stat5}</td>                         
+                    <td class="disable_this">${stat5}</td>
                 </tr>
             </tbody>
         </table>
