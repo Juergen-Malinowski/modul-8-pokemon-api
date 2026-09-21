@@ -186,7 +186,7 @@ function getAllInfoForRendern() {
 
 function findTypeIcons() {
     pokeTypeIcon1 = "";
-    pokeTypeIcon2 = "normal.jpg";
+    pokeTypeIcon2 = "";
     pokeTypeSearch = "";
     if (searchOnePoke) {
         getIconsSearchPoke();

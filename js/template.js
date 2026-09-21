@@ -7,15 +7,22 @@ function renderSearchBox() {
     `;
 }
 
+function renderTypeIcon(iconFile, className, altText) {
+    if (!iconFile) {
+        return "";
+    }
+    return `<img src="./assets/icon/${iconFile}" class="${className}" alt="${altText}">`;
+}
+
 function renderPokemon() {
     return `
         <div id="pic_${arrayID}" class="one_pokemon" onclick="showThisPokemon('pic_' + ${arrayID})" tabindex="0"> 
             <span class="name_poke">${allPoke[arrayID].name} (ID: #${allPoke[arrayID].id})</span>
             <img class="img_poke" src="${allPoke[arrayID].sprites.other.home.front_default}" 
-               style="background-color: ${backgroundColor};" alt="picture of Pokemon">
-            <div class="type_icon_position">   
-                <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon_overview" alt="ICON vom Type1">
-                <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon_overview" alt="ICON vom Type2">                   
+               style="background-color: ${backgroundColor};" alt="${allPoke[arrayID].name}">
+            <div class="type_icon_position">
+                ${renderTypeIcon(pokeTypeIcon1, "type_icon_overview", "Primary Pokémon type")}
+                ${renderTypeIcon(pokeTypeIcon2, "type_icon_overview", "Secondary Pokémon type")}
             </div> 
         </div>
     `;
@@ -34,76 +41,54 @@ function renderLodingPicture() {
         <div class="loding_grafik">
             <p class="load_grafik">Pokemons L O A D I N G ...</p>
             <div class="lodPic_grafik">
-                <img class="loding_picture" src="./assets/img/betty-boop.png" alt="picture from Betty Boop">
-                <img class="loding_picture" src="./assets/img/cartoon-bear.png" alt="picture from cartoon-bear">
+                <img class="loding_picture" src="./assets/img/betty-boop.png" alt="Betty Boop illustration">
+                <img class="loding_picture" src="./assets/img/cartoon-bear.png" alt="Cartoon bear illustration">
+            </div>
+        </div>
+    `;
+}
+
+function renderPokemonDetails(pokemon) {
+    const heightInMeters = (pokemon.height / 10).toFixed(1);
+    const weightInKilograms = (pokemon.weight / 10).toFixed(1);
+
+    return `    
+        <div class="poke_personal_position">
+            <div class="poke_personal_name">Name: </div>
+            <div class="poke_personal_name_color">${pokemon.name}</div>
+            <br>
+            <div class="poke_personal">Poke-ID: #${pokemon.id}</div>
+            ${renderTypeIcon(pokeTypeIcon1, "type_icon", "Primary Pokémon type")}
+            ${renderTypeIcon(pokeTypeIcon2, "type_icon", "Secondary Pokémon type")}
+        </div>    
+        <div class="get_color">
+            <img src="${pokemon.sprites.other.home.front_default}" class="img_pokemon"
+                style="background-color: ${backgroundColor};" alt="${pokemon.name}"><br>
+        </div>
+        <div class="all_poke_details">
+            <div class="get_position">
+                <div class="poke_personal_abi">Abilities:</div>
+                <div class="poke_personal">${abilityOne}</div>
+                <div class="poke_personal">${abilityTwo}</div>
+                <div class="poke_personal">${abilityThree}</div>
+                <br>
+            </div>
+            <hr class="line_grafik">
+            <br>
+            <div>
+                <div class="poke_details">Height: ${heightInMeters} m</div>
+                <div class="poke_details">Weight: ${weightInKilograms} kg</div>
             </div>
         </div>
     `;
 }
 
 function renderOnePokemon(arrayID) {
-    return `    
-        <div class="poke_personal_position">
-            <div class="poke_personal_name">Name: </div>
-            <div class="poke_personal_name_color">${allPoke[arrayID].name}</div>
-            <br>
-            <div class="poke_personal">Poke-ID: #${allPoke[arrayID].id}</div>
-            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1">
-            <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon" alt="ICON vom Type1">               
-        </div>    
-        <div class="get_color">
-            <img src="${allPoke[arrayID].sprites.other.home.front_default}" class="img_pokemon"
-                style="background-color: ${backgroundColor};" alt="Picture Pokemon"><br>
-        </div>
-        <div class="all_poke_details">
-            <div class="get_position">
-                <div class="poke_personal_abi">Abilities:</div>
-                <div class="poke_personal">${abilityOne}</div>
-                <div class="poke_personal">${abilityTwo}</div>
-                <div class="poke_personal">${abilityThree}</div>
-                <br>
-            </div>
-            <hr class="line_grafik">
-            <br>
-            <div>
-                <div class="poke_details">Size: ${allPoke[arrayID].height} feet</div>
-                <div class="poke_details">Weight: ${allPoke[arrayID].weight} lbs</div>
-            </div>
-        </div>
-    `;
+    return renderPokemonDetails(allPoke[arrayID]);
 }
 
 function renderSearchPokemon() {
-    return `    
-        <div>
-            <div class="poke_personal_name">Name: </div>
-            <div class="poke_personal_name_color">${pokeAsJson.name}</div>
-            <br>
-            <div class="poke_personal">Poke-ID: #${pokeAsJson.id}</div><br>   
-
-            <img src="./assets/icon/${pokeTypeIcon1}" class="type_icon" alt="ICON vom Type1"><br>
-            <img src="./assets/icon/${pokeTypeIcon2}" class="type_icon" alt="ICON vom Type1">               
-        </div>    
-        <div class="get_color">
-            <img src="${pokeAsJson.sprites.other.home.front_default}" class="img_pokemon"
-                style="background-color: ${backgroundColor};" alt="Bild Pokemon"><br>
-        </div>
-        <div class="all_poke_details">
-            <div class="get_position">
-                <div class="poke_personal_abi">Abilities:</div>
-                <div class="poke_personal">${abilityOne}</div>
-                <div class="poke_personal">${abilityTwo}</div>
-                <div class="poke_personal">${abilityThree}</div>
-                <br>
-            </div>
-            <hr class="line_grafik">
-            <br>
-            <div>
-                <div class="poke_details">Size: ${pokeAsJson.height} feet</div>
-                <div class="poke_details">Weight: ${pokeAsJson.weight} lbs</div>
-            </div>
-        </div>
-    `;
+    return renderPokemonDetails(pokeAsJson);
 }
 
 function renderPokeStats() {
