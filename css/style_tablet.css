@@ -51,7 +51,7 @@
         font-size: 28px;
     }
 
-    .loding_picture {
+    .loading_picture {
         width: 350px;
         height: auto;
     }
@@ -83,12 +83,12 @@
         font-size: 30px;
     }
 
-    .table_contens_hp,
-    .table_contens_attack,
-    .table_contens_defense,
-    .table_contens_spatk,
-    .table_contens_spdef,
-    .table_contens_speed {
+    .table_content_hp,
+    .table_content_attack,
+    .table_content_defense,
+    .table_content_spatk,
+    .table_content_spdef,
+    .table_content_speed {
         font-size: 24px;
     }
 

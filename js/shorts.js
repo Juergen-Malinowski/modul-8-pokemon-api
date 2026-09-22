@@ -6,25 +6,20 @@ async function fetchJson(url) {
     return response.json();
 }
 
-async function howMuchPokeExist() {
-    const data = await fetchJson(POKE_API_BASE_URL);
-    apiLength = data.count;
+function capitalizeName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-function capitalizedString() {
-    capitalized = capitalized.charAt(0).toUpperCase() + capitalized.slice(1);
-}
-
-async function goFristLoad() {
+async function goFirstLoad() {
     loadedPokemons = 0;
-    document.getElementById('overview_poke').innerHTML = renderLodingPicture();
-    await howMuchPokeExist();
-    await loadAllPokemonNames();
+    document.getElementById('overview_poke').innerHTML = renderLoadingPicture();
+    await loadPokemonIndex();
     firstLoad = false;
 }
 
-async function loadAllPokemonNames() {
-    const data = await fetchJson(`${POKE_API_BASE_URL}?limit=${apiLength}`);
+async function loadPokemonIndex() {
+    const data = await fetchJson(`${POKE_API_BASE_URL}?limit=100000&offset=0`);
+    apiLength = data.count;
     allPokeName = data.results.map((pokemon) => {
         const parts = pokemon.url.split("/");
         return {
@@ -177,7 +172,7 @@ function showSearchError(message) {
     }
 }
 
-function getAllInfoForRendern() {
+function preparePokemonDetails() {
     whatAbilities();
     findBackgroundColor();
     findTypeIcons();

@@ -49,18 +49,20 @@ showSearchPokemon.addEventListener("close", restoreLastFocus);
 async function loadPokemon() {
     try {
         if (firstLoad) {
-            await goFristLoad();
+            await goFirstLoad();
         }
 
         if (startIndex >= allPoke.length) {
-            for (let index = startIndex; index <= endIndex; index++) {
-                const pokemon = await fetchJson(`${POKE_API_BASE_URL}/${index}`);
-                capitalized = pokemon.name;
-                capitalizedString();
-                pokemon.name = capitalized;
+            const limit = endIndex - startIndex + 1;
+            const pokemonList = await fetchJson(`${POKE_API_BASE_URL}?limit=${limit}&offset=${startIndex - 1}`);
+
+            for (const result of pokemonList.results) {
+                const pokemon = await fetchJson(result.url);
+                pokemon.name = capitalizeName(pokemon.name);
                 allPoke.push(pokemon);
             }
-            loadedPokemons = loadedPokemons + (endIndex - startIndex + 1);
+
+            loadedPokemons += pokemonList.results.length;
         }
 
         document.getElementById('search_Mask').innerHTML = renderSearchBox();
@@ -78,7 +80,7 @@ async function loadPokemon() {
 
 function showPokemon() {
     document.getElementById('overview_poke').innerHTML = "";
-    for (let index = startIndex - 1; index < endIndex; index++) {
+    for (let index = startIndex - 1; index < endIndex && index < allPoke.length; index++) {
         arrayID = index;
         findBackgroundColor();
         findTypeIcons();
@@ -89,10 +91,10 @@ function showPokemon() {
 function showPrevious() {
     audioClick.play();
     if (startIndex === 1) {
-        startIndex = allPoke.length - 7;
+        startIndex = Math.max(1, allPoke.length - 7);
         endIndex = startIndex + 7;
     } else {
-        startIndex = startIndex - 8;
+        startIndex = Math.max(1, startIndex - 8);
         endIndex = startIndex + 7;
     }
     showPokemon();
@@ -102,17 +104,19 @@ async function showNext() {
     audioClick.play();
     document.getElementById('show_next_button').disabled = true;
     document.getElementById('show_previous_button').disabled = true;
-    document.getElementById('overview_poke').innerHTML = renderLodingPicture();
+    document.getElementById('overview_poke').innerHTML = renderLoadingPicture();
 
     const previousStartIndex = startIndex;
     const previousEndIndex = endIndex;
-    startIndex = startIndex + 8;
+    startIndex += 8;
     endIndex = startIndex + 7;
 
     const loaded = await loadPokemon();
     if (!loaded) {
         startIndex = previousStartIndex;
         endIndex = previousEndIndex;
+        showPokemon();
+        renderControlPanel();
     }
 }
 
@@ -147,15 +151,13 @@ async function loadWithNameOrIdAndShow() {
 
     const identifier = pokeIdNumber !== null ? pokeIdNumber : pokeName;
     pokeAsJson = await fetchJson(`${POKE_API_BASE_URL}/${identifier}`);
-    capitalized = pokeAsJson.name;
-    capitalizedString();
-    pokeAsJson.name = capitalized;
+    pokeAsJson.name = capitalizeName(pokeAsJson.name);
     showSearchPoke();
 }
 
 function showSearchPoke() {
     lastFocusedElement = document.activeElement;
-    getAllInfoForRendern();
+    preparePokemonDetails();
     thisSearchPokemon.innerHTML = "";
     statsSearchPokemon.innerHTML = "";
     thisSearchPokemon.innerHTML = renderSearchPokemon();
@@ -167,7 +169,7 @@ function showThisPokemon(pokemonIndex) {
     audioClick.play();
     lastFocusedElement = document.activeElement;
     arrayID = pokemonIndex;
-    getAllInfoForRendern();
+    preparePokemonDetails();
     thisPokemon.innerHTML = "";
     statsPokemon.innerHTML = "";
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
@@ -180,9 +182,9 @@ function showPreviousPoke() {
     if (arrayID == 0) {
         arrayID = allPoke.length - 1;
     } else {
-        arrayID = arrayID - 1;
+        arrayID -= 1;
     }
-    getAllInfoForRendern();
+    preparePokemonDetails();
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
     statsPokemon.innerHTML = renderPokeStats();
 }
@@ -192,9 +194,9 @@ function showNextPoke() {
     if (arrayID == allPoke.length - 1) {
         arrayID = 0;
     } else {
-        arrayID = arrayID + 1;
+        arrayID += 1;
     }
-    getAllInfoForRendern();
+    preparePokemonDetails();
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
     statsPokemon.innerHTML = renderPokeStats();
 }

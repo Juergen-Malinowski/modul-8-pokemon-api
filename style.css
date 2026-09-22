@@ -39,6 +39,9 @@ h4 {
 }
 
 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding-top: 20px;
     background-color: transparent;
@@ -143,7 +146,7 @@ body {
     background-color: blueviolet;
 }
 
-.loding_grafik {
+.loading_grafik {
     display: flex;
     flex-direction: column;
 }
@@ -154,13 +157,13 @@ body {
     text-align: center;
 }
 
-.lodPic_grafik {
+.loading_picture_container {
     display: flex;
     flex: 1;
     flex-direction: row;
 }
 
-.loding_picture {
+.loading_picture {
     height: 600px;
 }
 
@@ -360,7 +363,7 @@ dialog::backdrop {
     padding-bottom: 10px;
 }
 
-.holeTable {
+.stats_table {
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -375,39 +378,39 @@ dialog::backdrop {
     display: block;
 }
 
-.table_contens_hp,
-.table_contens_attack,
-.table_contens_defense,
-.table_contens_spatk,
-.table_contens_spdef,
-.table_contens_speed {
+.table_content_hp,
+.table_content_attack,
+.table_content_defense,
+.table_content_spatk,
+.table_content_spdef,
+.table_content_speed {
     font-size: 30px;
 }
 
-.table_contens_hp {
+.table_content_hp {
     color: #6c757d;
     background-color: black;
 }
 
-.table_contens_attack {
+.table_content_attack {
     color: #dc3545;
 }
 
-.table_contens_defense {
+.table_content_defense {
     color: #198754;
 }
 
-.table_contens_spatk {
+.table_content_spatk {
     font-style: italic;
     color: #0d6efd;
 }
 
-.table_contens_spdef {
+.table_content_spdef {
     font-style: italic;
     color: #ffc107;
 }
 
-.table_contens_speed {
+.table_content_speed {
     font-style: italic;
     color: #0dcaf0;
 }

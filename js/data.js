@@ -50,16 +50,15 @@ function getTheTypeIcons() {
 
 function getValueFromAllStatsForProcessBar() {
     for (let index = 0; index < pokeStats.length; index++) {
-        statsProportionateValue = 0;
-        statsProportionateValue = Math.round(24 * pokeStats[index].value / maxValue);
+        const statsProportionateValue = Math.round(24 * pokeStats[index].value / maxValue);
         for (let i = 0; i < statsProportionateValue; i++) {
             switch (index) {
-                case 0: stat0 = stat0 + "█"; break;
-                case 1: stat1 = stat1 + "█"; break;
-                case 2: stat2 = stat2 + "█"; break;
-                case 3: stat3 = stat3 + "█"; break;
-                case 4: stat4 = stat4 + "█"; break;
-                case 5: stat5 = stat5 + "█"; break;
+                case 0: stat0 += "█"; break;
+                case 1: stat1 += "█"; break;
+                case 2: stat2 += "█"; break;
+                case 3: stat3 += "█"; break;
+                case 4: stat4 += "█"; break;
+                case 5: stat5 += "█"; break;
                 default: break;
             }
         }
