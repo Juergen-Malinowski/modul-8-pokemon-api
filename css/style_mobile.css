@@ -1,8 +1,16 @@
 @media (max-width: 767px) {
+    h1,
+    .header_grafik,
+    .poke_grafik,
+    .button_pre_next,
+    .nav_grafik_info,
+    .info_content {
+        width: min(310px, calc(100% - 16px));
+    }
+
     h1 {
-        font-size: 1em;
-        width: 310px;
         padding-top: 1px;
+        font-size: 1em;
     }
 
     .header_grafik {
@@ -10,51 +18,53 @@
     }
 
     .search_Mask {
-        height: 400px;
+        height: auto;
+        margin-left: 0;
+        padding: 10px 0;
         font-size: 14px;
-        gap: 10px;
-        margin-left: 20px;
-        display: flex;
+    }
+
+    .search_form {
         flex-direction: column;
-        align-items: center;
+        gap: 10px;
     }
 
     .input_user {
+        width: calc(100% - 20px);
+        margin: 10px 10px 5px;
         font-size: 24px;
-        margin-right: 20px;
-        margin-top: 10px;
-        margin-bottom: 5px;
     }
 
     .buttons_grafik {
         width: 100px;
         height: 70px;
+        margin-top: 14px;
         font-size: 24px;
         border-width: 6px;
-        margin-top: 14px;
     }
 
     .nav_grafik {
-        height: 100px;
         justify-content: flex-end;
-        margin-right: 10px;
         gap: 30px;
+        height: 100px;
+        margin-right: 10px;
     }
 
     .start_grafik {
-        font-size: 30px;
         margin-top: 5px;
         margin-left: 10px;
+        font-size: 30px;
     }
 
     .info_grafik {
-        font-size: 24px;
         margin-top: 5px;
         margin-right: 10px;
+        font-size: 24px;
     }
 
     .loding_picture {
         width: 160px;
+        height: auto;
     }
 
     .load_grafik {
@@ -62,8 +72,6 @@
     }
 
     .poke_grafik {
-        width: 310px;
-        height: auto;
         gap: 50px;
     }
 
@@ -72,58 +80,64 @@
         margin-bottom: 25px;
     }
 
-    .button_pre_next {
-        width: 310px;
-    }
-
     .counter_grafik {
         width: 100px;
         height: 100px;
-        font-size: 20px;
         padding-top: 7px;
+        font-size: 20px;
     }
 
     .img_pokemon {
         width: 240px;
-        padding-left: 0px;
+        padding-left: 0;
     }
 
     .disable_this {
         display: none;
     }
 
-    .buttons_pre_poke {
-        width: 60px;
-        height: 35px;
-        margin-left: 10px;
-    }
-
-    .buttons_pre_poke:hover {
-        transform: scale(1.2);
-    }
-
-    .buttons_dialog_grafik {
-        font-size: 18px;
-        width: 60px;
-        height: 40px;
-        padding-top: 0px;
-        margin-top: 0px;
-    }
-
+    .buttons_pre_poke,
     .buttons_next_poke {
         width: 60px;
         height: 35px;
+    }
+
+    .buttons_pre_poke {
+        margin-left: 10px;
+    }
+
+    .buttons_next_poke {
         margin-right: 10px;
     }
 
+    .buttons_pre_poke:hover,
     .buttons_next_poke:hover {
         transform: scale(1.2);
     }
 
+    .buttons_dialog_grafik {
+        width: 60px;
+        height: 40px;
+        margin-top: 0;
+        padding-top: 0;
+        font-size: 18px;
+    }
+
     .copyright_jm {
-        font-size: 20px;
         margin-top: 10px;
         margin-bottom: 10px;
+        font-size: 20px;
+    }
+
+    h3,
+    .info_content_boxes,
+    .info_box_size,
+    .text_grafik {
+        width: min(300px, calc(100% - 16px));
+    }
+
+    .href_grafik {
+        font-size: 18px;
     }
 }
 
@@ -132,32 +146,4 @@
         font-size: 19px;
         color: yellow;
     }
-}
-
-.nav_grafik_info {
-    width: 310px;
-}
-
-h3 {
-    width: 300px;
-}
-
-.info_content {
-    width: 310px;
-}
-
-.info_content_boxes {
-    width: 300px;
-}
-
-.info_box_size {
-    width: 300px;
-}
-
-.text_grafik {
-    width: 300px;
-}
-
-.href_grafik {
-    font-size: 18px;
 }

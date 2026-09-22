@@ -1,12 +1,10 @@
 h1 {
+    width: min(1300px, calc(100% - 32px));
     font-size: 3em;
     font-style: italic;
-    width: 1300px;
     color: white;
     background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
+    border: 10px double black;
     border-radius: 10px;
     text-align: center;
 }
@@ -15,79 +13,82 @@ h2 {
     font-size: 2em;
     color: yellow;
     background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
+    border: 10px double black;
     border-radius: 10px;
     text-align: center;
 }
 
 h3 {
+    width: min(1100px, calc(100% - 32px));
     font-size: 2em;
-    width: 1100px;
     color: yellow;
     background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
+    border: 10px double black;
     border-radius: 10px;
     text-align: center;
 }
 
 h4 {
+    padding-top: 20px;
     font-size: 26px;
     font-style: italic;
     font-weight: bold;
     color: white;
     background-color: blueviolet;
-    padding-top: 20px;
     text-align: center;
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
     padding-top: 20px;
+    background-color: transparent;
 }
 
 body {
+    min-height: 100vh;
     background-image: url(./assets/img/main-background.png);
     background-size: cover;
-    height: auto;
     background-position: center;
 }
 
 .main_grafik {
-    background-color: rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: transparent;
 }
 
 .header_grafik {
-    border-style: solid;
-    border-color: blueviolet;
-    border-width: 5px;
-    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: min(1300px, calc(100% - 32px));
+    border: 5px solid blueviolet;
+    border-radius: 10px;
 }
 
 .search_Mask {
-    font-size: 30px;
-    color: yellow;
     display: flex;
     justify-content: center;
-    gap: 20px;
     margin-left: 50px;
+    font-size: 30px;
+    color: yellow;
+    background-color: transparent;
+}
+
+.search_form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: transparent;
 }
 
 .input_user {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 30px;
     color: black;
     background-color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .suggestion_button {
@@ -96,50 +97,36 @@ body {
 }
 
 .nav_grafik {
-    margin-right: 50px;
-    background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    margin-right: 50px;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
+}
+
+.start_grafik,
+.info_grafik {
+    padding-top: 5px;
+    font-size: 30px;
+    color: white;
+    background-color: blueviolet;
 }
 
 .start_grafik {
-    color: white;
-    font-size: 30px;
     margin-left: 20px;
-    background-color: blueviolet;
-    padding-top: 5px;
-}
-
-.start_grafik:hover {
-    color: yellow;
-    text-decoration: underline;
 }
 
 .info_grafik {
-    color: white;
-    font-size: 30px;
     margin-right: 20px;
-    background-color: blueviolet;
-    padding-top: 5px;
 }
 
+.start_grafik:hover,
 .info_grafik:hover {
     color: yellow;
     text-decoration: underline;
-}
-
-.button_grafik {
-    font-size: 30px;
-    color: black;
-    background-color: rgb(202, 202, 16);
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .control_grafik_search {
@@ -149,11 +136,11 @@ body {
 }
 
 .input_incorrect {
+    margin-top: 9px;
+    margin-bottom: 9px;
     font-size: 26px;
     color: yellow;
     background-color: blueviolet;
-    margin-top: 9px;
-    margin-bottom: 9px;
 }
 
 .loding_grafik {
@@ -169,8 +156,8 @@ body {
 
 .lodPic_grafik {
     display: flex;
-    flex-direction: row;
     flex: 1;
+    flex-direction: row;
 }
 
 .loding_picture {
@@ -178,61 +165,58 @@ body {
 }
 
 .poke_grafik {
-    width: 1300px;
-    height: 100vh;
-    height: auto;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
-    background-color: blueviolet;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    width: min(1300px, calc(100% - 32px));
+    height: auto;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
 }
 
 .one_pokemon {
-    width: 275px;
-    height: 275px;
-    border-style: double;
-    border-color: white;
-    border-width: 10px;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 275px;
+    height: 275px;
     margin-top: 10px;
     margin-bottom: 10px;
+    padding: 0;
+    color: inherit;
+    background-color: black;
+    border: 10px double white;
+    border-radius: 5px;
 }
 
 .one_pokemon:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
+    transition: transform 500ms ease-in-out 200ms;
     transform: scale(1.3);
 }
 
 .img_poke {
     width: 135px;
     height: 135px;
-    margin-bottom: 30px;
     margin-top: 4px;
+    margin-bottom: 30px;
 }
 
 .name_poke {
-    font-size: 30px;
     margin-bottom: 10px;
+    font-size: 30px;
     color: yellow;
+    background-color: transparent;
 }
 
 .type_icon_position {
     display: flex;
     gap: 10px;
+    background-color: transparent;
 }
 
 .type_icon_overview {
@@ -248,36 +232,29 @@ body {
 }
 
 .button_pre_next {
-    width: 1300px;
-    height: auto;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
-    background-color: blueviolet;
     display: flex;
     justify-content: space-between;
+    width: min(1300px, calc(100% - 32px));
+    height: auto;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
 }
 
 .buttons_grafik {
     width: 170px;
     height: 50px;
+    margin-top: 5px;
     font-size: 30px;
     color: white;
-    border-style: double;
-    border-color: blueviolet;
-    border-width: 10px;
+    border: 10px double blueviolet;
     border-radius: 15px;
-    margin-top: 5px;
 }
 
 .buttons_grafik:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.6);
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
+    transition: transform 500ms ease-in-out 200ms;
     transform: scale(1.2);
 }
 
@@ -286,39 +263,31 @@ body {
     height: 50px;
     font-size: 30px;
     color: white;
-    border-style: double;
-    border-color: blueviolet;
-    border-width: 10px;
+    border: 10px double blueviolet;
     border-radius: 15px;
     text-align: center;
 }
 
 dialog::backdrop {
-    height: 100vh;
+    min-height: 100vh;
     background-color: blueviolet;
-    margin: 0;
 }
 
 .dialog_box {
+    width: min(100%, 1400px);
+    padding: 10px;
     font-size: 40px;
     color: white;
-    width: 100%;
-    position: absolute;
-    top: 1%;
-    left: 2%;
-    border-style: double;
-    border-color: blueviolet;
-    border-width: 10px;
+    border: 10px double blueviolet;
     border-radius: 40px;
-    padding: 10px;
 }
 
 .show_pokemon {
-    font-size: 40px;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    font-size: 40px;
+    color: white;
 }
 
 .poke_personal_position {
@@ -345,6 +314,7 @@ dialog::backdrop {
 
 .img_pokemon {
     width: 400px;
+    max-width: 100%;
     height: auto;
     padding-left: 50px;
 }
@@ -355,18 +325,19 @@ dialog::backdrop {
 }
 
 .poke_personal_abi {
+    margin-bottom: 20px;
     font-size: 42px;
     color: yellow;
-    margin-bottom: 20px;
 }
 
 .poke_personal {
+    margin-bottom: 5px;
     font-size: 30px;
     color: white;
-    margin-bottom: 5px;
 }
 
-.line_grafik {
+.line_grafik,
+.line_grafik_evolution {
     border-color: blueviolet;
 }
 
@@ -381,7 +352,6 @@ dialog::backdrop {
 }
 
 .line_grafik_evolution {
-    border-color: blueviolet;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -391,85 +361,87 @@ dialog::backdrop {
 }
 
 .holeTable {
-    margin-left: 10px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .table_title {
+    padding-right: 100px;
     font-size: 40px;
     color: rgb(202, 202, 16);
-    padding-right: 100px;
 }
 
 .disable_this {
     display: block;
 }
 
-.table_contens_hp {
+.table_contens_hp,
+.table_contens_attack,
+.table_contens_defense,
+.table_contens_spatk,
+.table_contens_spdef,
+.table_contens_speed {
     font-size: 30px;
+}
+
+.table_contens_hp {
     color: #6c757d;
     background-color: black;
 }
 
 .table_contens_attack {
-    font-size: 30px;
     color: #dc3545;
 }
 
 .table_contens_defense {
-    font-size: 30px;
     color: #198754;
 }
 
 .table_contens_spatk {
-    font-size: 30px;
     font-style: italic;
     color: #0d6efd;
 }
 
 .table_contens_spdef {
-    font-size: 30px;
     font-style: italic;
     color: #ffc107;
 }
 
 .table_contens_speed {
-    font-size: 30px;
     font-style: italic;
     color: #0dcaf0;
 }
 
-.buttons_pre_poke {
-    width: 200px;
-    height: 80px;
-    color: black;
-    background-color: white;
-    margin-left: 50px;
-}
-
-.buttons_pre_poke:hover {
-    cursor: pointer;
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
-    transform: scale(1.3);
-}
-
+.buttons_pre_poke,
 .buttons_next_poke {
     width: 200px;
     height: 80px;
+    padding: 0;
     color: black;
     background-color: white;
+    border: 0;
+}
+
+.buttons_pre_poke {
+    margin-left: 50px;
+}
+
+.buttons_next_poke {
     margin-right: 50px;
 }
 
+.buttons_pre_poke img,
+.buttons_next_poke img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: transparent;
+}
+
+.buttons_pre_poke:hover,
 .buttons_next_poke:hover {
     cursor: pointer;
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
+    transition: transform 500ms ease-in-out 200ms;
     transform: scale(1.3);
 }
 
@@ -479,81 +451,79 @@ dialog::backdrop {
     font-size: 36px;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid yellow;
+    outline-offset: 4px;
+}
+
 footer {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: transparent;
 }
 
 .copyright_jm {
-    font-size: 30px;
-    color: black;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0);
+    font-size: 30px;
+    color: black;
+    background-color: transparent;
 }
 
 .info_content {
-    width: 1300px;
-    background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10px;
     gap: 30px;
+    width: min(1300px, calc(100% - 32px));
+    padding-top: 10px;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
 }
 
 .info_content_boxes {
-    width: 1200px;
-    color: yellow;
-    background-color: blueviolet;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(1200px, calc(100% - 32px));
     padding-bottom: 15px;
+    color: yellow;
+    background-color: blueviolet;
 }
 
 .nav_grafik_info {
-    font-size: 2em;
-    color: white;
-    width: 1300px;
-    height: 80px;
-    background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: min(1300px, calc(100% - 32px));
+    min-height: 80px;
+    font-size: 2em;
+    color: white;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .start_grafik_info {
-    color: white;
-    font-size: 30px;
     margin-left: 20px;
-    background-color: blueviolet;
-    border-style: double;
-    border-color: black;
-    border-width: 10px;
-    border-radius: 10px;
     padding-top: 5px;
+    font-size: 30px;
+    color: white;
+    background-color: blueviolet;
+    border: 10px double black;
+    border-radius: 10px;
 }
 
 .start_grafik_info:hover {
     cursor: pointer;
-    transition-timing-function: ease-in-out;
-    transition-duration: 500ms;
-    transition-property: transform;
-    transition-delay: 200ms;
+    transition: transform 500ms ease-in-out 200ms;
     transform: scale(1.15);
 }
 
 .info_box_size {
-    width: 900px;
+    width: min(900px, 100%);
     color: white;
     background-color: blueviolet;
 }
