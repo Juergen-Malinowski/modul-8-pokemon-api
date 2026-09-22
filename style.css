@@ -211,9 +211,10 @@ body {
 
 .name_poke {
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 13px;
     color: yellow;
     background-color: transparent;
+    white-space: nowrap;
 }
 
 .type_icon_position {
