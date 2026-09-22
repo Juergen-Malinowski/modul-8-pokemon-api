@@ -277,8 +277,14 @@ dialog::backdrop {
 }
 
 .dialog_box {
-    width: min(100%, 1400px);
+    position: fixed;
+    inset: 0;
+    width: min(1400px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    margin: auto;
     padding: 10px;
+    overflow: auto;
+    box-sizing: border-box;
     font-size: 40px;
     color: white;
     border: 10px double blueviolet;
