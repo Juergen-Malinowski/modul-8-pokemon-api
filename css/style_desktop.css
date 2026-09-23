@@ -1,97 +1,129 @@
 @media (min-width: 1301px) {
-    .game_page {
-        --game_width: min(1900px, 88vw, 150vh);
-        --game_gap: clamp(16px, 1.2vw, 28px);
-        --card_title_size: clamp(18px, min(1.2vw, 2vh), 24px);
-    }
+  .game_page {
+    --game_width: min(1900px, 88vw, 150vh);
+    --game_gap: clamp(16px, 1.2vw, 28px);
+    --card_title_size: clamp(24px, min(1.7vw, 3vh), 36px);
+  }
 
-    h1,
-    .header_grafik,
-    .poke_grafik,
-    .button_pre_next {
-        width: var(--game_width);
-    }
+  h1,
+  .header_grafik,
+  .poke_grafik,
+  .button_pre_next {
+    width: var(--game_width);
+  }
 
-    h1 {
-        font-size: clamp(48px, min(3.2vw, 5.5vh), 72px);
-    }
+  h1 {
+    font-size: clamp(48px, min(3.2vw, 5.5vh), 72px);
+  }
 
-    .header_grafik {
-        min-height: clamp(60px, 6.5vh, 84px);
-    }
+  .header_grafik {
+    min-height: clamp(60px, 6.5vh, 84px);
+  }
 
-    .input_user {
-        font-size: clamp(24px, min(1.6vw, 2.8vh), 36px);
-    }
+  .input_user {
+    font-size: clamp(24px, min(1.6vw, 2.8vh), 36px);
+  }
 
-    .buttons_grafik {
-        width: clamp(150px, 9vw, 210px);
-        height: clamp(48px, 5.5vh, 66px);
-        font-size: clamp(24px, min(1.6vw, 2.8vh), 34px);
-    }
+  .buttons_grafik {
+    width: clamp(150px, 9vw, 210px);
+    height: clamp(48px, 5.5vh, 66px);
+    font-size: clamp(24px, min(1.6vw, 2.8vh), 34px);
+  }
 
-    .start_grafik,
-    .info_grafik {
-        font-size: clamp(24px, min(1.6vw, 2.8vh), 34px);
-    }
+  .start_grafik,
+  .info_grafik {
+    font-size: clamp(24px, min(1.6vw, 2.8vh), 34px);
+  }
 
-    .poke_grafik {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        align-items: stretch;
-        gap: var(--game_gap);
-        padding: var(--game_gap);
-    }
+  .poke_grafik {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: var(--game_gap);
+    padding: var(--game_gap);
+  }
 
-    .one_pokemon {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+  .loading_grafik {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: min(68vh, 760px);
+    align-items: center;
+  }
 
-    .name_poke {
-        width: 100%;
-        min-height: 2.4em;
-        margin-top: 4px;
-        margin-bottom: clamp(4px, 0.7vh, 8px);
-        padding: 0 8px;
-        font-size: var(--card_title_size);
-        line-height: 1.2;
-        text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
-    }
+  .load_grafik {
+    width: 100%;
+    font-size: clamp(36px, min(2.2vw, 4vh), 52px);
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
+  }
 
-    .img_poke {
-        width: 52%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        margin-top: 0;
-        margin-bottom: 0;
-        object-fit: contain;
-        flex-shrink: 1;
-    }
+  .loading_picture_container {
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(20px, 2vw, 40px);
+  }
 
-    .type_icon_position {
-        gap: clamp(8px, 0.8vw, 14px);
-        margin-top: auto;
-        margin-bottom: clamp(6px, 1vh, 12px);
-    }
+  .loading_picture {
+    width: auto;
+    max-width: 45%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
 
-    .type_icon_overview {
-        width: clamp(80px, min(5vw, 7vh), 110px);
-    }
+  .one_pokemon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 
-    .button_pre_next {
-        align-items: center;
-        min-height: clamp(56px, 6vh, 72px);
-    }
+  .name_poke {
+    width: 100%;
+    min-height: 2.4em;
+    margin-top: 4px;
+    margin-bottom: clamp(4px, 0.7vh, 8px);
+    padding: 0 8px;
+    font-size: var(--card_title_size);
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 
-    .counter_grafik {
-        width: clamp(300px, 20vw, 420px);
-        height: clamp(48px, 5.5vh, 66px);
-        font-size: clamp(24px, min(1.5vw, 2.6vh), 32px);
-    }
+  .img_poke {
+    width: 52%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-top: 0;
+    margin-bottom: 0;
+    object-fit: contain;
+    flex-shrink: 1;
+  }
+
+  .type_icon_position {
+    gap: clamp(8px, 0.8vw, 14px);
+    margin-top: auto;
+    margin-bottom: clamp(6px, 1vh, 12px);
+  }
+
+  .type_icon_overview {
+    width: clamp(80px, min(5vw, 7vh), 110px);
+  }
+
+  .button_pre_next {
+    align-items: center;
+    min-height: clamp(56px, 6vh, 72px);
+  }
+
+  .counter_grafik {
+    width: clamp(300px, 20vw, 420px);
+    height: clamp(48px, 5.5vh, 66px);
+    font-size: clamp(24px, min(1.5vw, 2.6vh), 32px);
+  }
 }
