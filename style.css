@@ -1,388 +1,399 @@
 h1 {
-    width: min(1300px, calc(100% - 32px));
-    font-size: 3em;
-    font-style: italic;
-    color: white;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
-    text-align: center;
+  width: min(1300px, calc(100% - 32px));
+  font-size: 3em;
+  font-style: italic;
+  color: white;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
+  text-align: center;
 }
 
 h2 {
-    font-size: 2em;
-    color: yellow;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
-    text-align: center;
+  font-size: 2em;
+  color: yellow;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
+  text-align: center;
 }
 
 h3 {
-    width: min(1100px, calc(100% - 32px));
-    font-size: 2em;
-    color: yellow;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
-    text-align: center;
+  width: min(1100px, calc(100% - 32px));
+  font-size: 2em;
+  color: yellow;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
+  text-align: center;
 }
 
 h4 {
-    padding-top: 20px;
-    font-size: 26px;
-    font-style: italic;
-    font-weight: bold;
-    color: white;
-    background-color: blueviolet;
-    text-align: center;
+  padding-top: 20px;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: bold;
+  color: white;
+  background-color: blueviolet;
+  text-align: center;
 }
 
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-top: 20px;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+  background-color: transparent;
 }
 
 body {
-    min-height: 100vh;
-    background-image: url(./assets/img/main-background.png);
-    background-size: cover;
-    background-position: center;
+  min-height: 100vh;
+  background-image: url(./assets/img/main-background.png);
+  background-size: cover;
+  background-position: center;
 }
 
 .main_grafik {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+}
+
+.game_page > header {
+  margin-top: auto;
+}
+
+.game_page > footer {
+  margin-bottom: auto;
 }
 
 .header_grafik {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: min(1300px, calc(100% - 32px));
-    border: 5px solid blueviolet;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: min(1300px, calc(100% - 32px));
+  border: 5px solid blueviolet;
+  border-radius: 10px;
 }
 
 .search_Mask {
-    display: flex;
-    justify-content: center;
-    margin-left: 50px;
-    font-size: 30px;
-    color: yellow;
-    background-color: transparent;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+  font-size: 30px;
+  color: yellow;
+  background-color: transparent;
 }
 
 .search_form {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: transparent;
 }
 
 .input_user {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    color: black;
-    background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: black;
+  background-color: white;
 }
 
 .suggestion_button {
-    font-size: 26px;
-    color: white;
+  font-size: 26px;
+  color: white;
 }
 
 .nav_grafik {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    margin-right: 50px;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-right: 50px;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
 }
 
 .start_grafik,
 .info_grafik {
-    padding-top: 5px;
-    font-size: 30px;
-    color: white;
-    background-color: blueviolet;
+  padding-top: 5px;
+  font-size: 30px;
+  color: white;
+  background-color: blueviolet;
 }
 
 .start_grafik {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .info_grafik {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .start_grafik:hover,
 .info_grafik:hover {
-    color: yellow;
-    text-decoration: underline;
+  color: yellow;
+  text-decoration: underline;
 }
 
 .control_grafik_search {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .input_incorrect {
-    margin-top: 9px;
-    margin-bottom: 9px;
-    font-size: 26px;
-    color: yellow;
-    background-color: blueviolet;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  font-size: 26px;
+  color: yellow;
+  background-color: blueviolet;
 }
 
 .loading_grafik {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .load_grafik {
-    font-size: 60px;
-    color: yellow;
-    text-align: center;
+  font-size: 60px;
+  color: yellow;
+  text-align: center;
 }
 
 .loading_picture_container {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
 }
 
 .loading_picture {
-    height: 600px;
+  height: 600px;
 }
 
 .poke_grafik {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: min(1300px, calc(100% - 32px));
-    height: auto;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: min(1300px, calc(100% - 32px));
+  height: auto;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
 }
 
 .one_pokemon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 275px;
-    height: 275px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 0;
-    color: inherit;
-    background-color: black;
-    border: 10px double white;
-    border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 275px;
+  height: 275px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+  color: inherit;
+  background-color: black;
+  border: 10px double white;
+  border-radius: 5px;
 }
 
 .one_pokemon:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: transform 500ms ease-in-out 200ms;
-    transform: scale(1.3);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: transform 500ms ease-in-out 200ms;
+  transform: scale(1.3);
 }
 
 .img_poke {
-    width: 135px;
-    height: 135px;
-    margin-top: 4px;
-    margin-bottom: 30px;
+  width: 135px;
+  height: 135px;
+  margin-top: 4px;
+  margin-bottom: 30px;
 }
 
 .name_poke {
-    margin-bottom: 10px;
-    font-size: 13px;
-    color: yellow;
-    background-color: transparent;
-    white-space: nowrap;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: yellow;
+  background-color: transparent;
+  white-space: nowrap;
 }
 
 .type_icon_position {
-    display: flex;
-    gap: 10px;
-    background-color: transparent;
+  display: flex;
+  gap: 10px;
+  background-color: transparent;
 }
 
 .type_icon_overview {
-    width: 80px;
-    height: auto;
+  width: 80px;
+  height: auto;
 }
 
 .control_grafik {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 10px;
 }
 
 .button_pre_next {
-    display: flex;
-    justify-content: space-between;
-    width: min(1300px, calc(100% - 32px));
-    height: auto;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: min(1300px, calc(100% - 32px));
+  height: auto;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
 }
 
 .buttons_grafik {
-    width: 170px;
-    height: 50px;
-    margin-top: 5px;
-    font-size: 30px;
-    color: white;
-    border: 10px double blueviolet;
-    border-radius: 15px;
+  width: 170px;
+  height: 50px;
+  margin-top: 5px;
+  font-size: 30px;
+  color: white;
+  border: 10px double blueviolet;
+  border-radius: 15px;
 }
 
 .buttons_grafik:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: transform 500ms ease-in-out 200ms;
-    transform: scale(1.2);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: transform 500ms ease-in-out 200ms;
+  transform: scale(1.2);
 }
 
 .counter_grafik {
-    width: 350px;
-    height: 50px;
-    font-size: 30px;
-    color: white;
-    border: 10px double blueviolet;
-    border-radius: 15px;
-    text-align: center;
+  width: 350px;
+  height: 50px;
+  font-size: 30px;
+  color: white;
+  border: 10px double blueviolet;
+  border-radius: 15px;
+  text-align: center;
 }
 
 dialog::backdrop {
-    min-height: 100vh;
-    background-color: blueviolet;
+  min-height: 100vh;
+  background-image: url(./assets/img/main-background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .dialog_box {
-    position: fixed;
-    inset: 0;
-    width: min(1400px, calc(100% - 32px));
-    max-height: calc(100dvh - 32px);
-    margin: auto;
-    padding: 10px;
-    overflow: auto;
-    box-sizing: border-box;
-    font-size: 40px;
-    color: white;
-    border: 10px double blueviolet;
-    border-radius: 40px;
+  position: fixed;
+  inset: 0;
+  width: min(1400px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 10px;
+  overflow: auto;
+  box-sizing: border-box;
+  font-size: 40px;
+  color: white;
+  border: 10px double blueviolet;
+  border-radius: 40px;
 }
 
 .show_pokemon {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 40px;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 40px;
+  color: white;
 }
 
 .poke_personal_position {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .poke_personal_name {
-    font-size: 60px;
-    color: yellow;
+  font-size: 60px;
+  color: yellow;
 }
 
 .poke_personal_name_color {
-    font-size: 45px;
-    color: white;
+  font-size: 45px;
+  color: white;
 }
 
 .type_icon {
-    width: 150px;
-    height: 55px;
+  width: 150px;
+  height: 55px;
 }
 
 .img_pokemon {
-    width: 400px;
-    max-width: 100%;
-    height: auto;
-    padding-left: 50px;
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  padding-left: 50px;
 }
 
 .get_position {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .poke_personal_abi {
-    margin-bottom: 20px;
-    font-size: 42px;
-    color: yellow;
+  margin-bottom: 20px;
+  font-size: 42px;
+  color: yellow;
 }
 
 .poke_personal {
-    margin-bottom: 5px;
-    font-size: 30px;
-    color: white;
+  margin-bottom: 5px;
+  font-size: 30px;
+  color: white;
 }
 
 .line_grafik,
 .line_grafik_evolution {
-    border-color: blueviolet;
+  border-color: blueviolet;
 }
 
 .poke_details {
-    font-size: 30px;
-    color: white;
+  font-size: 30px;
+  color: white;
 }
 
 .all_poke_details {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .line_grafik_evolution {
-    margin-top: 10px;
-    margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .poke_abilities {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .stats_table {
-    margin-right: 10px;
-    margin-left: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .table_title {
-    padding-right: 100px;
-    font-size: 40px;
-    color: rgb(202, 202, 16);
+  padding-right: 100px;
+  font-size: 40px;
+  color: rgb(202, 202, 16);
 }
 
 .disable_this {
-    display: block;
+  display: block;
 }
 
 .table_content_hp,
@@ -391,172 +402,172 @@ dialog::backdrop {
 .table_content_spatk,
 .table_content_spdef,
 .table_content_speed {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .table_content_hp {
-    color: #6c757d;
-    background-color: black;
+  color: #6c757d;
+  background-color: black;
 }
 
 .table_content_attack {
-    color: #dc3545;
+  color: #dc3545;
 }
 
 .table_content_defense {
-    color: #198754;
+  color: #198754;
 }
 
 .table_content_spatk {
-    font-style: italic;
-    color: #0d6efd;
+  font-style: italic;
+  color: #0d6efd;
 }
 
 .table_content_spdef {
-    font-style: italic;
-    color: #ffc107;
+  font-style: italic;
+  color: #ffc107;
 }
 
 .table_content_speed {
-    font-style: italic;
-    color: #0dcaf0;
+  font-style: italic;
+  color: #0dcaf0;
 }
 
 .buttons_pre_poke,
 .buttons_next_poke {
-    width: 200px;
-    height: 80px;
-    padding: 0;
-    color: black;
-    background-color: white;
-    border: 0;
+  width: 200px;
+  height: 80px;
+  padding: 0;
+  color: black;
+  background-color: white;
+  border: 0;
 }
 
 .buttons_pre_poke {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
 .buttons_next_poke {
-    margin-right: 50px;
+  margin-right: 50px;
 }
 
 .buttons_pre_poke img,
 .buttons_next_poke img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    background-color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: transparent;
 }
 
 .buttons_pre_poke:hover,
 .buttons_next_poke:hover {
-    cursor: pointer;
-    transition: transform 500ms ease-in-out 200ms;
-    transform: scale(1.3);
+  cursor: pointer;
+  transition: transform 500ms ease-in-out 200ms;
+  transform: scale(1.3);
 }
 
 .buttons_dialog_grafik {
-    width: 300px;
-    height: 60px;
-    font-size: 36px;
+  width: 300px;
+  height: 60px;
+  font-size: 36px;
 }
 
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-    outline: 3px solid yellow;
-    outline-offset: 4px;
+  outline: 3px solid yellow;
+  outline-offset: 4px;
 }
 
 footer {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .copyright_jm {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 30px;
-    color: black;
-    background-color: transparent;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  color: black;
+  background-color: transparent;
 }
 
 .info_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: min(1300px, calc(100% - 32px));
-    padding-top: 10px;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: min(1300px, calc(100% - 32px));
+  padding-top: 10px;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
 }
 
 .info_content_boxes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: min(1200px, calc(100% - 32px));
-    padding-bottom: 15px;
-    color: yellow;
-    background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(1200px, calc(100% - 32px));
+  padding-bottom: 15px;
+  color: yellow;
+  background-color: blueviolet;
 }
 
 .nav_grafik_info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: min(1300px, calc(100% - 32px));
-    min-height: 80px;
-    font-size: 2em;
-    color: white;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(1300px, calc(100% - 32px));
+  min-height: 80px;
+  font-size: 2em;
+  color: white;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .start_grafik_info {
-    margin-left: 20px;
-    padding-top: 5px;
-    font-size: 30px;
-    color: white;
-    background-color: blueviolet;
-    border: 10px double black;
-    border-radius: 10px;
+  margin-left: 20px;
+  padding-top: 5px;
+  font-size: 30px;
+  color: white;
+  background-color: blueviolet;
+  border: 10px double black;
+  border-radius: 10px;
 }
 
 .start_grafik_info:hover {
-    cursor: pointer;
-    transition: transform 500ms ease-in-out 200ms;
-    transform: scale(1.15);
+  cursor: pointer;
+  transition: transform 500ms ease-in-out 200ms;
+  transform: scale(1.15);
 }
 
 .info_box_size {
-    width: min(900px, 100%);
-    color: white;
-    background-color: blueviolet;
+  width: min(900px, 100%);
+  color: white;
+  background-color: blueviolet;
 }
 
 .text_grafik {
-    font-size: 24px;
-    color: white;
-    background-color: blueviolet;
-    text-align: center;
+  font-size: 24px;
+  color: white;
+  background-color: blueviolet;
+  text-align: center;
 }
 
 ul.text_grafik {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .href_grafik {
-    font-size: 24px;
-    color: yellow;
-    background-color: blueviolet;
+  font-size: 24px;
+  color: yellow;
+  background-color: blueviolet;
 }
 
 .href_grafik:hover {
-    cursor: pointer;
-    font-size: 28px;
-    text-decoration: underline;
+  cursor: pointer;
+  font-size: 28px;
+  text-decoration: underline;
 }
