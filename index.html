@@ -28,8 +28,14 @@
     <main class="main_grafik">
         <div id="overview_poke" class="poke_grafik" aria-live="polite"></div>
         <div id="button_pre_next" class="button_pre_next"></div>
+        <div id="rotate_to_portrait_hint" class="orientation_hint orientation_hint_portrait" role="status" aria-live="polite">
+            Rotate your device back to portrait mode to continue with the Pokémon overview.
+        </div>
 
         <dialog id="show_one_pokemon" class="dialog_box" aria-label="Pokémon details">
+            <div class="orientation_hint orientation_hint_landscape" role="status">
+                Rotate your device to landscape mode to view Pokémon details.
+            </div>
             <div id="show_pokemon" class="show_pokemon"></div>
             <div id="poke_stats" class="poke_abilities"></div>
 
@@ -45,6 +51,9 @@
         </dialog>
 
         <dialog id="show_search_one_pokemon" class="dialog_box" aria-label="Pokémon search result">
+            <div class="orientation_hint orientation_hint_landscape" role="status">
+                Rotate your device to landscape mode to view Pokémon details.
+            </div>
             <div id="show_search_pokemon" class="show_pokemon"></div>
             <div id="poke_search_stats" class="poke_abilities"></div>
 

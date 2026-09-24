@@ -43,8 +43,8 @@ closeDialogSearch.addEventListener("click", () => {
     showSearchPokemon.close();
 });
 
-showOnePokemon.addEventListener("close", restoreLastFocus);
-showSearchPokemon.addEventListener("close", restoreLastFocus);
+showOnePokemon.addEventListener("close", handleDialogClose);
+showSearchPokemon.addEventListener("close", handleDialogClose);
 
 async function loadPokemon() {
     try {
@@ -200,6 +200,17 @@ function showNextPoke() {
     thisPokemon.innerHTML = renderOnePokemon(arrayID);
     statsPokemon.innerHTML = renderPokeStats();
 }
+
+function handleDialogClose() {
+    restoreLastFocus();
+    const rotateHint = document.getElementById("rotate_to_portrait_hint");
+    const isMobileLandscape = window.matchMedia("(max-height: 767px) and (orientation: landscape)").matches;
+    rotateHint.classList.toggle("show_orientation_hint", isMobileLandscape);
+}
+
+window.addEventListener("orientationchange", () => {
+    document.getElementById("rotate_to_portrait_hint").classList.remove("show_orientation_hint");
+});
 
 function restoreLastFocus() {
     if (lastFocusedElement && document.contains(lastFocusedElement)) {
