@@ -51,9 +51,34 @@
     font-size: 28px;
   }
 
+  .loading_grafik {
+    width: 100%;
+    min-height: 0;
+    align-items: center;
+  }
+
+  .load_grafik {
+    width: 100%;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .loading_picture_container {
+    width: 100%;
+    min-height: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
   .loading_picture {
-    width: 350px;
+    width: auto;
+    max-width: 45%;
     height: auto;
+    max-height: min(52dvh, 420px);
+    object-fit: contain;
   }
 
   .poke_grafik {
@@ -159,5 +184,22 @@
 
   .dialog_box .disable_this {
     display: table-cell;
+  }
+
+  .name_poke {
+    width: 100%;
+    min-height: 2.4em;
+    margin-top: 4px;
+    margin-bottom: 6px;
+    padding: 0 6px;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .img_poke {
+    margin-bottom: 10px;
   }
 }

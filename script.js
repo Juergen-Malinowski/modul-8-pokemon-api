@@ -41,7 +41,11 @@ closeDialog.addEventListener("click", () => {
 closeDialogSearch.addEventListener("click", () => {
   audioClick.play();
   showSearchPokemon.close();
+  
 });
+
+closeDialogOnBackdropClick(showOnePokemon);
+closeDialogOnBackdropClick(showSearchPokemon);
 
 showOnePokemon.addEventListener("close", handleDialogClose);
 showSearchPokemon.addEventListener("close", handleDialogClose);
@@ -219,6 +223,23 @@ function resetViewToTop(dialog = null) {
   if (dialog) {
     dialog.scrollTop = 0;
   }
+}
+
+function closeDialogOnBackdropClick(dialog) {
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect();
+
+    const clickedOutside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (clickedOutside) {
+      audioClick.play();
+      dialog.close();
+    }
+  });
 }
 
 function handleDialogClose() {
