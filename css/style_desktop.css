@@ -1,4 +1,4 @@
-@media (min-width: 1301px) {
+@media (min-width: 1280px) {
   .game_page {
     --game_width: min(1900px, 88vw, 150vh);
     --game_gap: clamp(16px, 1.2vw, 28px);

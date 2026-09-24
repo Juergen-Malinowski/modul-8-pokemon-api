@@ -1,133 +1,163 @@
-@media (min-width: 768px) and (max-width: 1300px) {
-    h1,
-    .header_grafik,
-    .poke_grafik,
-    .button_pre_next,
-    .nav_grafik_info,
-    .info_content {
-        width: min(740px, calc(100% - 32px));
-    }
+@media (min-width: 768px) and (max-width: 1279px) {
+  h1,
+  .header_grafik,
+  .poke_grafik,
+  .button_pre_next,
+  .nav_grafik_info,
+  .info_content {
+    width: min(740px, calc(100% - 32px));
+  }
 
-    h1 {
-        padding-top: 5px;
-        font-size: 2em;
-    }
+  h1 {
+    padding-top: 5px;
+    font-size: 2em;
+  }
 
-    .search_Mask {
-        margin-left: 20px;
-        font-size: 20px;
-    }
+  .search_Mask {
+    margin-left: 20px;
+    font-size: 20px;
+  }
 
-    .search_form {
-        gap: 10px;
-    }
+  .search_form {
+    gap: 10px;
+  }
 
-    .input_user {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        font-size: 20px;
-    }
+  .input_user {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
 
-    .buttons_grafik {
-        width: 150px;
-        height: 42px;
-        margin-top: 3px;
-        font-size: 26px;
-        border-width: 8px;
-    }
+  .buttons_grafik {
+    width: 150px;
+    height: 42px;
+    margin-top: 3px;
+    font-size: 26px;
+    border-width: 8px;
+  }
 
-    .nav_grafik {
-        gap: 30px;
-        margin-right: 40px;
-    }
+  .nav_grafik {
+    gap: 30px;
+    margin-right: 40px;
+  }
 
-    .start_grafik {
-        margin-left: 15px;
-        font-size: 28px;
-    }
+  .start_grafik {
+    margin-left: 15px;
+    font-size: 28px;
+  }
 
-    .info_grafik {
-        margin-right: 15px;
-        font-size: 28px;
-    }
+  .info_grafik {
+    margin-right: 15px;
+    font-size: 28px;
+  }
 
-    .loading_picture {
-        width: 350px;
-        height: auto;
-    }
+  .loading_picture {
+    width: 350px;
+    height: auto;
+  }
 
-    .poke_grafik {
-        gap: 50px;
-    }
+  .poke_grafik {
+    gap: 50px;
+  }
 
-    .one_pokemon {
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
+  .one_pokemon {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 
-    .dialog_box {
-        font-size: 10px;
-    }
+  .dialog_box {
+    font-size: 10px;
+  }
 
-    .show_pokemon {
-        flex-direction: column;
-        gap: 20px;
-    }
+  .show_pokemon {
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    table {
-        border-width: 10px;
-    }
+  table {
+    border-width: 10px;
+  }
 
-    .table_title {
-        padding-right: 0;
-        font-size: 30px;
-    }
+  .table_title {
+    padding-right: 0;
+    font-size: 30px;
+  }
 
-    .table_content_hp,
-    .table_content_attack,
-    .table_content_defense,
-    .table_content_spatk,
-    .table_content_spdef,
-    .table_content_speed {
-        font-size: 24px;
-    }
+  .table_content_hp,
+  .table_content_attack,
+  .table_content_defense,
+  .table_content_spatk,
+  .table_content_spdef,
+  .table_content_speed {
+    font-size: 24px;
+  }
 
-    .buttons_pre_poke,
-    .buttons_next_poke {
-        width: 150px;
-        height: 60px;
-    }
+  .buttons_pre_poke,
+  .buttons_next_poke {
+    width: 150px;
+    height: 60px;
+  }
 
-    .buttons_pre_poke {
-        margin-left: 25px;
-    }
+  .buttons_pre_poke {
+    margin-left: 25px;
+  }
 
-    .buttons_next_poke {
-        margin-right: 30px;
-    }
+  .buttons_next_poke {
+    margin-right: 30px;
+  }
 
-    .buttons_pre_poke:hover,
-    .buttons_next_poke:hover {
-        transform: scale(1.2);
-    }
+  .buttons_pre_poke:hover,
+  .buttons_next_poke:hover {
+    transform: scale(1.2);
+  }
 
-    .buttons_dialog_grafik {
-        width: 200px;
-        height: 50px;
-        padding-top: 3px;
-        font-size: 28px;
-    }
+  .buttons_dialog_grafik {
+    width: 200px;
+    height: 50px;
+    padding-top: 3px;
+    font-size: 28px;
+  }
 
-    h3,
-    .info_content_boxes,
-    .text_grafik,
-    .info_box_size {
-        width: min(640px, calc(100% - 32px));
-    }
+  h3,
+  .info_content_boxes,
+  .text_grafik,
+  .info_box_size {
+    width: min(640px, calc(100% - 32px));
+  }
 
-    .text_grafik {
-        padding-left: 2px;
-        font-size: 18px;
-        text-align: start;
-    }
+  .text_grafik {
+    padding-left: 2px;
+    font-size: 18px;
+    text-align: start;
+  }
+
+  .stats_table {
+    width: calc(100% - 20px);
+    table-layout: fixed;
+  }
+
+  .stats_table th:nth-child(1),
+  .stats_table td:nth-child(1) {
+    width: 30%;
+  }
+
+  .stats_table th:nth-child(2),
+  .stats_table td:nth-child(2) {
+    width: 14%;
+  }
+
+  .stats_table th:nth-child(3),
+  .stats_table td:nth-child(3) {
+    width: 56%;
+  }
+
+  .stats_table td:nth-child(3) {
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .dialog_box .disable_this {
+    display: table-cell;
+  }
 }

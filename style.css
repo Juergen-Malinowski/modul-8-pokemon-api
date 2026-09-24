@@ -288,6 +288,10 @@ dialog::backdrop {
   background-repeat: no-repeat;
 }
 
+.orientation_hint {
+  display: none;
+}
+
 .dialog_box {
   position: fixed;
   inset: 0;
