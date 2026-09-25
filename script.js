@@ -175,6 +175,9 @@ function showSearchPoke() {
   statsSearchPokemon.innerHTML = "";
   thisSearchPokemon.innerHTML = renderSearchPokemon();
   statsSearchPokemon.innerHTML = renderPokeStats();
+  returnToPortraitAfterDialog = window.matchMedia(
+    "(max-width: 767px) and (orientation: portrait)",
+  ).matches;
   showSearchPokemon.showModal();
   resetViewToTop(showSearchPokemon);
 }
@@ -188,6 +191,9 @@ function showThisPokemon(pokemonIndex) {
   statsPokemon.innerHTML = "";
   thisPokemon.innerHTML = renderOnePokemon(arrayID);
   statsPokemon.innerHTML = renderPokeStats();
+  returnToPortraitAfterDialog = window.matchMedia(
+    "(max-width: 767px) and (orientation: portrait)",
+  ).matches;
   showOnePokemon.showModal();
   resetViewToTop(showOnePokemon);
 }
@@ -267,10 +273,14 @@ function closeDialogOnBackdropClick(dialog) {
 function handleDialogClose() {
   restoreLastFocus();
   const rotateHint = document.getElementById("rotate_to_portrait_hint");
-  const isMobileLandscape = window.matchMedia(
-    "(max-width: 767px) and (orientation: landscape)",
-  ).matches;
-  rotateHint.classList.toggle("show_orientation_hint", isMobileLandscape);
+  const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+  rotateHint.classList.toggle(
+    "show_orientation_hint",
+    returnToPortraitAfterDialog && isLandscape,
+  );
+
+  returnToPortraitAfterDialog = false;
   resetViewToTop();
 }
 

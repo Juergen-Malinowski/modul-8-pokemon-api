@@ -14,6 +14,7 @@ let pokeTypeIcon1 = "";
 let pokeTypeIcon2 = "";
 let pokeTypeSearch = "";
 let lastFocusedElement = null;
+let returnToPortraitAfterDialog = false;
 const buttonPreNext = document.getElementById('button_pre_next');
 
 const audioClick = new Audio('./assets/sound/click.mp3');

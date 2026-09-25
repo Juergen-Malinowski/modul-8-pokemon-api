@@ -186,7 +186,7 @@
   }
 }
 
-@media (max-width: 767px) and (orientation: landscape) {
+@media (max-height: 767px) and (orientation: landscape) {
   .orientation_hint_portrait.show_orientation_hint {
     position: fixed;
     inset: 50% auto auto 50%;
@@ -206,7 +206,9 @@
     border-radius: 20px;
     text-align: center;
   }
+}
 
+@media (max-width: 767px) and (orientation: landscape) {
   .dialog_box {
     width: min(720px, calc(100% - 16px));
     max-height: calc(100dvh - 16px);
