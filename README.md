@@ -4,6 +4,52 @@ A responsive frontend application that loads Pokémon data from the public [Pok�
 
 This project was originally created during an early frontend learning phase and has since been refactored for portfolio use with a stronger focus on maintainability, accessibility, responsive behavior, error handling, and documentation.
 
+## Local Setup
+
+No build process, package installation, backend, or API key is required. The project only needs to be served through a local HTTP server.
+
+Requirements:
+
+- Git
+- a modern web browser
+- either Python or another local HTTP server such as VS Code Live Server
+
+Clone the repository, enter the project folder, and start a local HTTP server. The Git commands are identical on Windows, macOS, and Linux. Only the Python start command usually differs between operating systems.
+
+```text
+git clone https://github.com/Juergen-Malinowski/modul-8-pokemon-api.git
+cd modul-8-pokemon-api
+
+# Windows with the Python Launcher:
+py -m http.server 5500
+
+# macOS or Linux:
+python3 -m http.server 5500
+```
+
+After starting the server, open:
+
+`http://localhost:5500`
+
+Stop the local server with `Ctrl + C`.
+
+Alternatively, open the repository in VS Code and serve `index.html` with the Live Server extension. A local HTTP server is recommended instead of opening the HTML file directly from the file system.
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [API](#api)
+- [Search](#search)
+- [Pokémon Details](#pokémon-details)
+- [Responsive Design](#responsive-design)
+- [Accessibility](#accessibility)
+- [Project Structure](#project-structure)
+- [Legal, Privacy, and Credits](#legal-privacy-and-credits)
+- [Known Limitations](#known-limitations)
+- [Development Background](#development-background)
+- [Author](#author)
+
 ## Features
 
 - Loads Pokémon data dynamically from PokéAPI
@@ -19,6 +65,7 @@ This project was originally created during an early frontend learning phase and 
 - Handles invalid searches and failed API requests
 - Includes keyboard-accessible controls and semantic interactive elements
 - Includes responsive layouts for desktop, tablet, and mobile viewports
+- Provides orientation guidance for Pokémon detail views on narrow mobile devices
 
 ## Tech Stack
 
@@ -66,21 +113,21 @@ The detail dialog displays:
 
 ## Responsive Design
 
-The application uses separate responsive stylesheets for tablet and mobile layouts in addition to the shared base styles.
+The application uses shared base styles together with separate stylesheets for desktop, tablet, and mobile layouts.
 
-The intended validation widths are:
+Responsive breakpoints:
 
-- 1440 px
-- 1024 px
-- 768 px
-- 767 px
-- 600 px
-- 390 px
-- 375 px
-- 360 px
-- 320 px
+- Desktop: `1280 px` and above
+- Tablet: `768 px` to `1279 px`
+- Mobile: `767 px` and below
 
-Final visual validation should cover the overview, search, navigation, detail dialog, and legal information page at these widths.
+The Pokémon overview adapts from a four-column desktop grid to a two-column tablet layout and finally to a single-column mobile layout.
+
+On sufficiently tall desktop viewports, the complete game area is centered horizontally and vertically. On lower-height viewports, the layout keeps its intended card structure and allows normal vertical scrolling instead of shrinking the content beyond a practical size.
+
+On narrow mobile devices, Pokémon detail dialogs provide an orientation hint when the detail view is opened in portrait mode. The detail layout is optimized for landscape orientation, and a return hint can guide the user back to portrait mode for the overview.
+
+Responsive behavior has been validated across representative desktop, tablet, mobile, and landscape viewport sizes, including widths down to `320 px` and widescreen layouts up to `3440 × 1440`.
 
 ## Accessibility
 
@@ -95,17 +142,6 @@ The refactored version includes:
 - `aria-live` regions for loading and search feedback
 - descriptive alternative text where images convey content
 
-## Local Setup
-
-No build process is required.
-
-1. Clone the repository.
-2. Open the project folder in VS Code or another editor.
-3. Serve the project through a local HTTP server, for example VS Code Live Server.
-4. Open `index.html` through the local server.
-
-A local HTTP server is recommended instead of opening the HTML file directly from the file system.
-
 ## Project Structure
 
 ```text
@@ -116,6 +152,7 @@ modul-8-pokemon-api/
 │   └── sound/
 ├── css/
 │   ├── standard.css
+│   ├── style_desktop.css
 │   ├── style_mobile.css
 │   └── style_tablet.css
 ├── html/
@@ -143,7 +180,6 @@ Additional image and sound assets are credited on the information page. Pixabay 
 
 - The project depends on the availability of PokéAPI.
 - Pokémon images are loaded from external PokéAPI sprite URLs.
-- Final cross-browser and viewport validation should be completed before public deployment.
 - A public live-demo URL will be added after final deployment.
 
 ## Development Background
