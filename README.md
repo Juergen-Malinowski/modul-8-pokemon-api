@@ -6,34 +6,25 @@ This project was originally created during an early frontend learning phase and 
 
 ## Local Setup
 
-No build process, package installation, backend, or API key is required. The project only needs to be served through a local HTTP server.
+No build process, package installation, backend, or API key is required. The project can be run locally with Visual Studio Code and the Live Server extension.
 
 Requirements:
 
 - Git
+- Visual Studio Code
+- the VS Code Live Server extension
 - a modern web browser
-- either Python or another local HTTP server such as VS Code Live Server
 
-Clone the repository, enter the project folder, and start a local HTTP server. The Git commands are identical on Windows, macOS, and Linux. Only the Python start command usually differs between operating systems.
+On Windows, use PowerShell, Command Prompt, or Git Bash. On macOS and Linux, use the system terminal. The Git commands are identical on all supported operating systems.
 
-```text
+```bash
 git clone https://github.com/Juergen-Malinowski/modul-8-pokemon-api.git
 cd modul-8-pokemon-api
-
-# Windows with the Python Launcher:
-py -m http.server 5500
-
-# macOS or Linux:
-python3 -m http.server 5500
 ```
 
-After starting the server, open:
+Then open the cloned folder in Visual Studio Code. If Live Server is not installed yet, install the **Live Server** extension from the VS Code Extensions view. Open `index.html` and start the project with **Go Live** in the VS Code status bar or by selecting **Open with Live Server** from the context menu.
 
-`http://localhost:5500`
-
-Stop the local server with `Ctrl + C`.
-
-Alternatively, open the repository in VS Code and serve `index.html` with the Live Server extension. A local HTTP server is recommended instead of opening the HTML file directly from the file system.
+Live Server opens the application through a local HTTP server, typically on a local address such as `http://127.0.0.1:5500`.
 
 ## Table of Contents
 
@@ -47,7 +38,6 @@ Alternatively, open the repository in VS Code and serve `index.html` with the Li
 - [Project Structure](#project-structure)
 - [Legal, Privacy, and Credits](#legal-privacy-and-credits)
 - [Known Limitations](#known-limitations)
-- [Development Background](#development-background)
 - [Author](#author)
 
 ## Features
@@ -180,28 +170,9 @@ Additional image and sound assets are credited on the information page. Pixabay 
 
 - The project depends on the availability of PokéAPI.
 - Pokémon images are loaded from external PokéAPI sprite URLs.
-- A public live-demo URL will be added after final deployment.
-
-## Development Background
-
-The original implementation was created as part of frontend training. The later portfolio refactoring focused on preserving the working application while improving code quality instead of rebuilding the project from scratch.
-
-Key refactoring areas include:
-
-- removal of obsolete development code and comments
-- API error handling
-- asynchronous loading flow
-- search-state handling
-- responsive CSS cleanup
-- accessibility improvements
-- asset and font cleanup
-- legal and privacy information
-- repository documentation
+- The Pokedex project is also featured on my [GitHub profile](https://github.com/Juergen-Malinowski), where the Live Demo button opens the deployed application.
 
 ## Author
 
-Jürgen Malinowski
-
-GitHub: [Juergen-Malinowski](https://github.com/Juergen-Malinowski)
-
-Repository: [modul-8-pokemon-api](https://github.com/Juergen-Malinowski/modul-8-pokemon-api)
+Jürgen Malinowski  
+Email: [kontakt@juergen-malinowski.de](mailto:kontakt@juergen-malinowski.de)
