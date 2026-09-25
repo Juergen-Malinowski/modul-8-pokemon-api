@@ -1,4 +1,9 @@
 @media (max-width: 767px) {
+  main.main_grafik {
+    width: 100%;
+    min-width: 0;
+  }
+
   h1,
   .header_grafik,
   .poke_grafik,
@@ -43,6 +48,11 @@
     border-width: 6px;
   }
 
+  .button_pre_next .buttons_grafik {
+    width: 80px;
+    font-size: 18px;
+  }
+
   .nav_grafik {
     justify-content: flex-end;
     gap: 30px;
@@ -80,6 +90,14 @@
   .one_pokemon {
     margin-top: 25px;
     margin-bottom: 25px;
+  }
+
+  .one_pokemon:hover {
+    transform: scale(1.05);
+  }
+
+  .buttons_grafik:hover {
+    transform: scale(1.05);
   }
 
   .name_poke {
