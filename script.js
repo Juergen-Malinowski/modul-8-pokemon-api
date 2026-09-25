@@ -33,6 +33,8 @@ document.addEventListener("click", (event) => {
 previousPokeButton.addEventListener("click", showPreviousPoke);
 nextPokeButton.addEventListener("click", showNextPoke);
 
+document.addEventListener("click", resetSearchOnOuterClick);
+
 closeDialog.addEventListener("click", () => {
   audioClick.play();
   showOnePokemon.close();
@@ -41,7 +43,6 @@ closeDialog.addEventListener("click", () => {
 closeDialogSearch.addEventListener("click", () => {
   audioClick.play();
   showSearchPokemon.close();
-  
 });
 
 closeDialogOnBackdropClick(showOnePokemon);
@@ -215,6 +216,27 @@ function showNextPoke() {
   thisPokemon.innerHTML = renderOnePokemon(arrayID);
   statsPokemon.innerHTML = renderPokeStats();
   resetViewToTop(showOnePokemon);
+}
+
+function resetSearchOnOuterClick(event) {
+  const searchOutput = document.getElementById("input_incorrect");
+  const searchInput = document.getElementById("input_user");
+
+  if (!searchOutput || !searchOutput.innerHTML.trim()) {
+    return;
+  }
+
+  if (
+    event.target.closest(
+      "h1, .header_grafik, .poke_grafik, .button_pre_next, dialog, footer",
+    )
+  ) {
+    return;
+  }
+
+  searchOutput.innerHTML = "";
+  searchInput.value = "";
+  searchThisPoke = "";
 }
 
 function resetViewToTop(dialog = null) {
